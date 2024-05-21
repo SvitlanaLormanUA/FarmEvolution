@@ -1,0 +1,11 @@
+#beginButton {
+    -fx-background-color: orange;
+    -fx-text-fill: white;
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+    -fx-border: 1px solid black;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 10 20 10 20;
+
+}
