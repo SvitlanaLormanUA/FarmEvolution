@@ -12,8 +12,6 @@ public class Application extends javafx.application.Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("menu.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),  800, 450);
         stage.setTitle("Farm Evolution!");
-
-
         stage.setScene(scene);
         stage.show();
     }

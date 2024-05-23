@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="450.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.some.InfoController">
+   <children>
+      <ImageView fx:id="sceneFarm" fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/farm_image.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="startButton" layoutX="362.0" layoutY="367.0" mnemonicParsing="false" onAction="#onAction" prefHeight="37.0" prefWidth="130.0" stylesheets="@../../../styles/info.css" text="Start" />
+   </children>
+</AnchorPane>

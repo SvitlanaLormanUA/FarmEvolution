@@ -12,6 +12,6 @@
             <Image url="@../../../images/start.png" />
          </image>
       </ImageView>
-      <Button fx:id="beginButton" layoutX="323.0" layoutY="303.0" mnemonicParsing="false" onAction="#onAction" prefHeight="43.0" prefWidth="185.0" stylesheets="@../../../styles/style.css" text="Button" textFill="WHITE" />
+      <Button fx:id="beginButton" layoutX="323.0" layoutY="303.0" mnemonicParsing="false" onAction="#onAction" prefHeight="43.0" prefWidth="185.0" stylesheets="@../../../styles/info.css" text="Button" textFill="WHITE" />
    </children>
 </AnchorPane>

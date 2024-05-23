@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="336.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.some.FirstLevel">
+   <children>
+      <ImageView fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/farm_image.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="41.0" fitWidth="82.0" layoutX="33.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/mainMenu.png" />
+         </image></ImageView>
+      <Button id="homeButton" fx:id="homeButton" layoutX="33.0" layoutY="24.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="42.0" prefWidth="81.0" stylesheets="@../../../styles/firstLevel.css" />
+      <ImageView id="coinsImage" fitHeight="46.0" fitWidth="127.0" layoutX="206.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/coins.png" />
+         </image></ImageView>
+      <Button id="coinsButton" layoutX="207.0" layoutY="24.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="126.0" stylesheets="@../../../styles/firstLevel.css" />
+      <Label id="amountOfCoins" fx:id="amountOfCoins" layoutX="263.0" layoutY="35.0" prefHeight="25.0" prefWidth="63.0" stylesheets="@../../../styles/firstLevel.css" />
+   </children>
+</AnchorPane>

@@ -6,26 +6,27 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.Objects;
-import java.util.ResourceBundle;
 
-public class MenuController {
+
+public class FirstLevel {
+
+    @FXML
+    private Button buttonMenu;
+
+    @FXML
+    private Label amountOfCoins;
+    private int coins;
+
     private Stage stage;
     private Scene scene;
     private Parent root;
-    @FXML
-    private Button beginButton;
-    @FXML
-    private ResourceBundle resources;
 
-    @FXML
-    private URL location;
-
-   public void onAction(ActionEvent event) {
+    public void backToMainMenu(ActionEvent event) {
         try {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("info.fxml")));
             stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
@@ -36,4 +37,9 @@ public class MenuController {
             throw new RuntimeException(e);
         }
     }
+
+    public void setAmountOfCoins() {
+        amountOfCoins.setText(String.valueOf(coins));
+    }
+
 }

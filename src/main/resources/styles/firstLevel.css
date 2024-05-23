@@ -1,0 +1,21 @@
+#homeButton {
+    -fx-background-color: transparent;
+    -fx-border-color: black;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 10;
+    -fx-padding: 10 20 10 20;
+    -fx-cursor: pointer;
+}
+
+#homeButton:hover {
+    -fx-border-color: lightgray;
+}
+
+#coinsButton {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-radius: 40;
+    -fx-background-radius: 10;
+    -fx-padding: 10 20 10 20;
+    -fx-cursor: pointer;
+}
