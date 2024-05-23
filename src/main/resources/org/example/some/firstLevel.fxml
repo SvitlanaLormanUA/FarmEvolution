@@ -18,11 +18,35 @@
             <Image url="@../../../images/mainMenu.png" />
          </image></ImageView>
       <Button id="homeButton" fx:id="homeButton" layoutX="33.0" layoutY="24.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="42.0" prefWidth="81.0" stylesheets="@../../../styles/firstLevel.css" />
-      <ImageView id="coinsImage" fitHeight="46.0" fitWidth="127.0" layoutX="206.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="coinsImage" fitHeight="43.0" fitWidth="127.0" layoutX="206.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/coins.png" />
          </image></ImageView>
-      <Button id="coinsButton" layoutX="207.0" layoutY="24.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="126.0" stylesheets="@../../../styles/firstLevel.css" />
+      <Button id="coinsButton" layoutX="207.0" layoutY="24.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="126.0" stylesheets="@../../../styles/firstLevel.css" />
       <Label id="amountOfCoins" fx:id="amountOfCoins" layoutX="263.0" layoutY="35.0" prefHeight="25.0" prefWidth="63.0" stylesheets="@../../../styles/firstLevel.css" />
+      <Button layoutX="655.0" layoutY="24.0" mnemonicParsing="false" onAction="#showInfo" prefHeight="43.0" prefWidth="47.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css" />
+      <ImageView fitHeight="48.0" fitWidth="42.0" layoutX="660.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/instr.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="718.0" layoutY="25.0" mnemonicParsing="false" onAction="#showSettings" prefHeight="43.0" prefWidth="47.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css" />
+      <ImageView fitHeight="48.0" fitWidth="42.0" layoutX="720.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/settings.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="718.0" layoutY="81.0" mnemonicParsing="false" onAction="#showExtraTasks" prefHeight="43.0" prefWidth="47.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css" />
+      <ImageView fitHeight="48.0" fitWidth="42.0" layoutX="721.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/dos.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="718.0" layoutY="133.0" mnemonicParsing="false" onAction="#showExtraTasks" prefHeight="43.0" prefWidth="47.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css" />
+      <ImageView fitHeight="48.0" fitWidth="42.0" layoutX="721.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/extraTask.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

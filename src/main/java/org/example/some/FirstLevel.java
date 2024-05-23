@@ -17,6 +17,12 @@ public class FirstLevel {
 
     @FXML
     private Button buttonMenu;
+    private Button buttonInfo;
+    private Button buttonSettings;
+    private Button buttonTasks;
+    private Button buttonExtraTasks;
+
+
 
     @FXML
     private Label amountOfCoins;
@@ -40,6 +46,26 @@ public class FirstLevel {
 
     public void setAmountOfCoins() {
         amountOfCoins.setText(String.valueOf(coins));
+    }
+
+    public void showInfo(ActionEvent event) {
+
+    }
+    public void showSettings(ActionEvent event) {
+
+    }
+    public void showTasks(ActionEvent event) {
+
+    }
+    public void showExtraTasks(ActionEvent event) {
+
+    }
+
+    public void setCoins(int coins) {
+        this.coins = coins;
+    }
+    public int getCoins() {
+        return coins;
     }
 
 }
