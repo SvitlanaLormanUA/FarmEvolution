@@ -26,3 +26,7 @@
     -fx-border-radius: 40;
     -fx-background-radius: 40;
 }
+#waterInWell {
+    -fx-rotate: -90;
+
+}
