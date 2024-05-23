@@ -54,6 +54,6 @@
             <Image url="@../../../images/well.png" />
          </image>
       </ImageView>
-      <ProgressBar id="waterInWell" fx:id="waterBar" layoutX="-46.0" layoutY="297.0" prefHeight="17.0" prefWidth="175.0" progress="0.0" stylesheets="@../../../styles/firstLevel.css" />
+      <ProgressBar id="waterInWell" fx:id="waterBar" layoutX="-46.0" layoutY="297.0" prefHeight="17.0" prefWidth="175.0" progress="1.0" stylesheets="@../../../styles/firstLevel.css" />
    </children>
 </AnchorPane>
