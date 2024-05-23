@@ -49,7 +49,7 @@
             <Image url="@../../../images/extraTask.png" />
          </image>
       </ImageView>
-      <ImageView id="well" fx:id="well" fitHeight="189.0" fitWidth="138.0" layoutX="77.0" layoutY="225.0" onMouseClicked="#decreaseProgress" onMousePressed="#decreaseProgress" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="well" fx:id="well" fitHeight="189.0" fitWidth="138.0" layoutX="77.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/well.png" />
          </image>
