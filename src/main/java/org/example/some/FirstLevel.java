@@ -98,7 +98,7 @@ public class FirstLevel implements javafx.fxml.Initializable{
         }
         progress = new BigDecimal(String.format("%.2f", progress.doubleValue() - 0.1));
 
-        //System.out.println(progress);
+        System.out.println(progress);
         waterBar.setProgress(progress.doubleValue());
     }
 
