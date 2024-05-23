@@ -17,7 +17,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 
-public class FirstLevel {
+public class FirstLevel implements javafx.fxml.Initializable{
 
     @FXML
     private Button buttonMenu;
@@ -84,23 +84,19 @@ public class FirstLevel {
         return coins;
     }
 
-    //The BigDecimal class gives its user complete control over rounding behavior
-    /* BigDecimal progress = new BigDecimal(String.format("%.2f", 1.0));
-    @Override
+    double progress = 1.0;
+
     public void initialize(URL url, ResourceBundle resourceBundle) {
         waterBar.setStyle("-fx-accent: #4392FF;");
 
     }
 
-    public void decreaseProgress() {
-        if (progress.doubleValue() < 0.1) {
-            progress = new BigDecimal(String.format("%.2f", 1.1));
+    public void setWater() {
+        if (progress < 0.1) {
+            progress = 1.0;
         }
-        progress = new BigDecimal(String.format("%.2f", progress.doubleValue() - 0.1));
-
-        System.out.println(progress);
-        waterBar.setProgress(progress.doubleValue());
-    }*/
+        waterBar.setProgress(progress);
+    }
 
 
 }
