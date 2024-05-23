@@ -9,7 +9,10 @@
     -fx-background-radius: 10;
     -fx-padding: 10 20 10 20;
     -fx-cursor: pointer;
-
 }
 
+#startButton:hover,
+#beginButton:hover {
+    -fx-background-color: #DF6A3D;
+}
 
