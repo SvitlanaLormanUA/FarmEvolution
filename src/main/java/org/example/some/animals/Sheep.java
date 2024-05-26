@@ -1,4 +1,4 @@
-package org.example.some;
+package org.example.some.animals;
 
 import javafx.animation.TranslateTransition;
 import javafx.scene.image.Image;
@@ -6,12 +6,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+import org.example.some.Wallet;
+import org.example.some.Well;
 
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Sheep implements Animal{
+public class Sheep implements Animal {
 
     ImageView sheepView;
     int worldStartX;
@@ -30,7 +32,7 @@ public class Sheep implements Animal{
     private Feeder feeder;
 
     AnimalMenu animalMenu;
-    Sheep(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Wallet wallet, Well well, Feeder feeder){
+    public Sheep(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Wallet wallet, Well well, Feeder feeder){
         Image image = new Image("file:src/main/resources/images/sheep.png");
         this.sheepView = new ImageView(image);
         this.worldStartX = worldStartX;

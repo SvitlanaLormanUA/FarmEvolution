@@ -8,12 +8,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.example.some.animals.Feeder;
+import org.example.some.animals.Sheep;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -91,7 +91,7 @@ public class FirstLevel implements javafx.fxml.Initializable{
         waterBar.setStyle("-fx-accent: #4392FF;");
 
         //додана овечка на основну панель
-        Sheep sheep = new Sheep(300,  200,500,370, anchorPane, wallet, well, feeder);
+        Sheep sheep = new Sheep(300,  200,500,330, anchorPane, wallet, well, feeder);
         anchorPane.getChildren().add(sheep.getSheepView());
         sheep.play();
 

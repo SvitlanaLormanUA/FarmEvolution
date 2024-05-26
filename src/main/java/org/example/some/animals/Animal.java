@@ -1,4 +1,4 @@
-package org.example.some;
+package org.example.some.animals;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;

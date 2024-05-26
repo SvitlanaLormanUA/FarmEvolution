@@ -5,6 +5,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import org.example.some.animals.Feeder;
+import org.example.some.animals.Sheep;
 
 // Клас для тестування створених можливостей для додавання і взаємодії з тваринами
 public class Tester extends Application {
