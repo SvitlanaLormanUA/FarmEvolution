@@ -61,6 +61,7 @@ public class AnimalMenu {
 
         feed();
         drink();
+        sell();
     }
 
     private void feed(){
@@ -74,6 +75,12 @@ public class AnimalMenu {
         drink.setOnAction(event -> {
             animal.drink();
             thirstLabel.setText("Рівень води: " + this.animal.getThirstLvl());
+        });
+    }
+
+    private void sell(){
+        sell.setOnAction(event -> {
+            animal.sell();
         });
     }
 

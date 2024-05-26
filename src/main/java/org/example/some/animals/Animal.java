@@ -58,5 +58,5 @@ public interface Animal extends Serializable {
  //Звук тварини
  void playSound();
 // Поверненн картинки тварини
-    ImageView getSheepView();
+    ImageView getAnimalView();
 }

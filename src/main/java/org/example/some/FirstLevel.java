@@ -92,12 +92,28 @@ public class FirstLevel implements javafx.fxml.Initializable{
     public void initialize(URL url, ResourceBundle resourceBundle) {
         waterBar.setStyle("-fx-accent: #4392FF;");
 
+
+        addWallet();
+
         //додана овечка на основну панель
-        Sheep sheep = new Sheep(300,  200,500,330, anchorPane, wallet, well, feeder);
-        anchorPane.getChildren().add(sheep.getSheepView());
+        Sheep sheep = new Sheep(300,  200,700,430, anchorPane, wallet, well, feeder);
+        anchorPane.getChildren().add(sheep.getAnimalView());
         sheep.play();
+    }
 
+    private void addWallet(){
+        wallet = new Wallet(50, 50);
+        anchorPane.getChildren().add(wallet.getRoot());
+    }
 
+    private void addWell(){
+        well = new Well(20, 380);
+        anchorPane.getChildren().add(well.getRoot());
+    }
+
+    private void addFeeder(){
+        feeder = new Feeder(600, 450);
+        anchorPane.getChildren().add(feeder.getRoot());
     }
 
     public void setWater() {

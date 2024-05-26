@@ -42,7 +42,7 @@ public class Tester extends Application {
     private void addSheep(){
         button.setOnAction(event -> {
             Sheep sheep = new Sheep(200, 300,600,570, root, wallet, well, feeder);
-            root.getChildren().add(sheep.getSheepView());
+            root.getChildren().add(sheep.getAnimalView());
             sheep.play();
         });
     }

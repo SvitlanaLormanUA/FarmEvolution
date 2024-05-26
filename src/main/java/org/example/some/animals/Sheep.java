@@ -262,7 +262,9 @@ public class Sheep implements Animal {
 
     @Override
     public void sell() {
-
+        wallet.income(cost);
+        removeMenu();
+        root.getChildren().remove(sheepView);
     }
 
     @Override
@@ -296,7 +298,7 @@ public class Sheep implements Animal {
 
 
     @Override
-    public ImageView getSheepView() {
+    public ImageView getAnimalView() {
         return sheepView;
     }
 }
