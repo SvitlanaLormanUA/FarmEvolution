@@ -6,8 +6,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
-import org.example.some.Wallet;
-import org.example.some.Well;
+import org.example.some.otherGameObjects.Wallet;
+import org.example.some.otherGameObjects.Well;
 
 import java.util.Random;
 import java.util.Timer;

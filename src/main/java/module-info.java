@@ -8,4 +8,6 @@ module org.example.some {
     exports org.example.some;
     exports org.example.some.animals;
     opens org.example.some.animals to javafx.fxml;
+    exports org.example.some.otherGameObjects;
+    opens org.example.some.otherGameObjects to javafx.fxml;
 }

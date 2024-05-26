@@ -7,6 +7,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.example.some.animals.Feeder;
 import org.example.some.animals.Sheep;
+import org.example.some.otherGameObjects.Wallet;
+import org.example.some.otherGameObjects.Well;
 
 // Клас для тестування створених можливостей для додавання і взаємодії з тваринами
 public class Tester extends Application {

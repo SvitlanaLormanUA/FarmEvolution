@@ -1,4 +1,4 @@
-package org.example.some;
+package org.example.some.otherGameObjects;
 
 
 import javafx.scene.control.Label;

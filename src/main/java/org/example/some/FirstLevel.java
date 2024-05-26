@@ -12,6 +12,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.example.some.animals.Feeder;
 import org.example.some.animals.Sheep;
+import org.example.some.otherGameObjects.Wallet;
+import org.example.some.otherGameObjects.Well;
 
 import java.io.IOException;
 import java.net.URL;
