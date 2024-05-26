@@ -3,6 +3,7 @@ module org.example.some {
     requires javafx.fxml;
 
     requires com.almasb.fxgl.all;
+    requires javafx.media;
 
     opens org.example.some to javafx.fxml;
     exports org.example.some;

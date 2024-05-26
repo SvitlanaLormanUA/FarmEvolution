@@ -97,6 +97,7 @@ public class FirstLevel implements javafx.fxml.Initializable{
         anchorPane.getChildren().add(sheep.getSheepView());
         sheep.play();
 
+
     }
 
     public void setWater() {

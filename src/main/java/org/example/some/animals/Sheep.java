@@ -5,10 +5,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.util.Duration;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
+import java.io.File;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -30,6 +34,10 @@ public class Sheep implements Animal {
     private Well well;
     private Wallet wallet;
     private Feeder feeder;
+    private MediaView mediaView;
+    File file;
+    Media media;
+    MediaPlayer mediaPlayer;
 
     AnimalMenu animalMenu;
     public Sheep(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Wallet wallet, Well well, Feeder feeder){
@@ -47,6 +55,7 @@ public class Sheep implements Animal {
         this.well = well;
         this.wallet = wallet;
         this.feeder = feeder;
+        this.mediaView = new MediaView();
         sheepView.setFitWidth(100);
         sheepView.setFitHeight(100);
 
@@ -54,6 +63,8 @@ public class Sheep implements Animal {
         int y = random.nextInt(worldEndY - worldStartY) + worldStartY;
         sheepView.setX(x);
         sheepView.setY(y);
+
+
 
         movement();
         thirst();
@@ -109,6 +120,7 @@ public class Sheep implements Animal {
 
         sheepView.setX(newX);
         sheepView.setY(newY);
+        playSound();
     }
 
     @Override
@@ -139,6 +151,7 @@ public class Sheep implements Animal {
             transitionBack.setToY(y);
             transitionBack.play();
         }
+        playSound();
     }
 
     @Override
@@ -164,6 +177,8 @@ public class Sheep implements Animal {
         } else {
             removeMenu();
         }
+       playSound();
+
     }
 
     @Override
@@ -264,6 +279,21 @@ public class Sheep implements Animal {
     public int getCost() {
         return cost;
     }
+
+    @Override
+    public void playSound() {
+        file = new File("src/main/resources/sound/sheepmp3.mp3");
+        media = new Media(file.toURI().toString());
+        mediaPlayer = new MediaPlayer(media);
+        mediaView.setMediaPlayer(mediaPlayer);
+        mediaPlayer.setAutoPlay(true);
+        mediaPlayer.setVolume(0.33);
+        root.getChildren().add(mediaView);
+        mediaPlayer.play();
+
+        root.getChildren().remove(mediaView);
+    }
+
 
     @Override
     public ImageView getSheepView() {

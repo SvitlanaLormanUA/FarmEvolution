@@ -3,7 +3,9 @@ package org.example.some.animals;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
-public interface Animal {
+import java.io.Serializable;
+
+public interface Animal extends Serializable {
 
 // Для анімації руху
     void movement();
@@ -53,6 +55,8 @@ public interface Animal {
 // Поверненн вартості тварини
     int getCost();
 
+ //Звук тварини
+ void playSound();
 // Поверненн картинки тварини
     ImageView getSheepView();
 }
