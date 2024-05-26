@@ -36,12 +36,9 @@ public class FirstLevel implements javafx.fxml.Initializable{
 
     @FXML
     public ProgressBar waterBar;
-
-
-
-
-
-
+    Well well;
+    Feeder feeder;
+    Wallet wallet;
 
     @FXML
     private Label amountOfCoins;
@@ -75,6 +72,7 @@ public class FirstLevel implements javafx.fxml.Initializable{
     }
     public void showTasks(ActionEvent event) {
 
+
     }
     public void showExtraTasks(ActionEvent event) {
 
@@ -91,6 +89,11 @@ public class FirstLevel implements javafx.fxml.Initializable{
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         waterBar.setStyle("-fx-accent: #4392FF;");
+
+        //додана овечка на основну панель
+        Sheep sheep = new Sheep(300,  200,500,370, anchorPane, wallet, well, feeder);
+        anchorPane.getChildren().add(sheep.getSheepView());
+        sheep.play();
 
     }
 
