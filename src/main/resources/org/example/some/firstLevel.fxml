@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -24,7 +23,6 @@
             <Image url="@../../../images/coins.png" />
          </image></ImageView>
       <Button id="coinsButton" layoutX="207.0" layoutY="24.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="126.0" stylesheets="@../../../styles/firstLevel.css" />
-      <Label id="amountOfCoins" fx:id="amountOfCoins" layoutX="263.0" layoutY="35.0" prefHeight="25.0" prefWidth="63.0" stylesheets="@../../../styles/firstLevel.css" />
       <ImageView fitHeight="48.0" fitWidth="42.0" layoutX="660.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/instr.png" />

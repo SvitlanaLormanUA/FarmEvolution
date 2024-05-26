@@ -4,6 +4,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
 
 public class Wallet {
 
@@ -15,23 +16,24 @@ public class Wallet {
     private Label nCoins;
 
     public Wallet(double x, double y){
-        Image image = new Image("file:src/main/resources/images/coins.png");
-        this.walletView = new ImageView(image);
+      /**  Image image = new Image("file:src/main/resources/images/coins.png");
+        this.walletView = new ImageView(image);*/
 
         this.x = x;
         this.y = y;
         this.coins = 100;
-        walletView.setFitWidth(70);
+      /*  walletView.setFitWidth(70);
         walletView.setFitHeight(30);
         walletView.setX(x);
-        walletView.setY(y);
+        walletView.setY(y);*/
 
         nCoins = new Label(String.valueOf(coins));
-        nCoins.setLayoutX(x+35);
-        nCoins.setLayoutY(y+8);
+        nCoins.setLayoutX(263);
+        nCoins.setLayoutY(32);
+        nCoins.setFont(new Font("Arial", 22));
 
         root = new Pane();
-        root.getChildren().addAll(walletView, nCoins);
+        root.getChildren().addAll(nCoins);
     }
 
     public void income(int n){
