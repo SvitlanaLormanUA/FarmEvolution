@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.example.some.animals.Feeder;
@@ -38,6 +39,10 @@ public class FirstLevel implements javafx.fxml.Initializable{
 
     @FXML
     public ProgressBar waterBar;
+
+    @FXML
+    private ImageView wellView;
+
     Well well;
     Feeder feeder;
     Wallet wallet;
@@ -94,9 +99,10 @@ public class FirstLevel implements javafx.fxml.Initializable{
 
 
         addWallet();
+        addWell();
 
         //додана овечка на основну панель
-        Sheep sheep = new Sheep(300,  200,700,430, anchorPane, wallet, well, feeder);
+        Sheep sheep = new Sheep(300,  200,700,330, anchorPane, wallet, well, feeder);
         anchorPane.getChildren().add(sheep.getAnimalView());
         sheep.play();
     }
@@ -107,7 +113,7 @@ public class FirstLevel implements javafx.fxml.Initializable{
     }
 
     private void addWell(){
-        well = new Well(20, 380);
+        well = new Well(wellView);
         anchorPane.getChildren().add(well.getRoot());
     }
 

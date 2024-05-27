@@ -33,7 +33,7 @@ public class Tester extends Application {
         stage.setScene(scene);
         stage.show();
 
-        addWell();
+//        addWell();
         addWallet();
 //        addFeeder();
         addSheep();
@@ -52,10 +52,10 @@ public class Tester extends Application {
         root.getChildren().add(wallet.getRoot());
     }
 
-    private void addWell(){
-        well = new Well(20, 380);
-        root.getChildren().add(well.getRoot());
-    }
+//    private void addWell(){
+//        well = new Well(20, 380);
+//        root.getChildren().add(well.getRoot());
+//    }
 
     private void addFeeder(){
         feeder = new Feeder(600, 450);

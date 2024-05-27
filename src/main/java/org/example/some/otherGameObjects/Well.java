@@ -13,30 +13,21 @@ import java.util.TimerTask;
 public class Well {
 
     private ImageView wellView;
-    private double x;
-    private double y;
     private Pane root;
     private int waterLvl;
     Label waterLvlLabel;
 
-    public Well(double x, double y){
-        Image image = new Image("file:src/main/resources/images/well.png");
-        this.wellView = new ImageView(image);
+    public Well(ImageView well){
+        this.wellView = well;
 
-        this.x = x;
-        this.y = y;
         this.waterLvl = 10;
-        wellView.setFitWidth(120);
-        wellView.setFitHeight(180);
-        wellView.setX(x);
-        wellView.setY(y);
 
         root = new Pane();
         root.getChildren().add(wellView);
 
-        root.setOnMouseEntered(this::handleMouseEntered);
-        root.setOnMouseExited(this::handleMouseExited);
-        root.setOnMouseClicked(this::handleMouseClicked);
+        wellView.setOnMouseEntered(this::handleMouseEntered);
+        wellView.setOnMouseExited(this::handleMouseExited);
+        wellView.setOnMouseClicked(this::handleMouseClicked);
     }
 
     public void getWater(){
@@ -45,9 +36,10 @@ public class Well {
 
     private void handleMouseEntered(MouseEvent event){
         waterLvlLabel = new Label("Рівень води: " + this.waterLvl);
-        waterLvlLabel.setLayoutX(x);
-        waterLvlLabel.setLayoutY(y-20);
+        waterLvlLabel.setLayoutX(300);
+        waterLvlLabel.setLayoutY(300-20);
         root.getChildren().add(waterLvlLabel);
+        System.out.println("Work");
     }
 
     private void handleMouseExited(MouseEvent event) {
