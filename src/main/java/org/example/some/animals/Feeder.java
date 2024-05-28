@@ -25,9 +25,9 @@ public class Feeder {
         this.foodLvl = 10;
 
         root = new Pane();
-        root.getChildren().add(foodView);
+        root.getChildren().add(this.foodView);
 
-        root.setOnMouseClicked(this::handleMouseClicked);
+        this.foodView.setOnMouseClicked(this::handleMouseClicked);
     }
 
     public void getFood(){

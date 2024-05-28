@@ -104,11 +104,11 @@ public class FirstLevel implements javafx.fxml.Initializable{
         foodBar.setStyle("-fx-accent: #f37a39;");
 
         addWallet();
-        addWell();
         addFeeder();
+        addWell();
 
         //додана овечка на основну панель
-        Sheep sheep = new Sheep(250,  200,700,330, anchorPane, wallet, well, feeder);
+        Sheep sheep = new Sheep(250,  200,700,530, anchorPane, wallet, well, feeder);
         anchorPane.getChildren().add(sheep.getAnimalView());
         sheep.play();
     }

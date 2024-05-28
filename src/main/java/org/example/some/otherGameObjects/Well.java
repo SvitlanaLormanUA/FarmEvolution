@@ -46,7 +46,6 @@ public class Well {
         waterLvlLabel.setLayoutX(300);
         waterLvlLabel.setLayoutY(300-20);
         root.getChildren().add(waterLvlLabel);
-        System.out.println("Work");
     }
 
     private void handleMouseExited(MouseEvent event) {
