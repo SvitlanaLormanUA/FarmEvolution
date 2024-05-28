@@ -2,6 +2,7 @@ package org.example.some.otherGameObjects;
 
 
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -16,10 +17,12 @@ public class Well {
     private Pane root;
     private int waterLvl;
     Label waterLvlLabel;
+    private double progress = 1.0;
+    private ProgressBar waterBar;
 
-    public Well(ImageView well){
+    public Well(ImageView well, ProgressBar waterBar){
         this.wellView = well;
-
+        this.waterBar = waterBar;
         this.waterLvl = 10;
 
         root = new Pane();
@@ -31,7 +34,11 @@ public class Well {
     }
 
     public void getWater(){
-        waterLvl--;
+        if (progress > 0.0 && waterLvl > 0) {
+            waterLvl--;
+            progress -= 0.1;
+        }
+        waterBar.setProgress(progress);
     }
 
     private void handleMouseEntered(MouseEvent event){
@@ -51,9 +58,12 @@ public class Well {
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                if (waterLvl < 10) {
+                if (waterLvl < 10 && progress<1.0) {
                     waterLvl++;
                     waterLvlLabel.setText("Рівень води: " + waterLvl);
+
+                    progress+=0.1;
+                    waterBar.setProgress(progress);
                 } else {
                     timer.cancel();
                 }

@@ -57,10 +57,10 @@ public class Tester extends Application {
 //        root.getChildren().add(well.getRoot());
 //    }
 
-    private void addFeeder(){
-        feeder = new Feeder(600, 450);
-        root.getChildren().add(feeder.getRoot());
-    }
+//    private void addFeeder(){
+//        feeder = new Feeder(600, 450);
+//        root.getChildren().add(feeder.getRoot());
+//    }
 
     public static void main(String[] args) {
         launch(args);

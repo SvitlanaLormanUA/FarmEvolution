@@ -17,6 +17,7 @@ public class AnimalMenu {
     private Button feed;
     private Button drink;
     private Button sell;
+    private Button close;
     private Label hungerLabel;
     private Label thirstLabel;
     private Label costLabel;
@@ -46,6 +47,10 @@ public class AnimalMenu {
         drink.setLayoutX(50);
         drink.setLayoutY(100);
 
+        close = new Button("×");
+        close.setLayoutX(175);
+        close.setLayoutY(0);
+
         costLabel = new Label("Ціна для продажу: " + this.animal.getCost());
         costLabel.setLayoutX(20); // Встановлюємо відносно меню
         costLabel.setLayoutY(120);
@@ -57,11 +62,12 @@ public class AnimalMenu {
         root = new Pane();
         root.setTranslateX(this.x+50);
         root.setTranslateY(this.y-20);
-        root.getChildren().addAll(menuView, hungerLabel, thirstLabel, feed, drink, costLabel, sell);
+        root.getChildren().addAll(menuView, hungerLabel, thirstLabel, feed, drink, costLabel, sell, close);
 
         feed();
         drink();
         sell();
+        close();
     }
 
     private void feed(){
@@ -81,6 +87,12 @@ public class AnimalMenu {
     private void sell(){
         sell.setOnAction(event -> {
             animal.sell();
+        });
+    }
+
+    private void close(){
+        close.setOnAction(event -> {
+            animal.removeMenu();
         });
     }
 

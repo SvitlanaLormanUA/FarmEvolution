@@ -22,6 +22,9 @@ public interface Animal extends Serializable {
 // Створення об'єкта AnimalMenu при натисканні на тварину
     void handleMouseClicked(MouseEvent event);
 
+    // Для додавання меню
+    void addMenu(double x, double y);
+
 // Для прибирання меню
     void removeMenu();
 

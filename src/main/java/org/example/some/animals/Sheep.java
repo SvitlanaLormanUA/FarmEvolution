@@ -78,10 +78,9 @@ public class Sheep implements Animal {
         translateTransition.setNode(sheepView);
         setRandomDirection();
 
-        translateTransition.setCycleCount(1);
         translateTransition.setOnFinished(event -> {
             setRandomDirection();
-            translateTransition.playFromStart();
+            translateTransition.play();
         });
 
         sheepView.setOnMouseClicked(this::handleMouseClicked);
@@ -94,13 +93,16 @@ public class Sheep implements Animal {
         double x = sheepView.getX();
         double y = sheepView.getY();
 
-        double deltaX = random.nextInt(150) - 75; // Рандомне переміщення по X в діапазоні [-100, 100]
-        double deltaY = random.nextInt(120) - 60; // Рандомне переміщення по Y в діапазоні [-100, 100]
+        double deltaX = random.nextInt(120) - 75;
+        double deltaY = random.nextInt(100) - 75;
 
-        if (x + deltaX < worldStartX || x + deltaX > worldEndX - 100) { // Враховуємо ширину зображення
+        double newX = x + deltaX;
+        double newY = y + deltaY;
+
+        if (newX < worldStartX || newX > worldEndX - sheepView.getFitWidth()) {
             deltaX = -deltaX;
         }
-        if (y + deltaY < worldStartY || y + deltaY > worldEndY - 100) { // Враховуємо висоту зображення
+        if (newY < worldStartY || newY > worldEndY - sheepView.getFitHeight()) {
             deltaY = -deltaY;
         }
 
@@ -110,13 +112,14 @@ public class Sheep implements Animal {
 
     @Override
     public void handleMouseDragged(MouseEvent event) {
-        double newX = event.getX() - 50;
-        double newY = event.getY() - 50;
+        translateTransition.pause();
+        double newX = event.getSceneX() - sheepView.getFitWidth() / 2;
+        double newY = event.getSceneY() - sheepView.getFitHeight() / 2;
 
         if (newX < worldStartX) newX = worldStartX;
-        if (newX > worldEndX - 100) newX = worldEndX - 100;
+        if (newX > worldEndX - sheepView.getFitWidth()) newX = worldEndX - sheepView.getFitWidth();
         if (newY < worldStartY) newY = worldStartY;
-        if (newY > worldEndY - 100) newY = worldEndY - 100;
+        if (newY > worldEndY - sheepView.getFitHeight()) newY = worldEndY - sheepView.getFitHeight();
 
         sheepView.setX(newX);
         sheepView.setY(newY);
@@ -132,16 +135,16 @@ public class Sheep implements Animal {
         if (x < worldStartX) {
             x = worldStartX;
             outOfBounds = true;
-        } else if (x > worldEndX - 100) {
-            x = worldEndX - 100;
+        } else if (x > worldEndX - sheepView.getFitWidth()) {
+            x = worldEndX - sheepView.getFitWidth();
             outOfBounds = true;
         }
 
         if (y < worldStartY) {
             y = worldStartY;
             outOfBounds = true;
-        } else if (y > worldEndY - 100) {
-            y = worldEndY - 100;
+        } else if (y > worldEndY - sheepView.getFitHeight()) {
+            y = worldEndY - sheepView.getFitHeight();
             outOfBounds = true;
         }
 
@@ -151,6 +154,7 @@ public class Sheep implements Animal {
             transitionBack.setToY(y);
             transitionBack.play();
         }
+        translateTransition.play();
         playSound();
     }
 
@@ -169,16 +173,21 @@ public class Sheep implements Animal {
             if (y + menuHeight > root.getHeight()) {
                 y = root.getHeight() - menuHeight;
             }
+            addMenu(x, y);
 
-            animalMenu = new AnimalMenu(this, x, y);
-            root.getChildren().add(animalMenu.getRoot());
-            translateTransition.pause();
-            openedMenu = true;
         } else {
             removeMenu();
         }
        playSound();
 
+    }
+
+    @Override
+    public void addMenu(double x, double y) {
+        animalMenu = new AnimalMenu(this, x, y);
+        root.getChildren().add(animalMenu.getRoot());
+        openedMenu = true;
+        translateTransition.pause();
     }
 
     @Override
@@ -240,7 +249,7 @@ public class Sheep implements Animal {
                 hungerLvl = 100;
                 cost = 100;
             }
-            wallet.expense(7);
+            feeder.getFood();
         }
     }
 
