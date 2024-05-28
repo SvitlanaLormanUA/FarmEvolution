@@ -21,14 +21,10 @@ import org.example.some.otherGameObjects.Well;
         public Sheep(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Wallet wallet, Well well, Feeder feeder) {
             super(worldStartX, worldStartY, worldEndX, worldEndY, root, wallet, well, feeder,
                     "file:src/main/resources/images/sheep.png",
-                    "file:src/main/resources/sound/sheepmp3.mp3",
+                    "src/main/resources/sound/sheepmp3.mp3",
                     "file:src/main/resources/images/wool.png");
         }
 
-        @Override
-        public void playSound() {
-
-        }
 
         @Override
         public void death() {
