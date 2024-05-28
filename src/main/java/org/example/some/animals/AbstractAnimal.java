@@ -14,29 +14,35 @@ import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
 import java.io.File;
+import java.security.cert.PolicyNode;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
 abstract class AbstractAnimal implements Animal {
 
-    ImageView animalView;
+
+    public static Wallet wallet;
+    public static Pane root;
+
+    protected static int cost;
+    protected static int hungerLvl;
+    protected static Feeder feeder;
+
     int worldStartX;
     int worldStartY;
     int worldEndX;
     int worldEndY;
     private TranslateTransition translateTransition;
     private Random random = new Random();
-    private Pane root;
+
     private boolean openedMenu;
-    private int hungerLvl;
     private int thirstLvl;
-    private int cost;
     private Well well;
-    private Wallet wallet;
-    private Feeder feeder;
     private MediaView mediaView;
-    File file;
+    private File file;
+
+    ImageView animalView;
     Media media;
     MediaPlayer mediaPlayer;
     Image product;
@@ -247,18 +253,7 @@ abstract class AbstractAnimal implements Animal {
         timer.scheduleAtFixedRate(task, 0, 5000);
     }
 
-    @Override
-    public void feed() {
-        if(hungerLvl<100) {
-            hungerLvl += 50;
-            cost += 50;
-            if (hungerLvl > 100) {
-                hungerLvl = 100;
-                cost = 100;
-            }
-            feeder.getFood();
-        }
-    }
+
 
     @Override
     public void drink() {
@@ -271,35 +266,7 @@ abstract class AbstractAnimal implements Animal {
         }
     }
 
-    @Override
-    public void giveProduct() {
-        Timer timer = new Timer();
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
-                if (hungerLvl > 20) {
 
-                    ImageView productView = new ImageView(product);
-                    productView.setFitWidth(40);
-                    productView.setFitHeight(40);
-                    productView.setX(animalView.getX() + 30);
-                    productView.setY(animalView.getY() + 30);
-
-                    productView.setOnMouseClicked(event -> {
-                        wallet.income(8);
-                        root.getChildren().remove(productView);
-                    });
-
-                    Platform.runLater(() -> root.getChildren().add(1, productView));
-                } else {
-                    timer.cancel();
-                }
-            }
-        };
-
-        // Запуск завдання з інтервалом 5 секунд (5000 мілісекунд)
-        timer.scheduleAtFixedRate(task, 0, 10000);
-    }
 
     @Override
     public void sell() {
