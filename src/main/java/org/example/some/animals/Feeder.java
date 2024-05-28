@@ -41,13 +41,13 @@ public class Feeder {
 
 //    потрібно буде щось зробити із зняттям гроше + при натисканні на колодязь чомусь теж знімаються гроші
     private void handleMouseClicked(MouseEvent event){
+
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
                 if (foodLvl < 10 && progress < 1) {
                     foodLvl++;
-
                     progress += 0.1;
                     foodBar.setProgress(progress);
                 } else {
@@ -57,7 +57,9 @@ public class Feeder {
         };
         // Запуск завдання з інтервалом 10 секунд (10000 мілісекунд)
         timer.scheduleAtFixedRate(task, 0, 10000);
-        wallet.expense(10);
+        if(progress < 1.0) {
+            wallet.expense(10);
+        }
     }
 
     public ImageView getFoodView() {
