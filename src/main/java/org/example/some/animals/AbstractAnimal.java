@@ -273,7 +273,6 @@ abstract class AbstractAnimal implements Animal {
 
     @Override
     public void giveProduct() {
-
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
             @Override
@@ -283,10 +282,15 @@ abstract class AbstractAnimal implements Animal {
                     ImageView productView = new ImageView(product);
                     productView.setFitWidth(40);
                     productView.setFitHeight(40);
-                    productView.setX(animalView.getX() + 10);
-                    productView.setY(animalView.getY() + 10);
+                    productView.setX(animalView.getX() + 30);
+                    productView.setY(animalView.getY() + 30);
 
-                    Platform.runLater(() -> root.getChildren().add(productView));
+                    productView.setOnMouseClicked(event -> {
+                        wallet.income(8);
+                        root.getChildren().remove(productView);
+                    });
+
+                    Platform.runLater(() -> root.getChildren().add(1, productView));
                 } else {
                     timer.cancel();
                 }
