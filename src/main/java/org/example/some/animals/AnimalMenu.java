@@ -6,6 +6,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
+import java.util.Objects;
+
 public class AnimalMenu {
 
     private ImageView menuView;
@@ -23,13 +25,13 @@ public class AnimalMenu {
     private Label costLabel;
 
     public AnimalMenu(Animal animal, double x, double y){
-        Image image = new Image("file:src/main/resources/images/animalMenuBack.jpg");
+        Image image = new Image("file:src/main/resources/images/animalMenu.jpg");
         this.menuView = new ImageView(image);
         this.x = x;
         this.y = y;
         this.animal = animal;
         menuView.setFitWidth(200);
-        menuView.setFitHeight(200);
+        menuView.setFitHeight(150);
 
         hungerLabel = new Label("Рівень ситості: " + this.animal.getHungerLvl());
         hungerLabel.setLayoutX(20);
@@ -40,24 +42,24 @@ public class AnimalMenu {
         thirstLabel.setLayoutY(40);
 
         feed = new Button("Нагодувати");
-        feed.setLayoutX(50);
-        feed.setLayoutY(70);
+        feed.setLayoutX(20);
+        feed.setLayoutY(65);
 
         drink = new Button("Напоїти");
-        drink.setLayoutX(50);
-        drink.setLayoutY(100);
+        drink.setLayoutX(110);
+        drink.setLayoutY(65);
 
         close = new Button("×");
-        close.setLayoutX(175);
-        close.setLayoutY(0);
+        close.setLayoutX(155);
+        close.setLayoutY(20);
 
         costLabel = new Label("Ціна для продажу: " + this.animal.getCost());
         costLabel.setLayoutX(20); // Встановлюємо відносно меню
-        costLabel.setLayoutY(120);
+        costLabel.setLayoutY(100);
 
         sell = new Button("Продати");
         sell.setLayoutX(50);
-        sell.setLayoutY(150);
+        sell.setLayoutY(120);
 
         root = new Pane();
         root.setTranslateX(this.x+50);
