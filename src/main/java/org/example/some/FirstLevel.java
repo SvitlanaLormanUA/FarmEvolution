@@ -19,12 +19,13 @@ import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 
-public class FirstLevel implements javafx.fxml.Initializable{
+public class FirstLevel implements javafx.fxml.Initializable, Serializable {
 
     public AnchorPane anchorPane;
     @FXML

@@ -53,4 +53,8 @@ public class Wallet {
     public Pane getRoot() {
         return root;
     }
+
+    public int getCoins() {
+        return coins;
+    }
 }

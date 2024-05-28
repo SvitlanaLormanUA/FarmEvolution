@@ -1,7 +1,6 @@
 package org.example.some.animals;
 
 import javafx.animation.TranslateTransition;
-import javafx.application.Platform;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -14,7 +13,6 @@ import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
 import java.io.File;
-import java.security.cert.PolicyNode;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
