@@ -184,7 +184,7 @@ abstract class AbstractAnimal implements Animal {
         } else {
             removeMenu();
         }
-        playSound();
+//        playSound();
 
     }
 
@@ -319,7 +319,7 @@ abstract class AbstractAnimal implements Animal {
     }
 
 
-    public void playSound() {
+    /*public void playSound() {
 
         media = new Media(file.toURI().toString());
         mediaPlayer = new MediaPlayer(media);
@@ -330,7 +330,7 @@ abstract class AbstractAnimal implements Animal {
         mediaPlayer.play();
 
         root.getChildren().remove(mediaView);
-    }
+    }*/
 
     @Override
     public void death() {

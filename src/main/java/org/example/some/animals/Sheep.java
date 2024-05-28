@@ -26,6 +26,11 @@ import org.example.some.otherGameObjects.Well;
         }
 
         @Override
+        public void playSound() {
+
+        }
+
+        @Override
         public void death() {
             // Implement specific behavior for sheep's death if necessary
         }
