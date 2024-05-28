@@ -11,6 +11,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.example.some.animals.Goose;
 import org.example.some.animals.Pig;
 import org.example.some.animals.Feeder;
 import org.example.some.animals.Sheep;
@@ -116,8 +117,11 @@ public class FirstLevel implements javafx.fxml.Initializable{
         Sheep sheep = new Sheep(250,  200,1000,630, anchorPane, wallet, well, feeder);
         anchorPane.getChildren().add(sheep.getAnimalView());
 
+        //додаємо гуся
+        Goose goose = new Goose(250, 200, 1000, 630, anchorPane, wallet, well, feeder);
+        anchorPane.getChildren().add(goose.getAnimalView());
 
-        //додаємо курочку
+        //додаємо свинку
         Pig pig = new Pig(250, 200, 1000, 630, anchorPane, wallet, well, feeder);
         anchorPane.getChildren().add(pig.getAnimalView());
 

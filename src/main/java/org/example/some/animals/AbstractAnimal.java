@@ -28,12 +28,12 @@ abstract class AbstractAnimal implements Animal {
     protected static int cost;
     protected static int hungerLvl;
     protected static Feeder feeder;
+    protected static TranslateTransition translateTransition;
 
     int worldStartX;
     int worldStartY;
     int worldEndX;
     int worldEndY;
-    private TranslateTransition translateTransition;
     private Random random = new Random();
 
     private boolean openedMenu;
