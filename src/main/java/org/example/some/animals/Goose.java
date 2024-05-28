@@ -54,6 +54,22 @@ public class Goose extends AbstractAnimal{
     }
 
     @Override
+    public void movement() {
+        translateTransition.setDuration(Duration.millis(2000));
+        translateTransition.setNode(animalView);
+        translateTransition.setByX(10); // Мала амплітуда вбік
+        translateTransition.setCycleCount(TranslateTransition.INDEFINITE); // Безкінечний цикл
+        translateTransition.setAutoReverse(true); // Зворотній рух
+
+        // Початок анімації
+        translateTransition.play();
+
+        animalView.setOnMouseClicked(this::handleMouseClicked);
+        animalView.setOnMouseDragged(this::handleMouseDragged);
+        animalView.setOnMouseReleased(this::handleMouseReleased);
+    }
+
+    @Override
     public void feed() {
         if(AbstractAnimal.hungerLvl<100) {
             hungerLvl += 55;
