@@ -1,6 +1,7 @@
 package org.example.some.animals;
 
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -69,6 +70,7 @@ public class Sheep implements Animal {
         movement();
         thirst();
         hunger();
+        giveProduct();
     }
 
     @Override
@@ -268,6 +270,27 @@ public class Sheep implements Animal {
     @Override
     public void giveProduct() {
 
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                if (hungerLvl > 20) {
+                    Image product = new Image("file:src/main/resources/images/wool.png");
+                    ImageView productView = new ImageView(product);
+                    productView.setFitWidth(40);
+                    productView.setFitHeight(40);
+                    productView.setX(sheepView.getX() + 10);
+                    productView.setY(sheepView.getY() + 10);
+
+                    Platform.runLater(() -> root.getChildren().add(productView));
+                } else {
+                    timer.cancel();
+                }
+            }
+        };
+
+        // Запуск завдання з інтервалом 5 секунд (5000 мілісекунд)
+        timer.scheduleAtFixedRate(task, 0, 10000);
     }
 
     @Override
