@@ -77,6 +77,7 @@ public class Sheep implements Animal {
         translateTransition.setDuration(Duration.millis(2000));
         translateTransition.setNode(sheepView);
         setRandomDirection();
+        translateTransition.play();
 
         translateTransition.setOnFinished(event -> {
             setRandomDirection();
@@ -123,7 +124,7 @@ public class Sheep implements Animal {
 
         sheepView.setX(newX);
         sheepView.setY(newY);
-        playSound();
+//        playSound();
     }
 
     @Override
@@ -155,7 +156,7 @@ public class Sheep implements Animal {
             transitionBack.play();
         }
         translateTransition.play();
-        playSound();
+//        playSound();
     }
 
     @Override

@@ -126,9 +126,9 @@ public class FirstLevel implements javafx.fxml.Initializable{
         addWell();
 
         //додана овечка на основну панель
-        Sheep sheep = new Sheep(250,  200,700,530, anchorPane, wallet, well, feeder);
+        Sheep sheep = new Sheep(250,  200,1000,630, anchorPane, wallet, well, feeder);
         anchorPane.getChildren().add(sheep.getAnimalView());
-        sheep.play();
+//        sheep.play();
     }
 
     private void addWallet(){
