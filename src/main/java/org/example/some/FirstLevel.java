@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.example.some.animals.Feeder;
@@ -36,6 +37,8 @@ public class FirstLevel implements javafx.fxml.Initializable{
     private Button buttonTasks;
     @FXML
     private Button buttonExtraTasks;
+    @FXML
+    private Button homeButton;
 
     @FXML
     private ImageView wellView;
@@ -60,16 +63,31 @@ public class FirstLevel implements javafx.fxml.Initializable{
     private Scene scene;
     private Parent root;
 
+    @FXML
     public void backToMainMenu(ActionEvent event) {
-        try {
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("info.fxml")));
-            stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+            try {
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("info.fxml")));
+                stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+    }
+
+    private void toHome(){
+        homeButton.setOnAction(event -> {
+            try {
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("info.fxml")));
+                stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     public void setAmountOfCoins() {
@@ -120,12 +138,12 @@ public class FirstLevel implements javafx.fxml.Initializable{
 
     private void addWell(){
         well = new Well(wellView, waterBar);
-        anchorPane.getChildren().add(well.getRoot());
+        anchorPane.getChildren().add(well.getWellView());
     }
 
     private void addFeeder(){
         feeder = new Feeder(feederView, foodBar, wallet);
-        anchorPane.getChildren().add(feeder.getRoot());
+        anchorPane.getChildren().add(feeder.getFoodView());
     }
 
     public void setWater() {
