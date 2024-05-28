@@ -7,11 +7,11 @@
 
 <AnchorPane prefHeight="450.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.some.InfoController">
    <children>
-      <ImageView fx:id="sceneFarm" fitHeight="450.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="sceneFarm" fitHeight="707.0" fitWidth="1351.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/farm_image.png" />
          </image>
       </ImageView>
-      <Button fx:id="startButton" layoutX="362.0" layoutY="367.0" mnemonicParsing="false" onAction="#onAction" prefHeight="37.0" prefWidth="130.0" stylesheets="@../../../styles/info.css" text="Start" />
+      <Button fx:id="startButton" layoutX="573.0" layoutY="561.0" mnemonicParsing="false" onAction="#onAction" prefHeight="37.0" prefWidth="130.0" stylesheets="@../../../styles/info.css" text="Start" />
    </children>
 </AnchorPane>
