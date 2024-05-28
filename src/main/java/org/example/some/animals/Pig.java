@@ -49,4 +49,5 @@ public class Pig extends AbstractAnimal{
     public void death() {
 
     }
+
 }
