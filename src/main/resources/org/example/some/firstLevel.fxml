@@ -13,7 +13,7 @@
             <Image url="@../../../images/farm_image.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="41.0" fitWidth="82.0" layoutX="33.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="41.0" fitWidth="81.0" layoutX="33.0" layoutY="25.0" onMouseClicked="#backToMainMenu" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/mainMenu.png" />
          </image></ImageView>

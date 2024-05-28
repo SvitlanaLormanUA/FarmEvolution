@@ -13,7 +13,7 @@
       </ImageView>
       <ImageView fitHeight="86.0" fitWidth="132.0" layoutX="26.0" layoutY="592.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../../Desktop/FarmEvolution/src/main/resources/images/mainMenu.png" />
+            <Image url="@../../../images/mainMenu.png" />
          </image>
       </ImageView>
    </children>

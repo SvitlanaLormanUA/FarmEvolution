@@ -306,6 +306,11 @@ public class Sheep implements Animal {
         root.getChildren().remove(mediaView);
     }
 
+    @Override
+    public void death() {
+
+    }
+
 
     @Override
     public ImageView getAnimalView() {

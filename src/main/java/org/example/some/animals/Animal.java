@@ -60,6 +60,9 @@ public interface Animal extends Serializable {
 
  //Звук тварини
  void playSound();
+
+ //Смерть
+    void death();
 // Поверненн картинки тварини
     ImageView getAnimalView();
 }

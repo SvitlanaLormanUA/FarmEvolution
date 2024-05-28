@@ -9,9 +9,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.example.some.animals.Pig;
 import org.example.some.animals.Feeder;
 import org.example.some.animals.Sheep;
 import org.example.some.otherGameObjects.Wallet;
@@ -76,19 +76,6 @@ public class FirstLevel implements javafx.fxml.Initializable{
             }
     }
 
-    private void toHome(){
-        homeButton.setOnAction(event -> {
-            try {
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("info.fxml")));
-                stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-    }
 
     public void setAmountOfCoins() {
         amountOfCoins.setText(String.valueOf(coins));
@@ -128,7 +115,13 @@ public class FirstLevel implements javafx.fxml.Initializable{
         //додана овечка на основну панель
         Sheep sheep = new Sheep(250,  200,1000,630, anchorPane, wallet, well, feeder);
         anchorPane.getChildren().add(sheep.getAnimalView());
-//        sheep.play();
+
+
+        //додаємо курочку
+        Pig pig = new Pig(250, 200, 1000, 630, anchorPane, wallet, well, feeder);
+        anchorPane.getChildren().add(pig.getAnimalView());
+
+
     }
 
     private void addWallet(){
