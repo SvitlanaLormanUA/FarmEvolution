@@ -140,6 +140,19 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
             anchorPane.getChildren().add(2, rabbit.getAnimalView());
         }
     }
+    public void addDonkey() {
+        if (Donkey.isOnScreen) {
+            Donkey donkey = new Donkey(650, 200, 1000, 430, anchorPane, wallet, well, feeder);
+            anchorPane.getChildren().add(donkey.getAnimalView());
+        }
+    }
+
+    public void addCow() {
+        if (Cow.isOnScreen) {
+            Cow cow = new Cow(150, 200, 300, 530, anchorPane, wallet, well, feeder);
+            anchorPane.getChildren().add(cow.getAnimalView());
+        }
+    }
 
 
     public void setAnimals() {
@@ -147,6 +160,8 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
         addGoose();
         addPig();
         addRabbit();
+        addDonkey();
+        addCow();
     }
 
 
@@ -193,6 +208,8 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
             out.writeBoolean(Goose.isOnScreen);
             out.writeBoolean(Pig.isOnScreen);
             out.writeBoolean(Rabbit.isOnScreen);
+            out.writeBoolean(Donkey.isOnScreen);
+            out.writeBoolean(Cow.isOnScreen);
 
 
         } catch (IOException e) {
@@ -207,12 +224,16 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
             Goose.isOnScreen = in.readBoolean();
             Pig.isOnScreen = in.readBoolean();
             Rabbit.isOnScreen = in.readBoolean();
+            Donkey.isOnScreen = in.readBoolean();
+            Cow.isOnScreen = in.readBoolean();
 
 
             Sheep.setIsOnScreen(Sheep.isOnScreen);
             Goose.setIsOnScreen(Goose.isOnScreen);
             Pig.setIsOnScreen(Pig.isOnScreen);
             Rabbit.setIsOnScreen(Rabbit.isOnScreen);
+            Donkey.setIsOnScreen(Donkey.isOnScreen);
+            Cow.setIsOnScreen(Cow.isOnScreen);
 
 
             */

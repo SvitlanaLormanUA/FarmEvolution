@@ -2,47 +2,60 @@ package org.example.some.animals;
 
 import javafx.animation.TranslateTransition;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import org.example.some.FirstLevel;
+import javafx.util.Duration;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
-import javafx.animation.PathTransition;
-import javafx.animation.PathTransition.OrientationType;
-import javafx.scene.shape.Path;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.QuadCurveTo;
-import javafx.util.Duration;
-
-
-public class Rabbit extends AbstractAnimal{
-
+public class Donkey extends AbstractAnimal{
     public static boolean isOnScreen = true;
-    private double deltaX;
-    private double deltaY;
 
-    public Rabbit(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Wallet wallet, Well well, Feeder feeder) {
-        super(worldStartX, worldStartY, worldEndX, worldEndY, root, well, feeder,
-                "file:src/main/resources/images/firstLevel/animals/rabbit.png",
-                "src/main/resources/sound/sheepmp3.mp3",
-                "file:src/main/resources/images/rabbitMeat.png");
-        animalView.setFitWidth(80);
-        animalView.setFitHeight(100);
+
+    public Donkey(int worldStartX, int worldStartY, int worldEndX, int worldEndY, AnchorPane anchorPane, Wallet wallet, Well well, Feeder feeder) {
+        super( worldStartX, worldStartY, worldEndX, worldEndY, anchorPane,  well, feeder,
+                "file:src/main/resources/images/firstLevel/animals/Donkey.png",
+                "src/main/resources/sound/donkey.mp3",
+                "file:src/main/resources/images/firstLevel/products/wool.png") ;
     }
 
     @Override
-    public void movement() {
-        pathTransition = new PathTransition();
-        pathTransition.setDuration(Duration.millis(1500));
-        pathTransition.setNode(animalView);
-        deltaX = 0;
-        deltaY = 0;
-        setRandomDirection();
-        pathTransition.play();
+    public void feed() {
+        if(hungerLvl<100) {
+            hungerLvl += 50;
+            cost += 50;
+            if (hungerLvl > 100) {
+                hungerLvl = 100;
+                cost = 100;
+            }
+            AbstractAnimal.feeder.getFood();
+        }
+    }
+    @Override
+    public void giveProduct() {
 
-        pathTransition.setOnFinished(event -> {
+    }
+
+
+    @Override
+    public boolean whetherIsOnScreen() {
+        return isOnScreen;
+    }
+
+
+    public static void setIsOnScreen(boolean isOnScreen) {
+        Donkey.isOnScreen = isOnScreen;
+    }
+    @Override
+    public void movement() {
+        translateTransition = new TranslateTransition();
+        translateTransition.setDuration(Duration.millis(1500)); // Faster duration
+        translateTransition.setNode(animalView);
+        setRandomDirection();
+        translateTransition.play();
+        translateTransition.setOnFinished(event -> {
             setRandomDirection();
-            pathTransition.play();
+            translateTransition.play();
         });
 
         animalView.setOnMouseClicked(this::handleMouseClicked);
@@ -55,11 +68,9 @@ public class Rabbit extends AbstractAnimal{
         double x = animalView.getX();
         double y = animalView.getY();
 
-        Path path = new Path();
-        path.getElements().add(new MoveTo(x+deltaX, y+deltaY));
-
-        deltaX = random.nextInt(120) - 75;
-        deltaY = random.nextInt(100) - 75;
+        // Ensure primarily right-left direction with faster speed
+        double deltaX = random.nextInt(200) - 100; // Larger variation in x-direction
+        double deltaY = random.nextInt(20) - 10;   // Small variation in y-direction
 
         double newX = x + deltaX;
         double newY = y + deltaY;
@@ -70,15 +81,14 @@ public class Rabbit extends AbstractAnimal{
         if (newY < worldStartY || newY > worldEndY - animalView.getFitHeight()) {
             deltaY = -deltaY;
         }
-        path.getElements().add(new QuadCurveTo(x + deltaX / 2, y - 150, x + deltaX, y + deltaY));
 
-        pathTransition.setPath(path);
-        pathTransition.setOrientation(OrientationType.NONE);
+        translateTransition.setToX(deltaX);
+        translateTransition.setToY(deltaY);
     }
 
     @Override
     public void handleMouseDragged(MouseEvent event) {
-        pathTransition.pause();
+        translateTransition.pause();
         double newX = event.getSceneX() - animalView.getFitWidth() / 2;
         double newY = event.getSceneY() - animalView.getFitHeight() / 2;
 
@@ -120,7 +130,7 @@ public class Rabbit extends AbstractAnimal{
             transitionBack.setToY(y);
             transitionBack.play();
         }
-        movement();
+        translateTransition.play();
         playSound();
     }
 
@@ -130,7 +140,7 @@ public class Rabbit extends AbstractAnimal{
             double x = event.getSceneX();
             double y = event.getSceneY();
 
-            // Перевірка, щоб меню не виходило за межі вікна
+            // Ensure the menu does not go out of the window
             double menuWidth = 200;
             double menuHeight = 200;
             if (x + menuWidth > root.getWidth()) {
@@ -139,7 +149,6 @@ public class Rabbit extends AbstractAnimal{
             if (y + menuHeight > root.getHeight()) {
                 y = root.getHeight() - menuHeight;
             }
-            pathTransition.pause();
             addMenu(x, y);
 
         } else {
@@ -148,57 +157,5 @@ public class Rabbit extends AbstractAnimal{
         playSound();
     }
 
-    @Override
-    public void addMenu(double x, double y) {
-        animalMenu = new AnimalMenu(this, x, y);
-        root.getChildren().add(animalMenu.getRoot());
-        openedMenu = true;
-//        pathTransition.pause();
-    }
 
-    @Override
-    public void removeMenu() {
-        root.getChildren().remove(animalMenu.getRoot());
-        openedMenu = false;
-        pathTransition.play();
-    }
-
-    @Override
-    public void play() {
-        translateTransition.play();
-    }
-
-    @Override
-    public void feed() {
-        if(hungerLvl<100) {
-            hungerLvl += 100;
-            cost += 20;
-            if (hungerLvl > 100) {
-                hungerLvl = 100;
-                cost = 20;
-            }
-            AbstractAnimal.feeder.getFood();
-        }
-    }
-
-    @Override
-    public void giveProduct() {
-
-    }
-
-    @Override
-    public void sell() {
-        FirstLevel.wallet.income(cost);
-        removeMenu();
-        root.getChildren().remove(animalView);
-        isOnScreen = false;
-    }
-
-    @Override
-    public boolean whetherIsOnScreen() {
-        return isOnScreen;
-    }
-    public static void setIsOnScreen(boolean isOnScreen) {
-        Rabbit.isOnScreen = isOnScreen;
-    }
 }

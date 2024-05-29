@@ -25,7 +25,7 @@ public class AnimalMenu {
     private Label costLabel;
 
     public AnimalMenu(Animal animal, double x, double y){
-        Image image = new Image("file:src/main/resources/images/animalMenu.jpg");
+        Image image = new Image("file:src/main/resources/images/animalMenu/animalMenu.JPG");
 
         this.menuView = new ImageView(image);
         this.x = x;

@@ -10,7 +10,7 @@
    <children>
       <ImageView fx:id="shopButton" fitHeight="707.0" fitWidth="1351.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/farm_image.png" />
+            <Image url="@../../../images/firstLevel/farm_image.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="41.0" fitWidth="81.0" layoutX="33.0" layoutY="25.0" onMouseClicked="#backToMainMenu" pickOnBounds="true" preserveRatio="true">
@@ -25,32 +25,32 @@
       <Button id="coinsButton" layoutX="207.0" layoutY="24.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="126.0" stylesheets="@../../../styles/firstLevel.css" />
       <ImageView fitHeight="48.0" fitWidth="42.0" layoutX="1093.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/instr.png" />
+            <Image url="@../../../images/firstLevel/icons/instr.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="48.0" fitWidth="42.0" layoutX="1168.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/settings.png" />
+            <Image url="@../../../images/firstLevel/icons/settings.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="48.0" fitWidth="42.0" layoutX="1168.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/dos.png" />
+            <Image url="@../../../images/firstLevel/icons/dos.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="48.0" fitWidth="42.0" layoutX="1169.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/extraTask.png" />
+            <Image url="@../../../images/firstLevel/icons/extraTask.png" />
          </image>
       </ImageView>
       <ImageView id="well" fx:id="wellView" fitHeight="163.0" fitWidth="122.0" layoutX="65.0" layoutY="484.0" onMouseClicked="#setWater" onMousePressed="#setWater" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/well.png" />
+            <Image url="@../../../images/firstLevel/objects/well.png" />
          </image>
       </ImageView>
       <ImageView fx:id="feederView" fitHeight="102.0" fitWidth="142.0" layoutX="981.0" layoutY="551.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/food.png" />
+            <Image url="@../../../images/firstLevel/objects/food.png" />
          </image>
       </ImageView>
       <Button fx:id="buttonInfo" layoutX="1112.0" layoutY="22.0" mnemonicParsing="false" onAction="#showInfo" prefHeight="43.0" prefWidth="35.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css" />
@@ -61,7 +61,7 @@
       <ProgressBar fx:id="foodBar" layoutX="1078.0" layoutY="553.0" prefHeight="17.0" prefWidth="175.0" progress="1.0" rotate="-90.0" />
       <ImageView id="coinsImage" fitHeight="60.0" fitWidth="162.0" layoutX="367.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/shop.png" />
+            <Image url="@../../../images/firstLevel/icons/shop.png" />
          </image>
       </ImageView>
       <Button id="coinsButton" fx:id="shopButton" layoutX="367.0" layoutY="19.0" mnemonicParsing="false" onAction="#enterShop" prefHeight="51.0" prefWidth="162.0" stylesheets="@../../../styles/firstLevel.css" />

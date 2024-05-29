@@ -18,9 +18,9 @@ public class Sheep extends AbstractAnimal {
 
     public Sheep(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Wallet wallet, Well well, Feeder feeder) {
             super(worldStartX, worldStartY, worldEndX, worldEndY, root, well, feeder,
-                    "file:src/main/resources/images/sheep.png",
+                    "file:src/main/resources/images/firstLevel/animals/sheep.png",
                     "src/main/resources/sound/sheepmp3.mp3",
-                    "file:src/main/resources/images/wool.png");
+                    "file:src/main/resources/images/firstLevel/products/wool.png");
         }
 
 
