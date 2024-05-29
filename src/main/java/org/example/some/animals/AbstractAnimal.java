@@ -29,7 +29,7 @@ abstract class AbstractAnimal implements Animal {
     protected static int cost;
     protected static int hungerLvl;
     protected static Feeder feeder;
-    protected static TranslateTransition translateTransition;
+    protected TranslateTransition translateTransition;
 
     int worldStartX;
     int worldStartY;
@@ -72,8 +72,8 @@ abstract class AbstractAnimal implements Animal {
         animalView.setFitHeight(100);
 
 
-        int x = random.nextInt(worldEndX - worldStartX) + worldStartX;
-        int y = random.nextInt(worldEndY - worldStartY) + worldStartY;
+        int x = random.nextInt(worldStartX, worldEndX);
+        int y = random.nextInt(worldStartY, worldEndY-100);
         animalView.setX(x);
         animalView.setY(y);
 
