@@ -47,11 +47,6 @@ public class Pig extends AbstractAnimal{
     }
 
     @Override
-    public void death() {
-
-    }
-
-    @Override
     public boolean whetherIsOnScreen() {
         return isOnScreen;
     }

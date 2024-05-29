@@ -26,6 +26,7 @@ abstract class AbstractAnimal implements Animal {
 
     protected int cost;
     protected int hungerLvl;
+    protected int thirstLvl;
     protected static Feeder feeder;
     protected TranslateTransition translateTransition;
     protected PathTransition pathTransition;
@@ -37,7 +38,6 @@ abstract class AbstractAnimal implements Animal {
     protected Random random = new Random();
 
     protected boolean openedMenu;
-    private int thirstLvl;
     private Well well;
     private MediaView mediaView;
     private File file;
@@ -306,17 +306,18 @@ abstract class AbstractAnimal implements Animal {
     }
 
 
-    public void death() {
-
-
-        removeMenu();
-        root.getChildren().remove(animalView);
-    }
-
 
     @Override
     public ImageView getAnimalView() {
         return animalView;
+    }
+    public void death() {
+        if (hungerLvl == 0 || thirstLvl == 0) {
+            FirstLevel.wallet.expense(63);
+            removeMenu();
+            root.getChildren().remove(animalView);
+
+        }
     }
 }
 

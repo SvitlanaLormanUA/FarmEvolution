@@ -76,6 +76,7 @@ public class Goose extends AbstractAnimal{
         isOnScreen = false;
     }
 
+
     @Override
     public boolean whetherIsOnScreen() {
         return isOnScreen;

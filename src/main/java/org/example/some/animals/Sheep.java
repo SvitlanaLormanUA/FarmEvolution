@@ -66,10 +66,8 @@ public class Sheep extends AbstractAnimal {
             }
         }
 
-        @Override
-        public void death() {
 
-        }
+
 
     @Override
     public boolean whetherIsOnScreen() {
