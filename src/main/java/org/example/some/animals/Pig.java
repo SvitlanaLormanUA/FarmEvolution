@@ -2,6 +2,7 @@ package org.example.some.animals;
 
 import javafx.scene.layout.AnchorPane;
 
+import org.example.some.FirstLevel;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
@@ -9,6 +10,7 @@ import org.example.some.otherGameObjects.Well;
 public class Pig extends AbstractAnimal{
 
 
+    public static boolean isOnScreen = true;
 
     public Pig(int worldStartX, int worldStartY, int worldEndX, int worldEndY, AnchorPane anchorPane, Wallet wallet, Well well, Feeder feeder) {
         super ( worldStartX, worldStartY, worldEndX, worldEndY, anchorPane,
@@ -31,6 +33,13 @@ public class Pig extends AbstractAnimal{
         }
 
     }
+    @Override
+    public void sell() {
+        FirstLevel.wallet.income(cost);
+        removeMenu();
+        root.getChildren().remove(animalView);
+        isOnScreen = false;
+    }
 
     @Override
     public void giveProduct() {
@@ -41,5 +50,16 @@ public class Pig extends AbstractAnimal{
     public void death() {
 
     }
+
+    @Override
+    public boolean whetherIsOnScreen() {
+        return isOnScreen;
+    }
+
+
+    public static void setIsOnScreen(boolean isOnScreen) {
+        Pig.isOnScreen = isOnScreen;
+    }
+
 
 }

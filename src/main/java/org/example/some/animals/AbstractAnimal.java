@@ -21,10 +21,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 abstract class AbstractAnimal implements Animal {
-  public static  boolean isOnScreen = true;
-
-
-
 
     public static Pane root;
 
@@ -52,7 +48,8 @@ abstract class AbstractAnimal implements Animal {
     Image product;
 
     AnimalMenu animalMenu;
-    public AbstractAnimal(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Well well, Feeder feeder, String imagePath, String soundFile, String recourseFile){
+
+    public AbstractAnimal(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Well well, Feeder feeder, String imagePath, String soundFile, String recourseFile) {
         file = new File(soundFile);
         product = new Image(recourseFile);
         this.animalView = new ImageView(new Image(imagePath));
@@ -68,7 +65,6 @@ abstract class AbstractAnimal implements Animal {
         this.well = well;
 
 
-
         this.feeder = feeder;
         this.mediaView = new MediaView();
         animalView.setFitWidth(100);
@@ -76,11 +72,9 @@ abstract class AbstractAnimal implements Animal {
 
 
         int x = random.nextInt(worldStartX, worldEndX);
-        int y = random.nextInt(worldStartY, worldEndY-100);
+        int y = random.nextInt(worldStartY, worldEndY - 100);
         animalView.setX(x);
         animalView.setY(y);
-
-
 
 
         movement();
@@ -173,7 +167,7 @@ abstract class AbstractAnimal implements Animal {
             transitionBack.play();
         }
         translateTransition.play();
-     playSound();
+        playSound();
     }
 
     @Override
@@ -196,7 +190,7 @@ abstract class AbstractAnimal implements Animal {
         } else {
             removeMenu();
         }
-      playSound();
+        playSound();
 
     }
 
@@ -229,7 +223,7 @@ abstract class AbstractAnimal implements Animal {
                 if (hungerLvl > 0) {
                     hungerLvl--;
                     double k = hungerLvl;
-                    cost = (int) (100 * (k/100));
+                    cost = (int) (100 * (k / 100));
                 } else {
                     timer.cancel();
                 }
@@ -261,7 +255,7 @@ abstract class AbstractAnimal implements Animal {
 
     @Override
     public void drink() {
-        if (thirstLvl<100) {
+        if (thirstLvl < 100) {
             thirstLvl += 50;
             if (thirstLvl > 100) {
                 thirstLvl = 100;
@@ -271,7 +265,7 @@ abstract class AbstractAnimal implements Animal {
     }
 
     @Override
-    public void emotions(){
+    public void emotions() {
 
     }
 
@@ -311,9 +305,12 @@ abstract class AbstractAnimal implements Animal {
         root.getChildren().remove(mediaView);
     }
 
-    @Override
+
     public void death() {
 
+
+        removeMenu();
+        root.getChildren().remove(animalView);
     }
 
 
@@ -322,3 +319,5 @@ abstract class AbstractAnimal implements Animal {
         return animalView;
     }
 }
+
+

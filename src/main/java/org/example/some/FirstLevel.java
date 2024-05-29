@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -58,6 +57,7 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
 
     private static int coins;
 
+
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -100,22 +100,30 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
     }
     public void addSheep() {
         //додана овечка на основну панель
-        Sheep sheep = new Sheep(250,  200,1000,630, anchorPane, wallet, well, feeder);
-        anchorPane.getChildren().add(sheep.getAnimalView());
+        if (Sheep.isOnScreen) {
+            Sheep sheep = new Sheep(250, 200, 1000, 630, anchorPane, wallet, well, feeder);
+            anchorPane.getChildren().add(sheep.getAnimalView());
+        }
     }
     public void addGoose() {
         //додаємо гуся
-        Goose goose = new Goose(250, 200, 1000, 630, anchorPane, wallet, well, feeder);
-        anchorPane.getChildren().add(goose.getAnimalView());
+        if (Goose.isOnScreen) {
+            Goose goose = new Goose(250, 200, 1000, 630, anchorPane, wallet, well, feeder);
+            anchorPane.getChildren().add(goose.getAnimalView());
+        }
     }
     public void addPig() {
         //додаємо свинку
-        Pig pig = new Pig(250, 200, 1000, 630, anchorPane, wallet, well, feeder);
-        anchorPane.getChildren().add(pig.getAnimalView());
+        if (Pig.isOnScreen) {
+            Pig pig = new Pig(250, 200, 1000, 630, anchorPane, wallet, well, feeder);
+            anchorPane.getChildren().add(pig.getAnimalView());
+        }
     }
-    public void addRabit() {
-        Rabbit rabbit = new Rabbit(250, 250, 1000, 630, anchorPane, wallet, well, feeder);
-        anchorPane.getChildren().add(2, rabbit.getAnimalView());
+    public void addRabbit() {
+        if (Rabbit.isOnScreen) {
+            Rabbit rabbit = new Rabbit(250, 250, 1000, 630, anchorPane, wallet, well, feeder);
+            anchorPane.getChildren().add(2, rabbit.getAnimalView());
+        }
     }
 
 
@@ -123,7 +131,7 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
         addSheep();
         addGoose();
         addPig();
-        addRabit();
+        addRabbit();
     }
 
 
@@ -166,6 +174,12 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
     static void saveState() {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("gameState.ser"))) {
             out.writeInt(wallet.getCoins());
+            out.writeBoolean(Sheep.isOnScreen);
+            out.writeBoolean(Goose.isOnScreen);
+            out.writeBoolean(Pig.isOnScreen);
+            out.writeBoolean(Rabbit.isOnScreen);
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -174,6 +188,19 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
     static void loadState() {
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("gameState.ser"))) {
             coins = in.readInt();
+           /* Sheep.isOnScreen = in.readBoolean();
+            Goose.isOnScreen = in.readBoolean();
+            Pig.isOnScreen = in.readBoolean();
+            Rabbit.isOnScreen = in.readBoolean();
+
+
+            Sheep.setIsOnScreen(Sheep.isOnScreen);
+            Goose.setIsOnScreen(Goose.isOnScreen);
+            Pig.setIsOnScreen(Pig.isOnScreen);
+            Rabbit.setIsOnScreen(Rabbit.isOnScreen);
+
+
+            */
             setCoins(coins);
             wallet.setCoins(coins);
             wallet.nCoins.setText(String.valueOf(coins));

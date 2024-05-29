@@ -15,6 +15,7 @@ import java.util.TimerTask;
 
 public class Goose extends AbstractAnimal{
 
+    public static boolean isOnScreen = true;
 
     public Goose(int worldStartX, int worldStartY, int worldEndX, int worldEndY, AnchorPane anchorPane, Wallet wallet, Well well, Feeder feeder) {
         super( worldStartX, worldStartY, worldEndX, worldEndY, anchorPane,  well, feeder,
@@ -65,6 +66,22 @@ public class Goose extends AbstractAnimal{
             }
             AbstractAnimal.feeder.getFood();
         }
+    }
+
+    @Override
+    public void sell() {
+        FirstLevel.wallet.income(cost);
+        removeMenu();
+        root.getChildren().remove(animalView);
+        isOnScreen = false;
+    }
+
+    @Override
+    public boolean whetherIsOnScreen() {
+        return isOnScreen;
+    }
+    public static void setIsOnScreen(boolean isOnScreen) {
+        Goose.isOnScreen = isOnScreen;
     }
 
 }

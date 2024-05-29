@@ -14,7 +14,9 @@ import java.util.TimerTask;
 
 public class Sheep extends AbstractAnimal {
 
-        public Sheep(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Wallet wallet, Well well, Feeder feeder) {
+    public static boolean isOnScreen = true;
+
+    public Sheep(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Wallet wallet, Well well, Feeder feeder) {
             super(worldStartX, worldStartY, worldEndX, worldEndY, root, well, feeder,
                     "file:src/main/resources/images/sheep.png",
                     "src/main/resources/sound/sheepmp3.mp3",
@@ -69,4 +71,20 @@ public class Sheep extends AbstractAnimal {
 
         }
 
+    @Override
+    public boolean whetherIsOnScreen() {
+        return isOnScreen;
     }
+    public static void setIsOnScreen(boolean isOnScreen) {
+        Sheep.isOnScreen = isOnScreen;
+    }
+
+    @Override
+    public void sell() {
+            FirstLevel.wallet.income(cost);
+            removeMenu();
+            root.getChildren().remove(animalView);
+            isOnScreen = false;
+        }
+    }
+

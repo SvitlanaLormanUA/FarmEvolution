@@ -3,6 +3,7 @@ package org.example.some.animals;
 import javafx.animation.TranslateTransition;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import org.example.some.FirstLevel;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
@@ -16,6 +17,7 @@ import javafx.util.Duration;
 
 public class Rabbit extends AbstractAnimal{
 
+    public static boolean isOnScreen = true;
     private double deltaX;
     private double deltaY;
 
@@ -182,5 +184,21 @@ public class Rabbit extends AbstractAnimal{
     @Override
     public void giveProduct() {
 
+    }
+
+    @Override
+    public void sell() {
+        FirstLevel.wallet.income(cost);
+        removeMenu();
+        root.getChildren().remove(animalView);
+        isOnScreen = false;
+    }
+
+    @Override
+    public boolean whetherIsOnScreen() {
+        return isOnScreen;
+    }
+    public static void setIsOnScreen(boolean isOnScreen) {
+        Rabbit.isOnScreen = isOnScreen;
     }
 }

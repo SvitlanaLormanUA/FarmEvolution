@@ -7,6 +7,8 @@ import java.io.Serializable;
 
 public interface Animal extends Serializable {
 
+
+
 // Для анімації руху
     void movement();
 
@@ -65,7 +67,10 @@ public interface Animal extends Serializable {
  void playSound();
 
  //Смерть
-    void death();
+ void  death();
+
+ //Дізнатись, чи тваринка на екрані
+    boolean whetherIsOnScreen();
 // Поверненн картинки тварини
-    ImageView getAnimalView();
+ImageView getAnimalView();
 }

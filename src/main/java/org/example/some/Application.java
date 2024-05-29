@@ -1,8 +1,11 @@
 package org.example.some;
 
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 
@@ -15,14 +18,10 @@ public class Application extends javafx.application.Application {
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
-        stage.setOnCloseRequest(_ -> {
-            try {
-                FirstLevel.saveState();
-
-                stop();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+        stage.setOnCloseRequest(t -> {
+            FirstLevel.saveState();
+            Platform.exit();
+            System.exit(0);
         });
     }
 
