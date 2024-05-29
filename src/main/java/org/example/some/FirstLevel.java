@@ -11,10 +11,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import org.example.some.animals.Goose;
-import org.example.some.animals.Pig;
-import org.example.some.animals.Feeder;
-import org.example.some.animals.Sheep;
+import org.example.some.animals.*;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
@@ -117,7 +114,8 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
         anchorPane.getChildren().add(pig.getAnimalView());
     }
     public void addRabit() {
-
+        Rabbit rabbit = new Rabbit(250, 250, 1000, 630, anchorPane, wallet, well, feeder);
+        anchorPane.getChildren().add(2, rabbit.getAnimalView());
     }
 
 

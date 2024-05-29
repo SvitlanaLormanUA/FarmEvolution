@@ -15,14 +15,14 @@ public class Pig extends AbstractAnimal{
                 well, feeder,
                 "file:src/main/resources/images/pig.png",
                 "src/main/resources/sound/pigSound.mp3",
-                "file:src/main/resources/images/meat.png") ;
+                "file:src/main/resources/images/pigMeat.png") ;
     }
 
     @Override
     public void feed() {
-        if(AbstractAnimal.hungerLvl<100) {
+        if(hungerLvl<100) {
             hungerLvl += 50;
-            AbstractAnimal.cost += 40;
+            cost += 40;
             if (hungerLvl > 100) {
                 hungerLvl = 100;
                 cost = 70;

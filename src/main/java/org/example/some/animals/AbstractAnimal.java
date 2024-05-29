@@ -1,5 +1,7 @@
 package org.example.some.animals;
 
+import javafx.animation.Animation;
+import javafx.animation.PathTransition;
 import javafx.animation.TranslateTransition;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -26,18 +28,19 @@ abstract class AbstractAnimal implements Animal {
 
     public static Pane root;
 
-    protected static int cost;
-    protected static int hungerLvl;
+    protected int cost;
+    protected int hungerLvl;
     protected static Feeder feeder;
     protected TranslateTransition translateTransition;
+    protected PathTransition pathTransition;
 
     int worldStartX;
     int worldStartY;
     int worldEndX;
     int worldEndY;
-    private Random random = new Random();
+    protected Random random = new Random();
 
-    private boolean openedMenu;
+    protected boolean openedMenu;
     private int thirstLvl;
     private Well well;
     private MediaView mediaView;
@@ -93,7 +96,6 @@ abstract class AbstractAnimal implements Animal {
         translateTransition.setNode(animalView);
         setRandomDirection();
         translateTransition.play();
-
         translateTransition.setOnFinished(event -> {
             setRandomDirection();
             translateTransition.play();
@@ -257,7 +259,6 @@ abstract class AbstractAnimal implements Animal {
     }
 
 
-
     @Override
     public void drink() {
         if (thirstLvl<100) {
@@ -269,7 +270,10 @@ abstract class AbstractAnimal implements Animal {
         }
     }
 
+    @Override
+    public void emotions(){
 
+    }
 
     @Override
     public void sell() {
