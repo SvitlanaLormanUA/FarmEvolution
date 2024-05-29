@@ -18,8 +18,7 @@ import org.example.some.animals.Sheep;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
-import java.io.IOException;
-import java.io.Serializable;
+import java.io.*;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -27,6 +26,7 @@ import java.util.ResourceBundle;
 
 public class FirstLevel implements javafx.fxml.Initializable, Serializable {
 
+    public double progress = 1.0;
     public AnchorPane anchorPane;
     @FXML
     private Button buttonMenu;
@@ -55,11 +55,11 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
 
     Well well;
     Feeder feeder;
-    Wallet wallet;
+    public static Wallet wallet = new Wallet(50, 50);
 
     @FXML
-    private Label amountOfCoins;
-    private int coins;
+    private static Label amountOfCoins = new Label();
+    private static int coins;
 
     private Stage stage;
     private Scene scene;
@@ -68,6 +68,7 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
     @FXML
     public void backToMainMenu(ActionEvent event) {
             try {
+                saveState();
                 root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("info.fxml")));
                 stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
@@ -79,7 +80,7 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
     }
 
 
-    public void setAmountOfCoins() {
+    public static void setAmountOfCoins(int coins) {
         amountOfCoins.setText(String.valueOf(coins));
     }
 
@@ -97,23 +98,12 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
 
     }
 
-    public void setCoins(int coins) {
-        this.coins = coins;
-    }
+
     public int getCoins() {
         return coins;
     }
 
-    double progress = 1.0;
-
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        waterBar.setStyle("-fx-accent: #4392FF;");
-        foodBar.setStyle("-fx-accent: #f37a39;");
-
-        addWallet();
-        addFeeder();
-        addWell();
-
+    public void setAnimals() {
         //додана овечка на основну панель
         Sheep sheep = new Sheep(250,  200,1000,630, anchorPane, wallet, well, feeder);
         anchorPane.getChildren().add(sheep.getAnimalView());
@@ -129,7 +119,20 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
 
     }
 
+
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        waterBar.setStyle("-fx-accent: #4392FF;");
+        foodBar.setStyle("-fx-accent: #f37a39;");
+        loadState();
+
+        addWallet();
+        addFeeder();
+        addWell();
+        setAnimals();
+    }
+
     private void addWallet(){
+        loadState();
         wallet = new Wallet(50, 50);
         anchorPane.getChildren().add(wallet.getRoot());
     }
@@ -149,6 +152,28 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
             progress = 1.0;
         }
         waterBar.setProgress(progress);
+    }
+
+    private void saveState() {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("gameState.ser"))) {
+            out.writeInt(wallet.getCoins());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    static void loadState() {
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("gameState.ser"))) {
+            coins = in.readInt();
+            setCoins(coins);
+            wallet.setCoins(coins);
+            wallet.nCoins.setText(String.valueOf(coins));
+        } catch (IOException e) {
+            coins = 0; // Default value if there's an error or the file doesn't exist
+        }
+    }
+    public static void setCoins(int coins) {
+        FirstLevel.coins = coins;
     }
 
 

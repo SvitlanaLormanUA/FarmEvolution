@@ -9,6 +9,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.util.Duration;
+import org.example.some.FirstLevel;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
@@ -20,7 +21,8 @@ import java.util.TimerTask;
 abstract class AbstractAnimal implements Animal {
 
 
-    public static Wallet wallet;
+
+    public static Wallet wallet = FirstLevel.wallet;
     public static Pane root;
 
     protected static int cost;
@@ -60,7 +62,8 @@ abstract class AbstractAnimal implements Animal {
         this.hungerLvl = 100;
         this.cost = 100;
         this.well = well;
-        this.wallet = wallet;
+        AbstractAnimal.wallet =  FirstLevel.wallet;
+
         this.feeder = feeder;
         this.mediaView = new MediaView();
         animalView.setFitWidth(100);
@@ -268,7 +271,7 @@ abstract class AbstractAnimal implements Animal {
 
     @Override
     public void sell() {
-        wallet.income(cost);
+        FirstLevel.wallet.income(cost);
         removeMenu();
         root.getChildren().remove(animalView);
     }

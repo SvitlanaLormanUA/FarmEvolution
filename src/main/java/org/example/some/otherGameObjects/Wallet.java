@@ -6,14 +6,16 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 
-public class Wallet {
+import java.io.Serializable;
+
+public class Wallet implements Serializable {
 
     private ImageView walletView;
     private double x;
     private double y;
     private Pane root;
     private int coins;
-    private Label nCoins;
+    public Label nCoins;
 
     public Wallet(double x, double y){
       /**  Image image = new Image("file:src/main/resources/images/coins.png");
@@ -21,11 +23,8 @@ public class Wallet {
 
         this.x = x;
         this.y = y;
-        this.coins = 100;
-      /*  walletView.setFitWidth(70);
-        walletView.setFitHeight(30);
-        walletView.setX(x);
-        walletView.setY(y);*/
+        this.coins = setCoins(100);
+
 
         nCoins = new Label(String.valueOf(coins));
         nCoins.setLayoutX(263);
@@ -56,5 +55,8 @@ public class Wallet {
 
     public int getCoins() {
         return coins;
+    }
+    public int setCoins(int coins) {
+         return this.coins = coins;
     }
 }

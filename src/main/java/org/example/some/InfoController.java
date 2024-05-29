@@ -22,6 +22,7 @@ public class InfoController {
 
     public void onAction(ActionEvent event) {
         try {
+            FirstLevel.loadState();
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("firstLevel.fxml")));
             stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
