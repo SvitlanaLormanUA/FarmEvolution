@@ -55,10 +55,10 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
 
     Well well;
     Feeder feeder;
-    public static Wallet wallet = new Wallet(50, 50);
+    public static Wallet wallet ;
 
     @FXML
-    private static Label amountOfCoins = new Label();
+
     private static int coins;
 
     private Stage stage;
@@ -80,9 +80,7 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
     }
 
 
-    public static void setAmountOfCoins(int coins) {
-        amountOfCoins.setText(String.valueOf(coins));
-    }
+
 
     public void showInfo(ActionEvent event) {
 
@@ -123,16 +121,16 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         waterBar.setStyle("-fx-accent: #4392FF;");
         foodBar.setStyle("-fx-accent: #f37a39;");
-        loadState();
+
 
         addWallet();
+        loadState();
         addFeeder();
         addWell();
         setAnimals();
     }
 
     private void addWallet(){
-        loadState();
         wallet = new Wallet(50, 50);
         anchorPane.getChildren().add(wallet.getRoot());
     }
@@ -154,7 +152,7 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
         waterBar.setProgress(progress);
     }
 
-    private void saveState() {
+    static void saveState() {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("gameState.ser"))) {
             out.writeInt(wallet.getCoins());
         } catch (IOException e) {

@@ -2,6 +2,7 @@ package org.example.some.animals;
 import javafx.application.Platform;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import org.example.some.FirstLevel;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
@@ -12,7 +13,7 @@ import java.util.TimerTask;
 public class Sheep extends AbstractAnimal {
 
         public Sheep(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Wallet wallet, Well well, Feeder feeder) {
-            super(worldStartX, worldStartY, worldEndX, worldEndY, root, wallet, well, feeder,
+            super(worldStartX, worldStartY, worldEndX, worldEndY, root, well, feeder,
                     "file:src/main/resources/images/sheep.png",
                     "src/main/resources/sound/sheepmp3.mp3",
                     "file:src/main/resources/images/wool.png");
@@ -34,7 +35,7 @@ public class Sheep extends AbstractAnimal {
                     productView.setY(animalView.getY() + 30);
 
                     productView.setOnMouseClicked(event -> {
-                        AbstractAnimal.wallet.income(8);
+                        FirstLevel.wallet.income(8);
                         AbstractAnimal.root.getChildren().remove(productView);
                     });
 

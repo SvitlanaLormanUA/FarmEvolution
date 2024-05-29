@@ -17,6 +17,8 @@ public class Application extends javafx.application.Application {
         stage.show();
         stage.setOnCloseRequest(_ -> {
             try {
+                FirstLevel.saveState();
+
                 stop();
             } catch (Exception e) {
                 throw new RuntimeException(e);

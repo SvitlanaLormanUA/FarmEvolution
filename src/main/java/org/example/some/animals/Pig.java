@@ -11,7 +11,8 @@ public class Pig extends AbstractAnimal{
 
 
     public Pig(int worldStartX, int worldStartY, int worldEndX, int worldEndY, AnchorPane anchorPane, Wallet wallet, Well well, Feeder feeder) {
-        super ( worldStartX, worldStartY, worldEndX, worldEndY, anchorPane, wallet, well, feeder,
+        super ( worldStartX, worldStartY, worldEndX, worldEndY, anchorPane,
+                well, feeder,
                 "file:src/main/resources/images/pig.png",
                 "src/main/resources/sound/pigSound.mp3",
                 "file:src/main/resources/images/meat.png") ;

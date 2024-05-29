@@ -22,7 +22,7 @@ abstract class AbstractAnimal implements Animal {
 
 
 
-    public static Wallet wallet = FirstLevel.wallet;
+
     public static Pane root;
 
     protected static int cost;
@@ -48,7 +48,7 @@ abstract class AbstractAnimal implements Animal {
     Image product;
 
     AnimalMenu animalMenu;
-    public AbstractAnimal(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Wallet wallet, Well well, Feeder feeder, String imagePath, String soundFile, String recourseFile){
+    public AbstractAnimal(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Well well, Feeder feeder, String imagePath, String soundFile, String recourseFile){
         file = new File(soundFile);
         product = new Image(recourseFile);
         this.animalView = new ImageView(new Image(imagePath));
@@ -62,7 +62,8 @@ abstract class AbstractAnimal implements Animal {
         this.hungerLvl = 100;
         this.cost = 100;
         this.well = well;
-        AbstractAnimal.wallet =  FirstLevel.wallet;
+
+
 
         this.feeder = feeder;
         this.mediaView = new MediaView();
