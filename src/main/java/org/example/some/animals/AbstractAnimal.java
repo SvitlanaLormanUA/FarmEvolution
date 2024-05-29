@@ -19,6 +19,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 abstract class AbstractAnimal implements Animal {
+  public static  boolean isOnScreen = true;
 
 
 

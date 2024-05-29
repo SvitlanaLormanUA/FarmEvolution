@@ -14,7 +14,7 @@ import java.util.Objects;
 
 public class InfoController {
     @FXML
-    public Button startButton;
+    public static Button startButton;
     public ImageView sceneFarm;
     private Stage stage;
     private Scene scene;

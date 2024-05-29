@@ -71,6 +71,7 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
                 saveState();
                 root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("info.fxml")));
                 stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
@@ -100,22 +101,36 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
     public int getCoins() {
         return coins;
     }
-
-    public void setAnimals() {
+    public void addSheep() {
         //додана овечка на основну панель
         Sheep sheep = new Sheep(250,  200,1000,630, anchorPane, wallet, well, feeder);
         anchorPane.getChildren().add(sheep.getAnimalView());
-
+    }
+    public void addGoose() {
         //додаємо гуся
         Goose goose = new Goose(250, 200, 1000, 630, anchorPane, wallet, well, feeder);
         anchorPane.getChildren().add(goose.getAnimalView());
-
+    }
+    public void addPig() {
         //додаємо свинку
         Pig pig = new Pig(250, 200, 1000, 630, anchorPane, wallet, well, feeder);
         anchorPane.getChildren().add(pig.getAnimalView());
+    }
+    public void addRabit() {
+
+    }
+
+
+    public void setAnimals() {
+        addSheep();
+        addGoose();
+        addPig();
+        addRabit();
 
 
     }
+
+
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {

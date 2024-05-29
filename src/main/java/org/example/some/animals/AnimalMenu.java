@@ -89,6 +89,7 @@ public class AnimalMenu {
     private void sell(){
         sell.setOnAction(event -> {
             animal.sell();
+            AbstractAnimal.isOnScreen = false;
         });
     }
 
