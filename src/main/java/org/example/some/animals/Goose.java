@@ -27,32 +27,36 @@ public class Goose extends AbstractAnimal{
 
     @Override
     public void giveProduct() {
-        Timer timer = new Timer();
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
-                if (hungerLvl > 25) {
+        if (isOnScreen) {
+            if (hungerLvl > 25) {
+                Timer timer = new Timer();
+                TimerTask task = new TimerTask() {
+                    @Override
+                    public void run() {
+                        if (hungerLvl > 25) {
 
-                    ImageView productView = new ImageView(product);
-                    productView.setFitWidth(40);
-                    productView.setFitHeight(40);
-                    productView.setX(animalView.getX() + 30);
-                    productView.setY(animalView.getY() + 30);
+                            ImageView productView = new ImageView(product);
+                            productView.setFitWidth(40);
+                            productView.setFitHeight(40);
+                            productView.setX(animalView.getX() + 30);
+                            productView.setY(animalView.getY() + 30);
 
-                    productView.setOnMouseClicked(event -> {
-                        FirstLevel.wallet.income(8);
-                        AbstractAnimal.root.getChildren().remove(productView);
-                    });
+                            productView.setOnMouseClicked(event -> {
+                                FirstLevel.wallet.income(8);
+                                AbstractAnimal.root.getChildren().remove(productView);
+                            });
 
-                    Platform.runLater(() ->  AbstractAnimal.root.getChildren().add(1, productView));
-                } else {
-                    timer.cancel();
-                }
+                            Platform.runLater(() -> AbstractAnimal.root.getChildren().add(1, productView));
+                        } else {
+                            timer.cancel();
+                        }
+                    }
+                };
+
+
+                timer.scheduleAtFixedRate(task, 0, 30000);
             }
-        };
-
-
-        timer.scheduleAtFixedRate(task, 0, 30000);
+        }
     }
 
     @Override

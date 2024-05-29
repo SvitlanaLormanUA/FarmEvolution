@@ -26,32 +26,37 @@ public class Sheep extends AbstractAnimal {
 
     @Override
     public void giveProduct() {
-        Timer timer = new Timer();
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
-                if (hungerLvl > 20) {
+        if (isOnScreen) {
+            if (hungerLvl > 20) {
+                // Створення таймера (завдання, яке виконується через певний час
+                Timer timer = new Timer();
+                TimerTask task = new TimerTask() {
+                    @Override
+                    public void run() {
+                        if (hungerLvl > 20) {
 
-                    ImageView productView = new ImageView(product);
-                    productView.setFitWidth(40);
-                    productView.setFitHeight(40);
-                    productView.setX(animalView.getX() + 30);
-                    productView.setY(animalView.getY() + 30);
+                            ImageView productView = new ImageView(product);
+                            productView.setFitWidth(40);
+                            productView.setFitHeight(40);
+                            productView.setX(animalView.getX() + 30);
+                            productView.setY(animalView.getY() + 30);
 
-                    productView.setOnMouseClicked(event -> {
-                        FirstLevel.wallet.income(8);
-                        AbstractAnimal.root.getChildren().remove(productView);
-                    });
+                            productView.setOnMouseClicked(event -> {
+                                FirstLevel.wallet.income(8);
+                                AbstractAnimal.root.getChildren().remove(productView);
+                            });
 
-                    Platform.runLater(() ->  AbstractAnimal.root.getChildren().add(1, productView));
-                } else {
-                    timer.cancel();
-                }
+                            Platform.runLater(() -> AbstractAnimal.root.getChildren().add(1, productView));
+                        } else {
+                            timer.cancel();
+                        }
+                    }
+                };
+
+                // Запуск завдання з інтервалом 5 секунд (5000 мілісекунд)
+                timer.scheduleAtFixedRate(task, 0, 10000);
             }
-        };
-
-        // Запуск завдання з інтервалом 5 секунд (5000 мілісекунд)
-        timer.scheduleAtFixedRate(task, 0, 10000);
+        }
     }
         @Override
         public void feed() {

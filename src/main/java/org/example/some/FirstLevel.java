@@ -235,8 +235,10 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
             Donkey.setIsOnScreen(Donkey.isOnScreen);
             Cow.setIsOnScreen(Cow.isOnScreen);
 
-
             */
+
+
+
             setCoins(coins);
             wallet.setCoins(coins);
             wallet.nCoins.setText(String.valueOf(coins));
