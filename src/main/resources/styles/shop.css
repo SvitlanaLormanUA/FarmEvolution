@@ -1,9 +1,20 @@
-.backButton {
-    -fx-background-radius: 100px;
+#backButton {
     -fx-background-color: transparent;
-    cursor: pointer;
-}
-.backButton:hover {
-    -fx-background-color: lightgray;
+    -fx-border-color: black;
+    -fx-border-radius: 150;
+    -fx-background-radius: 150;
+
 }
 
+#backButton:hover {
+    -fx-border-color: lightgray;
+}
+.buyButton {
+    -fx-background-color: #00c3ad;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-color: #022c27;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-cursor: pointer;
+}

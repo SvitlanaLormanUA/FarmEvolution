@@ -1,11 +1,10 @@
 package org.example.some.animals;
 
-import javafx.animation.TranslateTransition;
+
 import javafx.application.Platform;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.util.Duration;
+
 import org.example.some.FirstLevel;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
@@ -15,7 +14,6 @@ import java.util.TimerTask;
 
 public class Goose extends AbstractAnimal{
 
-    public static boolean isOnScreen = true;
 
     public Goose(int worldStartX, int worldStartY, int worldEndX, int worldEndY, AnchorPane anchorPane, Wallet wallet, Well well, Feeder feeder) {
         super( worldStartX, worldStartY, worldEndX, worldEndY, anchorPane,  well, feeder,
@@ -27,7 +25,7 @@ public class Goose extends AbstractAnimal{
 
     @Override
     public void giveProduct() {
-        if (isOnScreen) {
+        if (FirstLevel.countGoose >= 1) {
             if (hungerLvl > 25) {
                 Timer timer = new Timer();
                 TimerTask task = new TimerTask() {
@@ -71,33 +69,5 @@ public class Goose extends AbstractAnimal{
             AbstractAnimal.feeder.getFood();
         }
     }
-
-    @Override
-    public void sell() {
-        FirstLevel.wallet.income(cost);
-        removeMenu();
-        root.getChildren().remove(animalView);
-        isOnScreen = false;
-    }
-
-
-    @Override
-    public boolean whetherIsOnScreen() {
-        return isOnScreen;
-    }
-    public static void setIsOnScreen(boolean isOnScreen) {
-        Goose.isOnScreen = isOnScreen;
-    }
-    @Override
-    public void death() {
-        if (this.hungerLvl == 0 || this.thirstLvl == 0) {
-            FirstLevel.wallet.expense(63);
-            removeMenu();
-            root.getChildren().remove(animalView);
-            isOnScreen = false;
-
-        }
-    }
-
 
 }

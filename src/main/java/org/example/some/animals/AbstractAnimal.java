@@ -255,6 +255,7 @@ abstract class AbstractAnimal implements Animal {
 
     @Override
     public void drink() {
+        System.out.println(FirstLevel.countCow);
         if (thirstLvl < 100) {
             thirstLvl += 50;
             if (thirstLvl > 100) {
@@ -274,6 +275,22 @@ abstract class AbstractAnimal implements Animal {
         FirstLevel.wallet.income(cost);
         removeMenu();
         root.getChildren().remove(animalView);
+        String animalType = this.getClass().getSimpleName();
+        FirstLevel.decreaseAnimalCount(animalType);
+        mediaPlayer.stop();
+        System.out.println(FirstLevel.countCow);
+    }
+
+    @Override
+    public void death() {
+        if (this.hungerLvl == 0 || this.thirstLvl == 0) {
+            FirstLevel.wallet.expense(63);
+            removeMenu();
+            root.getChildren().remove(animalView);
+            String animalType = this.getClass().getSimpleName();
+            FirstLevel.decreaseAnimalCount(animalType);
+            mediaPlayer.stop();
+        }
     }
 
     @Override
@@ -311,14 +328,7 @@ abstract class AbstractAnimal implements Animal {
     public ImageView getAnimalView() {
         return animalView;
     }
-    public void death() {
-        if (hungerLvl == 0 || thirstLvl == 0) {
-            FirstLevel.wallet.expense(63);
-            removeMenu();
-            root.getChildren().remove(animalView);
 
-        }
-    }
 }
 
 

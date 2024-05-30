@@ -10,7 +10,7 @@ import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
 public class Donkey extends AbstractAnimal{
-    public static boolean isOnScreen = true;
+
 
 
     public Donkey(int worldStartX, int worldStartY, int worldEndX, int worldEndY, AnchorPane anchorPane, Wallet wallet, Well well, Feeder feeder) {
@@ -35,17 +35,6 @@ public class Donkey extends AbstractAnimal{
     @Override
     public void giveProduct() {
 
-    }
-
-
-    @Override
-    public boolean whetherIsOnScreen() {
-        return isOnScreen;
-    }
-
-
-    public static void setIsOnScreen(boolean isOnScreen) {
-        Donkey.isOnScreen = isOnScreen;
     }
     @Override
     public void movement() {
@@ -156,16 +145,6 @@ public class Donkey extends AbstractAnimal{
             removeMenu();
         }
         playSound();
-    }
-    @Override
-    public void death() {
-        if (this.hungerLvl == 0 || this.thirstLvl == 0) {
-            FirstLevel.wallet.expense(63);
-            removeMenu();
-            root.getChildren().remove(animalView);
-            isOnScreen = false;
-
-        }
     }
 
 

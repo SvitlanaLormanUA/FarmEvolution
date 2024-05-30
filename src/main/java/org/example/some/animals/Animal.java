@@ -69,8 +69,7 @@ public interface Animal extends Serializable {
  //Смерть
  void  death();
 
- //Дізнатись, чи тваринка на екрані
-    boolean whetherIsOnScreen();
+
 // Поверненн картинки тварини
 ImageView getAnimalView();
 }

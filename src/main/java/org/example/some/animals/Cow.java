@@ -10,7 +10,7 @@ import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
 public class Cow extends AbstractAnimal{
-    public static boolean isOnScreen = true;
+
     private boolean movingForward = true;
 
 
@@ -25,10 +25,10 @@ public class Cow extends AbstractAnimal{
     public void feed() {
         if(hungerLvl<100) {
             hungerLvl += 50;
-            cost += 50;
+            cost += 80;
             if (hungerLvl > 100) {
                 hungerLvl = 100;
-                cost = 120;
+                cost = 2000;
             }
             AbstractAnimal.feeder.getFood();
         }
@@ -37,25 +37,6 @@ public class Cow extends AbstractAnimal{
     @Override
     public void giveProduct() {
 
-    }
-
-    @Override
-    public void death() {
-        if (this.hungerLvl == 0 || this.thirstLvl == 0) {
-            FirstLevel.wallet.expense(63);
-            removeMenu();
-            root.getChildren().remove(animalView);
-            isOnScreen = false;
-
-        }
-    }
-
-    @Override
-    public boolean whetherIsOnScreen() {
-        return isOnScreen;
-    }
-    public static void setIsOnScreen(boolean isOnScreen) {
-        Cow.isOnScreen = isOnScreen;
     }
 
 

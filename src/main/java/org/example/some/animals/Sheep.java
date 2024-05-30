@@ -14,19 +14,17 @@ import java.util.TimerTask;
 
 public class Sheep extends AbstractAnimal {
 
-    public static boolean isOnScreen = true;
-
     public Sheep(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Wallet wallet, Well well, Feeder feeder) {
-            super(worldStartX, worldStartY, worldEndX, worldEndY, root, well, feeder,
-                    "file:src/main/resources/images/firstLevel/animals/sheep.png",
-                    "src/main/resources/sound/sheepmp3.mp3",
-                    "file:src/main/resources/images/firstLevel/products/wool.png");
-        }
+        super(worldStartX, worldStartY, worldEndX, worldEndY, root, well, feeder,
+                "file:src/main/resources/images/firstLevel/animals/sheep.png",
+                "src/main/resources/sound/sheepmp3.mp3",
+                "file:src/main/resources/images/firstLevel/products/wool.png");
+    }
 
 
     @Override
     public void giveProduct() {
-        if (isOnScreen) {
+        if (FirstLevel.countSheep >= 1) {
             if (hungerLvl > 20) {
                 // Створення таймера (завдання, яке виконується через певний час
                 Timer timer = new Timer();
@@ -58,48 +56,19 @@ public class Sheep extends AbstractAnimal {
             }
         }
     }
-        @Override
-        public void feed() {
-            if(hungerLvl<100) {
-                hungerLvl += 50;
-                cost += 50;
-                if (hungerLvl > 100) {
-                    hungerLvl = 100;
-                    cost = 100;
-                }
-                AbstractAnimal.feeder.getFood();
+
+    @Override
+    public void feed() {
+        if (hungerLvl < 100) {
+            hungerLvl += 50;
+            cost += 50;
+            if (hungerLvl > 100) {
+                hungerLvl = 100;
+                cost = 100;
             }
-        }
-
-
-
-
-    @Override
-    public boolean whetherIsOnScreen() {
-        return isOnScreen;
-    }
-    public static void setIsOnScreen(boolean isOnScreen) {
-        Sheep.isOnScreen = isOnScreen;
-    }
-    @Override
-    public void death() {
-        if (this.hungerLvl == 0 || this.thirstLvl == 0) {
-            FirstLevel.wallet.expense(63);
-            removeMenu();
-            root.getChildren().remove(animalView);
-            isOnScreen = false;
-
+            AbstractAnimal.feeder.getFood();
         }
     }
-
-    @Override
-    public void sell() {
-            FirstLevel.wallet.income(cost);
-            removeMenu();
-            root.getChildren().remove(animalView);
-            isOnScreen = false;
-        }
-    }
-
+}
 
 

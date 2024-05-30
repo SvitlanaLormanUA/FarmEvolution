@@ -21,6 +21,15 @@ import java.util.ResourceBundle;
 
 
 public class FirstLevel implements javafx.fxml.Initializable, Serializable {
+    public static int countCow = 1;
+    public static int countSheep = 1;
+    public static int countGoose = 1;
+    public static int countPig = 1;
+    public static int countRabbit = 1;
+    public static int donkeyCount = 1;
+
+
+
 
     public double progress = 1.0;
     public AnchorPane anchorPane;
@@ -61,6 +70,29 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+
+    public static void decreaseAnimalCount(String animalType) {
+        switch (animalType) {
+            case "Cow":
+                countCow--;
+                break;
+            case "Sheep":
+                countSheep--;
+                break;
+            case "Goose":
+                countGoose--;
+                break;
+            case "Pig":
+                countPig--;
+                break;
+            case "Rabbit":
+                countRabbit--;
+                break;
+            default:
+                break;
+        }
+    }
 
     @FXML
     public void backToMainMenu(ActionEvent event) {
@@ -115,43 +147,55 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
     }
     public void addSheep() {
         //додана овечка на основну панель
-        if (Sheep.isOnScreen) {
-            Sheep sheep = new Sheep(250, 200, 1000, 630, anchorPane, wallet, well, feeder);
-            anchorPane.getChildren().add(sheep.getAnimalView());
-        }
+            for (int i = 0; i < countSheep; i++) {
+                Sheep sheep = new Sheep(250, 200, 1000, 630, anchorPane, wallet, well, feeder);
+                anchorPane.getChildren().add(sheep.getAnimalView());
+            }
+
     }
     public void addGoose() {
         //додаємо гуся
-        if (Goose.isOnScreen) {
-            Goose goose = new Goose(250, 200, 1000, 630, anchorPane, wallet, well, feeder);
-            anchorPane.getChildren().add(goose.getAnimalView());
-        }
+
+            for (int i = 0; i < countGoose; i++) {
+                Goose goose = new Goose(250, 200, 1000, 630, anchorPane, wallet, well, feeder);
+                anchorPane.getChildren().add(goose.getAnimalView());
+            }
+
     }
     public void addPig() {
         //додаємо свинку
-        if (Pig.isOnScreen) {
-            Pig pig = new Pig(250, 200, 1000, 630, anchorPane, wallet, well, feeder);
-            anchorPane.getChildren().add(pig.getAnimalView());
-        }
+
+            for (int i = 0; i < countPig; i++) {
+                Pig pig = new Pig(250, 200, 1000, 630, anchorPane, wallet, well, feeder);
+                anchorPane.getChildren().add(pig.getAnimalView());
+            }
+
+
     }
     public void addRabbit() {
-        if (Rabbit.isOnScreen) {
-            Rabbit rabbit = new Rabbit(250, 250, 1000, 630, anchorPane, wallet, well, feeder);
-            anchorPane.getChildren().add(2, rabbit.getAnimalView());
-        }
+
+            for (int i = 0; i < countRabbit; i++) {
+                Rabbit rabbit = new Rabbit(250, 250, 1000, 630, anchorPane, wallet, well, feeder);
+                anchorPane.getChildren().add(2, rabbit.getAnimalView());
+            }
+
     }
     public void addDonkey() {
-        if (Donkey.isOnScreen) {
+
+
             Donkey donkey = new Donkey(650, 200, 1000, 430, anchorPane, wallet, well, feeder);
             anchorPane.getChildren().add(donkey.getAnimalView());
-        }
+
     }
 
     public void addCow() {
-        if (Cow.isOnScreen) {
-            Cow cow = new Cow(150, 200, 300, 530, anchorPane, wallet, well, feeder);
-            anchorPane.getChildren().add(cow.getAnimalView());
-        }
+
+
+            for (int i = 0; i < countCow; i++) {
+                Cow cow = new Cow(150, 200, 300, 530, anchorPane, wallet, well, feeder);
+                anchorPane.getChildren().add(cow.getAnimalView());
+            }
+
     }
 
 
@@ -204,12 +248,14 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
     static void saveState() {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("gameState.ser"))) {
             out.writeInt(wallet.getCoins());
-            out.writeBoolean(Sheep.isOnScreen);
-            out.writeBoolean(Goose.isOnScreen);
-            out.writeBoolean(Pig.isOnScreen);
-            out.writeBoolean(Rabbit.isOnScreen);
-            out.writeBoolean(Donkey.isOnScreen);
-            out.writeBoolean(Cow.isOnScreen);
+            out.writeInt(countCow);
+            out.writeInt(donkeyCount);
+            out.writeInt(countSheep);
+            out.writeInt(countGoose);
+            out.writeInt(countPig);
+            out.writeInt(countPig);
+
+
 
 
         } catch (IOException e) {
@@ -219,26 +265,15 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
 
     static void loadState() {
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("gameState.ser"))) {
-            coins = in.readInt();
-           /* Sheep.isOnScreen = in.readBoolean();
-            Goose.isOnScreen = in.readBoolean();
-            Pig.isOnScreen = in.readBoolean();
-            Rabbit.isOnScreen = in.readBoolean();
-            Donkey.isOnScreen = in.readBoolean();
-            Cow.isOnScreen = in.readBoolean();
+           coins = in.readInt();
+           /*  countCow = in.readInt();
+            donkeyCount = in.readInt();
+            countSheep = in.readInt();
+            countGoose = in.readInt();
+            countPig = in.readInt();
+            countRabbit = in.readInt();
 
-
-            Sheep.setIsOnScreen(Sheep.isOnScreen);
-            Goose.setIsOnScreen(Goose.isOnScreen);
-            Pig.setIsOnScreen(Pig.isOnScreen);
-            Rabbit.setIsOnScreen(Rabbit.isOnScreen);
-            Donkey.setIsOnScreen(Donkey.isOnScreen);
-            Cow.setIsOnScreen(Cow.isOnScreen);
-
-            */
-
-
-
+*/
             setCoins(coins);
             wallet.setCoins(coins);
             wallet.nCoins.setText(String.valueOf(coins));

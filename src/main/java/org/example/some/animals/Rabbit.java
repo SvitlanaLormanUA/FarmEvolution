@@ -17,29 +17,18 @@ import javafx.util.Duration;
 
 public class Rabbit extends AbstractAnimal{
 
-    public static boolean isOnScreen = true;
     private double deltaX;
     private double deltaY;
 
     public Rabbit(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Wallet wallet, Well well, Feeder feeder) {
         super(worldStartX, worldStartY, worldEndX, worldEndY, root, well, feeder,
                 "file:src/main/resources/images/firstLevel/animals/rabbit.png",
-                "src/main/resources/sound/sheepmp3.mp3",
+                "src/main/resources/sound/jumpRabbit.mp3",
                 "file:src/main/resources/images/rabbitMeat.png");
         animalView.setFitWidth(80);
         animalView.setFitHeight(100);
     }
 
-    @Override
-    public void death() {
-        if (this.hungerLvl == 0 || this.thirstLvl == 0) {
-            FirstLevel.wallet.expense(63);
-            removeMenu();
-            root.getChildren().remove(animalView);
-            isOnScreen = false;
-
-        }
-    }
 
     @Override
     public void movement() {
@@ -197,19 +186,5 @@ public class Rabbit extends AbstractAnimal{
 
     }
 
-    @Override
-    public void sell() {
-        FirstLevel.wallet.income(cost);
-        removeMenu();
-        root.getChildren().remove(animalView);
-        isOnScreen = false;
-    }
 
-    @Override
-    public boolean whetherIsOnScreen() {
-        return isOnScreen;
-    }
-    public static void setIsOnScreen(boolean isOnScreen) {
-        Rabbit.isOnScreen = isOnScreen;
-    }
 }
