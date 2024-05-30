@@ -81,7 +81,7 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
     public void enterShop(ActionEvent event) {
         try {
             saveState();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("shop.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("shopFirstLevel.fxml")));
             stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
 
             scene = new Scene(root);

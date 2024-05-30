@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="707.0" prefWidth="1351.0" stylesheets="@../../../styles/shop.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.some.ShopFirstLevel">
+   <children>
+      <ImageView id="img" fitHeight="707.0" fitWidth="1461.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/shop/shop.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="backButton" layoutX="41.0" layoutY="553.0" mnemonicParsing="false" onAction="#backToGame" prefHeight="79.0" prefWidth="88.0" styleClass="backButton" stylesheets="@../../../styles/shop.css" translateX="6.0" AnchorPane.leftAnchor="41.0" AnchorPane.rightAnchor="1247.0">
+            <graphic>
+                <ImageView fitHeight="80.0" fitWidth="84.0" preserveRatio="true" styleClass="backButton">
+                <image>
+                    <Image url="@../../../images/shop/backButton.png" />
+                </image>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+                </ImageView>
+            </graphic>
+      </Button>
+   </children>
+</AnchorPane>

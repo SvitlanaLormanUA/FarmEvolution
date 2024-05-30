@@ -1,0 +1,9 @@
+.backButton {
+    -fx-background-radius: 100px;
+    -fx-background-color: transparent;
+    cursor: pointer;
+}
+.backButton:hover {
+    -fx-background-color: lightgray;
+}
+
