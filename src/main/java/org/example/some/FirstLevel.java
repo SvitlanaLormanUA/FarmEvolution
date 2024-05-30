@@ -266,14 +266,14 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
     static void loadState() {
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("gameState.ser"))) {
            coins = in.readInt();
-           /*  countCow = in.readInt();
+            /*countCow = in.readInt();
             donkeyCount = in.readInt();
             countSheep = in.readInt();
             countGoose = in.readInt();
             countPig = in.readInt();
             countRabbit = in.readInt();
-
 */
+
             setCoins(coins);
             wallet.setCoins(coins);
             wallet.nCoins.setText(String.valueOf(coins));

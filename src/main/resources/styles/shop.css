@@ -18,3 +18,8 @@
     -fx-background-radius: 20;
     -fx-cursor: pointer;
 }
+.buyButton:hover {
+    -fx-background-color: #01e1c9;
+    -fx-text-fill: black;
+    -fx-border-color: #036a5c;
+}
