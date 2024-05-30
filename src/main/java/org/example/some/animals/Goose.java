@@ -88,5 +88,16 @@ public class Goose extends AbstractAnimal{
     public static void setIsOnScreen(boolean isOnScreen) {
         Goose.isOnScreen = isOnScreen;
     }
+    @Override
+    public void death() {
+        if (this.hungerLvl == 0 || this.thirstLvl == 0) {
+            FirstLevel.wallet.expense(63);
+            removeMenu();
+            root.getChildren().remove(animalView);
+            isOnScreen = false;
+
+        }
+    }
+
 
 }

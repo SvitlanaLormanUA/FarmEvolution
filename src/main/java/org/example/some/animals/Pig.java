@@ -55,6 +55,17 @@ public class Pig extends AbstractAnimal{
     public static void setIsOnScreen(boolean isOnScreen) {
         Pig.isOnScreen = isOnScreen;
     }
+    @Override
+    public void death() {
+        if (this.hungerLvl == 0 || this.thirstLvl == 0) {
+            FirstLevel.wallet.expense(63);
+            removeMenu();
+            root.getChildren().remove(animalView);
+            isOnScreen = false;
+
+        }
+    }
+
 
 
 }

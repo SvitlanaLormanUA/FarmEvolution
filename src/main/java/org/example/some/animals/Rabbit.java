@@ -31,6 +31,17 @@ public class Rabbit extends AbstractAnimal{
     }
 
     @Override
+    public void death() {
+        if (this.hungerLvl == 0 || this.thirstLvl == 0) {
+            FirstLevel.wallet.expense(63);
+            removeMenu();
+            root.getChildren().remove(animalView);
+            isOnScreen = false;
+
+        }
+    }
+
+    @Override
     public void movement() {
         pathTransition = new PathTransition();
         pathTransition.setDuration(Duration.millis(1500));

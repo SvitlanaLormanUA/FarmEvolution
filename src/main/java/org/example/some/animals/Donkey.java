@@ -5,6 +5,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+import org.example.some.FirstLevel;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
@@ -156,6 +157,17 @@ public class Donkey extends AbstractAnimal{
         }
         playSound();
     }
+    @Override
+    public void death() {
+        if (this.hungerLvl == 0 || this.thirstLvl == 0) {
+            FirstLevel.wallet.expense(63);
+            removeMenu();
+            root.getChildren().remove(animalView);
+            isOnScreen = false;
+
+        }
+    }
+
 
 
 }
