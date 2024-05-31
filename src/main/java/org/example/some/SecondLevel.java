@@ -14,7 +14,9 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class SecondLevel implements Initializable {
+import static org.example.some.Shop.getCurrentLevel;
+
+public class SecondLevel extends Level implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -27,12 +29,32 @@ public class SecondLevel implements Initializable {
     }
 
     @FXML
+    public void backToMainMenu(ActionEvent event) {
+        try {
+            saveState();
+
+            if (getCurrentLevel().equals("firstLevel.fxml")) {
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("firstLevel.fxml")));
+            } else {
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("chooseSecondLevel.fxml")));
+            }
+
+            stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @FXML
     public void enterShop(ActionEvent event) {
         try {
             saveState();
             ShopFirstLevel.setCurrentLevel("secondLevel.fxml");
 
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("shopFirstLevel.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("shopSecondLevel.fxml")));
             stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
 
             scene = new Scene(root);
@@ -43,9 +65,10 @@ public class SecondLevel implements Initializable {
         }
     }
 
-    public void saveState() {
+    public static void saveState() {
 
     }
+
 
 
 }

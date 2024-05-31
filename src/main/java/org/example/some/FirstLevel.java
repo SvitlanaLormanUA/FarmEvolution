@@ -20,7 +20,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 
-public class FirstLevel implements javafx.fxml.Initializable, Serializable {
+public class FirstLevel extends Level  implements javafx.fxml.Initializable, Serializable {
     ;
 
     public static int countCow = 1;
@@ -98,6 +98,8 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
         }
     }
 
+
+
     @FXML
     public void backToMainMenu(ActionEvent event) {
             try {
@@ -128,23 +130,6 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-
-
-
-    public void showInfo(ActionEvent event) {
-
-    }
-    public void showSettings(ActionEvent event) {
-
-    }
-    public void showTasks(ActionEvent event) {
-
-
-    }
-    public void showExtraTasks(ActionEvent event) {
-
     }
 
 
@@ -261,6 +246,7 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
             out.writeInt(countGoose);
             out.writeInt(countPig);
             out.writeInt(countRabbit);
+
 
 
 

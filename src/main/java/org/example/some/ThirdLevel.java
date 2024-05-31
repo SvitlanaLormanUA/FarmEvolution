@@ -13,7 +13,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class ThirdLevel implements javafx.fxml.Initializable{
+public class ThirdLevel extends Level   implements javafx.fxml.Initializable{
     private Stage stage;
     private Scene scene;
     private Parent root;

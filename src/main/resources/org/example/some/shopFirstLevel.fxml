@@ -11,7 +11,7 @@
    <children>
       <ImageView id="img" fitHeight="793.0" fitWidth="1442.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/shop/first/shop.png" />
+            <Image url="@../../../images/shop/firstLevel/firstLevel.png" />
          </image>
       </ImageView>
       <Button layoutX="299.0" layoutY="317.0" mnemonicParsing="false" onAction="#buyGoose" prefHeight="35.0" prefWidth="173.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 200 монет">
@@ -58,6 +58,6 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </ImageView>
-      <Button fx:id="backButton1" layoutX="1282.0" layoutY="408.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="66.0" styleClass="backButton" stylesheets="@../../../styles/shop.css" />
+      <Button fx:id="backButton1" layoutX="1282.0" layoutY="408.0" mnemonicParsing="false" onAction="#secondShop" prefHeight="65.0" prefWidth="66.0" styleClass="backButton" stylesheets="@../../../styles/shop.css" />
    </children>
 </AnchorPane>

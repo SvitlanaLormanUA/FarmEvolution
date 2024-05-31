@@ -22,7 +22,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static org.example.some.FirstLevel.saveState;
-public class ShopFirstLevel implements Initializable {
+public class ShopFirstLevel extends Shop implements Initializable {
     private static final int COW_PRICE = 1000;
     private static final int GOOSE_PRICE = 200;
     private static final int PIG_PRICE = 530;
@@ -35,16 +35,20 @@ public class ShopFirstLevel implements Initializable {
     private static Parent root;
 
     public Wallet wallet;
-    public AnchorPane anchorPane;
+    public AnchorPane  anchorPane = new AnchorPane();;
 
     private static String currentLevel;
 
+
+
     @FXML
-    public void backToGame(ActionEvent event) {
+    public void secondShop(ActionEvent event) {
         try {
             saveState();
+            ShopFirstLevel.setCurrentLevel("firstLevel.fxml");
 
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(currentLevel)));
+
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("shopSecondLevel.fxml")));
             stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
 
             scene = new Scene(root);
@@ -115,14 +119,11 @@ public class ShopFirstLevel implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         addWallet();
     }
 
-    public static void setCurrentLevel(String level) {
-        currentLevel = level;
-    }
 
-    public void displayShop() {
 
-    }
+
 }
