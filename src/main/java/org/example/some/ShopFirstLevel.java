@@ -3,28 +3,39 @@ package org.example.some;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import org.example.some.otherGameObjects.Wallet;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 import static org.example.some.FirstLevel.saveState;
 
-public class ShopFirstLevel {
+public class ShopFirstLevel implements Initializable {
     private static final int COW_PRICE = 1000;
     private static final int GOOSE_PRICE = 200;
     private static final int PIG_PRICE = 530;
     private static final int SHEEP_PRICE = 648;
     private static final int RABBIT_PRICE = 350;
+    public int  amountOfCoins = FirstLevel.wallet.getCoins();;
 
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    public Wallet wallet;
+    public AnchorPane anchorPane;
 
     @FXML
     public void backToGame(ActionEvent event) {
@@ -50,6 +61,7 @@ public class ShopFirstLevel {
     private void handleBuy(ActionEvent event, int price, String animalName, Runnable onSuccess) {
         if (FirstLevel.wallet.getCoins() >= price) {
             FirstLevel.wallet.expense(price);
+            wallet.expense(price);
             onSuccess.run();
             showAlert(Alert.AlertType.INFORMATION, "Ви купили " + animalName);
         } else {
@@ -89,5 +101,13 @@ public class ShopFirstLevel {
         });
     }
 
+    public void addWallet() {
+        wallet = new Wallet(95, 50,amountOfCoins);
+        anchorPane.getChildren().add(wallet.getRoot());
+    }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        addWallet();
+    }
 }

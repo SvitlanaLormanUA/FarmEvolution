@@ -29,6 +29,8 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
     public static int donkeyCount = 1;
 
 
+    public static double walletX = 263;
+    public static double walletY = 32;
 
 
     public double progress = 1.0;
@@ -224,7 +226,8 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
     }
 
     private void addWallet(){
-        wallet = new Wallet(50, 50);
+
+        wallet = new Wallet(walletX, walletY, 100);
         anchorPane.getChildren().add(wallet.getRoot());
     }
 

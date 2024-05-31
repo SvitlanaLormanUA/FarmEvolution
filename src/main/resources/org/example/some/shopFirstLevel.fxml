@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="707.0" prefWidth="1351.0" stylesheets="@../../../styles/shop.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.some.ShopFirstLevel">
+<AnchorPane fx:id="anchorPane" prefHeight="707.0" prefWidth="1351.0" stylesheets="@../../../styles/shop.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.some.ShopFirstLevel">
    <children>
-      <ImageView id="img" fitHeight="793.0" fitWidth="1442.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="img" fitHeight="793.0" fitWidth="1442.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/shop/shop.png" />
          </image>
@@ -48,5 +48,10 @@
             <Font size="14.0" />
          </font>
       </Button>
+      <ImageView id="coins" fitHeight="43.0" fitWidth="164.0" layoutX="37.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/coins.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

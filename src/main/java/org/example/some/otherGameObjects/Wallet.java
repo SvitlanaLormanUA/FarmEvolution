@@ -17,31 +17,33 @@ public class Wallet implements Serializable {
     private int coins;
     public Label nCoins;
 
-    public Wallet(double x, double y){
-      /**  Image image = new Image("file:src/main/resources/images/coins.png");
+    public Wallet(double x, double y, int setCoins) {
+        /*Image image = new Image("file:src/main/resources/images/coins.png");
         this.walletView = new ImageView(image);*/
+
 
         this.x = x;
         this.y = y;
-        this.coins = setCoins(100);
+
+        this.coins = setCoins(setCoins);
 
 
         nCoins = new Label(String.valueOf(coins));
-        nCoins.setLayoutX(263);
-        nCoins.setLayoutY(32);
+        nCoins.setLayoutX(x);//263
+        nCoins.setLayoutY(y);//32
         nCoins.setFont(new Font("Arial", 22));
 
         root = new Pane();
         root.getChildren().addAll(nCoins);
     }
 
-    public void income(int n){
-        this.coins+=n;
+    public void income(int n) {
+        this.coins += n;
         this.nCoins.setText(String.valueOf(coins));
     }
 
-    public void expense(int n){
-        this.coins-=n;
+    public void expense(int n) {
+        this.coins -= n;
         this.nCoins.setText(String.valueOf(coins));
     }
 
@@ -56,7 +58,8 @@ public class Wallet implements Serializable {
     public int getCoins() {
         return coins;
     }
+
     public int setCoins(int coins) {
-         return this.coins = coins;
+        return this.coins = coins;
     }
 }

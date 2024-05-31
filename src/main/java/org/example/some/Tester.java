@@ -48,7 +48,7 @@ public class Tester extends Application {
     }
 
     private void addWallet(){
-        wallet = new Wallet(50, 50);
+        wallet = new Wallet(50,50, 100);
         root.getChildren().add(wallet.getRoot());
     }
 
