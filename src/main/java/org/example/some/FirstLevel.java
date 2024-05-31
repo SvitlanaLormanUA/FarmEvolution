@@ -21,6 +21,8 @@ import java.util.ResourceBundle;
 
 
 public class FirstLevel implements javafx.fxml.Initializable, Serializable {
+    ;
+
     public static int countCow = 1;
     public static int countSheep = 1;
     public static int countGoose = 1;
@@ -115,6 +117,8 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
     public void enterShop(ActionEvent event) {
         try {
             saveState();
+            ShopFirstLevel.setCurrentLevel("firstLevel.fxml");
+
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("shopFirstLevel.fxml")));
             stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
 
@@ -256,7 +260,9 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
             out.writeInt(countSheep);
             out.writeInt(countGoose);
             out.writeInt(countPig);
-            out.writeInt(countPig);
+            out.writeInt(countRabbit);
+
+
 
 
 
@@ -290,5 +296,19 @@ public class FirstLevel implements javafx.fxml.Initializable, Serializable {
 
 
 
+    @FXML
+    public void nextLevel(ActionEvent event) {
+        try {
+            saveState();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("secondLevel.fxml")));
+            stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }

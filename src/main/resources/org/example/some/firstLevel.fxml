@@ -65,5 +65,6 @@
          </image>
       </ImageView>
       <Button id="shopButton" fx:id="shopButton" layoutX="367.0" layoutY="23.0" mnemonicParsing="false" onAction="#enterShop" prefHeight="43.0" prefWidth="162.0" stylesheets="@../../../styles/firstLevel.css" />
+      <Button layoutX="1116.0" layoutY="364.0" mnemonicParsing="false" onAction="#nextLevel" prefHeight="61.0" prefWidth="126.0" text="2 level" />
    </children>
 </AnchorPane>

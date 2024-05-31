@@ -11,18 +11,9 @@
    <children>
       <ImageView id="img" fitHeight="793.0" fitWidth="1442.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/shop/shop.png" />
+            <Image url="@../../../images/shop/first/shop.png" />
          </image>
       </ImageView>
-          <ImageView fitHeight="80.0" fitWidth="84.0" layoutX="79.0" layoutY="633.0" preserveRatio="true" styleClass="backButton">
-          <image>
-              <Image url="@../../../images/shop/backButton.png" />
-          </image>
-         <cursor>
-            <Cursor fx:constant="DEFAULT" />
-         </cursor>
-          </ImageView>
-      <Button id="backButton" fx:id="backButton" layoutX="80.0" layoutY="641.0" mnemonicParsing="false" onAction="#backToGame" prefHeight="65.0" prefWidth="66.0" stylesheets="@../../../styles/shop.css" translateX="6.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="1264.0" />
       <Button layoutX="299.0" layoutY="317.0" mnemonicParsing="false" onAction="#buyGoose" prefHeight="35.0" prefWidth="173.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 200 монет">
          <font>
             <Font size="14.0" />
@@ -53,5 +44,20 @@
             <Image url="@../../../images/coins.png" />
          </image>
       </ImageView>
+      <ImageView fitHeight="49.0" fitWidth="52.0" layoutX="1329.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/shop/close.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="1328.0" layoutY="36.0" mnemonicParsing="false" onAction="#backToGame" prefHeight="50.0" prefWidth="50.0" styleClass="close" stylesheets="@../../../styles/shop.css" />
+      <ImageView fitHeight="80.0" fitWidth="84.0" layoutX="1275.0" layoutY="400.0" preserveRatio="true" rotate="180.0" styleClass="backButton">
+         <image>
+            <Image url="@../../../images/shop/backButton.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </ImageView>
+      <Button fx:id="backButton1" layoutX="1282.0" layoutY="408.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="66.0" styleClass="backButton" stylesheets="@../../../styles/shop.css" />
    </children>
 </AnchorPane>

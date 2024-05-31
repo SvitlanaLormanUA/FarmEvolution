@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import org.example.some.FirstLevel;
 import org.example.some.otherGameObjects.Wallet;
 
 import java.io.IOException;
@@ -21,27 +22,29 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static org.example.some.FirstLevel.saveState;
-
 public class ShopFirstLevel implements Initializable {
     private static final int COW_PRICE = 1000;
     private static final int GOOSE_PRICE = 200;
     private static final int PIG_PRICE = 530;
     private static final int SHEEP_PRICE = 648;
     private static final int RABBIT_PRICE = 350;
-    public int  amountOfCoins = FirstLevel.wallet.getCoins();;
+    public int amountOfCoins = FirstLevel.wallet.getCoins();
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+    private static Stage stage;
+    private static Scene scene;
+    private static Parent root;
 
     public Wallet wallet;
     public AnchorPane anchorPane;
+
+    private static String currentLevel;
 
     @FXML
     public void backToGame(ActionEvent event) {
         try {
             saveState();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("firstLevel.fxml")));
+
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(currentLevel)));
             stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
 
             scene = new Scene(root);
@@ -51,6 +54,7 @@ public class ShopFirstLevel implements Initializable {
             throw new RuntimeException(e);
         }
     }
+
     private void showAlert(Alert.AlertType type, String message) {
         Alert alert = new Alert(type, message);
         alert.showAndWait()
@@ -68,6 +72,7 @@ public class ShopFirstLevel implements Initializable {
             showAlert(Alert.AlertType.ERROR, "У Вас недостатньо монет для покупки " + animalName);
         }
     }
+
     @FXML
     public void buyCow(ActionEvent event) {
         handleBuy(event, COW_PRICE, "корову", () -> {
@@ -84,30 +89,40 @@ public class ShopFirstLevel implements Initializable {
 
     @FXML
     public void buyPig(ActionEvent event) {
-        handleBuy(event, PIG_PRICE , "cвинку", () -> {
+        handleBuy(event, PIG_PRICE, "cвинку", () -> {
             FirstLevel.countPig++;
         });
     }
+
     @FXML
     public void buySheep(ActionEvent event) {
-        handleBuy(event, SHEEP_PRICE , "вівцю", () -> {
+        handleBuy(event, SHEEP_PRICE, "вівцю", () -> {
             FirstLevel.countSheep++;
         });
     }
+
     @FXML
     public void buyRabbit(ActionEvent event) {
-        handleBuy(event, RABBIT_PRICE , "кролика", () -> {
+        handleBuy(event, RABBIT_PRICE, "кролика", () -> {
             FirstLevel.countRabbit++;
         });
     }
 
     public void addWallet() {
-        wallet = new Wallet(95, 50,amountOfCoins);
+        wallet = new Wallet(95, 50, amountOfCoins);
         anchorPane.getChildren().add(wallet.getRoot());
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addWallet();
+    }
+
+    public static void setCurrentLevel(String level) {
+        currentLevel = level;
+    }
+
+    public void displayShop() {
+
     }
 }
