@@ -12,6 +12,8 @@ import org.example.some.otherGameObjects.Well;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static org.example.some.animals.Emotion.wellFed;
+
 
 public class Sheep extends AbstractAnimal {
 
@@ -64,9 +66,10 @@ public class Sheep extends AbstractAnimal {
         if (hungerLvl < 100) {
             hungerLvl += 50;
             cost += 50;
-            if (hungerLvl > 100) {
+            if (hungerLvl >=100) {
                 hungerLvl = 100;
                 cost = 100;
+                wellFed();
             }
             AbstractAnimal.feeder.getFood();
         }
