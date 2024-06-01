@@ -1,6 +1,7 @@
 package org.example.some.animals;
 
 import javafx.animation.TranslateTransition;
+import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -9,7 +10,10 @@ import org.example.some.FirstLevel;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
-public class Cow extends AbstractAnimal{
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class Cow extends AbstractAnimal  {
 
     private boolean movingForward = true;
 
@@ -21,6 +25,7 @@ public class Cow extends AbstractAnimal{
                 "file:src/main/resources/images/firstLevel/products/milk.png");
     }
 
+
     @Override
     public void feed() {
         if(hungerLvl<100) {
@@ -29,8 +34,12 @@ public class Cow extends AbstractAnimal{
             if (hungerLvl > 100) {
                 hungerLvl = 100;
                 cost = 2000;
+                Emotion emotion = new Emotion();
+                emotion.wellFed(animalView.getX() + animalView.getFitWidth(), animalView.getY() - animalView.getFitHeight()/2 - 5); ;
+
             }
             AbstractAnimal.feeder.getFood();
+           // System.out.println();
         }
     }
 
@@ -110,5 +119,6 @@ public class Cow extends AbstractAnimal{
         }
         playSound();
     }
+
 
 }

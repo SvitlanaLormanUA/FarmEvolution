@@ -13,6 +13,8 @@ import org.example.some.otherGameObjects.Well;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.example.some.FirstLevel.countPig;
+
 
 public class Pig extends AbstractAnimal implements AnimalMeat{
 
@@ -78,7 +80,8 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
 
     @Override
     public void giveProduct() {
-        if (FirstLevel.countGoose >= 1) {
+        if (countPig >= 1) {
+            countPig--;
             List<ImageView> productViews = new ArrayList<>();
 
             if (amountOfMeals >= 5) {

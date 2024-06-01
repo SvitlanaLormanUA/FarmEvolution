@@ -49,6 +49,9 @@ abstract class AbstractAnimal implements Animal {
 
     AnimalMenu animalMenu;
 
+    int deltaX;
+    int deltaY;
+
     public AbstractAnimal(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Well well, Feeder feeder, String imagePath, String soundFile, String recourseFile) {
         file = new File(soundFile);
         product = new Image(recourseFile);
@@ -105,8 +108,8 @@ abstract class AbstractAnimal implements Animal {
         double x = animalView.getX();
         double y = animalView.getY();
 
-        double deltaX = random.nextInt(120) - 75;
-        double deltaY = random.nextInt(100) - 75;
+         deltaX = random.nextInt(120) - 75;
+         deltaY = random.nextInt(100) - 75;
 
         double newX = x + deltaX;
         double newY = y + deltaY;
@@ -222,7 +225,12 @@ abstract class AbstractAnimal implements Animal {
             public void run() {
                 if (hungerLvl > 0) {
                     hungerLvl--;
+                    if (hungerLvl == 0) {
+                        death();
+                    }
+
                     double k = hungerLvl;
+
                     cost = (int) (100 * (k / 100));
                 } else {
                     timer.cancel();
@@ -255,7 +263,6 @@ abstract class AbstractAnimal implements Animal {
 
     @Override
     public void drink() {
-        System.out.println(FirstLevel.countCow);
         if (thirstLvl < 100) {
             thirstLvl += 50;
             if (thirstLvl > 100) {
