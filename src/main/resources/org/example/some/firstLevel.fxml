@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.image.Image?>
@@ -66,5 +67,13 @@
       </ImageView>
       <Button id="shopButton" fx:id="shopButton" layoutX="367.0" layoutY="23.0" mnemonicParsing="false" onAction="#enterShop" prefHeight="43.0" prefWidth="162.0" stylesheets="@../../../styles/firstLevel.css" />
       <Button layoutX="1116.0" layoutY="364.0" mnemonicParsing="false" onAction="#nextLevel" prefHeight="61.0" prefWidth="126.0" text="2 level" />
+      <ImageView fitHeight="85.0" fitWidth="100.0" layoutX="1054.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true" rotate="20.0">
+         <image>
+            <Image url="@../../../images/firstLevel/objects/cart%201.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+      </ImageView>
    </children>
 </AnchorPane>

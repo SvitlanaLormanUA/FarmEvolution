@@ -279,7 +279,6 @@ abstract class AbstractAnimal implements Animal {
         String animalType = this.getClass().getSimpleName();
         FirstLevel.decreaseAnimalCount(animalType);
         mediaPlayer.stop();
-        System.out.println(FirstLevel.countCow);
     }
 
     @Override
