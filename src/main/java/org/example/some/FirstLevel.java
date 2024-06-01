@@ -261,13 +261,12 @@ public class FirstLevel extends Level  implements javafx.fxml.Initializable, Ser
     static void loadState() {
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("gameState.ser"))) {
            coins = in.readInt();
-            /*countCow = in.readInt();
+           /* countCow = in.readInt();
             donkeyCount = in.readInt();
             countSheep = in.readInt();
             countGoose = in.readInt();
             countPig = in.readInt();
-            countRabbit = in.readInt();
-*/
+            countRabbit = in.readInt();*/
 
             setCoins(coins);
             wallet.setCoins(coins);

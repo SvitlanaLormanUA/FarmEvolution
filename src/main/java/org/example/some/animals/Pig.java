@@ -84,16 +84,17 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
     @Override
     public void giveProduct() {
         if (countPig >= 1) {
-            countPig--;
             List<ImageView> productViews = new ArrayList<>();
 
             if (amountOfMeals >= 5) {
                 ImageView productView1 = createProductView(animalView.getX() + 50, animalView.getY() + 30);
                 productViews.add(productView1);
+
             }
             if (amountOfMeals >= 10) {
                 ImageView productView2 = createProductView(animalView.getX() - 50, animalView.getY() - 30);
                 productViews.add(productView2);
+
             }
             if (amountOfMeals >= 15) {
                 ImageView productView3 = createProductView(animalView.getX(), animalView.getY() + 20);
@@ -103,6 +104,7 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
             Platform.runLater(() -> {
                 for (ImageView productView : productViews) {
                     AbstractAnimal.root.getChildren().add(1, productView);
+                    countPig--;
                 }
             });
 
