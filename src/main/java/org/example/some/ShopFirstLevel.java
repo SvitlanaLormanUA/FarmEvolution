@@ -9,11 +9,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import org.example.some.FirstLevel;
 import org.example.some.otherGameObjects.Wallet;
 
 import java.io.IOException;
@@ -35,16 +34,44 @@ public class ShopFirstLevel extends Shop implements Initializable {
     private static Parent root;
 
     public Wallet wallet;
-    public AnchorPane  anchorPane = new AnchorPane();;
+    public  AnchorPane  anchorPane;
 
-    private static String currentLevel;
 
+
+     void addImageBasedOnPreviousLevel() {
+        if (getCurrentLevel()!= null) {
+            switch (getCurrentLevel()) {
+                case "secondLevel.fxml", "thirdLevel.fxml":
+                    addImage();
+                    break;
+                default:
+
+            }
+        }
+    }
+
+    public int addImage() {
+        ImageView imageView = new ImageView(new Image("file: src/main/resources/images/shop/firstLevel/firstDone.png "));
+        imageView.setFitWidth(100);  // задайте ширину
+        imageView.setFitHeight(100);// задайте висоту
+        imageView.setX(0);
+        imageView.setY(0);
+        anchorPane.getChildren().add(imageView);
+        //if third level true -- return 3
+        return 2;
+    }
 
 
     @FXML
     public void secondShop(ActionEvent event) {
         try {
             saveState();
+           if( addImage() == 2) {
+               ShopFirstLevel.setCurrentLevel("secondLevel.fxml");
+           }
+            if( addImage() == 3) {
+                ShopFirstLevel.setCurrentLevel("thirdLevel.fxml");
+            }
             ShopFirstLevel.setCurrentLevel("firstLevel.fxml");
 
 

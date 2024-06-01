@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="707.0" prefWidth="1351.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.some.ShopSecondLevel">
+<AnchorPane id="anchorPane" fx:id="anchorPane" prefHeight="707.0" prefWidth="1351.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.some.ShopSecondLevel">
    <children>
       <ImageView fitHeight="779.0" fitWidth="1860.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -42,7 +42,7 @@
          </cursor>
       </ImageView>
       <Button fx:id="backButton11" layoutX="88.0" layoutY="412.0" mnemonicParsing="false" onAction="#firstShop" prefHeight="65.0" prefWidth="66.0" styleClass="backButton" stylesheets="@../../../styles/shop.css" />
-      <Button layoutX="273.0" layoutY="311.0" mnemonicParsing="false" onAction="#buyCarrot" prefHeight="27.0" prefWidth="173.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 905 монет" />
+      <Button layoutX="273.0" layoutY="311.0" mnemonicParsing="false" onAction="#buyParrot" prefHeight="27.0" prefWidth="173.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 905 монет" />
       <Button layoutX="647.0" layoutY="311.0" mnemonicParsing="false" onAction="#buyMonkey" prefHeight="27.0" prefWidth="173.0" rotate="1.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 1120 монет" />
       <Button layoutX="984.0" layoutY="305.0" mnemonicParsing="false" onAction="#buyPeacock" prefHeight="27.0" prefWidth="173.0" rotate="8.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 1545 монет" />
       <Button layoutX="431.0" layoutY="660.0" mnemonicParsing="false" onAction="#buyLemur" prefHeight="27.0" prefWidth="173.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 1700 монет" />
