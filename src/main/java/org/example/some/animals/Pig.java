@@ -1,7 +1,6 @@
 package org.example.some.animals;
 
 import javafx.application.Platform;
-import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -11,13 +10,11 @@ import org.example.some.FirstLevel;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 
 
-public class Pig extends AbstractAnimal implements AnimalMeat {
+public class Pig extends AbstractAnimal implements AnimalMeat{
 
     private int productCost;
     private int amountOfMeals;
@@ -44,14 +41,13 @@ public class Pig extends AbstractAnimal implements AnimalMeat {
             enoughFood = true;
         }
 
-
         if(!openedMeatMenu && enoughFood){
             double x = event.getSceneX();
             double y = event.getSceneY();
 
             double menuWidth = 180;
             double menuHeight = 100;
-            if (x + menuWidth > root.getWidth() ) {
+            if (x + menuWidth > root.getWidth()) {
                 x = root.getWidth() - menuWidth;
             }
             if (y + menuHeight > root.getHeight()) {
@@ -60,7 +56,7 @@ public class Pig extends AbstractAnimal implements AnimalMeat {
 
             addMeatMenu(x, y);
         }
-        else if (openedMeatMenu){
+        else {
             removeMeatMenu();
         }
     }
@@ -159,6 +155,4 @@ public class Pig extends AbstractAnimal implements AnimalMeat {
 
         return productCost;
     }
-
-
 }
