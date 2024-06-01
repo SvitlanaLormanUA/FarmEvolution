@@ -25,10 +25,14 @@ public class Donkey extends AbstractAnimal{
         if(hungerLvl<100) {
             hungerLvl += 50;
             cost += 50;
-            if (hungerLvl > 100) {
+            if (hungerLvl >= 100) {
                 hungerLvl = 100;
                 cost = 100;
+                Emotion emotion = new Emotion();
+                emotion.wellFed(animalView.getX() + animalView.getFitWidth(), animalView.getY() - animalView.getFitHeight()/2 - 5); ;
+
             }
+
             AbstractAnimal.feeder.getFood();
         }
     }

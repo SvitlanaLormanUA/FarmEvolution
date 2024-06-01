@@ -67,6 +67,9 @@ public class Goose extends AbstractAnimal{
             if (hungerLvl > 100) {
                 hungerLvl = 100;
                 cost = 120;
+                Emotion emotion = new Emotion();
+                emotion.wellFed(animalView.getX() + animalView.getFitWidth(), animalView.getY() - animalView.getFitHeight()/2 - 5); ;
+
             }
             AbstractAnimal.feeder.getFood();
         }

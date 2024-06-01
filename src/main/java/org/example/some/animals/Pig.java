@@ -72,6 +72,9 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
             if (hungerLvl > 100) {
                 hungerLvl = 100;
                 cost = 70;
+                Emotion emotion = new Emotion();
+                emotion.wellFed(animalView.getX() + animalView.getFitWidth(), animalView.getY() - animalView.getFitHeight()/2 - 5); ;
+
             }
             AbstractAnimal.feeder.getFood();
         }
