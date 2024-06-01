@@ -20,12 +20,14 @@ import java.util.ResourceBundle;
 import static org.example.some.FirstLevel.saveState;
 
 public class ShopSecondLevel extends Shop implements Initializable {
+
     private final int PARROT_PRICE = 905;
     private final int MONKEY_PRICE = 1120;
     private final int PEACOCK_PRICE = 1545;
     private final int LEMuR_PRICE = 1700;
     private final int DRAGONFLY_PRICE = 700;
     //public int amountOfCoins = SecondLevel.wallet.getCoins();
+
 
     private static Stage stage;
     private static Scene scene;
@@ -35,6 +37,17 @@ public class ShopSecondLevel extends Shop implements Initializable {
     public AnchorPane anchorPane;
 
     private static int level;
+    public ImageView imageView;
+
+    public ImageView backButtonView;
+    public Button backButton;
+    public ImageView closeButtonView;
+    public Button closeButton;
+    public ImageView coinsView;
+
+    public Button nextButton;
+    public ImageView nextButtonView;
+
     public void buyParrot(ActionEvent event) {
 
     }
@@ -54,11 +67,11 @@ public class ShopSecondLevel extends Shop implements Initializable {
         if (getCurrentLevel() != null) {
             switch (getCurrentLevel()) {
                 case "firstLevel.fxml":
-                    addImage("file: src/main/resources/images/shop/tropical/tropNotOpened.png ");
+                    addImage("file:src/main/resources/images/shop/tropical/tropNotOpened.png ");
                     level = 1;
                     break;
                 case "thirdLevel.fxml":
-                    addImage("file: src/main/resources/images/shop/tropical/tropicalDone.png ");
+                    addImage("file:src/main/resources/images/shop/tropical/tropicalDone.png ");
                     level = 3;
                     break;
                 default: level =2;
@@ -66,14 +79,36 @@ public class ShopSecondLevel extends Shop implements Initializable {
         }
     }
 
+    public void removeButtons() {
+        anchorPane.getChildren().remove(backButton);
+        anchorPane.getChildren().remove(backButtonView);
+        anchorPane.getChildren().remove(closeButtonView);
+        anchorPane.getChildren().remove(closeButton);
+        anchorPane.getChildren().remove(coinsView);
+        anchorPane.getChildren().remove(nextButton);
+        anchorPane.getChildren().remove(nextButtonView);
+    }
+    public void addButtons(){
+        anchorPane.getChildren().add(imageView);
+
+        anchorPane.getChildren().add(backButtonView);
+        anchorPane.getChildren().add(closeButtonView);
+        anchorPane.getChildren().add(closeButton);
+        anchorPane.getChildren().add(coinsView);
+        anchorPane.getChildren().add(nextButton);
+        anchorPane.getChildren().add(nextButtonView);
+        anchorPane.getChildren().add(backButton);
+    }
+
     private void addImage(String imagePath) {
 
-        ImageView imageView = new ImageView(new Image(imagePath));
-        imageView.setFitWidth(1351);  // задайте ширину
-        imageView.setFitHeight(707);// задайте висоту
+         imageView = new ImageView(new Image(imagePath));
+        imageView.setFitWidth(IMAGE_WIDTH);  // задайте ширину
+        imageView.setFitHeight(IMAGE_HEIGHT);// задайте висоту
         imageView.setX(0);
         imageView.setY(0);
-        anchorPane.getChildren().add(imageView);
+        removeButtons();
+        addButtons();
 
     }
 

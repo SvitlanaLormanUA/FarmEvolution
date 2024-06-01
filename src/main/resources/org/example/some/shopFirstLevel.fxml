@@ -39,18 +39,18 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <ImageView id="coins" fitHeight="43.0" fitWidth="164.0" layoutX="37.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="coins" fx:id="coinsView" fitHeight="43.0" fitWidth="164.0" layoutX="37.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/coins.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="49.0" fitWidth="52.0" layoutX="1329.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="closeButtonView" fitHeight="49.0" fitWidth="52.0" layoutX="1329.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/shop/close.png" />
          </image>
       </ImageView>
-      <Button layoutX="1328.0" layoutY="36.0" mnemonicParsing="false" onAction="#backToGame" prefHeight="50.0" prefWidth="50.0" styleClass="close" stylesheets="@../../../styles/shop.css" />
-      <ImageView fitHeight="80.0" fitWidth="84.0" layoutX="1275.0" layoutY="400.0" preserveRatio="true" rotate="180.0" styleClass="backButton">
+      <Button fx:id="closeButton" layoutX="1328.0" layoutY="36.0" mnemonicParsing="false" onAction="#backToGame" prefHeight="50.0" prefWidth="50.0" styleClass="close" stylesheets="@../../../styles/shop.css" />
+      <ImageView fx:id="backButtonView" fitHeight="80.0" fitWidth="84.0" layoutX="1275.0" layoutY="400.0" preserveRatio="true" rotate="180.0" styleClass="backButton">
          <image>
             <Image url="@../../../images/shop/backButton.png" />
          </image>
@@ -58,6 +58,6 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </ImageView>
-      <Button fx:id="backButton1" layoutX="1282.0" layoutY="408.0" mnemonicParsing="false" onAction="#secondShop" prefHeight="65.0" prefWidth="66.0" styleClass="backButton" stylesheets="@../../../styles/shop.css" />
+      <Button fx:id="backButton" layoutX="1282.0" layoutY="408.0" mnemonicParsing="false" onAction="#secondShop" prefHeight="65.0" prefWidth="66.0" styleClass="backButton" stylesheets="@../../../styles/shop.css" />
    </children>
 </AnchorPane>

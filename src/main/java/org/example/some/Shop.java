@@ -16,6 +16,8 @@ import java.util.Objects;
 import static org.example.some.FirstLevel.saveState;
 
 public class Shop {
+    public final int IMAGE_WIDTH = 1442;
+    public final int IMAGE_HEIGHT = 793;
     private static Stage stage;
     private static Scene scene;
     private static Parent root;

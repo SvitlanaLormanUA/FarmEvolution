@@ -36,29 +36,58 @@ public class ShopFirstLevel extends Shop implements Initializable {
     public Wallet wallet;
     public  AnchorPane  anchorPane;
 
+    private static int level;
+    public ImageView coinsView;
+    public ImageView backButtonView;
+    public   ImageView imageView;
+    public Button backButton;
+    public ImageView closeButtonView;
+    public Button closeButton;
 
 
-     void addImageBasedOnPreviousLevel() {
+    void addImageBasedOnPreviousLevel() {
         if (getCurrentLevel()!= null) {
             switch (getCurrentLevel()) {
-                case "secondLevel.fxml", "thirdLevel.fxml":
+                case "secondLevel.fxml":
                     addImage();
+                    level=2;
                     break;
-                default:
+                case "thirdLevel.fxml":
+                    addImage();
+                    level=3;
+                default: break;
 
             }
         }
     }
 
-    public int addImage() {
-        ImageView imageView = new ImageView(new Image("file: src/main/resources/images/shop/firstLevel/firstDone.png "));
-        imageView.setFitWidth(100);  // задайте ширину
-        imageView.setFitHeight(100);// задайте висоту
+    public void removeButtons() {
+        anchorPane.getChildren().remove(backButtonView);
+        anchorPane.getChildren().remove(backButton);
+        anchorPane.getChildren().remove(backButtonView);
+        anchorPane.getChildren().remove(coinsView);
+        anchorPane.getChildren().remove(closeButton);
+        anchorPane.getChildren().remove(closeButtonView);
+    }
+    public void returnBackButtons() {
+        anchorPane.getChildren().add(imageView);
+        anchorPane.getChildren().add(coinsView);
+        anchorPane.getChildren().add(backButtonView);
+        anchorPane.getChildren().add(backButton);
+        anchorPane.getChildren().add(closeButtonView);
+        anchorPane.getChildren().add(closeButton);
+    }
+    public void addImage() {
+         imageView = new ImageView(new Image("file:src/main/resources/images/shop/firstLevel/firstDone.png "));
+        imageView.setFitWidth(IMAGE_WIDTH);  // задайте ширину
+        imageView.setFitHeight(IMAGE_HEIGHT);// задайте висоту
         imageView.setX(0);
         imageView.setY(0);
-        anchorPane.getChildren().add(imageView);
+          removeButtons();
+          returnBackButtons();
         //if third level true -- return 3
-        return 2;
+        System.out.println("IN THE FIRST");
+
     }
 
 
@@ -66,13 +95,13 @@ public class ShopFirstLevel extends Shop implements Initializable {
     public void secondShop(ActionEvent event) {
         try {
             saveState();
-           if( addImage() == 2) {
+           if( level == 2) {
                ShopFirstLevel.setCurrentLevel("secondLevel.fxml");
-           }
-            if( addImage() == 3) {
+           } else if( level == 3) {
                 ShopFirstLevel.setCurrentLevel("thirdLevel.fxml");
-            }
-            ShopFirstLevel.setCurrentLevel("firstLevel.fxml");
+            } else {
+               ShopFirstLevel.setCurrentLevel("firstLevel.fxml");
+           }
 
 
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("shopSecondLevel.fxml")));
@@ -147,6 +176,7 @@ public class ShopFirstLevel extends Shop implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        addImageBasedOnPreviousLevel();
         addWallet();
     }
 

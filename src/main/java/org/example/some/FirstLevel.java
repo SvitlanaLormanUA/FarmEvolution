@@ -37,6 +37,7 @@ public class FirstLevel extends Level  implements javafx.fxml.Initializable, Ser
 
     public double progress = 1.0;
     public AnchorPane anchorPane;
+
     @FXML
     private Button buttonMenu;
     @FXML
