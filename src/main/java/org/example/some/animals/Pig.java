@@ -56,7 +56,7 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
 
             addMeatMenu(x, y);
         }
-        else {
+        else if(openedMeatMenu){
             removeMeatMenu();
         }
     }
