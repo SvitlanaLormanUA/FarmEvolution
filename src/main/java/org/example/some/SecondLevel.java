@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import org.example.some.otherGameObjects.Wallet;
 
 import java.io.IOException;
 import java.net.URL;
@@ -17,6 +18,7 @@ import java.util.ResourceBundle;
 import static org.example.some.Shop.getCurrentLevel;
 
 public class SecondLevel extends Level implements Initializable {
+    public static Wallet wallet;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -32,12 +34,7 @@ public class SecondLevel extends Level implements Initializable {
     public void backToMainMenu(ActionEvent event) {
         try {
             saveState();
-
-            if (getCurrentLevel().equals("firstLevel.fxml")) {
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("firstLevel.fxml")));
-            } else {
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("chooseSecondLevel.fxml")));
-            }
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("chooseSecondLevel.fxml")));
 
             stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
 
@@ -70,5 +67,34 @@ public class SecondLevel extends Level implements Initializable {
     }
 
 
+    //ВИДАЛИМО
+    @FXML
+    public void previousLevel(ActionEvent event) {
+        try {
+            saveState();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("firstLevel.fxml")));
+            stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
 
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public void nextLevel(ActionEvent event) {
+        try {
+            saveState();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("thirdLevel.fxml")));
+            stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

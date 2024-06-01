@@ -14,7 +14,7 @@ public class Wallet implements Serializable {
     private double x;
     private double y;
     private Pane root;
-    private int coins;
+    private static int coins;
     public Label nCoins;
 
     public Wallet(double x, double y, int setCoins) {
@@ -55,11 +55,12 @@ public class Wallet implements Serializable {
         return root;
     }
 
-    public int getCoins() {
+    public static int getCoins() {
         return coins;
     }
 
     public int setCoins(int coins) {
         return this.coins = coins;
     }
+
 }

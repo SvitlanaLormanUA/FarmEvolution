@@ -14,27 +14,27 @@
             <Image url="@../../../images/shop/firstLevel/firstLevel.png" />
          </image>
       </ImageView>
-      <Button layoutX="299.0" layoutY="317.0" mnemonicParsing="false" onAction="#buyGoose" prefHeight="35.0" prefWidth="173.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 200 монет">
+      <Button fx:id="buyGoose" layoutX="299.0" layoutY="317.0" mnemonicParsing="false" onAction="#buyGoose" prefHeight="35.0" prefWidth="173.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 200 монет">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="662.0" layoutY="312.0" mnemonicParsing="false" onAction="#buyRabbit" prefHeight="35.0" prefWidth="173.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 350 монет">
+      <Button fx:id="buyRabbit" layoutX="662.0" layoutY="312.0" mnemonicParsing="false" onAction="#buyRabbit" prefHeight="35.0" prefWidth="173.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 350 монет">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="1008.0" layoutY="312.0" mnemonicParsing="false" onAction="#buySheep" prefHeight="35.0" prefWidth="173.0" rotate="8.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 648 монет">
+      <Button fx:id="buySheep" layoutX="1008.0" layoutY="312.0" mnemonicParsing="false" onAction="#buySheep" prefHeight="35.0" prefWidth="173.0" rotate="8.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 648 монет">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="442.0" layoutY="671.0" mnemonicParsing="false" onAction="#buyCow" prefHeight="35.0" prefWidth="173.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 1000 монет">
+      <Button fx:id="buyCow" layoutX="442.0" layoutY="671.0" mnemonicParsing="false" onAction="#buyCow" prefHeight="35.0" prefWidth="173.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 1000 монет">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="878.0" layoutY="671.0" mnemonicParsing="false" onAction="#buyPig" prefHeight="35.0" prefWidth="173.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 530 монет">
+      <Button fx:id="buyPig" layoutX="878.0" layoutY="671.0" mnemonicParsing="false" onAction="#buyPig" prefHeight="35.0" prefWidth="173.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 530 монет">
          <font>
             <Font size="14.0" />
          </font>

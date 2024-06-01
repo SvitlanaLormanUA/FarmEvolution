@@ -134,9 +134,7 @@ public class FirstLevel extends Level  implements javafx.fxml.Initializable, Ser
     }
 
 
-    public int getCoins() {
-        return coins;
-    }
+
     public void addSheep() {
         //додана овечка на основну панель
             for (int i = 0; i < countSheep; i++) {
@@ -296,6 +294,9 @@ public class FirstLevel extends Level  implements javafx.fxml.Initializable, Ser
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+    public int getCoins() {
+        return coins;
     }
 
 }

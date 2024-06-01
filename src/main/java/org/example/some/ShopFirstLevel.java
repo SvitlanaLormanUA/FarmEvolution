@@ -27,13 +27,12 @@ public class ShopFirstLevel extends Shop implements Initializable {
     private static final int PIG_PRICE = 530;
     private static final int SHEEP_PRICE = 648;
     private static final int RABBIT_PRICE = 350;
-    public int amountOfCoins = FirstLevel.wallet.getCoins();
+
 
     private static Stage stage;
     private static Scene scene;
     private static Parent root;
 
-    public Wallet wallet;
     public  AnchorPane  anchorPane;
 
     private static int level;
@@ -43,22 +42,42 @@ public class ShopFirstLevel extends Shop implements Initializable {
     public Button backButton;
     public ImageView closeButtonView;
     public Button closeButton;
+    public Button buyPig;
+    public Button buyCow;
+    public Button buySheep;
+    public Button buyRabbit;
+    public Button buyGoose;
 
+
+    public static int amountOfCoins = Wallet.getCoins();
 
     void addImageBasedOnPreviousLevel() {
         if (getCurrentLevel()!= null) {
             switch (getCurrentLevel()) {
                 case "secondLevel.fxml":
+                    //Second
                     addImage();
+                    addWallet();
                     level=2;
                     break;
                 case "thirdLevel.fxml":
+                    //Third
                     addImage();
+                    addWallet();
                     level=3;
-                default: break;
-
+                    break;
+                default:
+                    addWallet();
             }
         }
+    }
+
+    public void removeAnimalButtons() {
+        anchorPane.getChildren().remove(buyCow);
+        anchorPane.getChildren().remove(buyGoose);
+        anchorPane.getChildren().remove(buyPig);
+        anchorPane.getChildren().remove(buyRabbit);
+        anchorPane.getChildren().remove(buySheep);
     }
 
     public void removeButtons() {
@@ -68,6 +87,8 @@ public class ShopFirstLevel extends Shop implements Initializable {
         anchorPane.getChildren().remove(coinsView);
         anchorPane.getChildren().remove(closeButton);
         anchorPane.getChildren().remove(closeButtonView);
+        removeAnimalButtons();
+
     }
     public void returnBackButtons() {
         anchorPane.getChildren().add(imageView);
@@ -123,7 +144,7 @@ public class ShopFirstLevel extends Shop implements Initializable {
     }
 
     private void handleBuy(ActionEvent event, int price, String animalName, Runnable onSuccess) {
-        if (FirstLevel.wallet.getCoins() >= price) {
+        if (Wallet.getCoins() >= price) {
             FirstLevel.wallet.expense(price);
             wallet.expense(price);
             onSuccess.run();
@@ -168,16 +189,12 @@ public class ShopFirstLevel extends Shop implements Initializable {
         });
     }
 
-    public void addWallet() {
-        wallet = new Wallet(95, 50, amountOfCoins);
-        anchorPane.getChildren().add(wallet.getRoot());
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         addImageBasedOnPreviousLevel();
-        addWallet();
+       // addWallet();
     }
 
 

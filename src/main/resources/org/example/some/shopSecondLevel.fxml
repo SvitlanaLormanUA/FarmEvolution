@@ -13,7 +13,7 @@
             <Image url="@../../../images/shop/tropical/tropical.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="coinsView" id="coins" fitHeight="43.0" fitWidth="164.0" layoutX="37.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="coins" fx:id="coinsView" fitHeight="43.0" fitWidth="164.0" layoutX="37.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/coins.png" />
          </image>
@@ -32,8 +32,8 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </ImageView>
-      <Button fx:id="nextButton" layoutX="1282.0" layoutY="408.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="66.0" styleClass="backButton" stylesheets="@../../../styles/shop.css" />
-      <ImageView fx:id="nextButtonView"  fitHeight="80.0" fitWidth="84.0" layoutX="81.0" layoutY="404.0" preserveRatio="true" styleClass="backButton">
+      <Button fx:id="nextButton" layoutX="1282.0" layoutY="408.0" mnemonicParsing="false" onAction="#thirdShop" prefHeight="65.0" prefWidth="66.0" styleClass="backButton" stylesheets="@../../../styles/shop.css" />
+      <ImageView fx:id="nextButtonView" fitHeight="80.0" fitWidth="84.0" layoutX="81.0" layoutY="404.0" preserveRatio="true" styleClass="backButton">
          <image>
             <Image url="@../../../images/shop/backButton.png" />
          </image>

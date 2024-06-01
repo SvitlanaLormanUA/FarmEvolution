@@ -33,7 +33,6 @@ public class ShopSecondLevel extends Shop implements Initializable {
     private static Scene scene;
     private static Parent root;
 
-    public Wallet wallet;
     public AnchorPane anchorPane;
 
     private static int level;
@@ -47,6 +46,7 @@ public class ShopSecondLevel extends Shop implements Initializable {
 
     public Button nextButton;
     public ImageView nextButtonView;
+
 
     public void buyParrot(ActionEvent event) {
 
@@ -67,14 +67,20 @@ public class ShopSecondLevel extends Shop implements Initializable {
         if (getCurrentLevel() != null) {
             switch (getCurrentLevel()) {
                 case "firstLevel.fxml":
+
                     addImage("file:src/main/resources/images/shop/tropical/tropNotOpened.png ");
+                    addWallet();
                     level = 1;
                     break;
                 case "thirdLevel.fxml":
                     addImage("file:src/main/resources/images/shop/tropical/tropicalDone.png ");
+                    addWallet();
                     level = 3;
+
                     break;
-                default: level =2;
+                default:
+                    addWallet();
+                    level =2;
             }
         }
     }
@@ -100,6 +106,7 @@ public class ShopSecondLevel extends Shop implements Initializable {
         anchorPane.getChildren().add(backButton);
     }
 
+
     private void addImage(String imagePath) {
 
          imageView = new ImageView(new Image(imagePath));
@@ -109,6 +116,7 @@ public class ShopSecondLevel extends Shop implements Initializable {
         imageView.setY(0);
         removeButtons();
         addButtons();
+        addWallet();
 
     }
 
@@ -133,6 +141,26 @@ public class ShopSecondLevel extends Shop implements Initializable {
         }
     }
 
+
+    public void thirdShop(ActionEvent event) {
+        try {
+            saveState();
+            if (level == 1)
+                ShopThirdLevel.setCurrentLevel("firstLevel.fxml");
+            else if (level ==2)
+                ShopThirdLevel.setCurrentLevel("secondLevel.fxml");
+            else if (level==3)
+                ShopThirdLevel.setCurrentLevel("thirdLevel.fxml");
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("shopThirdLevel.fxml")));
+            stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
