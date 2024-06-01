@@ -19,6 +19,7 @@ import java.util.ResourceBundle;
 import static org.example.some.FirstLevel.saveState;
 import static org.example.some.ShopFirstLevel.amountOfCoins;
 
+
 public class Shop implements Initializable {
     public final int IMAGE_WIDTH = 1442;
     public final int IMAGE_HEIGHT = 793;
@@ -55,7 +56,7 @@ public class Shop implements Initializable {
     }
 
     public void addWallet() {
-        wallet = new Wallet(95, 50, amountOfCoins);
+        wallet = new Wallet(95, 50, FirstLevel.wallet.getCoins());
         anchorPane.getChildren().add(wallet.getRoot());
     }
 

@@ -14,23 +14,17 @@ public class Wallet implements Serializable {
     private double x;
     private double y;
     private Pane root;
-    private static int coins;
+    private int coins;  // Removed static keyword
     public Label nCoins;
 
     public Wallet(double x, double y, int setCoins) {
-        /*Image image = new Image("file:src/main/resources/images/coins.png");
-        this.walletView = new ImageView(image);*/
-
-
         this.x = x;
         this.y = y;
-
-        this.coins = setCoins(setCoins);
-
+        this.coins = setCoins;
 
         nCoins = new Label(String.valueOf(coins));
-        nCoins.setLayoutX(x);//263
-        nCoins.setLayoutY(y);//32
+        nCoins.setLayoutX(x); // 263
+        nCoins.setLayoutY(y); // 32
         nCoins.setFont(new Font("Arial", 22));
 
         root = new Pane();
@@ -38,12 +32,16 @@ public class Wallet implements Serializable {
     }
 
     public void income(int n) {
-        this.coins += n;
-        this.nCoins.setText(String.valueOf(coins));
+        coins += n;
+        updateCoinsLabel();
     }
 
     public void expense(int n) {
-        this.coins -= n;
+        coins -= n;
+        updateCoinsLabel();
+    }
+
+    private void updateCoinsLabel() {
         this.nCoins.setText(String.valueOf(coins));
     }
 
@@ -55,12 +53,12 @@ public class Wallet implements Serializable {
         return root;
     }
 
-    public static int getCoins() {
+    public int getCoins() {
         return coins;
     }
 
-    public int setCoins(int coins) {
-        return this.coins = coins;
+    public void setCoins(int coins) {
+        this.coins = coins;
+        updateCoinsLabel();
     }
-
 }

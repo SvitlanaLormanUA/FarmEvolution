@@ -49,7 +49,7 @@ public class ShopFirstLevel extends Shop implements Initializable {
     public Button buyGoose;
 
 
-    public static int amountOfCoins = Wallet.getCoins();
+    public static int amountOfCoins;
 
     void addImageBasedOnPreviousLevel() {
         if (getCurrentLevel()!= null) {
@@ -144,7 +144,7 @@ public class ShopFirstLevel extends Shop implements Initializable {
     }
 
     private void handleBuy(ActionEvent event, int price, String animalName, Runnable onSuccess) {
-        if (Wallet.getCoins() >= price) {
+        if (wallet.getCoins() >= price) {
             FirstLevel.wallet.expense(price);
             wallet.expense(price);
             onSuccess.run();
@@ -192,9 +192,10 @@ public class ShopFirstLevel extends Shop implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        amountOfCoins = FirstLevel.wallet.getCoins();
 
         addImageBasedOnPreviousLevel();
-       // addWallet();
+      // addWallet();
     }
 
 

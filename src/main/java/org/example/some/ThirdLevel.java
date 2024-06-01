@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.example.some.otherGameObjects.Wallet;
 
@@ -19,6 +20,7 @@ import static org.example.some.Shop.getCurrentLevel;
 
 public class ThirdLevel extends Level   implements javafx.fxml.Initializable{
     public static Wallet wallet;
+    public AnchorPane anchorPane;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -27,7 +29,8 @@ public class ThirdLevel extends Level   implements javafx.fxml.Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        wallet = FirstLevel.wallet;
+        anchorPane.getChildren().add(wallet.getRoot());
     }
 
     @FXML

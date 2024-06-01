@@ -35,6 +35,7 @@ public class FirstLevel extends Level  implements javafx.fxml.Initializable, Ser
     public static double walletY = 32;
 
 
+
     public double progress = 1.0;
     public AnchorPane anchorPane;
 
