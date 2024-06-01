@@ -135,7 +135,7 @@ abstract class AbstractAnimal implements Animal {
 
         animalView.setX(newX);
         animalView.setY(newY);
-        playSound();
+
     }
 
     @Override
@@ -200,6 +200,7 @@ abstract class AbstractAnimal implements Animal {
         root.getChildren().add(animalMenu.getRoot());
         openedMenu = true;
         translateTransition.pause();
+        playSound();
     }
 
     @Override
