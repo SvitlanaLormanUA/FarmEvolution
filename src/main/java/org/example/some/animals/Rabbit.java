@@ -25,8 +25,6 @@ public class Rabbit extends AbstractAnimal{
                 "file:src/main/resources/images/firstLevel/animals/rabbit.png",
                 "src/main/resources/sound/jumpRabbit.mp3",
                 "file:src/main/resources/images/rabbitMeat.png");
-        animalView.setFitWidth(80);
-        animalView.setFitHeight(100);
     }
 
 

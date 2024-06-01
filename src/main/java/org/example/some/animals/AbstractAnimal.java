@@ -3,8 +3,6 @@ package org.example.some.animals;
 import javafx.animation.Animation;
 import javafx.animation.PathTransition;
 import javafx.animation.TranslateTransition;
-import javafx.scene.Cursor;
-import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -48,7 +46,6 @@ abstract class AbstractAnimal implements Animal {
     Media media;
     MediaPlayer mediaPlayer;
     Image product;
-    Alert dyingAnimal;
 
     AnimalMenu animalMenu;
 
@@ -72,7 +69,6 @@ abstract class AbstractAnimal implements Animal {
         this.mediaView = new MediaView();
         animalView.setFitWidth(100);
         animalView.setFitHeight(100);
-        animalView.setCursor(Cursor.CLOSED_HAND);
 
 
         int x = random.nextInt(worldStartX, worldEndX);
@@ -139,7 +135,7 @@ abstract class AbstractAnimal implements Animal {
 
         animalView.setX(newX);
         animalView.setY(newY);
-
+        playSound();
     }
 
     @Override
@@ -204,7 +200,6 @@ abstract class AbstractAnimal implements Animal {
         root.getChildren().add(animalMenu.getRoot());
         openedMenu = true;
         translateTransition.pause();
-        playSound();
     }
 
     @Override
@@ -227,16 +222,6 @@ abstract class AbstractAnimal implements Animal {
             public void run() {
                 if (hungerLvl > 0) {
                     hungerLvl--;
-                    if (hungerLvl < 20) {
-                        hungerLvl-=4;
-
-                        dyingAnimal = new Alert(Alert.AlertType.WARNING);
-                        dyingAnimal.setTitle("Warning");
-                        dyingAnimal.setHeaderText("Warning");
-                        dyingAnimal.setContentText("Рівень голоду тварини:" + thirstLvl);
-                        dyingAnimal.show();
-
-                    }
                     double k = hungerLvl;
                     cost = (int) (100 * (k / 100));
                 } else {
@@ -257,19 +242,6 @@ abstract class AbstractAnimal implements Animal {
             public void run() {
                 if (thirstLvl > 0) {
                     thirstLvl--;
-                    if (thirstLvl < 20) {
-                        thirstLvl-=4;
-
-                        dyingAnimal = new Alert(Alert.AlertType.WARNING);
-                        dyingAnimal.setTitle("Warning");
-                        dyingAnimal.setHeaderText("Warning");
-                        dyingAnimal.setContentText("Рівень спраги тварини:" + thirstLvl);
-                        dyingAnimal.show();
-
-
-                    }
-
-
                 } else {
                     timer.cancel();
                 }
@@ -291,10 +263,7 @@ abstract class AbstractAnimal implements Animal {
             }
             well.getWater();
         }
-
-
-        }
-
+    }
 
     @Override
     public void emotions() {
@@ -309,6 +278,7 @@ abstract class AbstractAnimal implements Animal {
         String animalType = this.getClass().getSimpleName();
         FirstLevel.decreaseAnimalCount(animalType);
         mediaPlayer.stop();
+        System.out.println(FirstLevel.countCow);
     }
 
     @Override

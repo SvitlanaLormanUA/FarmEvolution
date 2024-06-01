@@ -40,8 +40,8 @@ public class Sheep extends AbstractAnimal {
                             productView.setY(animalView.getY() + 30);
 
                             productView.setOnMouseClicked(event -> {
-                                FirstLevel.wallet.income(8);
                                 AbstractAnimal.root.getChildren().remove(productView);
+                                FirstLevel.wallet.income(8);
                             });
 
                             Platform.runLater(() -> AbstractAnimal.root.getChildren().add(1, productView));
