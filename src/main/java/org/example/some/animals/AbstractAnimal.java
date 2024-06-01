@@ -178,7 +178,7 @@ abstract class AbstractAnimal implements Animal {
 
             // Перевірка, щоб меню не виходило за межі вікна
             double menuWidth = 200;
-            double menuHeight = 200;
+            double menuHeight = 150;
             if (x + menuWidth > root.getWidth()) {
                 x = root.getWidth() - menuWidth;
             }

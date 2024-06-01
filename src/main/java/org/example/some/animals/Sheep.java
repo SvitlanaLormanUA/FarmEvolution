@@ -1,6 +1,7 @@
 package org.example.some.animals;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
+import javafx.scene.Cursor;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
@@ -38,6 +39,7 @@ public class Sheep extends AbstractAnimal {
                             productView.setFitHeight(40);
                             productView.setX(animalView.getX() + 30);
                             productView.setY(animalView.getY() + 30);
+                            productView.setCursor(Cursor.HAND);
 
                             productView.setOnMouseClicked(event -> {
                                 AbstractAnimal.root.getChildren().remove(productView);
