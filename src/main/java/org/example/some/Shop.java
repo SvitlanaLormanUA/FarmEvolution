@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -23,6 +24,8 @@ import static org.example.some.ShopFirstLevel.amountOfCoins;
 public class Shop implements Initializable {
     public final int IMAGE_WIDTH = 1442;
     public final int IMAGE_HEIGHT = 793;
+
+
     private static Stage stage;
     private static Scene scene;
     private static Parent root;
@@ -31,6 +34,8 @@ public class Shop implements Initializable {
     public AnchorPane anchorPane;
 
     private static String currentLevel;
+
+
 
     @FXML
     public void backToGame(ActionEvent event) {

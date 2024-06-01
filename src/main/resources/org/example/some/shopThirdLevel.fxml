@@ -19,17 +19,23 @@
             <Cursor fx:constant="DEFAULT" />
         </cursor>
     </ImageView>
-    <ImageView fx:id="closeButtonView" fitHeight="49.0" fitWidth="52.0" layoutX="1295.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fx:id="closeButtonView" fitHeight="49.0" fitWidth="52.0" layoutX="1325.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
         <image>
             <Image url="@../../../images/shop/close.png" />
         </image>
     </ImageView>
-    <Button fx:id="closeButton" layoutX="1294.0" layoutY="38.0" mnemonicParsing="false" onAction="#backToGame" prefHeight="50.0" prefWidth="50.0" styleClass="close" stylesheets="@../../../styles/shop.css" />
+    <Button fx:id="closeButton" layoutX="1324.0" layoutY="40.0" mnemonicParsing="false" onAction="#backToGame" prefHeight="50.0" prefWidth="50.0" styleClass="close" stylesheets="@../../../styles/shop.css">
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor></Button>
 
     <ImageView id="coins" fx:id="coinsView" fitHeight="43.0" fitWidth="164.0" layoutX="37.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
         <image>
             <Image url="@../../../images/coins.png" />
         </image>
     </ImageView>
-    <Button fx:id="backButton" layoutX="79.0" layoutY="407.0" mnemonicParsing="false" onAction="#secondShop" prefHeight="65.0" prefWidth="66.0" rotate="180.0" styleClass="backButton" stylesheets="@../../../styles/shop.css" />
+    <Button fx:id="backButton" layoutX="79.0" layoutY="407.0" mnemonicParsing="false" onAction="#secondShop" prefHeight="65.0" prefWidth="66.0" rotate="180.0" styleClass="backButton" stylesheets="@../../../styles/shop.css">
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor></Button>
 </AnchorPane>

@@ -1,5 +1,6 @@
 package org.example.some.animals;
 
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -87,6 +88,7 @@ public class AnimalMenu {
             animal.feed();
             hungerLabel.setText("Рівень ситості: " + this.animal.getHungerLvl());
         });
+
     }
 
     private void drink(){
@@ -100,7 +102,16 @@ public class AnimalMenu {
     private void sell(){
         sell.setStyle("-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold; -fx-border-radius: 5px; -fx-background-radius: 5px; ");
         sell.setOnAction(event -> {
-            animal.sell();
+            Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+            confirm.setHeaderText("Підтвердження продажу");
+            confirm.setContentText("Ви впевнені, що хочете продати цю тварину?");
+            confirm.showAndWait();
+            confirm.getGraphic().setStyle("-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold; -fx-border-radius: 5px; -fx-background-radius: 5px; ");
+            if (confirm.getResult().getText().equals("OK")) {
+                animal.sell();
+            } else {
+                confirm.close();
+            }
         });
     }
 

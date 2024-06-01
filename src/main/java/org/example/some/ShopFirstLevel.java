@@ -144,14 +144,21 @@ public class ShopFirstLevel extends Shop implements Initializable {
     }
 
     private void handleBuy(ActionEvent event, int price, String animalName, Runnable onSuccess) {
-        if (wallet.getCoins() >= price) {
-            FirstLevel.wallet.expense(price);
-            wallet.expense(price);
-            onSuccess.run();
-            showAlert(Alert.AlertType.INFORMATION, "Ви купили " + animalName);
-        } else {
-            showAlert(Alert.AlertType.ERROR, "У Вас недостатньо монет для покупки " + animalName);
-        }
+        Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION, "Ви впевнені, що хочете купити " + animalName + "?");
+        confirmationAlert.setHeaderText("Підтвердження покупки");
+
+        confirmationAlert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                if (wallet.getCoins() >= price) {
+                    FirstLevel.wallet.expense(price);
+                    wallet.expense(price);
+                    onSuccess.run();
+                    showAlert(Alert.AlertType.INFORMATION, "Ви купили " + animalName);
+                } else {
+                    showAlert(Alert.AlertType.ERROR, "У Вас недостатньо монет для покупки " + animalName);
+                }
+            }
+        });
     }
 
     @FXML

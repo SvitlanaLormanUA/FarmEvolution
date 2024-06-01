@@ -18,26 +18,41 @@
          <font>
             <Font size="14.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Button fx:id="buyRabbit" layoutX="662.0" layoutY="312.0" mnemonicParsing="false" onAction="#buyRabbit" prefHeight="35.0" prefWidth="173.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 350 монет">
          <font>
             <Font size="14.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Button fx:id="buySheep" layoutX="1008.0" layoutY="312.0" mnemonicParsing="false" onAction="#buySheep" prefHeight="35.0" prefWidth="173.0" rotate="8.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 648 монет">
          <font>
             <Font size="14.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Button fx:id="buyCow" layoutX="442.0" layoutY="671.0" mnemonicParsing="false" onAction="#buyCow" prefHeight="35.0" prefWidth="173.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 1000 монет">
          <font>
             <Font size="14.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Button fx:id="buyPig" layoutX="878.0" layoutY="671.0" mnemonicParsing="false" onAction="#buyPig" prefHeight="35.0" prefWidth="173.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 530 монет">
          <font>
             <Font size="14.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <ImageView id="coins" fx:id="coinsView" fitHeight="43.0" fitWidth="164.0" layoutX="37.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -49,7 +64,10 @@
             <Image url="@../../../images/shop/close.png" />
          </image>
       </ImageView>
-      <Button fx:id="closeButton" layoutX="1328.0" layoutY="36.0" mnemonicParsing="false" onAction="#backToGame" prefHeight="50.0" prefWidth="50.0" styleClass="close" stylesheets="@../../../styles/shop.css" />
+      <Button fx:id="closeButton" layoutX="1328.0" layoutY="36.0" mnemonicParsing="false" onAction="#backToGame" prefHeight="50.0" prefWidth="50.0" styleClass="close" stylesheets="@../../../styles/shop.css">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <ImageView fx:id="backButtonView" fitHeight="80.0" fitWidth="84.0" layoutX="1275.0" layoutY="400.0" preserveRatio="true" rotate="180.0" styleClass="backButton">
          <image>
             <Image url="@../../../images/shop/backButton.png" />
@@ -58,6 +76,9 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </ImageView>
-      <Button fx:id="backButton" layoutX="1282.0" layoutY="408.0" mnemonicParsing="false" onAction="#secondShop" prefHeight="65.0" prefWidth="66.0" styleClass="backButton" stylesheets="@../../../styles/shop.css" />
+      <Button fx:id="backButton" layoutX="1282.0" layoutY="408.0" mnemonicParsing="false" onAction="#secondShop" prefHeight="65.0" prefWidth="66.0" styleClass="backButton" stylesheets="@../../../styles/shop.css">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
    </children>
 </AnchorPane>
