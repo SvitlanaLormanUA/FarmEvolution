@@ -156,6 +156,7 @@ abstract class AbstractAnimal implements Animal {
         translateTransition.setByY(deltaY);
     }
 
+
     @Override
     public void handleMouseDragged(MouseEvent event) {
         translateTransition.pause();
