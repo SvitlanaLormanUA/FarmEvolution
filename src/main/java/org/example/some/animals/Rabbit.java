@@ -236,15 +236,15 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
             List<ImageView> productViews = new ArrayList<>();
 
             if (amountOfMeals >= 3) {
-                ImageView productView1 = createProductView(animalView.getX() + 50, animalView.getY() + 30);
+                ImageView productView1 = createProductView(animalView.getLayoutX() + 50, animalView.getLayoutY() + 30);
                 productViews.add(productView1);
             }
             if (amountOfMeals >= 6) {
-                ImageView productView2 = createProductView(animalView.getX() - 50, animalView.getY() - 30);
+                ImageView productView2 = createProductView(animalView.getLayoutX() - 50, animalView.getLayoutY() - 30);
                 productViews.add(productView2);
             }
             if (amountOfMeals >= 9) {
-                ImageView productView3 = createProductView(animalView.getX(), animalView.getY() + 20);
+                ImageView productView3 = createProductView(animalView.getLayoutX(), animalView.getLayoutY() + 20);
                 productViews.add(productView3);
             }
 
@@ -265,8 +265,8 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
         ImageView productView = new ImageView(product);
         productView.setFitWidth(30);
         productView.setFitHeight(30);
-        productView.setX(x);
-        productView.setY(y);
+        productView.setLayoutX(x);
+        productView.setLayoutY(y);
         productView.setCursor(Cursor.HAND);
 
         productView.setOnMouseClicked(event -> {
