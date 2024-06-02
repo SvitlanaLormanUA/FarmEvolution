@@ -97,38 +97,6 @@ public class Donkey extends AbstractAnimal{
     }
 
     @Override
-    public void handleMouseReleased(MouseEvent event) {
-        double x = animalView.getX();
-        double y = animalView.getY();
-        boolean outOfBounds = false;
-
-        if (x < worldStartX) {
-            x = worldStartX;
-            outOfBounds = true;
-        } else if (x > worldEndX - animalView.getFitWidth()) {
-            x = worldEndX - animalView.getFitWidth();
-            outOfBounds = true;
-        }
-
-        if (y < worldStartY) {
-            y = worldStartY;
-            outOfBounds = true;
-        } else if (y > worldEndY - animalView.getFitHeight()) {
-            y = worldEndY - animalView.getFitHeight();
-            outOfBounds = true;
-        }
-
-        if (outOfBounds) {
-            TranslateTransition transitionBack = new TranslateTransition(Duration.millis(500), animalView);
-            transitionBack.setToX(x);
-            transitionBack.setToY(y);
-            transitionBack.play();
-        }
-        translateTransition.play();
-        playSound();
-    }
-
-    @Override
     public void handleMouseClicked(MouseEvent event) {
         if (!openedMenu) {
             double x = event.getSceneX();

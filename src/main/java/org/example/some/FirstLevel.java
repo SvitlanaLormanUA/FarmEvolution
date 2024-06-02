@@ -174,7 +174,7 @@ public class FirstLevel extends Level  implements javafx.fxml.Initializable, Ser
     public void addDonkey() {
 
 
-            Donkey donkey = new Donkey(650, 200, 1000, 430, anchorPane, wallet, well, feeder);
+            Donkey donkey = new Donkey(650, 200, 1100, 430, anchorPane, wallet, well, feeder);
             anchorPane.getChildren().add(donkey.getAnimalView());
 
     }

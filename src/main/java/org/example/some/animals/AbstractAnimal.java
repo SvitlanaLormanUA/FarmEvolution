@@ -84,6 +84,7 @@ abstract class AbstractAnimal implements Animal {
         thirst();
         hunger();
         giveProduct();
+
     }
 
     @Override
@@ -225,9 +226,6 @@ abstract class AbstractAnimal implements Animal {
             public void run() {
                 if (hungerLvl > 0) {
                     hungerLvl--;
-                    if (hungerLvl == 0) {
-                        death();
-                    }
 
                     double k = hungerLvl;
 
@@ -250,6 +248,9 @@ abstract class AbstractAnimal implements Animal {
             public void run() {
                 if (thirstLvl > 0) {
                     thirstLvl--;
+                    if (thirstLvl == 0) {
+                        death();
+                    }
                 } else {
                     timer.cancel();
                 }
@@ -335,6 +336,7 @@ abstract class AbstractAnimal implements Animal {
     public ImageView getAnimalView() {
         return animalView;
     }
+
 
 }
 

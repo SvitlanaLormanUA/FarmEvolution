@@ -42,6 +42,9 @@ public class Wallet implements Serializable {
     }
 
     private void updateCoinsLabel() {
+        if (coins < 0) {
+            coins = 0;
+        }
         this.nCoins.setText(String.valueOf(coins));
     }
 
