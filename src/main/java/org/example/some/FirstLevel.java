@@ -134,6 +134,12 @@ public class FirstLevel extends Level  implements javafx.fxml.Initializable, Ser
         }
     }
 
+    @FXML
+    public void showTasks(ActionEvent event) {
+            Tasks tasksWindow = new Tasks(anchorPane);
+            tasksWindow.createMenu();
+            anchorPane.getChildren().add(tasksWindow.getRoot());
+    }
 
 
     public void addSheep() {
