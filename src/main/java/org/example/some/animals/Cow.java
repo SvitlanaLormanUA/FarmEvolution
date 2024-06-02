@@ -1,6 +1,7 @@
 package org.example.some.animals;
 
 import javafx.animation.TranslateTransition;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -16,7 +17,8 @@ public class Cow extends AbstractAnimal{
 
     public Cow(int worldStartX, int worldStartY, int worldEndX, int worldEndY, AnchorPane anchorPane, Wallet wallet, Well well, Feeder feeder) {
         super( worldStartX, worldStartY, worldEndX, worldEndY, anchorPane,  well, feeder,
-                "file:src/main/resources/images/firstLevel/animals/cow.png",
+                "file:src/main/resources/images/firstLevel/animals/cowRight.png",
+                "file:src/main/resources/images/firstLevel/animals/cowLeft.png",
                 "src/main/resources/sound/cow.mp3",
                 "file:src/main/resources/images/firstLevel/products/milk.png");
     }
@@ -39,36 +41,20 @@ public class Cow extends AbstractAnimal{
 
     }
 
-
-    @Override
-    public void movement() {
-        translateTransition = new TranslateTransition();
-        translateTransition.setDuration(Duration.millis(2000)); // Keep the same duration
-        translateTransition.setNode(animalView);
-        setRandomDirection();
-        translateTransition.play();
-        translateTransition.setOnFinished(event -> {
-            setRandomDirection();
-            translateTransition.play();
-        });
-
-        animalView.setOnMouseClicked(this::handleMouseClicked);
-        animalView.setOnMouseDragged(this::handleMouseDragged);
-        animalView.setOnMouseReleased(this::handleMouseReleased);
-    }
-
     @Override
     public void setRandomDirection() {
-        double x = animalView.getX();
-        double y = animalView.getY();
+        double x = animalView.getLayoutX();
+        double y = animalView.getLayoutY();
 
-        double deltaX = 2; // Small step forward
-        double deltaY = random.nextInt(10) - 5; // Slight variation in y-direction
+        deltaX = 2; // Small step forward
+        deltaY = random.nextInt(10) - 5; // Slight variation in y-direction
 
         // Check if the cow has reached the end of the movement range
         if (movingForward && (x + deltaX > worldEndX - animalView.getFitWidth())) {
+            animalView.setImage(new Image(imagePathLeft));
             movingForward = false; // Switch to moving backward
         } else if (!movingForward && (x - deltaX < worldStartX)) {
+            animalView.setImage(new Image(imagePath));
             movingForward = true; // Switch to moving forward
         }
 
@@ -84,31 +70,8 @@ public class Cow extends AbstractAnimal{
             deltaY = -deltaY;
         }
 
-        translateTransition.setToX(deltaX);
-        translateTransition.setToY(deltaY);
-    }
-
-    @Override
-    public void handleMouseClicked(MouseEvent event) {
-        if (!openedMenu) {
-            double x = event.getSceneX();
-            double y = event.getSceneY();
-
-            // Ensure the menu does not go out of the window
-            double menuWidth = 200;
-            double menuHeight = 200;
-            if (x + menuWidth > root.getWidth()) {
-                x = root.getWidth() - menuWidth;
-            }
-            if (y + menuHeight > root.getHeight()) {
-                y = root.getHeight() - menuHeight;
-            }
-            addMenu(x, y);
-
-        } else {
-            removeMenu();
-        }
-        playSound();
+        translateTransition.setByX(deltaX);
+        translateTransition.setByY(deltaY);
     }
 
 }

@@ -3,6 +3,8 @@ package org.example.some.animals;
 import javafx.animation.Animation;
 import javafx.animation.PathTransition;
 import javafx.animation.TranslateTransition;
+import javafx.geometry.Bounds;
+import javafx.scene.Cursor;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -10,6 +12,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 import org.example.some.FirstLevel;
 import org.example.some.otherGameObjects.Wallet;
@@ -30,13 +33,19 @@ abstract class AbstractAnimal implements Animal {
     protected static Feeder feeder;
     protected TranslateTransition translateTransition;
     protected PathTransition pathTransition;
+    protected boolean directionRight;
+    protected String imagePath;
+    protected String imagePathLeft;
+    protected double deltaX;
+    protected double deltaY;
+
+    protected Bounds bounds;
 
     int worldStartX;
     int worldStartY;
     int worldEndX;
     int worldEndY;
     protected Random random = new Random();
-
     protected boolean openedMenu;
     private Well well;
     private MediaView mediaView;
@@ -49,10 +58,12 @@ abstract class AbstractAnimal implements Animal {
 
     AnimalMenu animalMenu;
 
-    public AbstractAnimal(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Well well, Feeder feeder, String imagePath, String soundFile, String recourseFile) {
+    public AbstractAnimal(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Well well, Feeder feeder, String imagePath, String imagePathLeft, String soundFile, String recourseFile) {
         file = new File(soundFile);
         product = new Image(recourseFile);
-        this.animalView = new ImageView(new Image(imagePath));
+        this.imagePath = imagePath;
+        this.imagePathLeft = imagePathLeft;
+        this.animalView = new ImageView(new Image(this.imagePath));
         this.worldStartX = worldStartX;
         this.worldStartY = worldStartY;
         this.worldEndX = worldEndX;
@@ -63,18 +74,22 @@ abstract class AbstractAnimal implements Animal {
         this.hungerLvl = 100;
         this.cost = 100;
         this.well = well;
+        this.deltaX = 0;
+        this.deltaY = 0;
 
 
         this.feeder = feeder;
         this.mediaView = new MediaView();
         animalView.setFitWidth(100);
         animalView.setFitHeight(100);
+        animalView.setCursor(Cursor.HAND);
 
 
-        int x = random.nextInt(worldStartX, worldEndX);
-        int y = random.nextInt(worldStartY, worldEndY - 100);
-        animalView.setX(x);
-        animalView.setY(y);
+        int x = random.nextInt(worldStartX+50, worldEndX-50);
+        int y = random.nextInt(worldStartY+50, worldEndY - 100);
+        animalView.setLayoutX(x);
+        animalView.setLayoutY(y);
+
 
 
         movement();
@@ -88,12 +103,20 @@ abstract class AbstractAnimal implements Animal {
         translateTransition = new TranslateTransition();
         translateTransition.setDuration(Duration.millis(2000));
         translateTransition.setNode(animalView);
-        setRandomDirection();
-        translateTransition.play();
+        directionRight = true;
         translateTransition.setOnFinished(event -> {
+            animalView.setLayoutX(animalView.getLayoutX()+deltaX);
+            animalView.setLayoutY(animalView.getLayoutY()+deltaY);
+
+            // Скидання translateX і translateY
+            animalView.setTranslateX(0);
+            animalView.setTranslateY(0);
+
             setRandomDirection();
             translateTransition.play();
         });
+        setRandomDirection();
+        translateTransition.play();
 
         animalView.setOnMouseClicked(this::handleMouseClicked);
         animalView.setOnMouseDragged(this::handleMouseDragged);
@@ -102,24 +125,35 @@ abstract class AbstractAnimal implements Animal {
 
     @Override
     public void setRandomDirection() {
-        double x = animalView.getX();
-        double y = animalView.getY();
+        double x = animalView.getLayoutX();
+        double y = animalView.getLayoutY();
 
-        double deltaX = random.nextInt(120) - 75;
-        double deltaY = random.nextInt(100) - 75;
+
+        if (directionRight) {
+            deltaX = random.nextInt(10, 50);
+        } else {
+            deltaX = random.nextInt(-50, -10);
+        }
+        deltaY = random.nextInt(120) - 75;
 
         double newX = x + deltaX;
         double newY = y + deltaY;
 
-        if (newX < worldStartX || newX > worldEndX - animalView.getFitWidth()) {
+        if (newX < worldStartX) {
             deltaX = -deltaX;
+            animalView.setImage(new Image(imagePath));
+            directionRight = !directionRight;
+        } else if (newX > worldEndX) {
+            deltaX = -deltaX;
+            animalView.setImage(new Image(imagePathLeft));
+            directionRight = !directionRight;
         }
         if (newY < worldStartY || newY > worldEndY - animalView.getFitHeight()) {
             deltaY = -deltaY;
         }
 
-        translateTransition.setToX(deltaX);
-        translateTransition.setToY(deltaY);
+        translateTransition.setByX(deltaX);
+        translateTransition.setByY(deltaY);
     }
 
     @Override
@@ -133,15 +167,15 @@ abstract class AbstractAnimal implements Animal {
         if (newY < worldStartY) newY = worldStartY;
         if (newY > worldEndY - animalView.getFitHeight()) newY = worldEndY - animalView.getFitHeight();
 
-        animalView.setX(newX);
-        animalView.setY(newY);
+        animalView.setLayoutX(newX);
+        animalView.setLayoutY(newY);
         playSound();
     }
 
     @Override
     public void handleMouseReleased(MouseEvent event) {
-        double x = animalView.getX();
-        double y = animalView.getY();
+        double x = animalView.getLayoutX();
+        double y = animalView.getLayoutY();
         boolean outOfBounds = false;
 
         if (x < worldStartX) {

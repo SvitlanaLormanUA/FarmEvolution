@@ -1,6 +1,7 @@
 package org.example.some.animals;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
+import javafx.scene.Cursor;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
@@ -16,7 +17,8 @@ public class Sheep extends AbstractAnimal {
 
     public Sheep(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Wallet wallet, Well well, Feeder feeder) {
         super(worldStartX, worldStartY, worldEndX, worldEndY, root, well, feeder,
-                "file:src/main/resources/images/firstLevel/animals/sheep.png",
+                "file:src/main/resources/images/firstLevel/animals/sheepRight.png",
+                "file:src/main/resources/images/firstLevel/animals/sheepLeft.png",
                 "src/main/resources/sound/sheepmp3.mp3",
                 "file:src/main/resources/images/firstLevel/products/wool.png");
     }
@@ -36,12 +38,13 @@ public class Sheep extends AbstractAnimal {
                             ImageView productView = new ImageView(product);
                             productView.setFitWidth(40);
                             productView.setFitHeight(40);
-                            productView.setX(animalView.getX() + 30);
-                            productView.setY(animalView.getY() + 30);
+                            productView.setX(animalView.getLayoutX() + 30);
+                            productView.setY(animalView.getLayoutY() + 30);
+                            productView.setCursor(Cursor.HAND);
 
                             productView.setOnMouseClicked(event -> {
-                                FirstLevel.wallet.income(8);
                                 AbstractAnimal.root.getChildren().remove(productView);
+                                FirstLevel.wallet.income(8);
                             });
 
                             Platform.runLater(() -> AbstractAnimal.root.getChildren().add(1, productView));

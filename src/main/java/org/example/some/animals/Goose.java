@@ -17,7 +17,8 @@ public class Goose extends AbstractAnimal{
 
     public Goose(int worldStartX, int worldStartY, int worldEndX, int worldEndY, AnchorPane anchorPane, Wallet wallet, Well well, Feeder feeder) {
         super( worldStartX, worldStartY, worldEndX, worldEndY, anchorPane,  well, feeder,
-                "file:src/main/resources/images/firstLevel/animals/Goose.png",
+                "file:src/main/resources/images/firstLevel/animals/GooseRight.png",
+                "file:src/main/resources/images/firstLevel/animals/GooseLeft.png",
                 "src/main/resources/sound/geese.mp3",
                 "file:src/main/resources/images/firstLevel/products/egg.png") ;
     }
@@ -36,8 +37,8 @@ public class Goose extends AbstractAnimal{
                             ImageView productView = new ImageView(product);
                             productView.setFitWidth(40);
                             productView.setFitHeight(40);
-                            productView.setX(animalView.getX() + 30);
-                            productView.setY(animalView.getY() + 30);
+                            productView.setX(animalView.getLayoutX() + 30);
+                            productView.setY(animalView.getLayoutY() + 30);
 
                             productView.setOnMouseClicked(event -> {
                                 FirstLevel.wallet.income(8);

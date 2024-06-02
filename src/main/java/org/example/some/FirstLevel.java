@@ -145,7 +145,7 @@ public class FirstLevel extends Level  implements javafx.fxml.Initializable, Ser
     public void addSheep() {
         //додана овечка на основну панель
             for (int i = 0; i < countSheep; i++) {
-                Sheep sheep = new Sheep(250, 200, 1000, 630, anchorPane, wallet, well, feeder);
+                Sheep sheep = new Sheep(250, 300, 1000, 630, anchorPane, wallet, well, feeder);
                 anchorPane.getChildren().add(sheep.getAnimalView());
             }
 
@@ -154,7 +154,7 @@ public class FirstLevel extends Level  implements javafx.fxml.Initializable, Ser
         //додаємо гуся
 
             for (int i = 0; i < countGoose; i++) {
-                Goose goose = new Goose(250, 200, 1000, 630, anchorPane, wallet, well, feeder);
+                Goose goose = new Goose(250, 300, 1000, 630, anchorPane, wallet, well, feeder);
                 anchorPane.getChildren().add(goose.getAnimalView());
             }
 
@@ -163,7 +163,7 @@ public class FirstLevel extends Level  implements javafx.fxml.Initializable, Ser
         //додаємо свинку
 
             for (int i = 0; i < countPig; i++) {
-                Pig pig = new Pig(250, 200, 1000, 630, anchorPane, wallet, well, feeder);
+                Pig pig = new Pig(250, 300, 1000, 630, anchorPane, wallet, well, feeder);
                 anchorPane.getChildren().add(pig.getAnimalView());
             }
 
@@ -189,7 +189,7 @@ public class FirstLevel extends Level  implements javafx.fxml.Initializable, Ser
 
 
             for (int i = 0; i < countCow; i++) {
-                Cow cow = new Cow(150, 200, 300, 530, anchorPane, wallet, well, feeder);
+                Cow cow = new Cow(250, 200, 1000, 630, anchorPane, wallet, well, feeder);
                 anchorPane.getChildren().add(cow.getAnimalView());
             }
 
