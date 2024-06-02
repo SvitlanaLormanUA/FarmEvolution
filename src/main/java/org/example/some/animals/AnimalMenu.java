@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
 
 import java.util.Objects;
 
@@ -26,13 +27,18 @@ public class AnimalMenu {
 
     public AnimalMenu(Animal animal, double x, double y){
         Image image = new Image("file:src/main/resources/images/animalMenu/animalMenu.JPG");
-
         this.menuView = new ImageView(image);
         this.x = x;
         this.y = y;
         this.animal = animal;
         menuView.setFitWidth(200);
         menuView.setFitHeight(150);
+
+        // Закруглення кутів для menuView
+        Rectangle clip = new Rectangle(menuView.getFitWidth(), menuView.getFitHeight());
+        clip.setArcWidth(20);
+        clip.setArcHeight(20);
+        menuView.setClip(clip);
 
         hungerLabel = new Label("Рівень ситості: " + this.animal.getHungerLvl());
         hungerLabel.setLayoutX(20);
@@ -58,17 +64,13 @@ public class AnimalMenu {
         costLabel.setLayoutX(20); // Встановлюємо відносно меню
         costLabel.setLayoutY(100);
 
-
         sell = new Button("Продати");
         sell.setLayoutX(50);
         sell.setLayoutY(120);
-       // sell.setStyle("-fx-background-color: blue;");
-        //sell.getStyleClass().add("button-feed");
-        //sell.getStylesheets().add(Objects.requireNonNull(getClass().getResource("AnimalMenu.css")).toExternalForm());
 
         root = new Pane();
-        root.setTranslateX(this.x+50);
-        root.setTranslateY(this.y-20);
+        root.setTranslateX(this.x + 50);
+        root.setTranslateY(this.y - 20);
         root.getChildren().addAll(menuView, hungerLabel, thirstLabel, feed, drink, costLabel, sell, close);
 
         feed();
@@ -81,7 +83,7 @@ public class AnimalMenu {
         //feed.getStylesheets().add(Objects.requireNonNull(getClass().getResource("src/main/resources/styles/AnimalMenu.css")).toExternalForm());
         //feed.getStyleClass().add("button-feed");
 
-        feed.setStyle("-fx-background-color: #007bff; -fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold; -fx-border-radius: 10px; -fx-background-radius: 10px;");
+        feed.setStyle("-fx-background-color: #7cbfe5; -fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold; -fx-border-radius: 10px; -fx-background-radius: 10px;");
 
         feed.setOnAction(event -> {
             animal.feed();
@@ -90,7 +92,7 @@ public class AnimalMenu {
     }
 
     private void drink(){
-        drink.setStyle("-fx-width-: 20px; -fx-background-color: #118c21; -fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold; -fx-border-radius: 10px; -fx-background-radius: 10px; ");
+        drink.setStyle("-fx-width-: 20px; -fx-background-color: #b6c55c; -fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold; -fx-border-radius: 10px; -fx-background-radius: 10px; ");
         drink.setOnAction(event -> {
             animal.drink();
             thirstLabel.setText("Рівень води: " + this.animal.getThirstLvl());
@@ -98,14 +100,14 @@ public class AnimalMenu {
     }
 
     private void sell(){
-        sell.setStyle("-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold; -fx-border-radius: 5px; -fx-background-radius: 5px; ");
+        sell.setStyle("-fx-background-color: #b6c55c; -fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold; -fx-border-radius: 5px; -fx-background-radius: 5px; ");
         sell.setOnAction(event -> {
             animal.sell();
         });
     }
 
     private void close(){
-        close.setStyle("-fx-background-color: #ff0000; -fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold; -fx-border-radius: 10px; -fx-background-radius: 10px; ");
+        close.setStyle("-fx-background-color: #ff5757; -fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold; -fx-border-radius: 10px; -fx-background-radius: 10px; ");
         close.setOnAction(event -> {
             animal.removeMenu();
         });
