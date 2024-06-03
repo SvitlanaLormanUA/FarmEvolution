@@ -339,10 +339,7 @@ abstract class AbstractAnimal implements Animal {
         }
     }
 
-    @Override
-    public void emotions() {
 
-    }
 
     @Override
     public void sell() {
@@ -352,7 +349,7 @@ abstract class AbstractAnimal implements Animal {
         String animalType = this.getClass().getSimpleName();
         FirstLevel.decreaseAnimalCount(animalType);
         mediaPlayer.stop();
-        System.out.println(FirstLevel.countCow);
+
     }
 
     @Override
