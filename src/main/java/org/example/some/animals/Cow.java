@@ -2,6 +2,7 @@ package org.example.some.animals;
 
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
+import javafx.scene.Cursor;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -10,61 +11,74 @@ import javafx.util.Duration;
 import org.example.some.FirstLevel;
 import org.example.some.otherGameObjects.Well;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class Cow extends AbstractAnimal {
 
     private boolean movingForward = true;
-    int amountOfMeals;
+    private int amountOfMeals;
     private MilkEmotion milkEmotion;
+    ImageView productView;
 
     public Cow(int worldStartX, int worldStartY, int worldEndX, int worldEndY, AnchorPane anchorPane, Well well, Feeder feeder) {
         super(worldStartX, worldStartY, worldEndX, worldEndY, anchorPane, well, feeder,
                 "file:src/main/resources/images/firstLevel/animals/cowRight.png",
                 "file:src/main/resources/images/firstLevel/animals/cowLeft.png",
                 "src/main/resources/sound/cow.mp3",
-                "file:src/main/resources/images/firstLevel/products/milk.png"
+                "file:src/main/resources/images/fullReaction.png"
         );
-        //this.amountOfMeals = 0;
-        giveProduct();
-
-    }
-
-    public  void addProduct() {
-        ImageView productView = new ImageView(product);
-        productView.setFitWidth(40);
-        productView.setFitHeight(40);
-        productView.setX(animalView.getLayoutX() + 30);
-        productView.setY(animalView.getLayoutY() + 30);
-        productView.setCursor(javafx.scene.Cursor.HAND);
-        productView.setOnMouseClicked(event -> {
-            FirstLevel.wallet.income(15);
-            AbstractAnimal.root.getChildren().remove(productView);
-        });
-        Platform.runLater(() -> AbstractAnimal.root.getChildren().add(1, productView));
+        this.amountOfMeals = 0;
     }
 
     @Override
     public void feed() {
         if (hungerLvl < 100) {
             hungerLvl += 50;
-            cost += 50;
-            amountOfMeals++;
+            cost += 80;
+
             if (hungerLvl > 100) {
                 hungerLvl = 100;
-                cost = hungerLvl;
+                cost = 2000;
             }
             AbstractAnimal.feeder.getFood();
         }
     }
 
+
+
     @Override
     public void giveProduct() {
-        if (FirstLevel.countCow >= 1) {
-            if (amountOfMeals > 3) {
-                double x = animalView.getLayoutX() + animalView.getFitWidth();
-                double y = animalView.getLayoutY() + 10;
-                milkEmotion = new MilkEmotion(this, x, y);
-                milkEmotion.addEmotion();
-                amountOfMeals = 0;
+        if (FirstLevel.countSheep >= 1) {
+            if (hungerLvl > 20) {
+                // Створення таймера (завдання, яке виконується через певний час
+                Timer timer = new Timer();
+                TimerTask task = new TimerTask() {
+                    @Override
+                    public void run() {
+                        if (hungerLvl > 70) {
+
+                             productView = new ImageView(product);
+                            productView.setFitWidth(60);
+                            productView.setFitHeight(50);
+                            productView.setX(animalView.getLayoutX() + animalView.getFitWidth());
+                            productView.setY(animalView.getLayoutY() + 10);
+                            productView.setCursor(Cursor.HAND);
+
+                            productView.setOnMouseClicked(event -> {
+                                AbstractAnimal.root.getChildren().remove(productView);
+                                FirstLevel.wallet.income(80);
+                            });
+
+                            Platform.runLater(() -> AbstractAnimal.root.getChildren().add(1, productView));
+                        } else {
+                            timer.cancel();
+                        }
+                    }
+                };
+
+                // Запуск завдання з інтервалом 5 секунд (5000 мілісекунд)
+                timer.scheduleAtFixedRate(task, 0, 10000);
             }
         }
     }
@@ -100,6 +114,7 @@ public class Cow extends AbstractAnimal {
 
         translateTransition.setByX(deltaX);
         translateTransition.setByY(deltaY);
+
     }
 
     @Override

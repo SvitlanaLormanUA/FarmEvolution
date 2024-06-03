@@ -1,27 +1,22 @@
 package org.example.some.animals;
 
 import javafx.scene.image.ImageView;
-import org.example.some.FirstLevel;
 
 public class MilkEmotion {
     private ImageView thought;
-    private ImageView milk;
+    ImageView milk;
 
-    public MilkEmotion(Cow cow, double x, double y) {
+    public MilkEmotion(double x, double y) {
         addThought(x, y);
         addMilk(x + 10, y + 10);
-        onClick(cow);
     }
 
-    private void onClick(Cow cow) {
-        milk.setOnMouseClicked(event -> {
-            FirstLevel.wallet.income(15);
-            removeEmotion();
-           cow.addProduct();
-        });
+    void removeElements() {
+        AbstractAnimal.root.getChildren().removeAll(thought, milk);
     }
-
-
+    void addElements() {
+        AbstractAnimal.root.getChildren().addAll(thought, milk);
+    }
     private void addThought(double x, double y) {
         thought = new ImageView("file:src/main/resources/images/reaction.png");
         thought.setFitWidth(50);
@@ -45,14 +40,5 @@ public class MilkEmotion {
         thought.setY(y);
         milk.setX(x + 10);
         milk.setY(y + 10);
-    }
-
-    public void addEmotion() {
-        AbstractAnimal.root.getChildren().add(thought);
-        AbstractAnimal.root.getChildren().add(milk);
-    }
-    public void removeEmotion() {
-        AbstractAnimal.root.getChildren().remove(thought);
-        AbstractAnimal.root.getChildren().remove(milk);
     }
 }
