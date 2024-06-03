@@ -9,7 +9,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.example.some.animals.Feeder;
+import org.example.some.animals.Monkey;
 import org.example.some.otherGameObjects.Wallet;
+import org.example.some.otherGameObjects.Well;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,6 +22,8 @@ import java.util.ResourceBundle;
 import static org.example.some.Shop.getCurrentLevel;
 
 public class SecondLevel  implements Initializable {
+    public  Well well;
+    public  Feeder feeder;
     public static Wallet wallet;
     public AnchorPane anchorPane;
     private Stage stage;
@@ -31,9 +36,14 @@ public class SecondLevel  implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         wallet = FirstLevel.wallet;
         anchorPane.getChildren().add(wallet.getRoot());
+        addMonkey();
 
     }
 
+    public void addMonkey() {
+        Monkey monkey = new Monkey(250, 300, 1000, 630, anchorPane, well, feeder, "file:src/main/resources/images/secondLevel/animals/monkey.png", "file:src/main/resources/images/secondLevel/animals/monkey.png", "src/main/resources/sound/monkey.mp3", "file:src/main/resources/images/secondLevel/products/banana.png");
+        anchorPane.getChildren().add(monkey.getAnimalView());
+    }
     @FXML
     public void backToMainMenu(ActionEvent event) {
         try {
