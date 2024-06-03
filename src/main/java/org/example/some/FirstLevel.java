@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.example.some.animals.*;
@@ -24,6 +25,8 @@ import java.util.ResourceBundle;
 public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
     ;
 
+    private static int WIDTH = 1255;
+    private static int HEIGHT = 707;
     public static int countCow = 1;
     public static int countSheep = 1;
     public static int countGoose = 1;
@@ -63,10 +66,14 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
     private ImageView feederView;
 
     @FXML
+    private ImageView storageView;
+
+    @FXML
     private ProgressBar foodBar;
 
     Well well;
     Feeder feeder;
+    Storage storage;
     public static Wallet wallet ;
 
     @FXML
@@ -141,6 +148,12 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
             tasksWindow.createMenu();
             anchorPane.getChildren().add(tasksWindow.getRoot());
     }
+
+    @FXML
+    void addStorageMenu(MouseEvent event) {
+        StorageMenu storageMenu = new  StorageMenu(storage, wallet, WIDTH/2-140, HEIGHT/2-200, anchorPane);
+        anchorPane.getChildren().add(storageMenu.getRoot());
+    }
   
 
     public void addSheep() {
@@ -202,7 +215,7 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
         addSheep();
         addGoose();
         addPig();
-        addRabbit();
+//        addRabbit();
         addDonkey();
         addCow();
     }
@@ -219,6 +232,7 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
         loadState();
         addFeeder();
         addWell();
+        addStorage();
         setAnimals();
     }
 
@@ -236,6 +250,11 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
     private void addFeeder(){
         feeder = new Feeder(feederView, foodBar, wallet);
         anchorPane.getChildren().add(feeder.getFoodView());
+    }
+
+    private void addStorage(){
+        storage = new Storage(storageView, wallet);
+        anchorPane.getChildren().add(storageView);
     }
 
     public void setWater() {
