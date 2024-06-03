@@ -37,4 +37,5 @@
 }
 .yellowButtons:hover {
     -fx-border-color: #170700;
+    -fx-border-width: 3.2;
 }

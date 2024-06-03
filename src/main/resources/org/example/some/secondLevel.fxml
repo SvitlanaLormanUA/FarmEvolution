@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -44,10 +45,18 @@
          </image>
       </ImageView>
 
-      <Button fx:id="buttonInfo" layoutX="1088.0" layoutY="22.0" mnemonicParsing="false" onAction="#showInfo" prefHeight="43.0" prefWidth="59.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css" />
-      <Button fx:id="buttonSettings" layoutX="1155.0" layoutY="75.0" mnemonicParsing="false" onAction="#showSettings" prefHeight="43.0" prefWidth="47.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css" />
-      <Button fx:id="buttonTasks" layoutX="1168.0" layoutY="75.0" mnemonicParsing="false" onAction="#showTasks" prefHeight="43.0" prefWidth="47.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css" />
-      <Button fx:id="buttonExtraTasks" layoutX="1162.0" layoutY="144.0" mnemonicParsing="false" onAction="#showExtraTasks" prefHeight="43.0" prefWidth="47.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css" />
+      <Button fx:id="buttonInfo" layoutX="1093.0" layoutY="22.0" mnemonicParsing="false" onAction="#showInfo" prefHeight="42.0" prefWidth="43.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="buttonTasks" layoutX="1168.0" layoutY="85.0" mnemonicParsing="false" onAction="#showTasks" prefHeight="43.0" prefWidth="42.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="buttonExtraTasks" layoutX="1169.0" layoutY="151.0" mnemonicParsing="false" onAction="#showExtraTasks" prefHeight="42.0" prefWidth="42.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
 
       <ImageView id="coinsImage" fitHeight="60.0" fitWidth="162.0" layoutX="367.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -62,6 +71,10 @@
             <Image url="@../../../images/secondLevel/lian.png" />
          </image>
       </ImageView>
+      <Button fx:id="buttonTasks1" layoutX="1168.0" layoutY="22.0" mnemonicParsing="false" onAction="#showTasks" prefHeight="42.0" prefWidth="42.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
 
    </children>
 </AnchorPane>
