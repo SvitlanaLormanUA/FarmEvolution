@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 
 import static org.example.some.Shop.getCurrentLevel;
 
-public class SecondLevel extends Level implements Initializable {
+public class SecondLevel  implements Initializable {
     public static Wallet wallet;
     public AnchorPane anchorPane;
     private Stage stage;
@@ -100,5 +100,20 @@ public class SecondLevel extends Level implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void displaySettings(ActionEvent event) {
+    }
+
+    public void showTasks(ActionEvent event) {
+    }
+
+    public void showExtraTasks(ActionEvent event) {
+    }
+
+    public void showSettings(ActionEvent event) {
+    }
+
+    public void showInfo(ActionEvent event) {
     }
 }

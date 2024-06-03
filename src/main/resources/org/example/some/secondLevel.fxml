@@ -55,7 +55,13 @@
          </image>
       </ImageView>
       <Button id="shopButton" fx:id="shopButton" layoutX="367.0" layoutY="23.0" mnemonicParsing="false" onAction="#enterShop" prefHeight="43.0" prefWidth="162.0" stylesheets="@../../../styles/firstLevel.css" />
-      <Button layoutX="42.0" layoutY="364.0" mnemonicParsing="false" onAction="#previousLevel" prefHeight="51.0" prefWidth="98.0" text="1 level" />
-      <Button layoutX="1124.0" layoutY="364.0" mnemonicParsing="false" onAction="#nextLevel" prefHeight="51.0" prefWidth="118.0" text="3 level" />
+      <Button layoutX="1135.0" layoutY="507.0" mnemonicParsing="false" onAction="#previousLevel" prefHeight="51.0" prefWidth="98.0" text="1 level" />
+      <Button layoutX="1121.0" layoutY="442.0" mnemonicParsing="false" onAction="#nextLevel" prefHeight="51.0" prefWidth="118.0" text="3 level" />
+      <ImageView fx:id="lian" fitHeight="626.0" fitWidth="290.0" layoutX="-20.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/secondLevel/lian.png" />
+         </image>
+      </ImageView>
+
    </children>
 </AnchorPane>

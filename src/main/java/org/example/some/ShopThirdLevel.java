@@ -119,4 +119,18 @@ public class ShopThirdLevel extends Shop implements javafx.fxml.Initializable {
     }
 
 
+    public void buyMino(ActionEvent event) {
+    }
+
+    public void buyFairy(ActionEvent event) {
+    }
+
+    public void buyDwarf(ActionEvent event) {
+    }
+
+    public void buyMushroom(ActionEvent event) {
+    }
+
+    public void buyUnicorn(ActionEvent event) {
+    }
 }

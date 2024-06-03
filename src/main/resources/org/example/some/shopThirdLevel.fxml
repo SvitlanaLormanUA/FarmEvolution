@@ -10,8 +10,25 @@
    <children>
       <ImageView fitHeight="793.0" fitWidth="1442.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" />
    </children>
+   <ImageView fitHeight="815.0" fitWidth="1476.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../../../images/shop/magical/magicalOpened.png" />
+      </image>
+   </ImageView>
+    <ImageView fx:id="closeButtonView" fitHeight="49.0" fitWidth="52.0" layoutX="1354.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../../../images/shop/close.png" />
+        </image>
+    </ImageView>
+    <Button fx:id="closeButton" layoutX="1353.0" layoutY="39.0" mnemonicParsing="false" onAction="#backToGame" prefHeight="50.0" prefWidth="50.0" styleClass="close" stylesheets="@../../../styles/shop.css" />
 
-    <ImageView fx:id="backButtonView" fitHeight="80.0" fitWidth="84.0" layoutX="72.0" layoutY="399.0" preserveRatio="true" styleClass="backButton">
+    <ImageView id="coins" fx:id="coinsView" fitHeight="43.0" fitWidth="164.0" layoutX="37.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../../../images/coins.png" />
+        </image>
+    </ImageView>
+
+    <ImageView fx:id="backButtonView" fitHeight="80.0" fitWidth="84.0" layoutX="38.0" layoutY="392.0" preserveRatio="true" styleClass="backButton">
         <image>
             <Image url="@../../../images/shop/backButton.png" />
         </image>
@@ -19,17 +36,10 @@
             <Cursor fx:constant="DEFAULT" />
         </cursor>
     </ImageView>
-    <ImageView fx:id="closeButtonView" fitHeight="49.0" fitWidth="52.0" layoutX="1295.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
-        <image>
-            <Image url="@../../../images/shop/close.png" />
-        </image>
-    </ImageView>
-    <Button fx:id="closeButton" layoutX="1294.0" layoutY="38.0" mnemonicParsing="false" onAction="#backToGame" prefHeight="50.0" prefWidth="50.0" styleClass="close" stylesheets="@../../../styles/shop.css" />
-
-    <ImageView id="coins" fx:id="coinsView" fitHeight="43.0" fitWidth="164.0" layoutX="37.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
-        <image>
-            <Image url="@../../../images/coins.png" />
-        </image>
-    </ImageView>
-    <Button fx:id="backButton" layoutX="79.0" layoutY="407.0" mnemonicParsing="false" onAction="#secondShop" prefHeight="65.0" prefWidth="66.0" rotate="180.0" styleClass="backButton" stylesheets="@../../../styles/shop.css" />
+    <Button fx:id="backButton" layoutX="45.0" layoutY="400.0" mnemonicParsing="false" onAction="#secondShop" prefHeight="65.0" prefWidth="66.0" rotate="180.0" styleClass="backButton" stylesheets="@../../../styles/shop.css" />
+   <Button layoutX="269.0" layoutY="324.0" mnemonicParsing="false" onAction="#buyMino" prefHeight="31.0" prefWidth="193.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 2100 монет" />
+   <Button layoutX="673.0" layoutY="324.0" mnemonicParsing="false" onAction="#buyFairy" prefHeight="31.0" prefWidth="193.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 3000 монет" />
+   <Button layoutX="1028.0" layoutY="320.0" mnemonicParsing="false" onAction="#buyDwarf" prefHeight="31.0" prefWidth="193.0" rotate="8.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 2567 монет" />
+   <Button layoutX="443.0" layoutY="691.0" mnemonicParsing="false" onAction="#buyMushroom" prefHeight="31.0" prefWidth="193.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 1300 монет" />
+   <Button layoutX="891.0" layoutY="690.0" mnemonicParsing="false" onAction="#buyUnicorn" prefHeight="31.0" prefWidth="193.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 3200 монет" />
 </AnchorPane>

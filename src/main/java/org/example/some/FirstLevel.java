@@ -21,7 +21,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 
-public class FirstLevel extends Level  implements javafx.fxml.Initializable, Serializable {
+public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
     ;
 
     public static int countCow = 1;
@@ -141,13 +141,7 @@ public class FirstLevel extends Level  implements javafx.fxml.Initializable, Ser
             tasksWindow.createMenu();
             anchorPane.getChildren().add(tasksWindow.getRoot());
     }
-    @FXML
-    public void showInfo(ActionEvent event) {
-        Instr infoWindow = new Instr(anchorPane);
-        infoWindow.createImagePane();
-        anchorPane.getChildren().add(infoWindow.getRoot());
-    }
-
+  
 
     public void addSheep() {
         //додана овечка на основну панель
@@ -314,4 +308,15 @@ public class FirstLevel extends Level  implements javafx.fxml.Initializable, Ser
         return coins;
     }
 
+    public void showInfo(ActionEvent event) {
+        Instr infoWindow = new Instr(anchorPane);
+        infoWindow.createImagePane();
+        anchorPane.getChildren().add(infoWindow.getRoot());
+    }
+
+    public void showExtraTasks(ActionEvent event) {
+    }
+
+    public void showSettings(ActionEvent event) {
+    }
 }

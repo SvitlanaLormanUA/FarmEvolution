@@ -59,7 +59,7 @@
          </image>
       </ImageView>
       <Button fx:id="buttonInfo" layoutX="1090.0" layoutY="21.0" mnemonicParsing="false" onAction="#showInfo" prefHeight="43.0" prefWidth="47.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css" />
-      <Button fx:id="buttonSettings" layoutX="1166.0" layoutY="86.0" mnemonicParsing="false" onAction="#showSettings" prefHeight="43.0" prefWidth="47.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css" />
+
       <Button fx:id="buttonTasks" layoutX="1167.0" layoutY="86.0" mnemonicParsing="false" onAction="#showTasks" prefHeight="43.0" prefWidth="45.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css" />
       <Button fx:id="buttonExtraTasks" layoutX="1168.0" layoutY="150.0" mnemonicParsing="false" onAction="#showExtraTasks" prefHeight="43.0" prefWidth="44.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css" />
       <ProgressBar id="waterInWell" fx:id="waterBar" layoutX="-39.0" layoutY="553.0" prefHeight="17.0" prefWidth="175.0" progress="1.0" stylesheets="@../../../styles/firstLevel.css" />
@@ -71,6 +71,7 @@
       </ImageView>
       <Button id="shopButton" fx:id="shopButton" layoutX="367.0" layoutY="23.0" mnemonicParsing="false" onAction="#enterShop" prefHeight="43.0" prefWidth="162.0" stylesheets="@../../../styles/firstLevel.css" />
       <Button layoutX="1116.0" layoutY="364.0" mnemonicParsing="false" onAction="#nextLevel" prefHeight="61.0" prefWidth="126.0" text="2 level" />
-      <Button fx:id="buttonInfo1" layoutX="1166.0" layoutY="23.0" mnemonicParsing="false" onAction="#showInfo" prefHeight="43.0" prefWidth="44.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css" />
+      <Button fx:id="buttonSettings" layoutX="1166.0" layoutY="23.0" mnemonicParsing="false" onAction="#showSettings" prefHeight="43.0" prefWidth="44.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css" />
+
    </children>
 </AnchorPane>
