@@ -31,7 +31,7 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
     private boolean enoughFood;
     private Path path;
 
-    public Rabbit(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Wallet wallet, Well well, Feeder feeder) {
+    public Rabbit(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Well well, Feeder feeder) {
         super(worldStartX, worldStartY, worldEndX, worldEndY, root, well, feeder,
                 "file:src/main/resources/images/firstLevel/animals/rabbitRight.png",
                 "file:src/main/resources/images/firstLevel/animals/rabbitLeft.png",

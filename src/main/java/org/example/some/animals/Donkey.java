@@ -9,7 +9,7 @@ public class Donkey extends AbstractAnimal{
 
 
 
-    public Donkey(int worldStartX, int worldStartY, int worldEndX, int worldEndY, AnchorPane anchorPane, Wallet wallet, Well well, Feeder feeder) {
+    public Donkey(int worldStartX, int worldStartY, int worldEndX, int worldEndY, AnchorPane anchorPane,  Well well, Feeder feeder) {
         super( worldStartX, worldStartY, worldEndX, worldEndY, anchorPane,  well, feeder,
                 "file:src/main/resources/images/firstLevel/animals/DonkeyRight.png",
                 "file:src/main/resources/images/firstLevel/animals/DonkeyLeft.png",

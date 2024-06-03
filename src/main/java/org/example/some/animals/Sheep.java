@@ -13,7 +13,7 @@ import java.util.TimerTask;
 
 public class Sheep extends AbstractAnimal {
 
-    public Sheep(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Wallet wallet, Well well, Feeder feeder) {
+    public Sheep(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root,  Well well, Feeder feeder) {
         super(worldStartX, worldStartY, worldEndX, worldEndY, root, well, feeder,
                 "file:src/main/resources/images/firstLevel/animals/sheepRight.png",
                 "file:src/main/resources/images/firstLevel/animals/sheepLeft.png",
