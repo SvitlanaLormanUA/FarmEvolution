@@ -176,11 +176,11 @@ abstract class AbstractAnimal implements Animal {
         double newX = x + deltaX;
         double newY = y + deltaY;
 
-        if (newX < worldStartX) {
+        if (newX < worldStartX && !directionRight) {
             deltaX = -deltaX;
             animalView.setImage(new Image(imagePath));
             directionRight = !directionRight;
-        } else if (newX > worldEndX) {
+        } else if (newX > worldEndX && directionRight) {
             deltaX = -deltaX;
             animalView.setImage(new Image(imagePathLeft));
             directionRight = !directionRight;

@@ -1,5 +1,6 @@
 package org.example.some.animals;
 
+import javafx.animation.Interpolator;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.scene.Cursor;
@@ -7,15 +8,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.*;
 import org.example.some.FirstLevel;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
 import javafx.animation.PathTransition;
 import javafx.animation.PathTransition.OrientationType;
-import javafx.scene.shape.Path;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.QuadCurveTo;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
@@ -30,37 +29,62 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
     private boolean openedMeatMenu;
     private boolean enoughFood;
     private Path path;
+    private double currX;
+    private double currY;
 
     public Rabbit(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Well well, Feeder feeder) {
         super(worldStartX, worldStartY, worldEndX, worldEndY, root, well, feeder,
                 "file:src/main/resources/images/firstLevel/animals/rabbitRight.png",
                 "file:src/main/resources/images/firstLevel/animals/rabbitLeft.png",
-                "src/main/resources/sound/jumpRabbit.mp3"
+                "src/main/resources/sound/jumpRabbit.mp3",
+                "file:src/main/resources/images/firstLevel/products/meat.png"
         );
         this.amountOfMeals = 0;
         this.productCost = 0;
         this.openedMeatMenu = false;
         this.enoughFood = false;
         animalView.setFitWidth(80);
-        animalView.setFitHeight(100);
+        animalView.setLayoutX(300);
+        animalView.setLayoutY(300);
+
+        currX = animalView.getLayoutX();
+        currY = animalView.getLayoutY();
     }
 
 
     @Override
     public void movement() {
+        directionRight = true;
         pathTransition = new PathTransition();
         pathTransition.setDuration(Duration.millis(1500));
         pathTransition.setNode(animalView);
-        deltaX = 0;
-        deltaY = 0;
+
+        setRandomDirection();
 
         pathTransition.setOnFinished(event -> {
+            animalView.setLayoutX(currX);
+            animalView.setLayoutY(currY);
 
+            // Скидання translateX і translateY перед встановленням нової траєкторії
+            animalView.setTranslateX(0);
+            animalView.setTranslateY(0);
 
+            // Встановлення нової траєкторії
             setRandomDirection();
-            pathTransition.play();
+
+            // Створення нової PathTransition для перезапуску анімації
+            PathTransition newPathTransition = new PathTransition();
+            newPathTransition.setDuration(Duration.millis(1500));
+            newPathTransition.setNode(animalView);
+            newPathTransition.setPath(path);
+            newPathTransition.setOrientation(PathTransition.OrientationType.NONE);
+            newPathTransition.setOnFinished(this.pathTransition.getOnFinished());
+            newPathTransition.play();
+
+            // Оновлення посилання на поточну PathTransition
+            this.pathTransition = newPathTransition;
         });
-        setRandomDirection();
+
         pathTransition.play();
 
         animalView.setOnMouseClicked(this::handleMouseClicked);
@@ -70,42 +94,51 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
 
     @Override
     public void setRandomDirection() {
-        double x = animalView.getLayoutX()+deltaX;
-        double y = animalView.getLayoutY()+deltaY;
+        double x = animalView.getLayoutX();
+        double y = animalView.getLayoutY();
 
+        path = new Path();
+        path.getElements().add(new MoveTo(x, y));
 
-        deltaX = random.nextInt(120) - 75;
-        deltaY = random.nextInt(100) - 75;
+        if (directionRight) {
+            deltaX = random.nextInt(10, 50);
+        } else {
+            deltaX = random.nextInt(-50, -10);
+        }
+        deltaY = random.nextInt(120) - 75;
 
         double newX = x + deltaX;
         double newY = y + deltaY;
 
-        if (newX < worldStartX) {
+        if (newX < worldStartX || newX > worldEndX) {
             deltaX = -deltaX;
-        } else if (newX > worldEndX) {
-            deltaX = -deltaX;
+            directionRight = !directionRight;
+            animalView.setImage(new Image(directionRight ? imagePath : imagePathLeft));
         }
+
         if (newY < worldStartY || newY > worldEndY - animalView.getFitHeight()) {
             deltaY = -deltaY;
         }
-        if (deltaX<0){
-            animalView.setImage(new Image(imagePathLeft));
-            directionRight = !directionRight;
-        } else {
-            animalView.setImage(new Image(imagePath));
-            directionRight = !directionRight;
-        }
-        path = new Path();
-        path.getElements().add(new MoveTo(x+deltaX, y+deltaY));
-        path.getElements().add(new QuadCurveTo(x + deltaX / 2, y - 150, x + deltaX, y + deltaY));
+
+        currX = x + deltaX;
+        currY = y + deltaY;
+
+        QuadCurveTo quadCurveTo = new QuadCurveTo();
+        quadCurveTo.setX(currX);
+        quadCurveTo.setY(currY);
+        quadCurveTo.setControlX(x + deltaX / 2);
+        quadCurveTo.setControlY(y - 75);
+
+        path.getElements().add(quadCurveTo);
 
         pathTransition.setPath(path);
-        pathTransition.setOrientation(OrientationType.NONE);
+        pathTransition.setOrientation(PathTransition.OrientationType.NONE);
     }
+
 
     @Override
     public void handleMouseDragged(MouseEvent event) {
-        pathTransition.pause();
+        pathTransition.stop();
         double newX = event.getSceneX() - animalView.getFitWidth() / 2;
         double newY = event.getSceneY() - animalView.getFitHeight() / 2;
 
@@ -166,7 +199,7 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
             if (y + menuHeight > root.getHeight()) {
                 y = root.getHeight() - menuHeight;
             }
-            pathTransition.pause();
+            pathTransition.stop();
             addMenu(x, y);
 
         } else {

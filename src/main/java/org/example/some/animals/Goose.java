@@ -2,6 +2,7 @@ package org.example.some.animals;
 
 
 import javafx.application.Platform;
+import javafx.scene.Cursor;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
@@ -41,6 +42,7 @@ public class Goose extends AbstractAnimal{
                             productView.setFitHeight(40);
                             productView.setX(animalView.getLayoutX() + 30);
                             productView.setY(animalView.getLayoutY() + 30);
+                            productView.setCursor(Cursor.HAND);
 
                             productView.setOnMouseClicked(event -> {
                                 FirstLevel.wallet.income(8);
