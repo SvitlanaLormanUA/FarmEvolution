@@ -35,3 +35,6 @@
 #waterInWell {
     -fx-rotate: -90;
 }
+.yellowButtons:hover {
+    -fx-border-color: #170700;
+}

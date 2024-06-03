@@ -1,12 +1,7 @@
 package org.example.some.animals;
 
-import javafx.animation.TranslateTransition;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.util.Duration;
-import org.example.some.FirstLevel;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
@@ -18,8 +13,8 @@ public class Donkey extends AbstractAnimal{
         super( worldStartX, worldStartY, worldEndX, worldEndY, anchorPane,  well, feeder,
                 "file:src/main/resources/images/firstLevel/animals/DonkeyRight.png",
                 "file:src/main/resources/images/firstLevel/animals/DonkeyLeft.png",
-                "src/main/resources/sound/donkey.mp3",
-                "file:src/main/resources/images/firstLevel/products/wool.png") ;
+                "src/main/resources/sound/donkey.mp3"
+        ) ;
     }
 
     @Override

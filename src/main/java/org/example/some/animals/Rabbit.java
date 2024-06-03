@@ -35,8 +35,8 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
         super(worldStartX, worldStartY, worldEndX, worldEndY, root, well, feeder,
                 "file:src/main/resources/images/firstLevel/animals/rabbitRight.png",
                 "file:src/main/resources/images/firstLevel/animals/rabbitLeft.png",
-                "src/main/resources/sound/jumpRabbit.mp3",
-                "file:src/main/resources/images/firstLevel/products/meat.png");
+                "src/main/resources/sound/jumpRabbit.mp3"
+        );
         this.amountOfMeals = 0;
         this.productCost = 0;
         this.openedMeatMenu = false;

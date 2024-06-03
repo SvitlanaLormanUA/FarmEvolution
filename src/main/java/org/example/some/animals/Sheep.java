@@ -1,10 +1,8 @@
 package org.example.some.animals;
-import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.scene.Cursor;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.util.Duration;
 import org.example.some.FirstLevel;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
@@ -20,7 +18,9 @@ public class Sheep extends AbstractAnimal {
                 "file:src/main/resources/images/firstLevel/animals/sheepRight.png",
                 "file:src/main/resources/images/firstLevel/animals/sheepLeft.png",
                 "src/main/resources/sound/sheepmp3.mp3",
-                "file:src/main/resources/images/firstLevel/products/wool.png");
+                "file:src/main/resources/images/firstLevel/products/wool.png"
+        );
+
     }
 
 

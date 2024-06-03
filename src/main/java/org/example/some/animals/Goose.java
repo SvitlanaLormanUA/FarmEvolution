@@ -20,7 +20,9 @@ public class Goose extends AbstractAnimal{
                 "file:src/main/resources/images/firstLevel/animals/GooseRight.png",
                 "file:src/main/resources/images/firstLevel/animals/GooseLeft.png",
                 "src/main/resources/sound/geese.mp3",
-                "file:src/main/resources/images/firstLevel/products/egg.png") ;
+                "file:src/main/resources/images/firstLevel/products/egg.png"
+        ) ;
+
     }
 
 

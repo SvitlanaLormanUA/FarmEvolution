@@ -1,12 +1,7 @@
 package org.example.some.animals;
 
-import javafx.animation.TranslateTransition;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.util.Duration;
-import org.example.some.FirstLevel;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
@@ -19,9 +14,12 @@ public class Cow extends AbstractAnimal{
         super( worldStartX, worldStartY, worldEndX, worldEndY, anchorPane,  well, feeder,
                 "file:src/main/resources/images/firstLevel/animals/cowRight.png",
                 "file:src/main/resources/images/firstLevel/animals/cowLeft.png",
-                "src/main/resources/sound/cow.mp3",
-                "file:src/main/resources/images/firstLevel/products/milk.png");
+                "src/main/resources/sound/cow.mp3"
+        );
+
     }
+
+
 
     @Override
     public void feed() {

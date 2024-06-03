@@ -27,11 +27,13 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
                 "file:src/main/resources/images/firstLevel/animals/pigRight.png",
                 "file:src/main/resources/images/firstLevel/animals/pigLeft.png",
                 "src/main/resources/sound/pigSound.mp3",
-                "file:src/main/resources/images/firstLevel/products/meat.png") ;
+                "file:src/main/resources/images/firstLevel/products/meat.png"
+        ) ;
         this.amountOfMeals = 0;
         this.productCost = 0;
         this.openedMeatMenu = false;
         this.enoughFood = false;
+
     }
 
     @Override

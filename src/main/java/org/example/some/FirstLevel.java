@@ -147,6 +147,7 @@ public class FirstLevel extends Level  implements javafx.fxml.Initializable, Ser
             for (int i = 0; i < countSheep; i++) {
                 Sheep sheep = new Sheep(250, 300, 1000, 630, anchorPane, wallet, well, feeder);
                 anchorPane.getChildren().add(sheep.getAnimalView());
+                sheep.giveProduct();
             }
 
     }
