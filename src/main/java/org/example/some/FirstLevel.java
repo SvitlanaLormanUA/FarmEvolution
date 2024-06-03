@@ -289,20 +289,9 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
     }
 
 
-
     @FXML
     public void nextLevel(ActionEvent event) {
-        try {
-            saveState();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("secondLevel.fxml")));
-            stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
 
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
     public int getCoins() {
         return coins;

@@ -14,11 +14,57 @@ public class Tasks {
     private ImageView menuView;
     private double x;
     private double y;
+    private  Label taskLabel;
+    private  Label taskLabel2;
+    private  Label taskLabel3;
+    private  Label taskLabel4;
+    private Button close;
 
+
+    public boolean task1 = false;
+    public boolean task2 = false;
+    public boolean task3 = false;
+    public boolean task4 = false;
 
     public Tasks(AnchorPane main) {
         this.main = main;
         createMenu();
+    }
+    private void addCloseButton(){
+         close = new Button("×");
+        close.setLayoutX(240);
+        close.setLayoutY(10);
+        close.setStyle("-fx-background-color: #ff5757; -fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold; -fx-border-radius: 10px; -fx-background-radius: 10px; ");
+        close.setOnAction(event -> {
+            main.getChildren().remove(root);
+        });
+    }
+    private void addTaskFour() {
+        taskLabel4 = new Label("Завдання 4: «Туди сюди і мільйонер»\n" +
+                "Заробити 2000 монет");
+        taskLabel4.setLayoutX(20);
+        taskLabel4.setLayoutY(190);
+    }
+    private void addTaskThree() {
+        taskLabel3 = new Label("Завдання 3: «До зими готовий!»\n" +
+                "Зібрати хутро: 20 штук");
+        taskLabel3.setLayoutX(20);
+        taskLabel3.setLayoutY(140);
+    }
+    private void addTaskTwo() {
+        taskLabel2 = new Label("Завдання 2: «Молоко, любов і гуси»\n" +
+                "Зібрати яйця: 30 штук\n" +
+                "Продати молоко: 15 галонів");
+        taskLabel2.setLayoutX(20);
+        taskLabel2.setLayoutY(80);
+
+    }
+    private void addTaskOne() {
+         taskLabel = new Label("Завдання 1: «Досвідчений м’ясник»\n" +
+                "Продати м’ясо свині: 10 шматків\n" +
+                "Продати м’ясо кролів: 15 шматків");
+        taskLabel.setLayoutX(20);
+        taskLabel.setLayoutY(20);
     }
 
     public void createMenu() {
@@ -32,35 +78,13 @@ public class Tasks {
         clip.setArcHeight(20);
         menuView.setClip(clip);
 
-        Label taskLabel = new Label("Завдання 1: «Досвідчений м’ясник»\n" +
-                "Продати м’ясо свині: 10 шматків\n" +
-                "Продати м’ясо кролів: 15 шматків");
-        taskLabel.setLayoutX(20);
-        taskLabel.setLayoutY(20);
+        addTaskOne();
+        addTaskTwo();
+        addTaskThree();
+        addTaskFour();
+        addCloseButton();
 
-        Label taskLabel2 = new Label("Завдання 2: «Молоко, любов і гуси»\n" +
-                "Зібрати яйця: 30 штук\n" +
-                "Продати молоко: 15 галонів");
-        taskLabel2.setLayoutX(20);
-        taskLabel2.setLayoutY(80);
 
-        Label taskLabel3 = new Label("Завдання 3: «До зими готовий!»\n" +
-                "Зібрати хутро: 20 штук");
-        taskLabel3.setLayoutX(20);
-        taskLabel3.setLayoutY(140);
-
-        Label taskLabel4 = new Label("Завдання 4: «Туди сюди і мільйонер»\n" +
-                "Заробити 2000 монет");
-        taskLabel4.setLayoutX(20);
-        taskLabel4.setLayoutY(190);
-
-        Button close = new Button("×");
-        close.setLayoutX(240);
-        close.setLayoutY(10);
-        close.setStyle("-fx-background-color: #ff5757; -fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold; -fx-border-radius: 10px; -fx-background-radius: 10px; ");
-        close.setOnAction(event -> {
-            main.getChildren().remove(root);
-        });
 
         root = new Pane();
         root.setTranslateX(this.x + 880);
