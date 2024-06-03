@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.example.some.animals.*;
+import org.example.some.otherGameObjects.Instr;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
@@ -139,6 +140,12 @@ public class FirstLevel extends Level  implements javafx.fxml.Initializable, Ser
             Tasks tasksWindow = new Tasks(anchorPane);
             tasksWindow.createMenu();
             anchorPane.getChildren().add(tasksWindow.getRoot());
+    }
+    @FXML
+    public void showInfo(ActionEvent event) {
+        Instr infoWindow = new Instr(anchorPane);
+        infoWindow.createImagePane();
+        anchorPane.getChildren().add(infoWindow.getRoot());
     }
 
 
