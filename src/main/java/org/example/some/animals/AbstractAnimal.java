@@ -13,6 +13,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.util.Duration;
 import org.example.some.FirstLevel;
+import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
 import java.io.File;
@@ -23,6 +24,7 @@ import java.util.TimerTask;
 abstract class AbstractAnimal implements Animal {
 
     public static Pane root;
+
 
     protected int cost;
     protected int hungerLvl;

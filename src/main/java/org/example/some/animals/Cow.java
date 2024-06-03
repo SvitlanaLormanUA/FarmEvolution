@@ -13,7 +13,7 @@ import org.example.some.otherGameObjects.Well;
 public class Cow extends AbstractAnimal {
 
     private boolean movingForward = true;
-    private int amountOfMeals;
+    int amountOfMeals;
     private MilkEmotion milkEmotion;
 
     public Cow(int worldStartX, int worldStartY, int worldEndX, int worldEndY, AnchorPane anchorPane, Well well, Feeder feeder) {
@@ -23,17 +23,34 @@ public class Cow extends AbstractAnimal {
                 "src/main/resources/sound/cow.mp3",
                 "file:src/main/resources/images/firstLevel/products/milk.png"
         );
-        this.amountOfMeals = 0;
+        //this.amountOfMeals = 0;
+        giveProduct();
+
+    }
+
+    public  void addProduct() {
+        ImageView productView = new ImageView(product);
+        productView.setFitWidth(40);
+        productView.setFitHeight(40);
+        productView.setX(animalView.getLayoutX() + 30);
+        productView.setY(animalView.getLayoutY() + 30);
+        productView.setCursor(javafx.scene.Cursor.HAND);
+        productView.setOnMouseClicked(event -> {
+            FirstLevel.wallet.income(15);
+            AbstractAnimal.root.getChildren().remove(productView);
+        });
+        Platform.runLater(() -> AbstractAnimal.root.getChildren().add(1, productView));
     }
 
     @Override
     public void feed() {
         if (hungerLvl < 100) {
             hungerLvl += 50;
-            cost += 80;
+            cost += 50;
+            amountOfMeals++;
             if (hungerLvl > 100) {
                 hungerLvl = 100;
-                cost = 2000;
+                cost = hungerLvl;
             }
             AbstractAnimal.feeder.getFood();
         }
@@ -42,10 +59,12 @@ public class Cow extends AbstractAnimal {
     @Override
     public void giveProduct() {
         if (FirstLevel.countCow >= 1) {
-            if (hungerLvl > 55) {
+            if (amountOfMeals > 3) {
                 double x = animalView.getLayoutX() + animalView.getFitWidth();
                 double y = animalView.getLayoutY() + 10;
-                milkEmotion = new MilkEmotion(x, y);
+                milkEmotion = new MilkEmotion(this, x, y);
+                milkEmotion.addEmotion();
+                amountOfMeals = 0;
             }
         }
     }
@@ -102,35 +121,4 @@ public class Cow extends AbstractAnimal {
         playSound();
     }
 
-    @Override
-    public void handleMouseReleased(MouseEvent event) {
-        double x = animalView.getLayoutX();
-        double y = animalView.getLayoutY();
-        boolean outOfBounds = false;
-
-        if (x < worldStartX) {
-            x = worldStartX;
-            outOfBounds = true;
-        } else if (x > worldEndX - animalView.getFitWidth()) {
-            x = worldEndX - animalView.getFitWidth();
-            outOfBounds = true;
-        }
-
-        if (y < worldStartY) {
-            y = worldStartY;
-            outOfBounds = true;
-        } else if (y > worldEndY - animalView.getFitHeight()) {
-            y = worldEndY - animalView.getFitHeight();
-            outOfBounds = true;
-        }
-
-        if (outOfBounds) {
-            TranslateTransition transitionBack = new TranslateTransition(Duration.millis(500), animalView);
-            transitionBack.setToX(x);
-            transitionBack.setToY(y);
-            transitionBack.play();
-        }
-        translateTransition.play();
-        playSound();
-    }
 }

@@ -80,4 +80,5 @@ public class AnimalMeatMenu {
     public Pane getRoot() {
         return root;
     }
+
 }
