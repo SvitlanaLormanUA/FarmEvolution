@@ -45,8 +45,6 @@ public class Cow extends AbstractAnimal {
         }
     }
 
-
-
     @Override
     public void giveProduct() {
         if (FirstLevel.countSheep >= 1) {
@@ -57,13 +55,13 @@ public class Cow extends AbstractAnimal {
                     @Override
                     public void run() {
                         if (hungerLvl > 70) {
-
-                             productView = new ImageView(product);
+                            productView = new ImageView(product);
                             productView.setFitWidth(60);
                             productView.setFitHeight(50);
-                            productView.setX(animalView.getLayoutX() + animalView.getFitWidth());
-                            productView.setY(animalView.getLayoutY() + 10);
                             productView.setCursor(Cursor.HAND);
+
+                            // Initial positioning
+                            updateProductViewPosition();
 
                             productView.setOnMouseClicked(event -> {
                                 AbstractAnimal.root.getChildren().remove(productView);
@@ -77,9 +75,16 @@ public class Cow extends AbstractAnimal {
                     }
                 };
 
-                // Запуск завдання з інтервалом 5 секунд (5000 мілісекунд)
-                timer.scheduleAtFixedRate(task, 0, 10000);
+                // Запуск завдання з інтервалом 35 секунд (5000 мілісекунд)
+                timer.scheduleAtFixedRate(task, 0, 70000);
             }
+        }
+    }
+
+    private void updateProductViewPosition() {
+        if (productView != null) {
+            productView.setX(animalView.getLayoutX() + animalView.getFitWidth());
+            productView.setY(animalView.getLayoutY() + 10);
         }
     }
 
@@ -115,6 +120,7 @@ public class Cow extends AbstractAnimal {
         translateTransition.setByX(deltaX);
         translateTransition.setByY(deltaY);
 
+        updateProductViewPosition();
     }
 
     @Override
@@ -133,7 +139,7 @@ public class Cow extends AbstractAnimal {
         if (milkEmotion != null) {
             milkEmotion.updatePosition(newX + animalView.getFitWidth(), newY + 10);
         }
+        updateProductViewPosition();
         playSound();
     }
-
 }
