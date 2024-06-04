@@ -7,6 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import org.example.some.FirstLevel;
+import org.example.some.Storage;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
@@ -16,8 +17,8 @@ import java.util.TimerTask;
 public class Goose extends AbstractAnimal{
 
 
-    public Goose(int worldStartX, int worldStartY, int worldEndX, int worldEndY, AnchorPane anchorPane,  Well well, Feeder feeder) {
-        super( worldStartX, worldStartY, worldEndX, worldEndY, anchorPane,  well, feeder,
+    public Goose(int worldStartX, int worldStartY, int worldEndX, int worldEndY, AnchorPane anchorPane, Well well, Feeder feeder, Storage storage) {
+        super(worldStartX, worldStartY, worldEndX, worldEndY, anchorPane, well, feeder, storage,
                 "file:src/main/resources/images/firstLevel/animals/GooseRight.png",
                 "file:src/main/resources/images/firstLevel/animals/GooseLeft.png",
                 "src/main/resources/sound/geese.mp3",
@@ -45,8 +46,8 @@ public class Goose extends AbstractAnimal{
                             productView.setCursor(Cursor.HAND);
 
                             productView.setOnMouseClicked(event -> {
-                                FirstLevel.wallet.income(8);
                                 AbstractAnimal.root.getChildren().remove(productView);
+                                storage.addProduct1();
                             });
 
                             Platform.runLater(() -> AbstractAnimal.root.getChildren().add(1, productView));

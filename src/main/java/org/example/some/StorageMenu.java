@@ -9,7 +9,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
-import org.example.some.animals.Animal;
 import org.example.some.otherGameObjects.Wallet;
 
 public class StorageMenu {
@@ -63,7 +62,7 @@ public class StorageMenu {
         close.setLayoutX(270);
         close.setLayoutY(10);
 
-        eggsToSell = new Label("Яйця: "+storage.getEggs()+"\nВведіть кількість для продажу:");
+        eggsToSell = new Label("Яйця: "+storage.getProduct1()+"\nВведіть кількість для продажу:");
         eggsToSell.setLayoutX(20);
         eggsToSell.setLayoutY(20);
         amountOfEggs = new TextField();
@@ -73,7 +72,7 @@ public class StorageMenu {
         sellEggs.setLayoutX(180);
         sellEggs.setLayoutY(60);
 
-        milkToSell = new Label("Молоко: "+storage.getMilk()+"\nВведіть кількість для продажу:");
+        milkToSell = new Label("Молоко: "+storage.getProduct3()+"\nВведіть кількість для продажу:");
         milkToSell.setLayoutX(20);
         milkToSell.setLayoutY(100);
         amountOfMilk = new TextField();
@@ -83,7 +82,7 @@ public class StorageMenu {
         sellMilk.setLayoutX(180);
         sellMilk.setLayoutY(140);
 
-        woolToSell = new Label("Хутро: "+storage.getWool()+"\nВведіть кількість для продажу:");
+        woolToSell = new Label("Хутро: "+storage.getProduct2()+"\nВведіть кількість для продажу:");
         woolToSell.setLayoutX(20);
         woolToSell.setLayoutY(180);
         amountOfWool = new TextField();
@@ -93,7 +92,7 @@ public class StorageMenu {
         sellWool.setLayoutX(180);
         sellWool.setLayoutY(220);
 
-        pigMeatToSell = new Label("Свинка: "+storage.getPigMeat()+"\nВведіть кількість для продажу:");
+        pigMeatToSell = new Label("Свинка: "+storage.getProduct4()+"\nВведіть кількість для продажу:");
         pigMeatToSell.setLayoutX(20);
         pigMeatToSell.setLayoutY(260);
         amountOfPigMeat = new TextField();
@@ -103,7 +102,7 @@ public class StorageMenu {
         sellPigMeat.setLayoutX(180);
         sellPigMeat.setLayoutY(300);
 
-        rabbitMeatToSell = new Label("Кролик: "+storage.getRabbitMeat()+"\nВведіть кількість для продажу:");
+        rabbitMeatToSell = new Label("Кролик: "+storage.getProduct5()+"\nВведіть кількість для продажу:");
         rabbitMeatToSell.setLayoutX(20);
         rabbitMeatToSell.setLayoutY(340);
         amountOfRabbitMeat = new TextField();
@@ -146,10 +145,15 @@ public class StorageMenu {
             if (!text.isEmpty()) {
                 try {
                     int toSell = Integer.parseInt(text);
-                    if (toSell >= 1 && toSell <= storage.getEggs()) {
-                        storage.sellEgg(toSell);
-                    } else {
-                        alert.setContentText("Введіть додатнє число, менше за "+ storage.getEggs()+1);
+                    if (toSell >= 1 && toSell <= storage.getProduct1()) {
+                        storage.sellProduct1(toSell);
+                    }
+                    else if(toSell<0){
+                        alert.setContentText("Введіть додатнє число");
+                        alert.showAndWait();
+                    }
+                    else {
+                        alert.setContentText("У Вас немає стільки яєць");
                         alert.showAndWait();
                     }
                 } catch (NumberFormatException e) {
@@ -173,10 +177,15 @@ public class StorageMenu {
             if (!text.isEmpty()) {
                 try {
                     int toSell = Integer.parseInt(text);
-                    if (toSell >= 1 && toSell <= storage.getMilk()) {
-                        storage.sellMilk(toSell);
-                    } else {
-                        alert.setContentText("Введіть додатнє число, менше за "+ storage.getMilk()+1);
+                    if (toSell >= 1 && toSell <= storage.getProduct3()) {
+                        storage.sellProduct3(toSell);
+                    }
+                    else if(toSell<0){
+                        alert.setContentText("Введіть додатнє число");
+                        alert.showAndWait();
+                    }
+                    else {
+                        alert.setContentText("У Вас немає стільки молока");
                         alert.showAndWait();
                     }
                 } catch (NumberFormatException e) {
@@ -200,10 +209,15 @@ public class StorageMenu {
             if (!text.isEmpty()) {
                 try {
                     int toSell = Integer.parseInt(text);
-                    if (toSell >= 1 && toSell <= storage.getWool()) {
-                        storage.sellWool(toSell);
-                    } else {
-                        alert.setContentText("Введіть додатнє число, менше за "+ storage.getWool()+1);
+                    if (toSell >= 1 && toSell <= storage.getProduct2()) {
+                        storage.sellProduct2(toSell);
+                    }
+                    else if(toSell<0){
+                        alert.setContentText("Введіть додатнє число");
+                        alert.showAndWait();
+                    }
+                    else {
+                        alert.setContentText("У Вас немає стільки хутра");
                         alert.showAndWait();
                     }
                 } catch (NumberFormatException e) {
@@ -227,10 +241,15 @@ public class StorageMenu {
             if (!text.isEmpty()) {
                 try {
                     int toSell = Integer.parseInt(text);
-                    if (toSell >= 1 && toSell <= storage.getPigMeat()) {
-                        storage.sellPigMeat(toSell);
-                    } else {
-                        alert.setContentText("Введіть додатнє число, менше за "+ storage.getPigMeat()+1);
+                    if (toSell >= 1 && toSell <= storage.getProduct4()) {
+                        storage.sellProduct4(toSell);
+                    }
+                    else if(toSell<0){
+                        alert.setContentText("Введіть додатнє число");
+                        alert.showAndWait();
+                    }
+                    else {
+                        alert.setContentText("У Вас немає стільки свинини");
                         alert.showAndWait();
                     }
                 } catch (NumberFormatException e) {
@@ -254,18 +273,23 @@ public class StorageMenu {
             if (!text.isEmpty()) {
                 try {
                     int toSell = Integer.parseInt(text);
-                    if (toSell >= 1 && toSell <= storage.getRabbitMeat()) {
-                        storage.sellRabbitMeat(toSell);
-                    } else {
-                        alert.setContentText("Введіть додатнє число, менше за "+ storage.getRabbitMeat()+1);
+                    if (toSell >= 1 && toSell <= storage.getProduct5()) {
+                        storage.sellProduct5(toSell);
+                    }
+                    else if(toSell<0){
+                        alert.setContentText("Введіть додатнє число");
+                        alert.showAndWait();
+                    }
+                    else {
+                        alert.setContentText("У Вас немає стільки кролятини");
                         alert.showAndWait();
                     }
                 } catch (NumberFormatException e) {
-                    alert.setContentText("Введіть кількість шматків крольчатини для продажу");
+                    alert.setContentText("Введіть кількість кролятини для продажу");
                     alert.showAndWait();
                 }
             } else {
-                alert.setContentText("Введіть кількість шматків крольчатини для продажу");
+                alert.setContentText("Введіть кількість шматків кролятини для продажу");
                 alert.showAndWait();
             }
         });

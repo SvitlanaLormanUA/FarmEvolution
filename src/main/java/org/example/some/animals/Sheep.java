@@ -2,8 +2,10 @@ package org.example.some.animals;
 import javafx.application.Platform;
 import javafx.scene.Cursor;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import org.example.some.FirstLevel;
+import org.example.some.Storage;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
@@ -13,8 +15,8 @@ import java.util.TimerTask;
 
 public class Sheep extends AbstractAnimal {
 
-    public Sheep(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root,  Well well, Feeder feeder) {
-        super(worldStartX, worldStartY, worldEndX, worldEndY, root, well, feeder,
+    public Sheep(int worldStartX, int worldStartY, int worldEndX, int worldEndY, AnchorPane anchorPane, Well well, Feeder feeder, Storage storage) {
+        super(worldStartX, worldStartY, worldEndX, worldEndY, anchorPane, well, feeder, storage,
                 "file:src/main/resources/images/firstLevel/animals/sheepRight.png",
                 "file:src/main/resources/images/firstLevel/animals/sheepLeft.png",
                 "src/main/resources/sound/sheepmp3.mp3",
@@ -54,8 +56,8 @@ public class Sheep extends AbstractAnimal {
                     }
                 };
 
-                // Запуск завдання з інтервалом 5 секунд (5000 мілісекунд)
-                timer.scheduleAtFixedRate(task, 0, 10000);
+                // Запуск завдання з інтервалом 50 секунд (50000 мілісекунд)
+                timer.scheduleAtFixedRate(task, 0, 50000);
             }
         }
     }

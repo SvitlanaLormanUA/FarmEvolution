@@ -24,6 +24,7 @@ import static org.example.some.Shop.getCurrentLevel;
 public class SecondLevel  implements Initializable {
     public  Well well;
     public  Feeder feeder;
+    public Storage storage;
     public static Wallet wallet;
     public AnchorPane anchorPane;
     private Stage stage;
@@ -41,7 +42,7 @@ public class SecondLevel  implements Initializable {
     }
 
     public void addMonkey() {
-        Monkey monkey = new Monkey(250, 300, 1000, 630, anchorPane, well, feeder, "file:src/main/resources/images/secondLevel/animals/monkey.png", "file:src/main/resources/images/secondLevel/animals/monkey.png", "src/main/resources/sound/monkey.mp3", "file:src/main/resources/images/secondLevel/products/banana.png");
+        Monkey monkey = new Monkey(250, 300, 1000, 630, anchorPane, well, feeder, storage, "file:src/main/resources/images/secondLevel/animals/monkey.png", "file:src/main/resources/images/secondLevel/animals/monkey.png", "src/main/resources/sound/monkey.mp3", "file:src/main/resources/images/secondLevel/products/banana.png");
         anchorPane.getChildren().add(monkey.getAnimalView());
     }
     @FXML

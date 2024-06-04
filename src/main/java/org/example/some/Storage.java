@@ -1,28 +1,33 @@
 package org.example.some;
 
-import javafx.scene.control.ProgressBar;
+import javafx.application.Platform;
+import javafx.scene.Cursor;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import org.example.some.otherGameObjects.Wallet;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Storage {
 
-    private static int eggCost = 5;
-    private static int milkCost = 10;
-    private static int woolCost = 8;
-    private static int pigMeatCost = 80;
-    private static int rabbitMeatCost = 40;
+    private static int product1Cost = 5;
+    private static int product2Cost = 10;
+    private static int product3Cost = 8;
+    private static int product4Cost = 80;
+    private static int product5Cost = 40;
     private ImageView storageView;
     private Wallet wallet;
     private Pane root;
 
-    private int eggs;
-    private int wool;
-    private int milk;
-    private int pigMeat;
-    private int rabbitMeat;
+    private int product1;
+    private int product2;
+    private int product3;
+    private int product4;
+    private int product5;
 
+    List<ImageView> product1Views;
 
     public Storage(ImageView storageView, Wallet wallet){
         this.storageView = storageView;
@@ -30,78 +35,138 @@ public class Storage {
         this.root = new Pane();
         root.getChildren().add(this.storageView);
 
-         this.eggs = 0;
-         this.wool = 0;
-         this.milk = 0;
-         this.pigMeat = 0;
-         this.rabbitMeat = 0;
+         this.product1 = 0;
+         this.product2 = 0;
+         this.product3 = 0;
+         this.product4 = 0;
+         this.product5 = 0;
+         product1Views = new ArrayList<>();
     }
 
-    public void addEgg(){
-        eggs++;
-        if (eggs>0){
+    public void addProduct1(){
+        product1++;
 
+        if (product1==1) {
+            ImageView productView1 = createProduct1(storageView.getLayoutX(), storageView.getLayoutY() + 52);
+            product1Views.add(productView1);
+        }
+        if (product1==2) {
+            ImageView productView2 = createProduct1(storageView.getLayoutX() + 13, storageView.getLayoutY() + 52);
+            product1Views.add(productView2);
+        }
+        if (product1==3) {
+            ImageView productView3 = createProduct1(storageView.getLayoutX() + 26, storageView.getLayoutY() + 52);
+            product1Views.add(productView3);
+        }
+        if (product1==4) {
+            ImageView productView4 = createProduct1(storageView.getLayoutX() + 39, storageView.getLayoutY() + 52);
+            product1Views.add(productView4);
+        }
+        if (product1==5) {
+            ImageView productView5 = createProduct1(storageView.getLayoutX() + 52, storageView.getLayoutY() + 52);
+            product1Views.add(productView5);
+        }
+
+
+        if(product1==product1Views.size()) {
+            Platform.runLater(() -> {
+                root.getChildren().add(1, product1Views.get(product1Views.size()-1));
+            });
         }
     }
 
-    public void addWool(){
-        wool++;
+    private ImageView createProduct1(double x, double y){
+        ImageView productView = new ImageView(new Image("file:src/main/resources/images/firstLevel/products/egg.png"));
+        productView.setFitWidth(25);
+        productView.setFitHeight(25);
+        productView.setLayoutX(x);
+        productView.setLayoutY(y);
+
+        return productView;
     }
 
-    public void addMilk(){
-        milk++;
+    public void addProduct2(){
+        product2++;
     }
 
-    public void addPigMeat(){
-        pigMeat++;
+    public void addProduct3(){
+        product3++;
     }
 
-    public void addRabbitMeat(){
-        rabbitMeat++;
+    public void addProduct4(){
+        product4++;
     }
 
-    public void sellEgg(int toSell){
-        eggs -= toSell;
-        wallet.income(eggCost*toSell);
+    public void addProduct5(){
+        product5++;
     }
 
-    public void sellWool(int toSell){
-        wool -= toSell;
-        wallet.income(woolCost*toSell);
+    public void sellProduct1(int toSell){
+        int t = product1;
+        product1 -= toSell;
+        wallet.income(product1Cost *toSell);
+        removeProductView(product1Views, t, toSell);
     }
 
-    public void sellMilk(int toSell){
-        milk -= toSell;
-        wallet.income(milkCost*toSell);
+    public void sellProduct2(int toSell){
+        product2 -= toSell;
+        wallet.income(product3Cost *toSell);
     }
 
-    public void sellPigMeat(int toSell){
-        pigMeat -= toSell;
-        wallet.income(pigMeatCost*toSell);
+    public void sellProduct3(int toSell){
+        product3 -= toSell;
+        wallet.income(product2Cost *toSell);
     }
 
-    public void sellRabbitMeat(int toSell){
-        rabbitMeat -= toSell;
-        wallet.income(rabbitMeatCost*toSell);
+    public void sellProduct4(int toSell){
+        product4 -= toSell;
+        wallet.income(product4Cost *toSell);
     }
 
-    public int getEggs() {
-        return eggs;
+    public void sellProduct5(int toSell){
+        product5 -= toSell;
+        wallet.income(product5Cost *toSell);
     }
 
-    public int getWool() {
-        return wool;
+    private void removeProductView(List<ImageView> productViews, int product, int toRemove){
+        int start = product - 1;
+        int end = product - toRemove;
+        if (end < 0) end = 0;
+
+        for (int i = start; i >= end; i--) {
+            if(i<5) {
+                ImageView view = productViews.get(i);
+                Platform.runLater(() -> root.getChildren().remove(view));
+                productViews.remove(i);
+            }
+        }
     }
 
-    public int getMilk() {
-        return milk;
+    public int getProduct1() {
+        return product1;
     }
 
-    public int getPigMeat() {
-        return pigMeat;
+    public int getProduct2() {
+        return product2;
     }
 
-    public int getRabbitMeat() {
-        return rabbitMeat;
+    public int getProduct3() {
+        return product3;
+    }
+
+    public int getProduct4() {
+        return product4;
+    }
+
+    public int getProduct5() {
+        return product5;
+    }
+
+    public Pane getRoot() {
+        return root;
+    }
+
+    public ImageView getStorageView() {
+        return storageView;
     }
 }

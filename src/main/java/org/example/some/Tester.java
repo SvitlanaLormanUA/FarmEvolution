@@ -36,16 +36,16 @@ public class Tester extends Application {
 //        addWell();
         addWallet();
 //        addFeeder();
-        addSheep();
+//        addSheep();
     }
 
-    private void addSheep(){
+    /*private void addSheep(){
         button.setOnAction(event -> {
             Sheep sheep = new Sheep(200, 300,600,570, root, well, feeder);
             root.getChildren().add(sheep.getAnimalView());
             sheep.play();
         });
-    }
+    }*/
 
     private void addWallet(){
         wallet = new Wallet(50,50, 100);

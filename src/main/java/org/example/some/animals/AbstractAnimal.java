@@ -13,6 +13,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.util.Duration;
 import org.example.some.FirstLevel;
+import org.example.some.Storage;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
@@ -21,7 +22,7 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-abstract class AbstractAnimal implements Animal {
+public abstract class AbstractAnimal implements Animal {
 
     public static Pane root;
 
@@ -30,6 +31,7 @@ abstract class AbstractAnimal implements Animal {
     protected int hungerLvl;
     protected int thirstLvl;
     protected static Feeder feeder;
+    protected Storage storage;
     protected TranslateTransition translateTransition;
     protected PathTransition pathTransition;
     protected boolean directionRight;
@@ -57,7 +59,7 @@ abstract class AbstractAnimal implements Animal {
 
     AnimalMenu animalMenu;
 
-    public AbstractAnimal(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Well well, Feeder feeder, String imagePath, String imagePathLeft, String soundFile,String recourseFile) {
+    public AbstractAnimal(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Well well, Feeder feeder, Storage storage, String imagePath, String imagePathLeft, String soundFile, String recourseFile) {
         file = new File(soundFile);
         product = new Image(recourseFile);
         this.imagePath = imagePath;
@@ -78,6 +80,7 @@ abstract class AbstractAnimal implements Animal {
 
 
         this.feeder = feeder;
+        this.storage = storage;
         this.mediaView = new MediaView();
         animalView.setFitWidth(100);
         animalView.setFitHeight(100);
@@ -339,6 +342,10 @@ abstract class AbstractAnimal implements Animal {
         }
     }
 
+    @Override
+    public void emotions(){
+
+    }
 
 
     @Override

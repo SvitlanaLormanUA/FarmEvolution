@@ -10,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.*;
 import org.example.some.FirstLevel;
+import org.example.some.Storage;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
@@ -32,8 +33,8 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
     private double currX;
     private double currY;
 
-    public Rabbit(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Well well, Feeder feeder) {
-        super(worldStartX, worldStartY, worldEndX, worldEndY, root, well, feeder,
+    public Rabbit(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Well well, Feeder feeder, Storage storage) {
+        super(worldStartX, worldStartY, worldEndX, worldEndY, root, well, feeder, storage,
                 "file:src/main/resources/images/firstLevel/animals/rabbitRight.png",
                 "file:src/main/resources/images/firstLevel/animals/rabbitLeft.png",
                 "src/main/resources/sound/jumpRabbit.mp3",

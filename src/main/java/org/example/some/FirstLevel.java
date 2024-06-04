@@ -159,7 +159,7 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
     public void addSheep() {
         //додана овечка на основну панель
             for (int i = 0; i < countSheep; i++) {
-                Sheep sheep = new Sheep(250, 300, 1000, 630, anchorPane, well, feeder);
+                Sheep sheep = new Sheep(250, 300, 1000, 630, anchorPane, well, feeder,storage);
                 anchorPane.getChildren().add(sheep.getAnimalView());
                 sheep.giveProduct();
             }
@@ -169,7 +169,7 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
         //додаємо гуся
 
             for (int i = 0; i < countGoose; i++) {
-                Goose goose = new Goose(250, 300, 1000, 630, anchorPane, well, feeder);
+                Goose goose = new Goose(250, 300, 1000, 630, anchorPane, well, feeder, storage);
                 anchorPane.getChildren().add(goose.getAnimalView());
             }
 
@@ -178,7 +178,7 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
         //додаємо свинку
 
             for (int i = 0; i < countPig; i++) {
-                Pig pig = new Pig(250, 300, 1000, 630, anchorPane, well, feeder);
+                Pig pig = new Pig(250, 300, 1000, 630, anchorPane, well, feeder, storage);
                 anchorPane.getChildren().add(pig.getAnimalView());
             }
 
@@ -187,7 +187,7 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
     public void addRabbit() {
 
             for (int i = 0; i < countRabbit; i++) {
-                Rabbit rabbit = new Rabbit(250, 250, 1000, 630, anchorPane, well, feeder);
+                Rabbit rabbit = new Rabbit(250, 250, 1000, 630, anchorPane, well, feeder, storage);
                 anchorPane.getChildren().add(2, rabbit.getAnimalView());
             }
 
@@ -204,7 +204,7 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
 
 
             for (int i = 0; i < countCow; i++) {
-                Cow cow = new Cow(250, 200, 1000, 630, anchorPane, well, feeder);
+                Cow cow = new Cow(250, 200, 1000, 630, anchorPane, well, feeder, storage);
                 anchorPane.getChildren().add(cow.getAnimalView());
             }
 
@@ -215,7 +215,7 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
         addSheep();
         addGoose();
         addPig();
-       addRabbit();
+       //addRabbit();
         addDonkey();
         addCow();
     }
@@ -254,7 +254,7 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
 
     private void addStorage(){
         storage = new Storage(storageView, wallet);
-        anchorPane.getChildren().add(storageView);
+        anchorPane.getChildren().add(storage.getRoot());
     }
 
     public void setWater() {

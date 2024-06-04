@@ -9,6 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import org.example.some.FirstLevel;
+import org.example.some.Storage;
 import org.example.some.otherGameObjects.Well;
 
 import java.util.Timer;
@@ -21,8 +22,8 @@ public class Cow extends AbstractAnimal {
     private MilkEmotion milkEmotion;
     ImageView productView;
 
-    public Cow(int worldStartX, int worldStartY, int worldEndX, int worldEndY, AnchorPane anchorPane, Well well, Feeder feeder) {
-        super(worldStartX, worldStartY, worldEndX, worldEndY, anchorPane, well, feeder,
+    public Cow(int worldStartX, int worldStartY, int worldEndX, int worldEndY, AnchorPane anchorPane, Well well, Feeder feeder, Storage storage) {
+        super(worldStartX, worldStartY, worldEndX, worldEndY, anchorPane, well, feeder, storage,
                 "file:src/main/resources/images/firstLevel/animals/cowRight.png",
                 "file:src/main/resources/images/firstLevel/animals/cowLeft.png",
                 "src/main/resources/sound/cow.mp3",

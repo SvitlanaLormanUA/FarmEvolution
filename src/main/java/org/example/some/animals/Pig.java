@@ -7,6 +7,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import org.example.some.FirstLevel;
+import org.example.some.Storage;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
@@ -21,9 +22,8 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
     private AnimalMeatMenu animalMeatMenu;
     private boolean openedMeatMenu;
     private boolean enoughFood;
-    public Pig(int worldStartX, int worldStartY, int worldEndX, int worldEndY, AnchorPane anchorPane, Well well, Feeder feeder) {
-        super ( worldStartX, worldStartY, worldEndX, worldEndY, anchorPane,
-                well, feeder,
+    public Pig(int worldStartX, int worldStartY, int worldEndX, int worldEndY, AnchorPane anchorPane, Well well, Feeder feeder, Storage storage) {
+        super(worldStartX, worldStartY, worldEndX, worldEndY, anchorPane, well, feeder, storage,
                 "file:src/main/resources/images/firstLevel/animals/pigRight.png",
                 "file:src/main/resources/images/firstLevel/animals/pigLeft.png",
                 "src/main/resources/sound/pigSound.mp3",
