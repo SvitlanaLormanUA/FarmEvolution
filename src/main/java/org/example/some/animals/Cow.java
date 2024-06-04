@@ -18,8 +18,9 @@ import java.util.TimerTask;
 public class Cow extends AbstractAnimal {
 
     private boolean movingForward = true;
-    private int amountOfMeals;
-    private MilkEmotion milkEmotion;
+
+
+
     ImageView productView;
 
     public Cow(int worldStartX, int worldStartY, int worldEndX, int worldEndY, AnchorPane anchorPane, Well well, Feeder feeder, Storage storage) {
@@ -29,7 +30,7 @@ public class Cow extends AbstractAnimal {
                 "src/main/resources/sound/cow.mp3",
                 "file:src/main/resources/images/fullReaction.png"
         );
-        this.amountOfMeals = 0;
+
     }
 
     @Override
@@ -137,9 +138,7 @@ public class Cow extends AbstractAnimal {
 
         animalView.setLayoutX(newX);
         animalView.setLayoutY(newY);
-        if (milkEmotion != null) {
-            milkEmotion.updatePosition(newX + animalView.getFitWidth(), newY + 10);
-        }
+
         updateProductViewPosition();
         playSound();
     }

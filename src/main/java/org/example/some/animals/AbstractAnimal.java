@@ -58,6 +58,47 @@ public abstract class AbstractAnimal implements Animal {
     Image product;
 
     AnimalMenu animalMenu;
+    public AbstractAnimal(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Well well, Feeder feeder, Storage storage, String imagePath, String soundFile, String recourseFile) {
+        file = new File(soundFile);
+        product = new Image(recourseFile);
+        this.imagePath = imagePath;
+        this.imagePathLeft = imagePathLeft;
+        this.animalView = new ImageView(new Image(this.imagePath));
+        this.worldStartX = worldStartX;
+        this.worldStartY = worldStartY;
+        this.worldEndX = worldEndX;
+        this.worldEndY = worldEndY;
+        this.root = root;
+        this.openedMenu = false;
+        this.thirstLvl = 100;
+        this.hungerLvl = 100;
+        this.cost = 100;
+        this.well = well;
+        this.deltaX = 0;
+        this.deltaY = 0;
+
+
+        this.feeder = feeder;
+        this.storage = storage;
+        this.mediaView = new MediaView();
+        animalView.setFitWidth(100);
+        animalView.setFitHeight(100);
+        animalView.setCursor(Cursor.HAND);
+
+
+        int x = random.nextInt(worldStartX+50, worldEndX-50);
+        int y = random.nextInt(worldStartY+50, worldEndY - 100);
+        animalView.setLayoutX(x);
+        animalView.setLayoutY(y);
+
+
+
+        movement();
+        thirst();
+        hunger();
+        giveProduct();
+    }
+
 
     public AbstractAnimal(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Well well, Feeder feeder, Storage storage, String imagePath, String imagePathLeft, String soundFile, String recourseFile) {
         file = new File(soundFile);
@@ -139,6 +180,8 @@ public abstract class AbstractAnimal implements Animal {
         hunger();
         giveProduct();
     }
+
+
 
     @Override
     public void movement() {
