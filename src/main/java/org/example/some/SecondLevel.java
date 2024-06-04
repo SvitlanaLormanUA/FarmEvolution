@@ -14,7 +14,7 @@ import org.example.some.animals.Monkey;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -23,11 +23,15 @@ public class SecondLevel  implements Initializable {
     public  Well well;
     public  Feeder feeder;
     public Storage storage;
+
+    public static int countMonkeys = 1;
     public static Wallet wallet;
     public AnchorPane anchorPane;
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private static int coins;
+
 
 
 
@@ -75,10 +79,6 @@ public class SecondLevel  implements Initializable {
         }
     }
 
-    public static void saveState() {
-
-    }
-
 
     //ВИДАЛИМО
     @FXML
@@ -124,4 +124,39 @@ public class SecondLevel  implements Initializable {
 
     public void showInfo(ActionEvent event) {
     }
+
+    static void saveState() {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("gameState.ser"))) {
+            out.writeInt(wallet.getCoins());
+            out.writeInt(countMonkeys);
+
+
+
+
+
+
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    static void loadState() {
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("gameState.ser"))) {
+            coins = in.readInt();
+            wallet.setCoins(coins);
+           /* countMonkeys = in.readInt();*/
+
+            setCoins(coins);
+            wallet.setCoins(coins);
+            wallet.nCoins.setText(String.valueOf(coins));
+        } catch (IOException e) {
+            coins = 0; // Default value if there's an error or the file doesn't exist
+        }
+    }
+    public static void setCoins(int coins) {
+        SecondLevel.coins = coins;
+    }
+
 }
