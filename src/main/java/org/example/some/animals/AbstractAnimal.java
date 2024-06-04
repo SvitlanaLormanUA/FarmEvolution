@@ -230,7 +230,9 @@ public abstract class AbstractAnimal implements Animal {
             directionRight = !directionRight;
         } else if (newX > worldEndX && directionRight) {
             deltaX = -deltaX;
-            animalView.setImage(new Image(imagePathLeft));
+            if (imagePathLeft != null) {
+                animalView.setImage(new Image(imagePathLeft));
+            }
             directionRight = !directionRight;
         }
         if (newY < worldStartY || newY > worldEndY - animalView.getFitHeight()) {

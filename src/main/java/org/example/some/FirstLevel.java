@@ -23,7 +23,8 @@ import java.util.ResourceBundle;
 
 
 public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
-    ;
+    public static boolean firstLevel = true;
+
 
     private static int WIDTH = 1255;
     private static int HEIGHT = 707;
@@ -273,6 +274,7 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
             out.writeInt(countGoose);
             out.writeInt(countPig);
             out.writeInt(countRabbit);
+            out.writeBoolean(firstLevel);
 
 
 
@@ -288,6 +290,7 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
     static void loadState() {
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("gameState.ser"))) {
            coins = in.readInt();
+           firstLevel = in.readBoolean();
             /*countCow = in.readInt();
             donkeyCount = in.readInt();
             countSheep = in.readInt();
