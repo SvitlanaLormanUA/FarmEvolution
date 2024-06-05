@@ -216,7 +216,7 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
         addSheep();
         addGoose();
         addPig();
-       //addRabbit();
+        addRabbit();
         addDonkey();
         addCow();
     }

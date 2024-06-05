@@ -239,7 +239,7 @@ public class StorageMenu {
 
     private void sellPigMeat(){
         sellPigMeat.setOnAction(event -> {
-            String text = amountOfEggs.getText();
+            String text = amountOfPigMeat.getText();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Помилка!");
@@ -261,11 +261,11 @@ public class StorageMenu {
                         alert.showAndWait();
                     }
                 } catch (NumberFormatException e) {
-                    alert.setContentText("Введіть кількість шматків свинини для продажу");
+                    alert.setContentText("Введіть кількість свинини для продажу");
                     alert.showAndWait();
                 }
             } else {
-                alert.setContentText("Введіть кількість шматків свинини для продажу");
+                alert.setContentText("Введіть кількість свинини для продажу");
                 alert.showAndWait();
             }
         });
@@ -273,7 +273,7 @@ public class StorageMenu {
 
     private void sellRabbitMeat(){
         sellRabbitMeat.setOnAction(event -> {
-            String text = amountOfEggs.getText();
+            String text = amountOfRabbitMeat.getText();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Помилка!");
@@ -299,7 +299,7 @@ public class StorageMenu {
                     alert.showAndWait();
                 }
             } else {
-                alert.setContentText("Введіть кількість шматків кролятини для продажу");
+                alert.setContentText("Введіть кількість кролятини для продажу");
                 alert.showAndWait();
             }
         });

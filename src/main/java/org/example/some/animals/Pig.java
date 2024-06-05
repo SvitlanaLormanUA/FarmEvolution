@@ -117,7 +117,7 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
 
         productView.setOnMouseClicked(event -> {
             AbstractAnimal.root.getChildren().remove(productView);
-            FirstLevel.wallet.income(80);
+            storage.addProduct4();
         });
 
         return productView;

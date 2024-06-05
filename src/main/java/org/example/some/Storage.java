@@ -197,10 +197,80 @@ public class Storage {
 
     public void addProduct4(){
         product4++;
+        if (product4==1) {
+            ImageView productView1 = createProduct(product4Image, storageView.getLayoutX()+2, storageView.getLayoutY()+97, 30, 30);
+            product4Views.add(productView1);
+            Platform.runLater(() -> {
+                root.getChildren().add(1, product4Views.get(0));
+            });
+        }
+        if (product4==2) {
+            ImageView productView2 = createProduct(product4Image, storageView.getLayoutX() + 24, storageView.getLayoutY()+97, 30, 30);
+            product4Views.add(productView2);
+            Platform.runLater(() -> {
+                root.getChildren().add(1, product4Views.get(1));
+            });
+        }
+        if (product4==3) {
+            ImageView productView3 = createProduct(product4Image, storageView.getLayoutX() + 46, storageView.getLayoutY()+97, 30, 30);
+            product4Views.add(productView3);
+            Platform.runLater(() -> {
+                root.getChildren().add(1, product4Views.get(2));
+            });
+        }
+        if (product4==4) {
+            ImageView productView4 = createProduct(product4Image, storageView.getLayoutX() + 12, storageView.getLayoutY()+87,30, 30);
+            product4Views.add(productView4);
+            Platform.runLater(() -> {
+                root.getChildren().add( product4Views.get(3));
+            });
+        }
+        if (product4==5) {
+            ImageView productView5 = createProduct(product4Image, storageView.getLayoutX() + 32, storageView.getLayoutY()+87, 30, 30);
+            product4Views.add(productView5);
+            Platform.runLater(() -> {
+                root.getChildren().add( product4Views.get(4));
+            });
+        }
     }
 
     public void addProduct5(){
         product5++;
+        if (product5==1) {
+            ImageView productView1 = createProduct(product5Image, storageView.getLayoutX()+2, storageView.getLayoutY()+127, 20, 20);
+            product5Views.add(productView1);
+            Platform.runLater(() -> {
+                root.getChildren().add( product5Views.get(0));
+            });
+        }
+        if (product5==2) {
+            ImageView productView2 = createProduct(product5Image, storageView.getLayoutX() + 15, storageView.getLayoutY()+127, 20, 20);
+            product5Views.add(productView2);
+            Platform.runLater(() -> {
+                root.getChildren().add( product5Views.get(1));
+            });
+        }
+        if (product5==3) {
+            ImageView productView3 = createProduct(product5Image, storageView.getLayoutX() + 28, storageView.getLayoutY()+127, 20, 20);
+            product5Views.add(productView3);
+            Platform.runLater(() -> {
+                root.getChildren().add( product5Views.get(2));
+            });
+        }
+        if (product5==4) {
+            ImageView productView4 = createProduct(product5Image, storageView.getLayoutX() + 41, storageView.getLayoutY()+127,20, 20);
+            product5Views.add(productView4);
+            Platform.runLater(() -> {
+                root.getChildren().add( product5Views.get(3));
+            });
+        }
+        if (product5==5) {
+            ImageView productView5 = createProduct(product5Image, storageView.getLayoutX() + 55, storageView.getLayoutY()+127, 20, 20);
+            product5Views.add(productView5);
+            Platform.runLater(() -> {
+                root.getChildren().add( product5Views.get(4));
+            });
+        }
     }
 
     public void sellProduct1(int toSell){
@@ -211,23 +281,31 @@ public class Storage {
     }
 
     public void sellProduct2(int toSell){
+        int t = product2;
         product2 -= toSell;
-        wallet.income(product3Cost *toSell);
+        wallet.income(product2Cost *toSell);
+        removeProductView(product2Views, t, toSell);
     }
 
     public void sellProduct3(int toSell){
+        int t = product3;
         product3 -= toSell;
-        wallet.income(product2Cost *toSell);
+        wallet.income(product3Cost *toSell);
+        removeProductView(product3Views, t, toSell);
     }
 
     public void sellProduct4(int toSell){
+        int t = product4;
         product4 -= toSell;
         wallet.income(product4Cost *toSell);
+        removeProductView(product4Views, t, toSell);
     }
 
     public void sellProduct5(int toSell){
+        int t = product5;
         product5 -= toSell;
         wallet.income(product5Cost *toSell);
+        removeProductView(product5Views, t, toSell);
     }
 
     private ImageView createProduct(Image productImage, double x, double y, double width, double height){

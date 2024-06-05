@@ -45,167 +45,39 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
         this.openedMeatMenu = false;
         this.enoughFood = false;
         animalView.setFitWidth(80);
-        animalView.setLayoutX(300);
-        animalView.setLayoutY(300);
-
-        currX = animalView.getLayoutX();
-        currY = animalView.getLayoutY();
     }
 
 
     @Override
     public void movement() {
+        translateTransition = new TranslateTransition();
+        translateTransition.setDuration(Duration.millis(600));
+        translateTransition.setNode(animalView);
         directionRight = true;
-        pathTransition = new PathTransition();
-        pathTransition.setDuration(Duration.millis(1500));
-        pathTransition.setNode(animalView);
+        translateTransition.setOnFinished(event -> {
+            animalView.setLayoutX(animalView.getLayoutX()+deltaX);
+            animalView.setLayoutY(animalView.getLayoutY()+deltaY);
 
-        setRandomDirection();
-
-        pathTransition.setOnFinished(event -> {
-            animalView.setLayoutX(currX);
-            animalView.setLayoutY(currY);
-
-            // Скидання translateX і translateY перед встановленням нової траєкторії
+            // Скидання translateX і translateY
             animalView.setTranslateX(0);
             animalView.setTranslateY(0);
 
-            // Встановлення нової траєкторії
             setRandomDirection();
-
-            // Створення нової PathTransition для перезапуску анімації
-            PathTransition newPathTransition = new PathTransition();
-            newPathTransition.setDuration(Duration.millis(1500));
-            newPathTransition.setNode(animalView);
-            newPathTransition.setPath(path);
-            newPathTransition.setOrientation(PathTransition.OrientationType.NONE);
-            newPathTransition.setOnFinished(this.pathTransition.getOnFinished());
-            newPathTransition.play();
-
-            // Оновлення посилання на поточну PathTransition
-            this.pathTransition = newPathTransition;
+            translateTransition.play();
         });
-
-        pathTransition.play();
+        setRandomDirection();
+        translateTransition.play();
 
         animalView.setOnMouseClicked(this::handleMouseClicked);
         animalView.setOnMouseDragged(this::handleMouseDragged);
         animalView.setOnMouseReleased(this::handleMouseReleased);
     }
 
-    @Override
-    public void setRandomDirection() {
-        double x = animalView.getLayoutX();
-        double y = animalView.getLayoutY();
 
-        path = new Path();
-        path.getElements().add(new MoveTo(x, y));
-
-        if (directionRight) {
-            deltaX = random.nextInt(10, 50);
-        } else {
-            deltaX = random.nextInt(-50, -10);
-        }
-        deltaY = random.nextInt(120) - 75;
-
-        double newX = x + deltaX;
-        double newY = y + deltaY;
-
-        if (newX < worldStartX || newX > worldEndX) {
-            deltaX = -deltaX;
-            directionRight = !directionRight;
-            animalView.setImage(new Image(directionRight ? imagePath : imagePathLeft));
-        }
-
-        if (newY < worldStartY || newY > worldEndY - animalView.getFitHeight()) {
-            deltaY = -deltaY;
-        }
-
-        currX = x + deltaX;
-        currY = y + deltaY;
-
-        QuadCurveTo quadCurveTo = new QuadCurveTo();
-        quadCurveTo.setX(currX);
-        quadCurveTo.setY(currY);
-        quadCurveTo.setControlX(x + deltaX / 2);
-        quadCurveTo.setControlY(y - 75);
-
-        path.getElements().add(quadCurveTo);
-
-        pathTransition.setPath(path);
-        pathTransition.setOrientation(PathTransition.OrientationType.NONE);
-    }
-
-
-    @Override
-    public void handleMouseDragged(MouseEvent event) {
-        pathTransition.stop();
-        double newX = event.getSceneX() - animalView.getFitWidth() / 2;
-        double newY = event.getSceneY() - animalView.getFitHeight() / 2;
-
-        if (newX < worldStartX) newX = worldStartX;
-        if (newX > worldEndX - animalView.getFitWidth()) newX = worldEndX - animalView.getFitWidth();
-        if (newY < worldStartY) newY = worldStartY;
-        if (newY > worldEndY - animalView.getFitHeight()) newY = worldEndY - animalView.getFitHeight();
-
-        animalView.setLayoutX(newX);
-        animalView.setLayoutY(newY);
-        playSound();
-    }
-
-    @Override
-    public void handleMouseReleased(MouseEvent event) {
-        double x = animalView.getLayoutX();
-        double y = animalView.getLayoutY();
-        boolean outOfBounds = false;
-
-        if (x < worldStartX) {
-            x = worldStartX;
-            outOfBounds = true;
-        } else if (x > worldEndX - animalView.getFitWidth()) {
-            x = worldEndX - animalView.getFitWidth();
-            outOfBounds = true;
-        }
-
-        if (y < worldStartY) {
-            y = worldStartY;
-            outOfBounds = true;
-        } else if (y > worldEndY - animalView.getFitHeight()) {
-            y = worldEndY - animalView.getFitHeight();
-            outOfBounds = true;
-        }
-
-        if (outOfBounds) {
-            TranslateTransition transitionBack = new TranslateTransition(Duration.millis(500), animalView);
-            transitionBack.setToX(x);
-            transitionBack.setToY(y);
-            transitionBack.play();
-        }
-        movement();
-        playSound();
-    }
 
     @Override
     public void handleMouseClicked(MouseEvent event) {
-        if (!openedMenu) {
-            double x = event.getSceneX();
-            double y = event.getSceneY();
-
-            // Перевірка, щоб меню не виходило за межі вікна
-            double menuWidth = 200;
-            double menuHeight = 200;
-            if (x + menuWidth > root.getWidth()) {
-                x = root.getWidth() - menuWidth;
-            }
-            if (y + menuHeight > root.getHeight()) {
-                y = root.getHeight() - menuHeight;
-            }
-            pathTransition.stop();
-            addMenu(x, y);
-
-        } else {
-            removeMenu();
-        }
+        super.handleMouseClicked(event);
 
         if(amountOfMeals>=3){
             enoughFood = true;
@@ -228,21 +100,6 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
         }
 
         playSound();
-    }
-
-    @Override
-    public void addMenu(double x, double y) {
-        animalMenu = new AnimalMenu(this, x, y);
-        root.getChildren().add(animalMenu.getRoot());
-        openedMenu = true;
-//        pathTransition.pause();
-    }
-
-    @Override
-    public void removeMenu() {
-        root.getChildren().remove(animalMenu.getRoot());
-        openedMenu = false;
-        pathTransition.play();
     }
 
     @Override
@@ -305,7 +162,7 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
 
         productView.setOnMouseClicked(event -> {
             AbstractAnimal.root.getChildren().remove(productView);
-            FirstLevel.wallet.income(40);
+            storage.addProduct5();
         });
 
         return productView;
