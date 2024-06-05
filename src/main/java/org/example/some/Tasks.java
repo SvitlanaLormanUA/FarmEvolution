@@ -28,7 +28,6 @@ public class Tasks {
     private boolean task1 = false;
     private boolean task2 = false;
     private boolean task3 = false;
-    private boolean task4 = false;
 
     private int nCoins;
 

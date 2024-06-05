@@ -75,6 +75,24 @@ public class Sheep extends AbstractAnimal {
             AbstractAnimal.feeder.getFood();
         }
     }
+
+    @Override
+    public void hunger() {
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                if (hungerLvl > 0) {
+                    hungerLvl--;
+                    cost = (int) (324 * ((double)hungerLvl / 100));
+                } else {
+                    timer.cancel();
+                }
+            }
+        };
+
+        timer.scheduleAtFixedRate(task, 0, 5000);
+    }
 }
 
 
