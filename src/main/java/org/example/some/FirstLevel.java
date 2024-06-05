@@ -114,17 +114,19 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
 
     @FXML
     public void backToMainMenu(ActionEvent event) {
-            try {
-                saveState();
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("info.fxml")));
-                stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        try {
+            saveState();
+            ShopFirstLevel.setCurrentLevel("firstLevel.fxml");
 
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("info.fxml")));
+            stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
@@ -343,6 +345,5 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
     public void showSettings(ActionEvent event) {
     }
 
-    public void showInstr(ActionEvent event) {
-    }
+
 }
