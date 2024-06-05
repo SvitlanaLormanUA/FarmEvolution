@@ -20,7 +20,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
-public class AnimalCoutingGame extends Application {
+public class AnimalCountingGame extends Application {
 
     @Override
     public void start(Stage primaryStage) {
