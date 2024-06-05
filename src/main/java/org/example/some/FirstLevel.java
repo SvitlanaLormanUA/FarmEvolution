@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -152,7 +153,7 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
 
     @FXML
     void addStorageMenu(MouseEvent event) {
-        StorageMenu storageMenu = new  StorageMenu(storage, wallet, WIDTH/2-140, HEIGHT/2-200, anchorPane);
+        StorageMenu storageMenu = new  StorageMenu(storage, wallet, WIDTH/2-140, HEIGHT/4-100, anchorPane);
         anchorPane.getChildren().add(storageMenu.getRoot());
     }
   
@@ -162,7 +163,6 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
             for (int i = 0; i < countSheep; i++) {
                 Sheep sheep = new Sheep(250, 300, 1000, 630, anchorPane, well, feeder,storage);
                 anchorPane.getChildren().add(sheep.getAnimalView());
-                sheep.giveProduct();
             }
 
     }
@@ -254,7 +254,12 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
     }
 
     private void addStorage(){
-        storage = new Storage(storageView, wallet);
+        Image egg = new Image("file:src/main/resources/images/firstLevel/products/egg.png");
+        Image wool = new Image("file:src/main/resources/images/firstLevel/products/wool.png");
+        Image milk = new Image("file:src/main/resources/images/firstLevel/products/milkStorage.png");
+        Image meatP = new Image("file:src/main/resources/images/firstLevel/products/meat.png");
+        Image meatR = new Image("file:src/main/resources/images/firstLevel/products/meat.png");
+        storage = new Storage(storageView, wallet, egg, wool, milk, meatP, meatR);
         anchorPane.getChildren().add(storage.getRoot());
     }
 

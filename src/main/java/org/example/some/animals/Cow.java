@@ -67,7 +67,7 @@ public class Cow extends AbstractAnimal {
 
                             productView.setOnMouseClicked(event -> {
                                 AbstractAnimal.root.getChildren().remove(productView);
-                                FirstLevel.wallet.income(80);
+                                storage.addProduct3();
                             });
 
                             Platform.runLater(() -> AbstractAnimal.root.getChildren().add(1, productView));
@@ -77,7 +77,7 @@ public class Cow extends AbstractAnimal {
                     }
                 };
 
-                // Запуск завдання з інтервалом 35 секунд (5000 мілісекунд)
+                // Запуск завдання з інтервалом 35 секунд (70000 мілісекунд)
                 timer.scheduleAtFixedRate(task, 0, 70000);
             }
         }
