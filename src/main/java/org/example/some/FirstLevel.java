@@ -156,7 +156,7 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
         StorageMenu storageMenu = new  StorageMenu(storage, wallet, WIDTH/2-140, HEIGHT/4-100, anchorPane);
         anchorPane.getChildren().add(storageMenu.getRoot());
     }
-  
+
 
     public void addSheep() {
         //додана овечка на основну панель
@@ -235,6 +235,7 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
         addWell();
         addStorage();
         setAnimals();
+        saveState();
     }
 
     private void addWallet(){
@@ -270,6 +271,7 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
         waterBar.setProgress(progress);
     }
 
+
     static void saveState() {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("gameState.ser"))) {
             out.writeInt(wallet.getCoins());
@@ -280,13 +282,6 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
             out.writeInt(countPig);
             out.writeInt(countRabbit);
             out.writeBoolean(firstLevel);
-
-
-
-
-
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -294,23 +289,24 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
 
     static void loadState() {
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("gameState.ser"))) {
-           coins = in.readInt();
-           firstLevel = in.readBoolean();
-            /*countCow = in.readInt();
+            coins = in.readInt();
+            countCow = in.readInt();
             donkeyCount = in.readInt();
             countSheep = in.readInt();
             countGoose = in.readInt();
             countPig = in.readInt();
             countRabbit = in.readInt();
-*/
+            firstLevel = in.readBoolean();
 
             setCoins(coins);
             wallet.setCoins(coins);
             wallet.nCoins.setText(String.valueOf(coins));
         } catch (IOException e) {
             coins = 0; // Default value if there's an error or the file doesn't exist
+            System.out.println("Error loading game state: " + e.getMessage());
         }
     }
+
     public static void setCoins(int coins) {
         FirstLevel.coins = coins;
     }
@@ -345,5 +341,8 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
     }
 
     public void showSettings(ActionEvent event) {
+    }
+
+    public void showInstr(ActionEvent event) {
     }
 }

@@ -58,7 +58,7 @@
             <Image url="@../../../images/firstLevel/objects/food.png" />
          </image>
       </ImageView>
-      <Button fx:id="buttonInfo" layoutX="1090.0" layoutY="21.0" mnemonicParsing="false" onAction="#showInfo" prefHeight="43.0" prefWidth="47.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css" />
+      <Button fx:id="buttonInfo" layoutX="1090.0" layoutY="21.0" mnemonicParsing="false" onAction="#showInstr" prefHeight="43.0" prefWidth="47.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css" />
 
       <Button fx:id="buttonTasks" layoutX="1167.0" layoutY="86.0" mnemonicParsing="false" onAction="#showTasks" prefHeight="43.0" prefWidth="45.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css" />
       <Button fx:id="buttonExtraTasks" layoutX="1168.0" layoutY="150.0" mnemonicParsing="false" onAction="#showExtraTasks" prefHeight="43.0" prefWidth="44.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css" />
