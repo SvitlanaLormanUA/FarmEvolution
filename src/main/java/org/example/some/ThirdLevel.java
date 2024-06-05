@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.example.some.animals.*;
 import org.example.some.otherGameObjects.Wallet;
 
 import java.io.IOException;
@@ -24,7 +25,11 @@ public class ThirdLevel   implements javafx.fxml.Initializable{
     private Stage stage;
     private Scene scene;
     private Parent root;
-
+    public static int countFairy = 1;
+    public static int countGnome = 1;
+    public static int countMinotaur = 1;
+    public static int countMushroom = 1;
+    public static int countUnicorn = 1;
 
 
     @Override
@@ -86,6 +91,38 @@ public class ThirdLevel   implements javafx.fxml.Initializable{
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void addFairy() {
+
+
+
+    }
+    public void addGnome() {
+
+
+
+    }
+    public void addMinotaur() {
+
+    }
+    public void addMushroom() {
+
+    }
+    public void addUnicorn() {
+
+
+    }
+
+
+
+
+    public void setAnimals() {
+        addFairy();
+        addGnome();
+        addMinotaur();
+        addMushroom();
+        addUnicorn();
     }
 
 
