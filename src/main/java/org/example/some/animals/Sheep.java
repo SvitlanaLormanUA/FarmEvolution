@@ -25,44 +25,6 @@ public class Sheep extends AbstractAnimal {
         giveProduct();
     }
 
-
-    /*@Override
-    public void giveProduct() {
-        if (FirstLevel.countSheep >= 1) {
-            if (hungerLvl > 20) {
-                // Створення таймера (завдання, яке виконується через певний час
-                Timer timer = new Timer();
-                TimerTask task = new TimerTask() {
-                    @Override
-                    public void run() {
-                        if (hungerLvl > 25) {
-
-                            ImageView productView = new ImageView(product);
-                            productView.setFitWidth(40);
-                            productView.setFitHeight(40);
-                            productView.setX(animalView.getLayoutX() + 30);
-                            productView.setY(animalView.getLayoutY() + 30);
-                            productView.setCursor(Cursor.HAND);
-
-                            productView.setOnMouseClicked(event -> {
-                                AbstractAnimal.root.getChildren().remove(productView);
-                                storage.addProduct1();
-                            });
-
-                            Platform.runLater(() -> AbstractAnimal.root.getChildren().add(1, productView));
-                        } else {
-                            timer.cancel();
-                        }
-                    }
-                };
-
-
-                // Запуск завдання з інтервалом 50 секунд (50000 мілісекунд)
-                timer.scheduleAtFixedRate(task, 0, 50000);
-            }
-        }
-    }*/
-
     @Override
     public void giveProduct() {
         if (FirstLevel.countSheep >= 1) {
