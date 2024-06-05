@@ -38,6 +38,12 @@ public class Storage {
     List<ImageView> product4Views;
     List<ImageView> product5Views;
 
+    private int nWool;
+    private int nEggs;
+    private int soldMilk;
+    private int soldPig;
+    private int soldRabbit;
+
     public Storage(ImageView storageView, Wallet wallet, Image product1View, Image product2View, Image product3View,
                    Image product4View, Image product5View){
         this.storageView = storageView;
@@ -62,11 +68,17 @@ public class Storage {
          product3Views = new ArrayList<>();
          product4Views = new ArrayList<>();
          product5Views = new ArrayList<>();
+
+         this.nWool = 0;
+         this.nEggs = 0;
+         this.soldMilk = 0;
+         this.soldPig = 0;
+         this.soldRabbit = 0;
     }
 
     public void addProduct1(){
         product1++;
-
+        nEggs++;
         if (product1==1) {
             ImageView productView1 = createProduct(product1Image, storageView.getLayoutX(), storageView.getLayoutY() + 52, 25, 25);
             product1Views.add(productView1);
@@ -113,6 +125,7 @@ public class Storage {
 
     public void addProduct2(){
         product2++;
+        nWool++;
         if (product2==1) {
             ImageView productView1 = createProduct(product2Image, storageView.getLayoutX()+1, storageView.getLayoutY() + 22, 30, 30);
             product2Views.add(productView1);
@@ -292,6 +305,7 @@ public class Storage {
         product3 -= toSell;
         wallet.income(product3Cost *toSell);
         removeProductView(product3Views, t, toSell);
+        soldMilk++;
     }
 
     public void sellProduct4(int toSell){
@@ -299,6 +313,7 @@ public class Storage {
         product4 -= toSell;
         wallet.income(product4Cost *toSell);
         removeProductView(product4Views, t, toSell);
+        soldPig++;
     }
 
     public void sellProduct5(int toSell){
@@ -306,6 +321,7 @@ public class Storage {
         product5 -= toSell;
         wallet.income(product5Cost *toSell);
         removeProductView(product5Views, t, toSell);
+        soldRabbit++;
     }
 
     private ImageView createProduct(Image productImage, double x, double y, double width, double height){
@@ -377,5 +393,24 @@ public class Storage {
 
     public ImageView getStorageView() {
         return storageView;
+    }
+
+    public int getnWool() {
+        return nWool;
+    }
+
+    public int getnEggs() {
+        return nEggs;
+    }
+
+    public int getSoldMilk() {
+        return soldMilk;
+    }
+    public int getSoldPig() {
+        return soldPig;
+    }
+
+    public int getSoldRabbit() {
+        return soldRabbit;
     }
 }

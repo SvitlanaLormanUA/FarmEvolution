@@ -22,6 +22,7 @@ public class Tasks {
     private  Label taskLabel3;
     private  Label taskLabel4;
     private Button close;
+    private boolean nextLvL = false;
 
 
     public boolean task1 = false;
@@ -52,7 +53,7 @@ public class Tasks {
     }
     private void addTaskThree() {
         taskLabel3 = new Label("Завдання 3: «До зими готовий!»\n" +
-                "Зібрати хутро: 20 штук");
+                "Зібрати хутро: "+storage.getnWool()+"/20 штук");
         taskLabel3.setLayoutX(20);
         taskLabel3.setLayoutY(140);
     }
@@ -95,6 +96,10 @@ public class Tasks {
         root.setTranslateX(this.x + 880);
         root.setTranslateY(this.y + 100);
         root.getChildren().addAll(menuView, taskLabel, taskLabel2, taskLabel3, taskLabel4, close);
+    }
+
+    public boolean isNextLvL() {
+        return nextLvL;
     }
 
     public Pane getRoot() {
