@@ -28,12 +28,12 @@ public class Banana {
 
     public void addProduct() {
 
-     productView.setFitWidth(100);
-     productView.setFitHeight(100);
+     productView.setFitWidth(55);
+     productView.setFitHeight(55);
      productView.setCursor(Cursor.HAND);
 
      productView.setLayoutX(random.nextInt(0, 90));
-     productView.setLayoutY(random.nextInt(73, 400));
+     productView.setLayoutY(random.nextInt(73, 200));
 
     }
     public ImageView getProductView() {

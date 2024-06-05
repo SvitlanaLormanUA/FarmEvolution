@@ -1,10 +1,9 @@
 package org.example.some.animals;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
-import javafx.animation.TranslateTransition;
+import javafx.animation.*;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -12,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.shape.Polyline;
 import javafx.util.Duration;
 import org.example.some.FirstLevel;
 import org.example.some.SecondLevel;
@@ -23,21 +23,19 @@ import java.util.TimerTask;
 
 import static org.example.some.SecondLevel.wallet;
 
-public class Monkey extends AbstractAnimal{
-    public  ImageView productView;
+public class Monkey extends AbstractAnimal {
+    public ImageView productView;
     private boolean movingForward = true;
-
     private boolean nearLian = false;
     private static KeyFrame kf;
-    private static   KeyValue kv;
-
+    private static KeyValue kv;
 
     public Monkey(int worldStartX, int worldStartY, int worldEndX, int worldEndY, AnchorPane anchorPane, Well well, Feeder feeder, Storage storage) {
         super(worldStartX, worldStartY, worldEndX, worldEndY, anchorPane, well, feeder, storage,
                 "file:src/main/resources/images/secondLevel/animals/monkey.png",
                 "src/main/resources/sound/monkey.mp3",
                 "file:src/main/resources/images/secondLevel/bananaThoughts.png"
-        ) ;
+        );
 
         kv = new KeyValue(animalView.layoutXProperty(), 30);
         kf = new KeyFrame(Duration.millis(500), kv);
@@ -45,7 +43,7 @@ public class Monkey extends AbstractAnimal{
 
     @Override
     public void feed() {
-
+        // Implement the feed method
     }
 
     @Override
@@ -57,19 +55,14 @@ public class Monkey extends AbstractAnimal{
             productView.setFitHeight(50);
             productView.setCursor(Cursor.HAND);
 
-
             AbstractAnimal.root.getChildren().add(1, productView);
 
             productView.setOnMouseClicked(event -> {
                 AbstractAnimal.root.getChildren().remove(productView);
                 SecondLevel.productIsAdded = false;
 
-                    goForBanana();
-
+                goForBanana(event1 -> goUp());
             });
-
-
-
         }
     }
 
@@ -82,7 +75,7 @@ public class Monkey extends AbstractAnimal{
         deltaY = random.nextInt(10) - 5; // Slight variation in y-direction
 
         if (movingForward && (x + deltaX > worldEndX - animalView.getFitWidth())) {
-            if (imagePathLeft!= null) {
+            if (imagePathLeft != null) {
                 animalView.setImage(new Image(imagePathLeft));
             }
             movingForward = false; // Switch to moving backward
@@ -108,6 +101,7 @@ public class Monkey extends AbstractAnimal{
 
         updateProductViewPosition();
     }
+
     @Override
     public void handleMouseDragged(MouseEvent event) {
         translateTransition.pause();
@@ -125,14 +119,15 @@ public class Monkey extends AbstractAnimal{
         updateProductViewPosition();
         playSound();
     }
+
     public void updateProductViewPosition() {
         if (productView != null) {
             productView.setX(animalView.getLayoutX() + animalView.getFitWidth());
             productView.setY(animalView.getLayoutY() + 10);
-
         }
     }
-    public void goForBanana() {
+
+    public void goForBanana(EventHandler<ActionEvent> onFinished) {
         translateTransition = new TranslateTransition();
         translateTransition.setDuration(Duration.millis(1000));
         translateTransition.setNode(animalView);
@@ -140,37 +135,38 @@ public class Monkey extends AbstractAnimal{
 
         translateTransition.setOnFinished(event -> {
             Timeline timeline = new Timeline();
-
             timeline.getKeyFrames().add(kf);
             timeline.setOnFinished(e -> {
                 animalView.setTranslateX(0);
                 animalView.setTranslateY(0);
                 nearLian = true;
+                onFinished.handle(new ActionEvent());
             });
-
             timeline.play();
         });
 
         translateTransition.play();
     }
+
     public void goUp() {
-        translateTransition = new TranslateTransition();
-        translateTransition.setDuration(Duration.millis(1000));
-        translateTransition.setNode(animalView);
-        directionRight = false;
+        double currentX = animalView.getLayoutX();
+        double currentY = animalView.getLayoutY();
+        System.out.println(currentX + " " + currentY);
 
-        translateTransition.setOnFinished(event -> {
-            Timeline timeline = new Timeline();
-            timeline.getKeyFrames().add(kf);
-            timeline.setOnFinished(e -> {
-                animalView.setTranslateX(0);
-                animalView.setTranslateY(0);
-                nearLian = true;
-            });
+        PathTransition pathTransition = new PathTransition();
+        Polyline polyline = new Polyline();
+        pathTransition.setDuration(Duration.millis(2000));
+        pathTransition.setNode(animalView);
+        pathTransition.setPath(polyline);
+        pathTransition.setCycleCount(1);
+        polyline.getPoints().addAll(
+                currentX, currentY,
+                currentX + 2, currentY - 100,
+                currentX + 5, currentY - 120
 
-            timeline.play();
-        });
+        );
 
-        translateTransition.play();
+
+        pathTransition.play();
     }
 }

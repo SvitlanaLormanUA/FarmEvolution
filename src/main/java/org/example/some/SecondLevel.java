@@ -44,7 +44,7 @@ public class SecondLevel  implements Initializable {
     private Parent root;
     private static int coins;
 
-    public Monkey monkey;
+
 
 
     public static boolean bananaIsAdded = false;
@@ -60,7 +60,7 @@ public class SecondLevel  implements Initializable {
         addWallet();
         loadState();
         addMonkey();
-        setupCollisionDetection();
+
 
     }
 
@@ -71,13 +71,13 @@ public class SecondLevel  implements Initializable {
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-               Platform.runLater(() -> addProducts());
+                Platform.runLater(() -> addProducts());
             }
         };
         timer.scheduleAtFixedRate(task, 0, 10000);
     }
-    public void addProducts() {
-      Banana  banana = new Banana(100);
+    public boolean addProducts() {
+        Banana  banana = new Banana(100);
         anchorPane.getChildren().add(banana.getProductView());
         bananaIsAdded = true;
         countBanana++;
@@ -86,13 +86,12 @@ public class SecondLevel  implements Initializable {
             anchorPane.getChildren().remove(banana.getProductView());
             bananaIsAdded = false;
         });
-        if(!productIsAdded) {
-            addThought();
-        }
+        return bananaIsAdded;
+
     }
 
-    public void addThought() {
-        if (bananaIsAdded) {
+    public void addThought(Monkey monkey) {
+        if (bananaIsAdded && !productIsAdded) {
             monkey.giveProduct();
             monkey.updateProductViewPosition();
             productIsAdded = true;
@@ -104,9 +103,12 @@ public class SecondLevel  implements Initializable {
     }
 
     public void addMonkey() {
-         monkey = new Monkey(250, 300, 800, 630, anchorPane, well, feeder, storage);
+       Monkey monkey = new Monkey(250, 300, 800, 630, anchorPane, well, feeder, storage);
         anchorPane.getChildren().add(monkey.getAnimalView());
-      //  System.out.println(lian.getBoundsInParent());
+        if (addProducts() ) {
+            addThought(monkey);
+        }
+        //  System.out.println(lian.getBoundsInParent());
     }
     @FXML
     public void backToMainMenu(ActionEvent event) {
@@ -207,7 +209,7 @@ public class SecondLevel  implements Initializable {
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("gameState.ser"))) {
             coins = in.readInt();
             wallet.setCoins(coins);
-           /* countMonkeys = in.readInt();*/
+            /* countMonkeys = in.readInt();*/
 
             setCoins(coins);
             wallet.setCoins(coins);
@@ -219,17 +221,6 @@ public class SecondLevel  implements Initializable {
     public static void setCoins(int coins) {
         SecondLevel.coins = coins;
     }
-    private void setupCollisionDetection() {
-        Timeline collisionDetectionTimeline = new Timeline(new KeyFrame(Duration.millis(50), event -> detectCollision()));
-        collisionDetectionTimeline.setCycleCount(Timeline.INDEFINITE);
-        collisionDetectionTimeline.play();
-    }
 
-    private void detectCollision() {
-            if (monkey.getAnimalView().getBoundsInParent().intersects(lian.getBoundsInParent())) {
-                monkey.goUp();
-            }
-
-    }
 
 }
