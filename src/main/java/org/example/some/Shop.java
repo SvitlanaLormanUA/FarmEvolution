@@ -21,8 +21,8 @@ import static org.example.some.ShopFirstLevel.amountOfCoins;
 
 
 public class Shop implements Initializable {
-    public final int IMAGE_WIDTH = 1442;
-    public final int IMAGE_HEIGHT = 793;
+    public final int IMAGE_WIDTH = 1255;
+    public final int IMAGE_HEIGHT = 707;
     private static Stage stage;
     private static Scene scene;
     private static Parent root;
