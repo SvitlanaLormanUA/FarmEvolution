@@ -282,13 +282,6 @@ public abstract class AbstractAnimal implements Animal {
             y = worldEndY - animalView.getFitHeight();
             outOfBounds = true;
         }
-
-        if (outOfBounds) {
-            TranslateTransition transitionBack = new TranslateTransition(Duration.millis(500), animalView);
-            transitionBack.setToX(x);
-            transitionBack.setToY(y);
-            transitionBack.play();
-        }
         translateTransition.play();
         playSound();
     }
