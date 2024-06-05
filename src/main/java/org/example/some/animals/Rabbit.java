@@ -152,6 +152,7 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
             if(openedMenu) {
                 removeMenu();
             }
+
             root.getChildren().remove(this.animalView);
         }
     }
