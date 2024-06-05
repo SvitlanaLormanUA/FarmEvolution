@@ -57,8 +57,8 @@ public class AnimalMenu {
         drink.setLayoutY(65);
 
         close = new Button("×");
-        close.setLayoutX(155);
-        close.setLayoutY(20);
+        close.setLayoutX(170);
+        close.setLayoutY(5);
 
         costLabel = new Label("Ціна для продажу: " + this.animal.getCost());
         costLabel.setLayoutX(20); // Встановлюємо відносно меню

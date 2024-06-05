@@ -3,6 +3,7 @@ package org.example.some;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -28,8 +29,8 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
     public static boolean firstLevel = true;
 
 
-    private static int WIDTH = 1255;
-    private static int HEIGHT = 707;
+    public static int WIDTH = 1255;
+    public static int HEIGHT = 707;
     public static int countCow = 1;
     public static int countSheep = 1;
     public static int countGoose = 1;
@@ -275,7 +276,7 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
     }
 
     private void addFeeder(){
-        feeder = new Feeder(feederView, foodBar, wallet);
+        feeder = new Feeder(feederView, foodBar, wallet, anchorPane);
         anchorPane.getChildren().add(feeder.getFoodView());
     }
 

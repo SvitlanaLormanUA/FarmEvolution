@@ -42,11 +42,7 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
     public void handleMouseClicked(MouseEvent event) {
         super.handleMouseClicked(event);
 
-        if(amountOfMeals>=5){
-            enoughFood = true;
-        }
-
-        if(!openedMeatMenu && enoughFood){
+        if(!openedMeatMenu && openedMenu){
             double x = event.getSceneX();
             double y = event.getSceneY();
 
@@ -69,6 +65,11 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
             hungerLvl += 50;
             cost += 40;
             amountOfMeals++;
+            if(amountOfMeals<5) {
+                animalMeatMenu.getFeed().setText("Нагодовано: " + amountOfMeals + "/" + 5);
+            } else {
+                animalMeatMenu.update();
+            }
             if (hungerLvl > 100) {
                 hungerLvl = 100;
                 cost = 70;
@@ -127,9 +128,17 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
 
     @Override
     public void addMeatMenu(double x, double y) {
-        animalMeatMenu = new AnimalMeatMenu(this, x, y);
+        animalMeatMenu = new AnimalMeatMenu(this, x, y, amountOfMeals, 5);
         root.getChildren().add(animalMeatMenu.getRoot());
         openedMeatMenu = true;
+    }
+
+    @Override
+    public void removeMenu() {
+        root.getChildren().remove(animalMenu.getRoot());
+        openedMenu = false;
+        removeMeatMenu();
+        translateTransition.play();
     }
 
     @Override

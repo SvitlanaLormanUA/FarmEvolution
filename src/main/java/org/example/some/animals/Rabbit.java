@@ -82,11 +82,7 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
     public void handleMouseClicked(MouseEvent event) {
         super.handleMouseClicked(event);
 
-        if(amountOfMeals>=3){
-            enoughFood = true;
-        }
-
-        if(!openedMeatMenu && enoughFood){
+        if(!openedMeatMenu && openedMenu) {
             double x = event.getSceneX();
             double y = event.getSceneY();
 
@@ -116,6 +112,11 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
             hungerLvl += 100;
             cost += 20;
             amountOfMeals++;
+            if(amountOfMeals<3) {
+                animalMeatMenu.getFeed().setText("Нагодовано: " + amountOfMeals + "/" + 3);
+            } else {
+                animalMeatMenu.update();
+            }
             if (hungerLvl > 100) {
                 hungerLvl = 100;
                 cost = 20;
@@ -173,9 +174,17 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
 
     @Override
     public void addMeatMenu(double x, double y) {
-        animalMeatMenu = new AnimalMeatMenu(this, x, y);
+        animalMeatMenu = new AnimalMeatMenu(this, x, y, amountOfMeals, 3);
         root.getChildren().add(animalMeatMenu.getRoot());
         openedMeatMenu = true;
+    }
+
+    @Override
+    public void removeMenu() {
+        root.getChildren().remove(animalMenu.getRoot());
+        openedMenu = false;
+        removeMeatMenu();
+        translateTransition.play();
     }
 
     @Override

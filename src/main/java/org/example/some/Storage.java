@@ -1,6 +1,7 @@
 package org.example.some;
 
 import javafx.application.Platform;
+import javafx.scene.Cursor;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -47,6 +48,7 @@ public class Storage {
     public Storage(ImageView storageView, Wallet wallet, Image product1View, Image product2View, Image product3View,
                    Image product4View, Image product5View){
         this.storageView = storageView;
+        this.storageView.setCursor(Cursor.HAND);
         this.wallet = wallet;
         this.root = new Pane();
         root.getChildren().add(this.storageView);

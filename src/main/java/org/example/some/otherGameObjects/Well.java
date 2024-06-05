@@ -1,6 +1,8 @@
 package org.example.some.otherGameObjects;
 
 
+import javafx.scene.Cursor;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
@@ -22,6 +24,7 @@ public class Well {
 
     public Well(ImageView well, ProgressBar waterBar){
         this.wellView = well;
+        this.wellView.setCursor(Cursor.HAND);
         this.waterBar = waterBar;
         this.waterLvl = 10;
 
@@ -37,6 +40,12 @@ public class Well {
         if (progress > 0.0 && waterLvl > 0) {
             waterLvl--;
             progress -= 0.1;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Помилка!");
+            alert.setContentText("У Вас недостатньо води. Поповніть запаси!");
+            alert.showAndWait();
         }
         waterBar.setProgress(progress);
     }
