@@ -13,6 +13,8 @@ import org.example.some.otherGameObjects.Well;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class Pig extends AbstractAnimal implements AnimalMeat{
@@ -154,5 +156,23 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
         }
 
         return productCost;
+    }
+
+    @Override
+    public void hunger() {
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                if (hungerLvl > 0) {
+                    hungerLvl--;
+                    cost = (int) (265 * ((double)hungerLvl / 100));
+                } else {
+                    timer.cancel();
+                }
+            }
+        };
+
+        timer.scheduleAtFixedRate(task, 0, 3000);
     }
 }

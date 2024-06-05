@@ -27,7 +27,7 @@ public abstract class AbstractAnimal implements Animal {
     public static Pane root;
 
 
-    protected int cost;
+    public int cost;
     protected int hungerLvl;
     protected int thirstLvl;
     protected static Feeder feeder;
@@ -95,9 +95,9 @@ public abstract class AbstractAnimal implements Animal {
 
 
 
-        movement();
         thirst();
         hunger();
+        movement();
     }
 
 
@@ -136,10 +136,9 @@ public abstract class AbstractAnimal implements Animal {
 
 
 
-        movement();
         thirst();
         hunger();
-
+        movement();
     }
 
     public AbstractAnimal(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Well well, Feeder feeder, String imagePath, String imagePathLeft, String soundFile) {
@@ -176,9 +175,9 @@ public abstract class AbstractAnimal implements Animal {
 
 
 
-        movement();
         thirst();
         hunger();
+        movement();
 
     }
 
@@ -338,15 +337,13 @@ public abstract class AbstractAnimal implements Animal {
             public void run() {
                 if (hungerLvl > 0) {
                     hungerLvl--;
-                    double k = hungerLvl;
-                    cost = (int) (100 * (k / 100));
+                    cost = (int) (100 * ((double)hungerLvl / 100));
                 } else {
                     timer.cancel();
                 }
             }
         };
 
-        // Запуск завдання з інтервалом 5 секунд (5000 мілісекунд)
         timer.scheduleAtFixedRate(task, 0, 5000);
     }
 

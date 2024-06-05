@@ -19,7 +19,7 @@ public class Cow extends AbstractAnimal {
 
     private boolean movingForward = true;
 
-    private boolean hasProduct;
+    private boolean hasProduct = true;
 
     ImageView productView;
 
@@ -30,10 +30,12 @@ public class Cow extends AbstractAnimal {
                 "src/main/resources/sound/cow.mp3",
                 "file:src/main/resources/images/fullReaction.png"
         );
-        this.hasProduct = true;
+
         if(hasProduct){
             giveProduct();
         }
+        animalView.setFitWidth(130);
+        animalView.setFitHeight(120);
     }
 
     @Override
@@ -74,7 +76,7 @@ public class Cow extends AbstractAnimal {
                                 hasProduct = true;
                             });
 
-                            Platform.runLater(() -> AbstractAnimal.root.getChildren().add(1, productView));
+                            Platform.runLater(() -> AbstractAnimal.root.getChildren().add( productView));
                         } else {
                             timer.cancel();
                         }
@@ -89,8 +91,13 @@ public class Cow extends AbstractAnimal {
 
     private void updateProductViewPosition() {
         if (productView != null) {
-            productView.setX(animalView.getLayoutX() + animalView.getFitWidth());
-            productView.setY(animalView.getLayoutY() + 10);
+            if(movingForward){
+                productView.setX(animalView.getLayoutX() + animalView.getFitWidth());
+                productView.setY(animalView.getLayoutY()-15);
+            } else {
+                productView.setX(animalView.getLayoutX()+50);
+                productView.setY(animalView.getLayoutY()-35);
+            }
         }
     }
 
@@ -145,5 +152,23 @@ public class Cow extends AbstractAnimal {
 
         updateProductViewPosition();
         playSound();
+    }
+
+    @Override
+    public void hunger() {
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                if (hungerLvl > 0) {
+                    hungerLvl--;
+                    cost = (int) (500 * ((double)hungerLvl / 100));
+                } else {
+                    timer.cancel();
+                }
+            }
+        };
+
+        timer.scheduleAtFixedRate(task, 0, 4000);
     }
 }

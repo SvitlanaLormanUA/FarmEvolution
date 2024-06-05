@@ -20,6 +20,8 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class Rabbit extends AbstractAnimal implements AnimalMeat{
@@ -44,7 +46,8 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
         this.productCost = 0;
         this.openedMeatMenu = false;
         this.enoughFood = false;
-        animalView.setFitWidth(80);
+        animalView.setFitWidth(70);
+        animalView.setFitHeight(90);
     }
 
 
@@ -201,5 +204,22 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
         return productCost;
     }
 
+    @Override
+    public void hunger() {
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                if (hungerLvl > 0) {
+                    hungerLvl--;
+                    cost = (int) (175 * ((double)hungerLvl / 100));
+                } else {
+                    timer.cancel();
+                }
+            }
+        };
+
+        timer.scheduleAtFixedRate(task, 0, 3000);
+    }
 
 }

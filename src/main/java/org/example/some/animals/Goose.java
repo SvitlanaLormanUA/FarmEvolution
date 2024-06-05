@@ -25,6 +25,8 @@ public class Goose extends AbstractAnimal{
                 "file:src/main/resources/images/firstLevel/products/egg.png"
         ) ;
         giveProduct();
+        animalView.setFitWidth(80);
+        animalView.setFitHeight(80);
     }
 
 
@@ -39,8 +41,8 @@ public class Goose extends AbstractAnimal{
                         if (hungerLvl > 25) {
 
                             ImageView productView = new ImageView(product);
-                            productView.setFitWidth(40);
-                            productView.setFitHeight(40);
+                            productView.setFitWidth(30);
+                            productView.setFitHeight(30);
                             productView.setX(animalView.getLayoutX() + 30);
                             productView.setY(animalView.getLayoutY() + 30);
                             productView.setCursor(Cursor.HAND);
