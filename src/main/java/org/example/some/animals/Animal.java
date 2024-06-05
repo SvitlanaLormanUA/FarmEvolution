@@ -69,6 +69,9 @@ public interface Animal extends Serializable {
  //Смерть
  void  death();
 
+ void delete();
+ void releaseResources();
+
 
 // Поверненн картинки тварини
 ImageView getAnimalView();

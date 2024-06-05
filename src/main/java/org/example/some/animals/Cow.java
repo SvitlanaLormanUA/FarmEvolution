@@ -19,7 +19,7 @@ public class Cow extends AbstractAnimal {
 
     private boolean movingForward = true;
 
-
+    private boolean hasProduct;
 
     ImageView productView;
 
@@ -30,7 +30,10 @@ public class Cow extends AbstractAnimal {
                 "src/main/resources/sound/cow.mp3",
                 "file:src/main/resources/images/fullReaction.png"
         );
-
+        this.hasProduct = true;
+        if(hasProduct){
+            giveProduct();
+        }
     }
 
     @Override
@@ -56,7 +59,7 @@ public class Cow extends AbstractAnimal {
                 TimerTask task = new TimerTask() {
                     @Override
                     public void run() {
-                        if (hungerLvl > 70) {
+                        if (hungerLvl > 20) {
                             productView = new ImageView(product);
                             productView.setFitWidth(60);
                             productView.setFitHeight(50);
@@ -64,10 +67,11 @@ public class Cow extends AbstractAnimal {
 
                             // Initial positioning
                             updateProductViewPosition();
-
+                            hasProduct = false;
                             productView.setOnMouseClicked(event -> {
                                 AbstractAnimal.root.getChildren().remove(productView);
                                 storage.addProduct3();
+                                hasProduct = true;
                             });
 
                             Platform.runLater(() -> AbstractAnimal.root.getChildren().add(1, productView));

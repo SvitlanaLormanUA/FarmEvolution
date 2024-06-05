@@ -19,6 +19,7 @@ import org.example.some.otherGameObjects.Well;
 
 import java.io.*;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -75,7 +76,7 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
 
     Well well;
     Feeder feeder;
-    Storage storage;
+    public static Storage storage;
     public static Wallet wallet ;
 
     @FXML
@@ -86,6 +87,12 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    public static ArrayList<Sheep> sheepArrayList = new ArrayList<>();
+    public static ArrayList<Goose> gooseArrayList = new ArrayList<>();
+    public static ArrayList<Cow> cowArrayList = new ArrayList<>();
+    public static ArrayList<Pig> pigArrayList = new ArrayList<>();
+    public static ArrayList<Rabbit> rabbitArrayList = new ArrayList<>();
 
 
     public static void decreaseAnimalCount(String animalType) {
@@ -165,52 +172,42 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
             for (int i = 0; i < countSheep; i++) {
                 Sheep sheep = new Sheep(250, 300, 1000, 630, anchorPane, well, feeder,storage);
                 anchorPane.getChildren().add(sheep.getAnimalView());
+                sheepArrayList.add(sheep);
             }
 
     }
     public void addGoose() {
         //додаємо гуся
-
             for (int i = 0; i < countGoose; i++) {
                 Goose goose = new Goose(250, 300, 1000, 630, anchorPane, well, feeder, storage);
                 anchorPane.getChildren().add(goose.getAnimalView());
+                gooseArrayList.add(goose);
             }
-
     }
     public void addPig() {
         //додаємо свинку
-
             for (int i = 0; i < countPig; i++) {
                 Pig pig = new Pig(250, 300, 1000, 630, anchorPane, well, feeder, storage);
                 anchorPane.getChildren().add(pig.getAnimalView());
+                pigArrayList.add(pig);
             }
 
 
     }
     public void addRabbit() {
-
             for (int i = 0; i < countRabbit; i++) {
                 Rabbit rabbit = new Rabbit(250, 250, 1000, 630, anchorPane, well, feeder, storage);
                 anchorPane.getChildren().add(2, rabbit.getAnimalView());
+                rabbitArrayList.add(rabbit);
             }
-
-    }
-    public void addDonkey() {
-
-
-            Donkey donkey = new Donkey(650, 200, 1000, 430, anchorPane, well, feeder);
-            anchorPane.getChildren().add(donkey.getAnimalView());
-
     }
 
     public void addCow() {
-
-
             for (int i = 0; i < countCow; i++) {
                 Cow cow = new Cow(250, 200, 1000, 630, anchorPane, well, feeder, storage);
                 anchorPane.getChildren().add(cow.getAnimalView());
+                cowArrayList.add(cow);
             }
-
     }
 
 
@@ -219,11 +216,37 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
         addGoose();
         addPig();
         addRabbit();
-        addDonkey();
         addCow();
     }
 
+    public void deleteAllObjects(){
+        for(int i=0; i<sheepArrayList.size(); i++){
+            sheepArrayList.get(i).delete();
+            sheepArrayList.set(i, null);
+        }
+        for(int i=0; i<gooseArrayList.size(); i++){
+            gooseArrayList.get(i).delete();
+            gooseArrayList.set(i, null);
+        }
+        for(int i=0; i<cowArrayList.size(); i++){
+            cowArrayList.get(i).delete();
+            cowArrayList.set(i, null);
+        }
+        for(int i=0; i<pigArrayList.size(); i++){
+            pigArrayList.get(i).delete();
+            pigArrayList.set(i, null);
+        }
+        for(int i=0; i<rabbitArrayList.size(); i++){
+            rabbitArrayList.get(i).delete();
+            rabbitArrayList.set(i, null);
+        }
 
+        storage = null;
+        well = null;
+        feeder = null;
+        foodBar = null;
+        waterBar = null;
+    }
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -318,8 +341,11 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
     public void nextLevel(ActionEvent event) {
         try {
             saveState();
+
+            Stage stage  = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            anchorPane.getChildren().clear();
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("secondLevel.fxml")));
-            stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            deleteAllObjects();
 
             scene = new Scene(root);
             stage.setScene(scene);

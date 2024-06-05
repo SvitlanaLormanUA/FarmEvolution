@@ -24,7 +24,7 @@ public class Goose extends AbstractAnimal{
                 "src/main/resources/sound/geese.mp3",
                 "file:src/main/resources/images/firstLevel/products/egg.png"
         ) ;
-
+        giveProduct();
     }
 
 

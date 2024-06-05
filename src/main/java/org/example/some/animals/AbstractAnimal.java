@@ -96,7 +96,6 @@ public abstract class AbstractAnimal implements Animal {
         movement();
         thirst();
         hunger();
-        giveProduct();
     }
 
 
@@ -138,7 +137,7 @@ public abstract class AbstractAnimal implements Animal {
         movement();
         thirst();
         hunger();
-        giveProduct();
+
     }
 
     public AbstractAnimal(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Well well, Feeder feeder, String imagePath, String imagePathLeft, String soundFile) {
@@ -178,7 +177,7 @@ public abstract class AbstractAnimal implements Animal {
         movement();
         thirst();
         hunger();
-        giveProduct();
+
     }
 
 
@@ -397,11 +396,10 @@ public abstract class AbstractAnimal implements Animal {
     public void sell() {
         FirstLevel.wallet.income(cost);
         removeMenu();
-        root.getChildren().remove(animalView);
+        delete();
         String animalType = this.getClass().getSimpleName();
         FirstLevel.decreaseAnimalCount(animalType);
         mediaPlayer.stop();
-
     }
 
     @Override
@@ -409,11 +407,24 @@ public abstract class AbstractAnimal implements Animal {
         if (this.hungerLvl == 0 || this.thirstLvl == 0) {
             FirstLevel.wallet.expense(63);
             removeMenu();
-            root.getChildren().remove(animalView);
+            delete();
             String animalType = this.getClass().getSimpleName();
             FirstLevel.decreaseAnimalCount(animalType);
             mediaPlayer.stop();
         }
+    }
+
+    @Override
+    public void delete(){
+        releaseResources();
+        root.getChildren().remove(animalView);
+    }
+
+    @Override
+    public void releaseResources(){
+        translateTransition.stop();
+        hungerLvl = 0;
+        thirstLvl = 0;
     }
 
     @Override

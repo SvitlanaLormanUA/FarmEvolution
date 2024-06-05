@@ -7,11 +7,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
+import org.example.some.otherGameObjects.Wallet;
 
 public class Tasks {
     private Pane root;
     private AnchorPane main;
     private ImageView menuView;
+    private Wallet wallet;
+    private Storage storage;
     private double x;
     private double y;
     private  Label taskLabel;
@@ -29,6 +32,8 @@ public class Tasks {
     public Tasks(AnchorPane main) {
         this.main = main;
         createMenu();
+        this.wallet = FirstLevel.wallet;
+        this.storage = FirstLevel.storage;
     }
     private void addCloseButton(){
          close = new Button("×");

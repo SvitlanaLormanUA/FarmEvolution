@@ -22,7 +22,7 @@ public class Sheep extends AbstractAnimal {
                 "src/main/resources/sound/sheepmp3.mp3",
                 "file:src/main/resources/images/firstLevel/products/wool.png"
         );
-
+        giveProduct();
     }
 
 
