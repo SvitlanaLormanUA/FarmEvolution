@@ -36,9 +36,6 @@ public class Monkey extends AbstractAnimal {
                 "src/main/resources/sound/monkey.mp3",
                 "file:src/main/resources/images/secondLevel/bananaThoughts.png"
         );
-
-        kv = new KeyValue(animalView.layoutXProperty(), 30);
-        kf = new KeyFrame(Duration.millis(500), kv);
     }
 
     @Override
@@ -61,7 +58,7 @@ public class Monkey extends AbstractAnimal {
                 AbstractAnimal.root.getChildren().remove(productView);
                 SecondLevel.productIsAdded = false;
 
-                goForBanana(event1 -> goUp());
+                goForBanana();
             });
         }
     }
@@ -127,46 +124,53 @@ public class Monkey extends AbstractAnimal {
         }
     }
 
-    public void goForBanana(EventHandler<ActionEvent> onFinished) {
+    public void goForBanana() {
+        animalView.setDisable(true);
+
+        if (translateTransition != null) {
+            translateTransition.stop();
+        }
+
+        double currentX = animalView.getLayoutX();
+        double distance = 750 - currentX;
+        if (distance <= 0) {
+            goUp();
+            return;
+        }
+
         translateTransition = new TranslateTransition();
-        translateTransition.setDuration(Duration.millis(1000));
+        translateTransition.setDuration(Duration.millis(distance * 10)); // Adjust duration for smoothness
         translateTransition.setNode(animalView);
-        directionRight = false;
+        translateTransition.setByX(distance); // Move right until x reaches 677
 
         translateTransition.setOnFinished(event -> {
-            Timeline timeline = new Timeline();
-            timeline.getKeyFrames().add(kf);
-            timeline.setOnFinished(e -> {
-                animalView.setTranslateX(0);
-                animalView.setTranslateY(0);
-                nearLian = true;
-                onFinished.handle(new ActionEvent());
-            });
-            timeline.play();
+            goUp();
         });
 
         translateTransition.play();
     }
 
     public void goUp() {
-        double currentX = animalView.getLayoutX();
+        if (translateTransition != null) {
+            translateTransition.stop();
+        }
+
         double currentY = animalView.getLayoutY();
-        System.out.println(currentX + " " + currentY);
+        double distance = (-1) * (350 - currentY);
+        if (distance <= 0) {
+            goUp();
+            return;
+        }
 
-        PathTransition pathTransition = new PathTransition();
-        Polyline polyline = new Polyline();
-        pathTransition.setDuration(Duration.millis(2000));
-        pathTransition.setNode(animalView);
-        pathTransition.setPath(polyline);
-        pathTransition.setCycleCount(1);
-        polyline.getPoints().addAll(
-                currentX, currentY,
-                currentX + 2, currentY - 100,
-                currentX + 5, currentY - 120
-
-        );
+        translateTransition = new TranslateTransition();
+        translateTransition.setDuration(Duration.millis(distance * 10)); // Adjust duration for smoothness
+        translateTransition.setNode(animalView);
+        translateTransition.setByY(-distance); // Move right until x reaches 677
+        translateTransition.play();
 
 
-        pathTransition.play();
+
+
     }
+
 }

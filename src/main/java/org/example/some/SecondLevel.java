@@ -71,7 +71,11 @@ public class SecondLevel  implements Initializable {
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                Platform.runLater(() -> addProducts());
+                if (countBanana < 5) {
+                    Platform.runLater(() -> addProducts());
+                } else {
+                    timer.cancel();
+                }
             }
         };
         timer.scheduleAtFixedRate(task, 0, 10000);
@@ -103,7 +107,7 @@ public class SecondLevel  implements Initializable {
     }
 
     public void addMonkey() {
-       Monkey monkey = new Monkey(250, 300, 800, 630, anchorPane, well, feeder, storage);
+        Monkey monkey = new Monkey(250, 300, 600, 530, anchorPane, well, feeder, storage);
         anchorPane.getChildren().add(monkey.getAnimalView());
         if (addProducts() ) {
             addThought(monkey);
