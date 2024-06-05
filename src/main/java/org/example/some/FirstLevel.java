@@ -195,13 +195,7 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
             }
 
     }
-    public void addDonkey() {
 
-
-            Donkey donkey = new Donkey(650, 200, 1000, 430, anchorPane, well, feeder);
-            anchorPane.getChildren().add(donkey.getAnimalView());
-
-    }
 
     public void addCow() {
 
@@ -219,7 +213,6 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
         addGoose();
         addPig();
         addRabbit();
-        addDonkey();
         addCow();
     }
 
