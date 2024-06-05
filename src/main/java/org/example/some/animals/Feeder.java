@@ -70,5 +70,12 @@ public class Feeder {
         return root;
     }
 
+    public int getFoodLvl() {
+        return foodLvl;
+    }
+
+    public void setFoodLvl(int foodLvl) {
+        this.foodLvl = foodLvl;
+    }
 }
 

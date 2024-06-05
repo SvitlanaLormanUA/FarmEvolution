@@ -26,7 +26,7 @@ import static org.example.some.SecondLevel.wallet;
 public class Monkey extends AbstractAnimal {
     public ImageView productView;
     private boolean movingForward = true;
-    private boolean nearLian = false;
+
     private static KeyFrame kf;
     private static KeyValue kv;
 
@@ -167,7 +167,7 @@ public class Monkey extends AbstractAnimal {
         translateTransition.setNode(animalView);
         translateTransition.setByY(-distance); // Move right until x reaches 677
         translateTransition.setOnFinished(event -> {
-            flyBananas();
+            takeBananaDown();
         });
         translateTransition.play();
 
@@ -175,16 +175,47 @@ public class Monkey extends AbstractAnimal {
 
 
     }
-    public void flyBananas() {
-        if (SecondLevel.bananaIsAdded) {
-            SecondLevel.bananas.forEach(banana -> {
-                KeyValue kvX = new KeyValue(banana.getProductView().layoutXProperty(), 750);
-                KeyValue kvY = new KeyValue(banana.getProductView().layoutYProperty(), 350);
-                KeyFrame kf = new KeyFrame(Duration.seconds(2), kvX, kvY);
-                Timeline timeline = new Timeline(kf);
-                timeline.play();
-            });
+
+    private void takeBananaDown() {
+        if (translateTransition != null) {
+            translateTransition.stop();
         }
+
+        double currentY = animalView.getLayoutY();
+        double distance = 650 - currentY;
+
+        translateTransition = new TranslateTransition();
+        translateTransition.setDuration(Duration.millis(distance * 10)); // Adjust duration for smoothness
+        translateTransition.setNode(animalView);
+        translateTransition.setByY(distance); // Move right until x reaches 677
+        translateTransition.setOnFinished(event -> {
+            // Set disable to false and reset flags
+            animalView.setDisable(false);
+            SecondLevel.bananaIsAdded = false;
+            SecondLevel.productIsAdded = false;
+
+            // Check if bananas are present and animate if necessary
+            if (!(SecondLevel.bananas == null)) {
+                SecondLevel.bananas.forEach(banana -> {
+                    KeyValue kvY = new KeyValue(banana.getProductView().layoutYProperty(), 600);
+                    KeyFrame kf = new KeyFrame(Duration.seconds(1), kvY);
+                    Timeline timeline = new Timeline(kf);
+                    timeline.play();
+                });
+            }
+
+            // Set additional translation for smooth leftward movement
+            KeyValue kvX = new KeyValue(animalView.translateXProperty(), -200);
+            //KeyValue kvY2 = new KeyValue(animalView.translateYProperty(), currentY - 450);
+            KeyFrame kf2 = new KeyFrame(Duration.seconds(1), kvX);
+            Timeline timeline2 = new Timeline(kf2);
+            timeline2.play();
+
+            movement(); // Assuming this is your movement method
+            SecondLevel.countBanana = 0;
+        });
+        translateTransition.play();
     }
+
 
 }

@@ -11,6 +11,11 @@ public class Unicorn extends AbstractAnimal{
     }
 
     @Override
+    public void movement() {
+
+    }
+
+    @Override
     public void feed() {
 
     }

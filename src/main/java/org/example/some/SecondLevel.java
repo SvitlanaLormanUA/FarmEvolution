@@ -7,15 +7,19 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.example.some.animals.AbstractAnimal;
 import org.example.some.animals.Feeder;
 import org.example.some.animals.Monkey;
+import org.example.some.otherGameObjects.Instr;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 import org.example.some.products.Banana;
@@ -35,26 +39,26 @@ public class SecondLevel  implements Initializable {
     public static Wallet wallet;
     public  AnchorPane anchorPane;
     public ImageView lian;
+    public ImageView background;
 
     private Stage stage;
     private Scene scene;
     private Parent root;
     private static int coins;
+    private static SettingsMenu settingsMenu;
 
-
-    public static ArrayList<Banana> bananas = new ArrayList<>();
 
 
     public static boolean bananaIsAdded = false;
     public static boolean productIsAdded = false;
+    private static boolean settingsShown = false;
 
     public static int countBanana = 0;
-
-
+    public static ArrayList<Banana> bananas = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        addMultiProducts();
+        //addMultiProducts();
         addWallet();
         loadState();
         addMonkey();
@@ -64,32 +68,39 @@ public class SecondLevel  implements Initializable {
 
 
 
-    public void addMultiProducts(){
+    public void addProducts(Monkey monkey) {
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                if (countBanana < 5) {
-                    Platform.runLater(() -> addProducts());
-                } else {
-                    timer.cancel();
-                }
+                Platform.runLater(() -> {
+                    if (countBanana < 5) {
+                        Banana  banana = new Banana(100);
+                        anchorPane.getChildren().add(banana.getProductView());
+                        bananaIsAdded = true;
+                       bananas.add(banana);
+                        banana.getProductView().setOnMouseClicked(event -> {
+                            banana.getProductView().setDisable(true);
+                            AbstractAnimal.root.getChildren().remove(monkey.productView);
+                            SecondLevel.productIsAdded = false;
+
+                            monkey.goForBanana();
+                            ;
+                        });
+
+                        countBanana++;
+                    } else {
+                        timer.cancel();
+                    }
+
+                });
+
             }
+
         };
-        timer.scheduleAtFixedRate(task, 0, 10000);
-    }
-    public boolean addProducts() {
-        Banana  banana = new Banana(100);
-        anchorPane.getChildren().add(banana.getProductView());
-        bananaIsAdded = true;
-        countBanana++;
-        banana.getProductView().setOnMouseClicked(event -> {
-            SecondLevel.wallet.income(banana.getPrice());
-            anchorPane.getChildren().remove(banana.getProductView());
-            bananaIsAdded = false;
-        });
-        bananas.add(banana);
-        return bananaIsAdded;
+        timer.scheduleAtFixedRate(task, 0, 3000);
+
+
 
     }
 
@@ -106,11 +117,11 @@ public class SecondLevel  implements Initializable {
     }
 
     public void addMonkey() {
-        Monkey monkey = new Monkey(250, 300, 600, 530, anchorPane, well, feeder, storage);
+        Monkey monkey = new Monkey(250, 300, 700, 730, anchorPane, well, feeder, storage);
         anchorPane.getChildren().add(monkey.getAnimalView());
-        if (addProducts() ) {
-            addThought(monkey);
-        }
+        addProducts(monkey);
+        addThought(monkey);
+
         //  System.out.println(lian.getBoundsInParent());
     }
     @FXML
@@ -186,20 +197,24 @@ public class SecondLevel  implements Initializable {
     }
 
     public void showSettings(ActionEvent event) {
+         settingsMenu = new SettingsMenu(anchorPane);
+        anchorPane.getChildren().add(settingsMenu.getRoot());
+        countBanana = 10;
+        //settingsMenu.applyBlur(true,  anchorPane);
+
     }
 
+
     public void showInfo(ActionEvent event) {
+        Instr infoWindow = new Instr(anchorPane);
+        infoWindow.createImagePane();
+        anchorPane.getChildren().add(infoWindow.getRoot());
     }
 
     static void saveState() {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("gameState.ser"))) {
             out.writeInt(wallet.getCoins());
             out.writeInt(countMonkeys);
-
-
-
-
-
 
 
 

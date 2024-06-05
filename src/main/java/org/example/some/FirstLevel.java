@@ -123,7 +123,7 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
     public void backToMainMenu(ActionEvent event) {
         try {
             saveState();
-            ShopFirstLevel.setCurrentLevel("firstLevel.fxml");
+            ShopFirstLevel.setCurrentLevel("infoFirst.fxml");
 
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("info.fxml")));
             stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
@@ -299,7 +299,9 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
 
     static void saveState() {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("gameState.ser"))) {
-            out.writeInt(wallet.getCoins());
+            if (wallet!=null) {
+                out.writeInt(wallet.getCoins());
+            }
             out.writeInt(countCow);
             out.writeInt(donkeyCount);
             out.writeInt(countSheep);
