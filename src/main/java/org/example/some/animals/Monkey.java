@@ -166,11 +166,25 @@ public class Monkey extends AbstractAnimal {
         translateTransition.setDuration(Duration.millis(distance * 10)); // Adjust duration for smoothness
         translateTransition.setNode(animalView);
         translateTransition.setByY(-distance); // Move right until x reaches 677
+        translateTransition.setOnFinished(event -> {
+            flyBananas();
+        });
         translateTransition.play();
 
 
 
 
+    }
+    public void flyBananas() {
+        if (SecondLevel.bananaIsAdded) {
+            SecondLevel.bananas.forEach(banana -> {
+                KeyValue kvX = new KeyValue(banana.getProductView().layoutXProperty(), 750);
+                KeyValue kvY = new KeyValue(banana.getProductView().layoutYProperty(), 350);
+                KeyFrame kf = new KeyFrame(Duration.seconds(2), kvX, kvY);
+                Timeline timeline = new Timeline(kf);
+                timeline.play();
+            });
+        }
     }
 
 }

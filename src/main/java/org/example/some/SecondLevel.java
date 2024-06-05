@@ -22,10 +22,7 @@ import org.example.some.products.Banana;
 
 import java.io.*;
 import java.net.URL;
-import java.util.Objects;
-import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 
 public class SecondLevel  implements Initializable {
@@ -45,12 +42,13 @@ public class SecondLevel  implements Initializable {
     private static int coins;
 
 
+    public static ArrayList<Banana> bananas = new ArrayList<>();
 
 
     public static boolean bananaIsAdded = false;
     public static boolean productIsAdded = false;
 
-    public int countBanana = 0;
+    public static int countBanana = 0;
 
 
 
@@ -90,6 +88,7 @@ public class SecondLevel  implements Initializable {
             anchorPane.getChildren().remove(banana.getProductView());
             bananaIsAdded = false;
         });
+        bananas.add(banana);
         return bananaIsAdded;
 
     }
