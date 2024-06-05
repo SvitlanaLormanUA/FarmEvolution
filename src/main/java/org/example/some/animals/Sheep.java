@@ -71,9 +71,11 @@ public class Sheep extends AbstractAnimal {
                 TimerTask task = new TimerTask() {
                     @Override
                     public void run() {
+
                         if (hungerLvl > 20) {
 
                             ImageView productView = new ImageView(product);
+                            productView.setId("product");
                             productView.setFitWidth(40);
                             productView.setFitHeight(40);
                             productView.setX(animalView.getLayoutX() + 30);

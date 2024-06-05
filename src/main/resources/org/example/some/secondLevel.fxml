@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
@@ -9,7 +8,7 @@
 
 <AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.some.SecondLevel">
    <children>
-      <ImageView fitHeight="707.0" fitWidth="1265.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="707.0" fitWidth="1265.0" layoutX="-7.0" layoutY="-17.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/backGrounds/jungle.png" />
          </image>
@@ -71,13 +70,10 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <ImageView fx:id="lian" fitHeight="488.0" fitWidth="169.0" layoutX="-5.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="palm" fx:id="palm" fitHeight="476.0" fitWidth="284.0" layoutX="661.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/secondLevel/lian.png" />
+            <Image url="@../../../images/secondLevel/palm.png" />
          </image>
-         <viewport>
-            <Rectangle2D />
-         </viewport>
       </ImageView>
 
    </children>

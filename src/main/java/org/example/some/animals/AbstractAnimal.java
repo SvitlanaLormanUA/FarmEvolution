@@ -62,6 +62,8 @@ public abstract class AbstractAnimal implements Animal {
         file = new File(soundFile);
         product = new Image(recourseFile);
         this.imagePath = imagePath;
+
+
         this.imagePathLeft = imagePathLeft;
         this.animalView = new ImageView(new Image(this.imagePath));
         this.worldStartX = worldStartX;
@@ -87,7 +89,7 @@ public abstract class AbstractAnimal implements Animal {
 
 
         int x = random.nextInt(worldStartX+50, worldEndX-50);
-        int y = random.nextInt(worldStartY+50, worldEndY - 100);
+        int y = random.nextInt(worldStartY+50, worldEndY - 50);
         animalView.setLayoutX(x);
         animalView.setLayoutY(y);
 
@@ -168,7 +170,7 @@ public abstract class AbstractAnimal implements Animal {
 
 
         int x = random.nextInt(worldStartX+50, worldEndX-50);
-        int y = random.nextInt(worldStartY+50, worldEndY - 100);
+        int y = random.nextInt(worldStartY+50, worldEndY - 50);
         animalView.setLayoutX(x);
         animalView.setLayoutY(y);
 
