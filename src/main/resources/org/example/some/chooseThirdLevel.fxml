@@ -16,9 +16,9 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fitHeight="86.0" fitWidth="132.0" layoutX="26.0" layoutY="592.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="68.0" fitWidth="67.0" layoutX="32.0" layoutY="597.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/mainMenu.png" />
+            <Image url="@../../../images/thirdLevel/icons/settingThird.png" />
          </image>
       </ImageView>
       <Button layoutX="833.0" layoutY="170.0" mnemonicParsing="false" onAction="#continueGame" prefHeight="362.0" prefWidth="329.0" styleClass="buttonLevel" stylesheets="@../../../styles/info.css">
