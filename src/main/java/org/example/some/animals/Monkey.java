@@ -89,7 +89,7 @@ public class Monkey extends AbstractAnimal {
         double newX = x + deltaX;
         double newY = y + deltaY;
 
-        if (newY < worldStartY || newY > worldEndY - animalView.getFitHeight()) {
+        if (newY < worldStartY || newY > worldEndY - 2*animalView.getFitHeight()) {
             deltaY = -deltaY;
         }
 

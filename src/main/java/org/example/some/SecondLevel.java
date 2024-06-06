@@ -117,7 +117,7 @@ public class SecondLevel  implements Initializable {
     }
 
     public void addMonkey() {
-        Monkey monkey = new Monkey(250, 300, 700, 730, anchorPane, well, feeder, storage);
+        Monkey monkey = new Monkey(250, 300, 700, 700, anchorPane, well, feeder, storage);
         anchorPane.getChildren().add(monkey.getAnimalView());
         addProducts(monkey);
         addThought(monkey);
