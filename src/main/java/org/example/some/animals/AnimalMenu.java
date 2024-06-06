@@ -48,6 +48,7 @@ public class AnimalMenu {
         thirstLabel.setLayoutX(20);
         thirstLabel.setLayoutY(40);
 
+
         feed = new Button("Нагодувати");
         feed.setLayoutX(20);
         feed.setLayoutY(65);

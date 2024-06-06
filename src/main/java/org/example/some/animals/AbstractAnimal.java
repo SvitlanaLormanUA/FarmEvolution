@@ -89,7 +89,7 @@ public abstract class AbstractAnimal implements Animal {
 
 
         int x = random.nextInt(worldStartX+50, worldEndX-50);
-        int y = random.nextInt(worldStartY+50, worldEndY - 50);
+        int y = random.nextInt(worldStartY+50, worldEndY - 100);
         animalView.setLayoutX(x);
         animalView.setLayoutY(y);
 

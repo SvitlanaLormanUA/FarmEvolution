@@ -16,4 +16,8 @@
 #beginButton:hover {
     -fx-background-color: #DF6A3D;
 }
+.buttonLevel {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
 

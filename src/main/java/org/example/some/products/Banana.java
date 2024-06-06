@@ -32,7 +32,7 @@ public class Banana {
      productView.setFitHeight(55);
      productView.setCursor(Cursor.HAND);
 
-     productView.setLayoutX(random.nextInt(650, 870));
+     productView.setLayoutX(random.nextInt(650, 760));
      productView.setLayoutY(random.nextInt(177, 300));
 
     }

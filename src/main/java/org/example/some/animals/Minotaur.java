@@ -10,6 +10,11 @@ public class Minotaur extends AbstractAnimal{
     }
 
     @Override
+    public void movement() {
+
+    }
+
+    @Override
     public void feed() {
 
     }
