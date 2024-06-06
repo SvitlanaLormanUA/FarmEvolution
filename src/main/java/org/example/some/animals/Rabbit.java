@@ -127,6 +127,7 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
 
     @Override
     public void giveProduct() {
+
         if (FirstLevel.countRabbit >= 1) {
             List<ImageView> productViews = new ArrayList<>();
 
