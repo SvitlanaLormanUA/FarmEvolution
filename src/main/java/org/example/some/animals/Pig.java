@@ -35,7 +35,7 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
         this.productCost = 0;
         this.openedMeatMenu = false;
         this.enoughFood = false;
-
+        giveProduct();
     }
 
     @Override
@@ -63,7 +63,6 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
     public void feed() {
         if(hungerLvl<100) {
             hungerLvl += 50;
-            cost += 40;
             amountOfMeals++;
             if(amountOfMeals<5) {
                 animalMeatMenu.getFeed().setText("Нагодовано: " + amountOfMeals + "/" + 5);
@@ -72,7 +71,6 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
             }
             if (hungerLvl > 100) {
                 hungerLvl = 100;
-                cost = 70;
             }
             AbstractAnimal.feeder.getFood();
         }

@@ -42,11 +42,9 @@ public class Cow extends AbstractAnimal {
     public void feed() {
         if (hungerLvl < 100) {
             hungerLvl += 50;
-            cost += 80;
 
             if (hungerLvl > 100) {
                 hungerLvl = 100;
-                cost = 2000;
             }
             AbstractAnimal.feeder.getFood();
         }

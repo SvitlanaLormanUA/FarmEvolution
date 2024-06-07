@@ -17,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.example.some.animals.AbstractAnimal;
+import org.example.some.animals.Dragonfly;
 import org.example.some.animals.Feeder;
 import org.example.some.animals.Monkey;
 import org.example.some.otherGameObjects.Instr;
@@ -62,7 +63,7 @@ public class SecondLevel  implements Initializable {
         addWallet();
         loadState();
         addMonkey();
-
+        addDragonfly();
 
     }
 
@@ -124,6 +125,12 @@ public class SecondLevel  implements Initializable {
 
         //  System.out.println(lian.getBoundsInParent());
     }
+
+    public void addDragonfly() {
+        Dragonfly dragonfly = new Dragonfly(50, 50, 1200, 300, anchorPane, well, feeder, storage);
+        anchorPane.getChildren().add(dragonfly.getAnimalView());
+    }
+
     @FXML
     public void backToMainMenu(ActionEvent event) {
         try {

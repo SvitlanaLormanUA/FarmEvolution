@@ -101,7 +101,7 @@ public class AnimalMeatMenu {
 
     public void update(){
         root.getChildren().clear();
-        question.setText("Чи бажаєте ви отримати \n м'ясо на "+animal.getProductCost()+" монет?");
+        question.setText("Чи бажаєте ви отримати \n продукту на "+animal.getProductCost()+" монет?");
         root.getChildren().addAll(menuView, question, yes, no, close);
     }
 

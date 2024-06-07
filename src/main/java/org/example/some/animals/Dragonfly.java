@@ -1,60 +1,48 @@
 package org.example.some.animals;
 
-import javafx.animation.Interpolator;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.scene.Cursor;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
-import javafx.scene.shape.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 import org.example.some.FirstLevel;
 import org.example.some.Storage;
-import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
-
-import javafx.animation.PathTransition;
-import javafx.animation.PathTransition.OrientationType;
-import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
-public class Rabbit extends AbstractAnimal implements AnimalMeat{
+public class Dragonfly extends AbstractAnimal implements AnimalMeat{
 
     private int productCost;
     private int amountOfMeals;
     private AnimalMeatMenu animalMeatMenu;
     private boolean openedMeatMenu;
-    private boolean enoughFood;
-    private Path path;
-    private double currX;
-    private double currY;
 
-    public Rabbit(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Well well, Feeder feeder, Storage storage) {
-        super(worldStartX, worldStartY, worldEndX, worldEndY, root, well, feeder, storage,
-                "file:src/main/resources/images/firstLevel/animals/rabbitRight.png",
-                "file:src/main/resources/images/firstLevel/animals/rabbitLeft.png",
-                "src/main/resources/sound/jumpRabbit.mp3",
-                "file:src/main/resources/images/firstLevel/products/meat.png"
+    public Dragonfly(int worldStartX, int worldStartY, int worldEndX, int worldEndY, AnchorPane anchorPane, Well well, Feeder feeder, Storage storage) {
+        super(worldStartX, worldStartY, worldEndX, worldEndY, anchorPane, well, feeder, storage,
+                "file:src/main/resources/images/secondLevel/animals/dragonflyRight.png",
+                "file:src/main/resources/images/secondLevel/animals/dragonflyLeft.png",
+                "src/main/resources/sound/monkey.mp3",
+                "file:src/main/resources/images/secondLevel/bananaThoughts.png"
         );
+        animalView.setFitWidth(70);
+        animalView.setFitHeight(50);
         this.amountOfMeals = 0;
         this.productCost = 0;
         this.openedMeatMenu = false;
-        this.enoughFood = false;
-        animalView.setFitWidth(70);
-        animalView.setFitHeight(90);
+        giveProduct();
     }
-
 
     @Override
     public void movement() {
         translateTransition = new TranslateTransition();
-        translateTransition.setDuration(Duration.millis(600));
+        translateTransition.setDuration(Duration.millis(1000));
         translateTransition.setNode(animalView);
         directionRight = true;
         translateTransition.setOnFinished(event -> {
@@ -76,13 +64,46 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
         animalView.setOnMouseReleased(this::handleMouseReleased);
     }
 
+    @Override
+    public void setRandomDirection() {
+        double x = animalView.getLayoutX();
+        double y = animalView.getLayoutY();
 
+
+        if (directionRight) {
+            deltaX = random.nextInt(100, 250);
+        } else {
+            deltaX = random.nextInt(-250, -100);
+        }
+        deltaY = random.nextInt(120) - 75;
+
+        double newX = x + deltaX;
+        double newY = y + deltaY;
+
+        if (newX < worldStartX && !directionRight) {
+            deltaX = -deltaX;
+            animalView.setImage(new Image(imagePath));
+            directionRight = !directionRight;
+        } else if (newX > worldEndX && directionRight) {
+            deltaX = -deltaX;
+            if (imagePathLeft != null) {
+                animalView.setImage(new Image(imagePathLeft));
+            }
+            directionRight = !directionRight;
+        }
+        if (newY < worldStartY || newY > worldEndY - animalView.getFitHeight()) {
+            deltaY = -deltaY;
+        }
+
+        translateTransition.setByX(deltaX);
+        translateTransition.setByY(deltaY);
+    }
 
     @Override
     public void handleMouseClicked(MouseEvent event) {
         super.handleMouseClicked(event);
 
-        if(!openedMeatMenu && openedMenu) {
+        if(!openedMeatMenu && openedMenu){
             double x = event.getSceneX();
             double y = event.getSceneY();
 
@@ -97,22 +118,15 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
 
             addMeatMenu(x, y);
         }
-
-        playSound();
-    }
-
-    @Override
-    public void play() {
-        translateTransition.play();
     }
 
     @Override
     public void feed() {
-        if(hungerLvl<100) {
-            hungerLvl += 100;
+        /*if(hungerLvl<100) {
+            hungerLvl += 50;
             amountOfMeals++;
-            if(amountOfMeals<3) {
-                animalMeatMenu.getFeed().setText("Нагодовано: " + amountOfMeals + "/" + 3);
+            if(amountOfMeals<7) {
+                animalMeatMenu.getFeed().setText("Нагодовано: " + amountOfMeals + "/" + 7);
             } else {
                 animalMeatMenu.update();
             }
@@ -120,26 +134,18 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
                 hungerLvl = 100;
             }
             AbstractAnimal.feeder.getFood();
-        }
+        }*/
     }
+
 
     @Override
     public void giveProduct() {
-
-        if (FirstLevel.countRabbit >= 1) {
+//        if (FirstLevel.countGoose >= 1) {
             List<ImageView> productViews = new ArrayList<>();
 
-            if (amountOfMeals >= 3) {
+            if (amountOfMeals >= 7) {
                 ImageView productView1 = createProductView(animalView.getLayoutX() + 50, animalView.getLayoutY() + 30);
                 productViews.add(productView1);
-            }
-            if (amountOfMeals >= 6) {
-                ImageView productView2 = createProductView(animalView.getLayoutX() - 50, animalView.getLayoutY() - 30);
-                productViews.add(productView2);
-            }
-            if (amountOfMeals >= 9) {
-                ImageView productView3 = createProductView(animalView.getLayoutX(), animalView.getLayoutY() + 20);
-                productViews.add(productView3);
             }
 
             Platform.runLater(() -> {
@@ -152,20 +158,20 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
                 removeMenu();
             }
             root.getChildren().remove(this.animalView);
-        }
+//        }
     }
 
     private ImageView createProductView(double x, double y) {
         ImageView productView = new ImageView(product);
-        productView.setFitWidth(30);
-        productView.setFitHeight(30);
+        productView.setFitWidth(50);
+        productView.setFitHeight(50);
         productView.setLayoutX(x);
         productView.setLayoutY(y);
         productView.setCursor(Cursor.HAND);
 
         productView.setOnMouseClicked(event -> {
             AbstractAnimal.root.getChildren().remove(productView);
-            storage.addProduct5();
+//            storage.addProduct4();
         });
 
         return productView;
@@ -173,7 +179,7 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
 
     @Override
     public void addMeatMenu(double x, double y) {
-        animalMeatMenu = new AnimalMeatMenu(this, x, y, amountOfMeals, 3);
+        animalMeatMenu = new AnimalMeatMenu(this, x, y, amountOfMeals, 7);
         root.getChildren().add(animalMeatMenu.getRoot());
         openedMeatMenu = true;
     }
@@ -195,32 +201,33 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
 
     @Override
     public int getProductCost() {
-        if(amountOfMeals>=3 && amountOfMeals<6){
+        if(amountOfMeals>=7 && amountOfMeals<14){
 
-            productCost=40;
+            productCost=140;
 
-        } else if(amountOfMeals>=6 && amountOfMeals<9){
+        } else if(amountOfMeals>=14 && amountOfMeals<21){
 
-            productCost=80;
+            productCost=280;
 
-        } else if(amountOfMeals>=9){
+        } else if(amountOfMeals>=21){
 
-            productCost=120;
+            productCost=420;
 
         }
 
         return productCost;
     }
 
+
     @Override
-    public void hunger() {
+    public void hunger(){
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
                 if (hungerLvl > 0) {
                     hungerLvl--;
-                    cost = (int) (175 * ((double)hungerLvl / 100));
+                    cost = (int) (350 * ((double)hungerLvl / 100));
                 } else {
                     timer.cancel();
                 }
@@ -229,5 +236,4 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
 
         timer.scheduleAtFixedRate(task, 0, 3000);
     }
-
 }

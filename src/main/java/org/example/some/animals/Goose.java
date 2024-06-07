@@ -69,10 +69,8 @@ public class Goose extends AbstractAnimal{
     public void feed() {
         if(hungerLvl<100) {
             hungerLvl += 55;
-            cost += 50;
             if (hungerLvl > 100) {
                 hungerLvl = 100;
-                cost = 120;
             }
             AbstractAnimal.feeder.getFood();
         }
