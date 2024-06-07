@@ -57,6 +57,10 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
+      <Button fx:id="buttonTasks1" layoutX="1168.0" layoutY="22.0" mnemonicParsing="false" onAction="#showSettings" prefHeight="42.0" prefWidth="42.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
 
       <ImageView id="coinsImage" fitHeight="60.0" fitWidth="162.0" layoutX="367.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -66,10 +70,6 @@
       <Button id="shopButton" fx:id="shopButton" layoutX="367.0" layoutY="23.0" mnemonicParsing="false" onAction="#enterShop" prefHeight="43.0" prefWidth="162.0" stylesheets="@../../../styles/firstLevel.css" />
       <Button layoutX="1135.0" layoutY="507.0" mnemonicParsing="false" onAction="#previousLevel" prefHeight="51.0" prefWidth="98.0" text="1 level" />
       <Button layoutX="1121.0" layoutY="442.0" mnemonicParsing="false" onAction="#nextLevel" prefHeight="51.0" prefWidth="118.0" text="3 level" />
-      <Button fx:id="buttonTasks1" layoutX="1168.0" layoutY="22.0" mnemonicParsing="false" onAction="#showSettings" prefHeight="42.0" prefWidth="42.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></Button>
       <ImageView id="palm" fx:id="palm" fitHeight="476.0" fitWidth="284.0" layoutX="661.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/secondLevel/palm.png" />
