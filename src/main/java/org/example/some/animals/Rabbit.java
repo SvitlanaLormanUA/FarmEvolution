@@ -1,21 +1,16 @@
 package org.example.some.animals;
 
-import javafx.animation.Interpolator;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.scene.Cursor;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.*;
 import org.example.some.FirstLevel;
 import org.example.some.Storage;
-import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
-import javafx.animation.PathTransition;
-import javafx.animation.PathTransition.OrientationType;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
@@ -165,7 +160,7 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
 
         productView.setOnMouseClicked(event -> {
             AbstractAnimal.root.getChildren().remove(productView);
-            storage.addProduct5();
+            storage.addRabbitMeat();
         });
 
         return productView;

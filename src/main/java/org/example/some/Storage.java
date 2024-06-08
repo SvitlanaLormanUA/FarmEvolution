@@ -12,11 +12,11 @@ import java.util.List;
 
 public class Storage {
 
-    private int product1Cost = 5;
-    private int product2Cost = 10;
-    private int product3Cost = 8;
-    private int product4Cost = 80;
-    private int product5Cost = 40;
+    private int eggsCost = 5;
+    private int woolCost = 10;
+    private int milkCost = 8;
+    private int pigMeatCost = 80;
+    private int rabbitMeatCost = 40;
     private ImageView storageView;
     private Wallet wallet;
     private Pane root;
@@ -78,234 +78,158 @@ public class Storage {
          this.soldRabbit = 0;
     }
 
-    public void addProduct1(){
+    public void addEgg(){
         product1++;
         nEggs++;
-        if (product1==1) {
-            ImageView productView1 = createProduct(product1Image, storageView.getLayoutX(), storageView.getLayoutY() + 52, 25, 25);
-            product1Views.add(productView1);
-            Platform.runLater(() -> {
-                root.getChildren().add(1,product1Views.get(0));
-            });
+        if(product1<=5) {
+            double x = storageView.getLayoutX();
+            double y = storageView.getLayoutY() + 52;
+            int width = 25;
+            for (int i = 1; i <= 5; i++) {
+                if (i == product1) {
+                    if (product1 != 1) {
+                        for (int j = 2; j <= product1; j++) {
+                            x += 13;
+                        }
+                    }
+                    ImageView productView = createProduct(product1Image, x, y, width, width);
+                    product1Views.add(productView);
+                    int num = product1 - 1;
+                    Platform.runLater(() -> {
+                        root.getChildren().add(1, product1Views.get(num));
+                    });
+                }
+            }
         }
-        if (product1==2) {
-            ImageView productView2 = createProduct(product1Image, storageView.getLayoutX() + 13, storageView.getLayoutY() + 52, 25, 25);
-            product1Views.add(productView2);
-            Platform.runLater(() -> {
-                root.getChildren().add(1,product1Views.get(1));
-            });
-        }
-        if (product1==3) {
-            ImageView productView3 = createProduct(product1Image, storageView.getLayoutX() + 26, storageView.getLayoutY() + 52, 25, 25);
-            product1Views.add(productView3);
-            Platform.runLater(() -> {
-                root.getChildren().add(1,product1Views.get(2));
-            });
-        }
-        if (product1==4) {
-            ImageView productView4 = createProduct(product1Image, storageView.getLayoutX() + 39, storageView.getLayoutY() + 52,25, 25);
-            product1Views.add(productView4);
-            Platform.runLater(() -> {
-                root.getChildren().add(1,product1Views.get(3));
-            });
-        }
-        if (product1==5) {
-            ImageView productView5 = createProduct(product1Image, storageView.getLayoutX() + 52, storageView.getLayoutY() + 52, 25, 25);
-            product1Views.add(productView5);
-            Platform.runLater(() -> {
-                root.getChildren().add(1,product1Views.get(4));
-            });
-        }
-
-
-        /*if(product1==product1Views.size()) {
-            Platform.runLater(() -> {
-                root.getChildren().add(product1Views.get(product1Views.size()-1));
-            });
-        }*/
     }
 
-    public void addProduct2(){
+    public void addWool(){
         product2++;
         nWool++;
-        if (product2==1) {
-            ImageView productView1 = createProduct(product2Image, storageView.getLayoutX()+1, storageView.getLayoutY() + 22, 30, 30);
-            product2Views.add(productView1);
-            Platform.runLater(() -> {
-                root.getChildren().add(1, product2Views.get(0));
-            });
+        if(product2<=5) {
+            double x = storageView.getLayoutX()+1;
+            double y = storageView.getLayoutY() + 22;
+            int width = 30;
+            for (int i = 1; i <= 5; i++) {
+                if (i == product2) {
+                    if (product2 == 2 || product2 == 3) {
+                        for (int j = 2; j <= product2; j++) {
+                            x += 24;
+                        }
+                    } else if(product2 == 4){
+                        x = storageView.getLayoutX()+15;
+                        y = storageView.getLayoutY() + 10;
+                    } else if(product2 == 5){
+                        x = storageView.getLayoutX()+34;
+                        y = storageView.getLayoutY() + 10;
+                    }
+                    ImageView productView = createProduct(product2Image, x, y, width, width);
+                    product2Views.add(productView);
+                    int num = product2 - 1;
+                    Platform.runLater(() -> {
+                        root.getChildren().add(1, product2Views.get(num));
+                    });
+                }
+            }
         }
-        if (product2==2) {
-            ImageView productView2 = createProduct(product2Image, storageView.getLayoutX() + 25, storageView.getLayoutY() + 22, 30, 30);
-            product2Views.add(productView2);
-            Platform.runLater(() -> {
-                root.getChildren().add(1, product2Views.get(1));
-            });
-        }
-        if (product2==3) {
-            ImageView productView3 = createProduct(product2Image, storageView.getLayoutX() + 49, storageView.getLayoutY() + 22, 30, 30);
-            product2Views.add(productView3);
-            Platform.runLater(() -> {
-                root.getChildren().add(1, product2Views.get(2));
-            });
-        }
-        if (product2==4) {
-            ImageView productView4 = createProduct(product2Image, storageView.getLayoutX() + 15, storageView.getLayoutY() + 10,30, 30);
-            product2Views.add(productView4);
-            Platform.runLater(() -> {
-                root.getChildren().add(1, product2Views.get(3));
-            });
-        }
-        if (product2==5) {
-            ImageView productView5 = createProduct(product2Image, storageView.getLayoutX() + 34, storageView.getLayoutY() + 10, 30, 30);
-            product2Views.add(productView5);
-            Platform.runLater(() -> {
-                root.getChildren().add(1, product2Views.get(4));
-            });
-        }
-
-
-        /*if(product2==product2Views.size()) {
-            Platform.runLater(() -> {
-                root.getChildren().add(1, product2Views.get(product2Views.size()-1));
-            });
-        }*/
     }
-    public void addProduct3(){
+    public void addMilk(){
         product3++;
-        if (product3==1) {
-            ImageView productView1 = createProduct(product3Image, storageView.getLayoutX()+1, storageView.getLayoutY()-39, 15, 40);
-            product3Views.add(productView1);
-            Platform.runLater(() -> {
-                root.getChildren().add(1, product3Views.get(0));
-            });
-        }
-        if (product3==2) {
-            ImageView productView2 = createProduct(product3Image, storageView.getLayoutX() + 17, storageView.getLayoutY()-39, 15, 40);
-            product3Views.add(productView2);
-            Platform.runLater(() -> {
-                root.getChildren().add(1, product3Views.get(1));
-            });
-        }
-        if (product3==3) {
-            ImageView productView3 = createProduct(product3Image, storageView.getLayoutX() + 33, storageView.getLayoutY()-39, 15, 40);
-            product3Views.add(productView3);
-            Platform.runLater(() -> {
-                root.getChildren().add(1, product3Views.get(2));
-            });
-        }
-        if (product3==4) {
-            ImageView productView4 = createProduct(product3Image, storageView.getLayoutX() + 49, storageView.getLayoutY()-39,15, 40);
-            product3Views.add(productView4);
-            Platform.runLater(() -> {
-                root.getChildren().add(1, product3Views.get(3));
-            });
-        }
-        if (product3==5) {
-            ImageView productView5 = createProduct(product3Image, storageView.getLayoutX() + 65, storageView.getLayoutY()-39, 15, 40);
-            product3Views.add(productView5);
-            Platform.runLater(() -> {
-                root.getChildren().add(1, product3Views.get(4));
-            });
+        if(product3<=5) {
+            double x = storageView.getLayoutX()+1;
+            double y = storageView.getLayoutY() - 39;
+            int width = 15;
+            int height = 40;
+            for (int i = 1; i <= 5; i++) {
+                if (i == product3) {
+                    if (product3 != 1) {
+                        for (int j = 2; j <= product3; j++) {
+                            x += 16;
+                        }
+                    }
+                    ImageView productView = createProduct(product3Image, x, y, width, height);
+                    product3Views.add(productView);
+                    int num = product3 - 1;
+                    Platform.runLater(() -> {
+                        root.getChildren().add(1, product3Views.get(num));
+                    });
+                }
+            }
         }
     }
 
-    public void addProduct4(){
+    public void addPigMeat(){
         product4++;
-        if (product4==1) {
-            ImageView productView1 = createProduct(product4Image, storageView.getLayoutX()+2, storageView.getLayoutY()+97, 30, 30);
-            product4Views.add(productView1);
-            Platform.runLater(() -> {
-                root.getChildren().add(1, product4Views.get(0));
-            });
-        }
-        if (product4==2) {
-            ImageView productView2 = createProduct(product4Image, storageView.getLayoutX() + 24, storageView.getLayoutY()+97, 30, 30);
-            product4Views.add(productView2);
-            Platform.runLater(() -> {
-                root.getChildren().add(1, product4Views.get(1));
-            });
-        }
-        if (product4==3) {
-            ImageView productView3 = createProduct(product4Image, storageView.getLayoutX() + 46, storageView.getLayoutY()+97, 30, 30);
-            product4Views.add(productView3);
-            Platform.runLater(() -> {
-                root.getChildren().add(1, product4Views.get(2));
-            });
-        }
-        if (product4==4) {
-            ImageView productView4 = createProduct(product4Image, storageView.getLayoutX() + 12, storageView.getLayoutY()+87,30, 30);
-            product4Views.add(productView4);
-            Platform.runLater(() -> {
-                root.getChildren().add( product4Views.get(3));
-            });
-        }
-        if (product4==5) {
-            ImageView productView5 = createProduct(product4Image, storageView.getLayoutX() + 32, storageView.getLayoutY()+87, 30, 30);
-            product4Views.add(productView5);
-            Platform.runLater(() -> {
-                root.getChildren().add( product4Views.get(4));
-            });
+        if(product4<=5) {
+            double x = storageView.getLayoutX() + 2;
+            double y = storageView.getLayoutY() + 97;
+            int width = 30;
+            for (int i = 1; i <= 5; i++) {
+                if (i == product4) {
+                    if (product4 == 2 || product4 == 3) {
+                        for (int j = 2; j <= product4; j++) {
+                            x += 22;
+                        }
+                    } else if(product4 == 4){
+                        x += 10;
+                        y = storageView.getLayoutY() + 87;
+                    } else if(product4 == 5){
+                        x += 30;
+                        y = storageView.getLayoutY() + 87;
+                    }
+                    ImageView productView = createProduct(product4Image, x, y, width, width);
+                    product4Views.add(productView);
+                    int num = product4 - 1;
+                    Platform.runLater(() -> {
+                        root.getChildren().add(1, product4Views.get(num));
+                    });
+                }
+            }
         }
     }
 
-    public void addProduct5(){
+    public void addRabbitMeat(){
         product5++;
-        if (product5==1) {
-            ImageView productView1 = createProduct(product5Image, storageView.getLayoutX()+2, storageView.getLayoutY()+127, 20, 20);
-            product5Views.add(productView1);
-            Platform.runLater(() -> {
-                root.getChildren().add( product5Views.get(0));
-            });
-        }
-        if (product5==2) {
-            ImageView productView2 = createProduct(product5Image, storageView.getLayoutX() + 15, storageView.getLayoutY()+127, 20, 20);
-            product5Views.add(productView2);
-            Platform.runLater(() -> {
-                root.getChildren().add( product5Views.get(1));
-            });
-        }
-        if (product5==3) {
-            ImageView productView3 = createProduct(product5Image, storageView.getLayoutX() + 28, storageView.getLayoutY()+127, 20, 20);
-            product5Views.add(productView3);
-            Platform.runLater(() -> {
-                root.getChildren().add( product5Views.get(2));
-            });
-        }
-        if (product5==4) {
-            ImageView productView4 = createProduct(product5Image, storageView.getLayoutX() + 41, storageView.getLayoutY()+127,20, 20);
-            product5Views.add(productView4);
-            Platform.runLater(() -> {
-                root.getChildren().add( product5Views.get(3));
-            });
-        }
-        if (product5==5) {
-            ImageView productView5 = createProduct(product5Image, storageView.getLayoutX() + 55, storageView.getLayoutY()+127, 20, 20);
-            product5Views.add(productView5);
-            Platform.runLater(() -> {
-                root.getChildren().add( product5Views.get(4));
-            });
+        if(product5<=5) {
+            double x = storageView.getLayoutX()+2;
+            double y = storageView.getLayoutY() + 127;
+            int width = 20;
+            for (int i = 1; i <= 5; i++) {
+                if (i == product5) {
+                    if (product5 != 1) {
+                        for (int j = 2; j <= product5; j++) {
+                            x += 13;
+                        }
+                    }
+                    ImageView productView = createProduct(product5Image, x, y, width, width);
+                    product5Views.add(productView);
+                    int num = product5 - 1;
+                    Platform.runLater(() -> {
+                        root.getChildren().add(1, product5Views.get(num));
+                    });
+                }
+            }
         }
     }
 
     public void sellProduct1(int toSell){
         int t = product1;
         product1 -= toSell;
-        wallet.income(product1Cost *toSell);
+        wallet.income(eggsCost *toSell);
         removeProductView(product1Views, t, toSell);
     }
 
     public void sellProduct2(int toSell){
         int t = product2;
         product2 -= toSell;
-        wallet.income(product2Cost *toSell);
+        wallet.income(woolCost *toSell);
         removeProductView(product2Views, t, toSell);
     }
 
     public void sellProduct3(int toSell){
         int t = product3;
         product3 -= toSell;
-        wallet.income(product3Cost *toSell);
+        wallet.income(milkCost *toSell);
         removeProductView(product3Views, t, toSell);
         soldMilk++;
     }
@@ -313,7 +237,7 @@ public class Storage {
     public void sellProduct4(int toSell){
         int t = product4;
         product4 -= toSell;
-        wallet.income(product4Cost *toSell);
+        wallet.income(pigMeatCost *toSell);
         removeProductView(product4Views, t, toSell);
         soldPig++;
     }
@@ -321,7 +245,7 @@ public class Storage {
     public void sellProduct5(int toSell){
         int t = product5;
         product5 -= toSell;
-        wallet.income(product5Cost *toSell);
+        wallet.income(rabbitMeatCost *toSell);
         removeProductView(product5Views, t, toSell);
         soldRabbit++;
     }
@@ -369,24 +293,24 @@ public class Storage {
         return product5;
     }
 
-    public int getProduct1Cost() {
-        return product1Cost;
+    public int getEggsCost() {
+        return eggsCost;
     }
 
-    public int getProduct2Cost() {
-        return product2Cost;
+    public int getWoolCost() {
+        return woolCost;
     }
 
-    public int getProduct3Cost() {
-        return product3Cost;
+    public int getMilkCost() {
+        return milkCost;
     }
 
-    public int getProduct4Cost() {
-        return product4Cost;
+    public int getPigMeatCost() {
+        return pigMeatCost;
     }
 
-    public int getProduct5Cost() {
-        return product5Cost;
+    public int getRabbitMeatCost() {
+        return rabbitMeatCost;
     }
 
     public Pane getRoot() {

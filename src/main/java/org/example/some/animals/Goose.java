@@ -8,7 +8,6 @@ import javafx.scene.layout.AnchorPane;
 
 import org.example.some.FirstLevel;
 import org.example.some.Storage;
-import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
 import java.util.Timer;
@@ -49,7 +48,7 @@ public class Goose extends AbstractAnimal{
 
                             productView.setOnMouseClicked(event -> {
                                 AbstractAnimal.root.getChildren().remove(productView);
-                                storage.addProduct1();
+                                storage.addEgg();
                             });
 
                             Platform.runLater(() -> AbstractAnimal.root.getChildren().add(1, productView));

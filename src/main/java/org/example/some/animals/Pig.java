@@ -8,7 +8,6 @@ import javafx.scene.layout.AnchorPane;
 
 import org.example.some.FirstLevel;
 import org.example.some.Storage;
-import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
 import java.util.ArrayList;
@@ -118,7 +117,7 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
 
         productView.setOnMouseClicked(event -> {
             AbstractAnimal.root.getChildren().remove(productView);
-            storage.addProduct4();
+            storage.addPigMeat();
         });
 
         return productView;

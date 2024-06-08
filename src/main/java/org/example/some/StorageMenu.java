@@ -62,7 +62,7 @@ public class StorageMenu {
         close.setLayoutX(270);
         close.setLayoutY(10);
 
-        eggsToSell = new Label("Яйця: "+storage.getProduct1()+"\nВартість: "+storage.getProduct1Cost()+" монет/шт\nВведіть кількість для продажу:");
+        eggsToSell = new Label("Яйця: "+storage.getProduct1()+"\nВартість: "+storage.getEggsCost()+" монет/шт\nВведіть кількість для продажу:");
         eggsToSell.setLayoutX(20);
         eggsToSell.setLayoutY(20);
         amountOfEggs = new TextField();
@@ -72,7 +72,7 @@ public class StorageMenu {
         sellEggs.setLayoutX(180);
         sellEggs.setLayoutY(75);
 
-        milkToSell = new Label("Молоко: "+storage.getProduct3()+"\nВартість: "+storage.getProduct3Cost()+" монет/шт\nВведіть кількість для продажу:");
+        milkToSell = new Label("Молоко: "+storage.getProduct3()+"\nВартість: "+storage.getMilkCost()+" монет/шт\nВведіть кількість для продажу:");
         milkToSell.setLayoutX(20);
         milkToSell.setLayoutY(115);
         amountOfMilk = new TextField();
@@ -82,7 +82,7 @@ public class StorageMenu {
         sellMilk.setLayoutX(180);
         sellMilk.setLayoutY(170);
 
-        woolToSell = new Label("Хутро: "+storage.getProduct2()+"\nВартість: "+storage.getProduct2Cost()+" монет/шт\nВведіть кількість для продажу:");
+        woolToSell = new Label("Хутро: "+storage.getProduct2()+"\nВартість: "+storage.getWoolCost()+" монет/шт\nВведіть кількість для продажу:");
         woolToSell.setLayoutX(20);
         woolToSell.setLayoutY(210);
         amountOfWool = new TextField();
@@ -92,7 +92,7 @@ public class StorageMenu {
         sellWool.setLayoutX(180);
         sellWool.setLayoutY(265);
 
-        pigMeatToSell = new Label("Свинка: "+storage.getProduct4()+"\nВартість: "+storage.getProduct4Cost()+" монет/шт\nВведіть кількість для продажу:");
+        pigMeatToSell = new Label("Свинка: "+storage.getProduct4()+"\nВартість: "+storage.getPigMeatCost()+" монет/шт\nВведіть кількість для продажу:");
         pigMeatToSell.setLayoutX(20);
         pigMeatToSell.setLayoutY(305);
         amountOfPigMeat = new TextField();
@@ -102,7 +102,7 @@ public class StorageMenu {
         sellPigMeat.setLayoutX(180);
         sellPigMeat.setLayoutY(360);
 
-        rabbitMeatToSell = new Label("Кролик: "+storage.getProduct5()+"\nВартість: "+storage.getProduct5Cost()+" монет/шт\nВведіть кількість для продажу:");
+        rabbitMeatToSell = new Label("Кролик: "+storage.getProduct5()+"\nВартість: "+storage.getRabbitMeatCost()+" монет/шт\nВведіть кількість для продажу:");
         rabbitMeatToSell.setLayoutX(20);
         rabbitMeatToSell.setLayoutY(400);
         amountOfRabbitMeat = new TextField();
@@ -147,7 +147,7 @@ public class StorageMenu {
                     int toSell = Integer.parseInt(text);
                     if (toSell >= 1 && toSell <= storage.getProduct1()) {
                         storage.sellProduct1(toSell);
-                        eggsToSell.setText("Яйця: "+storage.getProduct1()+"\nВартість: "+storage.getProduct1Cost()+" монет/шт\nВведіть кількість для продажу:");
+                        eggsToSell.setText("Яйця: "+storage.getProduct1()+"\nВартість: "+storage.getEggsCost()+" монет/шт\nВведіть кількість для продажу:");
                         amountOfEggs.setText("");
                     }
                     else if(toSell<0){
@@ -181,7 +181,7 @@ public class StorageMenu {
                     int toSell = Integer.parseInt(text);
                     if (toSell >= 1 && toSell <= storage.getProduct3()) {
                         storage.sellProduct3(toSell);
-                        milkToSell.setText("Молоко: "+storage.getProduct3()+"\nВартість: "+storage.getProduct3Cost()+" монет/шт\nВведіть кількість для продажу:");
+                        milkToSell.setText("Молоко: "+storage.getProduct3()+"\nВартість: "+storage.getMilkCost()+" монет/шт\nВведіть кількість для продажу:");
                         amountOfMilk.setText("");
                     }
                     else if(toSell<0){
@@ -215,7 +215,7 @@ public class StorageMenu {
                     int toSell = Integer.parseInt(text);
                     if (toSell >= 1 && toSell <= storage.getProduct2()) {
                         storage.sellProduct2(toSell);
-                        woolToSell.setText("Хутро: "+storage.getProduct2()+"\nВартість: "+storage.getProduct2Cost()+" монет/шт\nВведіть кількість для продажу:");
+                        woolToSell.setText("Хутро: "+storage.getProduct2()+"\nВартість: "+storage.getWoolCost()+" монет/шт\nВведіть кількість для продажу:");
                         amountOfWool.setText("");
                     }
                     else if(toSell<0){
@@ -249,7 +249,7 @@ public class StorageMenu {
                     int toSell = Integer.parseInt(text);
                     if (toSell >= 1 && toSell <= storage.getProduct4()) {
                         storage.sellProduct4(toSell);
-                        pigMeatToSell.setText("Свинка: "+storage.getProduct4()+"\nВартість: "+storage.getProduct4Cost()+" монет/шт\nВведіть кількість для продажу:");
+                        pigMeatToSell.setText("Свинка: "+storage.getProduct4()+"\nВартість: "+storage.getPigMeatCost()+" монет/шт\nВведіть кількість для продажу:");
                         amountOfPigMeat.setText("");
                     }
                     else if(toSell<0){
@@ -283,7 +283,7 @@ public class StorageMenu {
                     int toSell = Integer.parseInt(text);
                     if (toSell >= 1 && toSell <= storage.getProduct5()) {
                         storage.sellProduct5(toSell);
-                        rabbitMeatToSell.setText("Кролик: "+storage.getProduct5()+"\nВартість: "+storage.getProduct5Cost()+" монет/шт\nВведіть кількість для продажу:");
+                        rabbitMeatToSell.setText("Кролик: "+storage.getProduct5()+"\nВартість: "+storage.getRabbitMeatCost()+" монет/шт\nВведіть кількість для продажу:");
                         amountOfRabbitMeat.setText("");
                     }
                     else if(toSell<0){

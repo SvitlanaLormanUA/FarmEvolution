@@ -1,13 +1,11 @@
 package org.example.some.animals;
 
-import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.scene.Cursor;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Duration;
 import org.example.some.FirstLevel;
 import org.example.some.Storage;
 import org.example.some.otherGameObjects.Well;
@@ -70,7 +68,7 @@ public class Cow extends AbstractAnimal {
                             hasProduct = false;
                             productView.setOnMouseClicked(event -> {
                                 AbstractAnimal.root.getChildren().remove(productView);
-                                storage.addProduct3();
+                                storage.addMilk();
                                 hasProduct = true;
                             });
 

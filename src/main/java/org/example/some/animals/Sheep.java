@@ -3,10 +3,8 @@ import javafx.application.Platform;
 import javafx.scene.Cursor;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import org.example.some.FirstLevel;
 import org.example.some.Storage;
-import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
 import java.util.Timer;
@@ -46,7 +44,7 @@ public class Sheep extends AbstractAnimal {
 
                             productView.setOnMouseClicked(event -> {
                                 AbstractAnimal.root.getChildren().remove(productView);
-                                storage.addProduct2();
+                                storage.addWool();
                             });
 
                             Platform.runLater(() -> AbstractAnimal.root.getChildren().add(1, productView));
