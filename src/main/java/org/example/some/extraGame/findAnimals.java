@@ -2,6 +2,7 @@ package org.example.some.extraGame;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -11,9 +12,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.util.HashSet;
@@ -84,11 +87,55 @@ public class findAnimals extends Application {
             }
         });
 
+        // Додавання інструкції
+        StackPane instructionOverlay = createInstructionOverlay(pane);
+
+        // Додавання інструкції та гри в головний StackPane
+        StackPane root = new StackPane(pane, instructionOverlay);
+        root.setAlignment(Pos.CENTER);
+
         // Налаштування сцени та етапу
-        Scene scene = new Scene(pane, 800, 600);
+        Scene scene = new Scene(root, 800, 600);
         primaryStage.setTitle("Знайди тварин");
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    private StackPane createInstructionOverlay(Pane mainPane) {
+        // Створення прозорого фону
+        Rectangle bg = new Rectangle(800, 600, Color.BLACK);
+        bg.setOpacity(0.8);
+
+        // Текст інструкції
+        Label instructions = new Label("Вітаємо в грі 'Find Animal'!\n\n" +
+                "1. Натисніть на тварину, щоб знайти її.\n" +
+                "Знайдена тварина буде відмічена напівпрозорим колом.\n" +
+                "2. Коли всі тварини будуть знайдені, з'явиться повідомлення.\n" +
+                "3. Натисніть кнопку 'Почати', щоб розпочати гру.");
+        instructions.setTextFill(Color.WHITE);
+        instructions.setStyle("-fx-font-size: 16px;");
+        instructions.setWrapText(true);
+
+        VBox instructionBox = new VBox(instructions);
+        instructionBox.setAlignment(Pos.CENTER);
+        instructionBox.setPadding(new Insets(20));
+        instructionBox.setSpacing(10);
+
+        StackPane instructionOverlay = new StackPane(bg, instructionBox);
+        instructionOverlay.setAlignment(Pos.CENTER);
+
+        // Кнопка для закриття інструкції
+        Button closeButton = new Button("Почати");
+        closeButton.setOnAction(e -> instructionOverlay.setVisible(false));
+        VBox closeBox = new VBox(closeButton);
+        closeBox.setAlignment(Pos.BOTTOM_CENTER);
+        closeBox.setPadding(new Insets(10));
+        StackPane.setAlignment(closeButton, Pos.BOTTOM_CENTER);
+        StackPane.setMargin(closeButton, new Insets(20));
+
+        instructionOverlay.getChildren().add(closeBox);
+
+        return instructionOverlay;
     }
 
     private void showAlert() {
@@ -112,3 +159,5 @@ public class findAnimals extends Application {
         launch(args);
     }
 }
+
+
