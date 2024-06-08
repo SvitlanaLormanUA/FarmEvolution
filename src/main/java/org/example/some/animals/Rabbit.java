@@ -104,8 +104,10 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
     @Override
     public void feed() {
         if(hungerLvl<100) {
-            hungerLvl += 100;
-            amountOfMeals++;
+            if(AbstractAnimal.feeder.haveFood()) {
+                hungerLvl += 100;
+                amountOfMeals++;
+            }
             if(amountOfMeals<3) {
                 animalMeatMenu.getFeed().setText("Нагодовано: " + amountOfMeals + "/" + 3);
             } else {

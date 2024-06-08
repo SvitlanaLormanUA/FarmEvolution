@@ -164,6 +164,7 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
     @FXML
     void addStorageMenu(MouseEvent event) {
         StorageMenu storageMenu = new  StorageMenu(storage, wallet, WIDTH/2-140, HEIGHT/4-100, anchorPane);
+        storageMenu.firstLvl();
         anchorPane.getChildren().add(storageMenu.getRoot());
     }
 
@@ -276,7 +277,7 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
     }
 
     private void addFeeder(){
-        feeder = new Feeder(feederView, foodBar, wallet, anchorPane);
+        feeder = new Feeder(feederView, foodBar, wallet, 54, anchorPane);
         anchorPane.getChildren().add(feeder.getFoodView());
     }
 
@@ -287,6 +288,7 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
         Image meatP = new Image("file:src/main/resources/images/firstLevel/products/meat.png");
         Image meatR = new Image("file:src/main/resources/images/firstLevel/products/meat.png");
         storage = new Storage(storageView, wallet, egg, wool, milk, meatP, meatR);
+        storage.lvl1();
         anchorPane.getChildren().add(storage.getRoot());
     }
 

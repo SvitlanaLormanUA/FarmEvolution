@@ -24,14 +24,16 @@ public class Feeder {
     private int foodLvl;
     private Wallet wallet;
     private AnchorPane anchorPane;
+    private int renewal;
 
-    public Feeder(ImageView foodView, ProgressBar foodBar, Wallet wallet, AnchorPane anchorPane){
+    public Feeder(ImageView foodView, ProgressBar foodBar, Wallet wallet, int renewal, AnchorPane anchorPane){
         this.foodView = foodView;
         this.foodView.setCursor(Cursor.HAND);
         this.foodBar = foodBar;
         this.wallet = wallet;
         this.foodLvl = 10;
         this.anchorPane = anchorPane;
+        this.renewal = renewal;
 
         root = new Pane();
         root.getChildren().add(this.foodView);
@@ -53,11 +55,19 @@ public class Feeder {
         foodBar.setProgress(progress);
     }
 
+    public boolean haveFood(){
+        if (progress > 0.0 && foodLvl > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
 //    потрібно буде щось зробити із зняттям гроше + при натисканні на колодязь чомусь теж знімаються гроші
     private void handleMouseClicked(MouseEvent event){
         if(progress < 1.0) {
-            AskingMenu askingMenu = new AskingMenu("\t   Чи бажаєте ви поповнити годівничку за\n\t\t\t\t 54 монети?", FirstLevel.WIDTH / 3 + 60, FirstLevel.HEIGHT / 3);
+            AskingMenu askingMenu = new AskingMenu("\t   Чи бажаєте ви поповнити годівничку за\n\t\t\t\t "+renewal+" монети?", FirstLevel.WIDTH / 3 + 60, FirstLevel.HEIGHT / 3);
             Button yesButton = askingMenu.getYes();
             Button noButton = askingMenu.getNo();
             Button closeButton = askingMenu.getClose();
@@ -78,7 +88,7 @@ public class Feeder {
                 };
                 // Запуск завдання з інтервалом 10 секунд (10000 мілісекунд)
                 timer.scheduleAtFixedRate(task, 0, 10000);
-                wallet.expense(54);
+                wallet.expense(renewal);
                 anchorPane.getChildren().remove(askingMenu.getRoot());
             });
 

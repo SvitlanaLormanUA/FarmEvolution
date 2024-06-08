@@ -20,24 +20,24 @@ public class StorageMenu {
     private Pane root;
     private AnchorPane main;
     private Storage storage;
-    private Button sellEggs;
-    private Button sellMilk;
-    private Button sellWool;
-    private Button sellPigMeat;
-    private Button sellRabbitMeat;
+    private Button sellProduct1;
+    private Button sellProduct2;
+    private Button sellProduct3;
+    private Button sellProduct4;
+    private Button sellProduct5;
     private Button close;
 
-    private Label eggsToSell;
-    private Label milkToSell;
-    private Label woolToSell;
-    private Label pigMeatToSell;
-    private Label rabbitMeatToSell;
+    private Label product1ToSell;
+    private Label product2ToSell;
+    private Label product3ToSell;
+    private Label product4ToSell;
+    private Label product5ToSell;
 
-    private TextField amountOfEggs;
-    private TextField amountOfMilk;
-    private TextField amountOfWool;
-    private TextField amountOfPigMeat;
-    private TextField amountOfRabbitMeat;
+    private TextField amountOfProduct1;
+    private TextField amountOfProduct2;
+    private TextField amountOfProduct3;
+    private TextField amountOfProduct4;
+    private TextField amountOfProduct5;
 
     public StorageMenu(Storage storage, Wallet wallet, double x, double y, AnchorPane main){
 
@@ -62,70 +62,132 @@ public class StorageMenu {
         close.setLayoutX(270);
         close.setLayoutY(10);
 
-        eggsToSell = new Label("Яйця: "+storage.getProduct1()+"\nВартість: "+storage.getEggsCost()+" монет/шт\nВведіть кількість для продажу:");
-        eggsToSell.setLayoutX(20);
-        eggsToSell.setLayoutY(20);
-        amountOfEggs = new TextField();
-        amountOfEggs.setLayoutX(20);
-        amountOfEggs.setLayoutY(75);
-        sellEggs = new Button("Продати");
-        sellEggs.setLayoutX(180);
-        sellEggs.setLayoutY(75);
-
-        milkToSell = new Label("Молоко: "+storage.getProduct3()+"\nВартість: "+storage.getMilkCost()+" монет/шт\nВведіть кількість для продажу:");
-        milkToSell.setLayoutX(20);
-        milkToSell.setLayoutY(115);
-        amountOfMilk = new TextField();
-        amountOfMilk.setLayoutX(20);
-        amountOfMilk.setLayoutY(170);
-        sellMilk = new Button("Продати");
-        sellMilk.setLayoutX(180);
-        sellMilk.setLayoutY(170);
-
-        woolToSell = new Label("Хутро: "+storage.getProduct2()+"\nВартість: "+storage.getWoolCost()+" монет/шт\nВведіть кількість для продажу:");
-        woolToSell.setLayoutX(20);
-        woolToSell.setLayoutY(210);
-        amountOfWool = new TextField();
-        amountOfWool.setLayoutX(20);
-        amountOfWool.setLayoutY(265);
-        sellWool = new Button("Продати");
-        sellWool.setLayoutX(180);
-        sellWool.setLayoutY(265);
-
-        pigMeatToSell = new Label("Свинка: "+storage.getProduct4()+"\nВартість: "+storage.getPigMeatCost()+" монет/шт\nВведіть кількість для продажу:");
-        pigMeatToSell.setLayoutX(20);
-        pigMeatToSell.setLayoutY(305);
-        amountOfPigMeat = new TextField();
-        amountOfPigMeat.setLayoutX(20);
-        amountOfPigMeat.setLayoutY(360);
-        sellPigMeat = new Button("Продати");
-        sellPigMeat.setLayoutX(180);
-        sellPigMeat.setLayoutY(360);
-
-        rabbitMeatToSell = new Label("Кролик: "+storage.getProduct5()+"\nВартість: "+storage.getRabbitMeatCost()+" монет/шт\nВведіть кількість для продажу:");
-        rabbitMeatToSell.setLayoutX(20);
-        rabbitMeatToSell.setLayoutY(400);
-        amountOfRabbitMeat = new TextField();
-        amountOfRabbitMeat.setLayoutX(20);
-        amountOfRabbitMeat.setLayoutY(455);
-        sellRabbitMeat = new Button("Продати");
-        sellRabbitMeat.setLayoutX(180);
-        sellRabbitMeat.setLayoutY(455);
-
         root = new Pane();
         root.setTranslateX(this.x);
         root.setTranslateY(this.y);
-        root.getChildren().addAll(menuView, close, eggsToSell, amountOfEggs, sellEggs, milkToSell, amountOfMilk, sellMilk,
-                woolToSell, amountOfWool, sellWool, pigMeatToSell, amountOfPigMeat, sellPigMeat, rabbitMeatToSell, amountOfRabbitMeat, sellRabbitMeat);
-
+        root.getChildren().addAll(menuView, close);
 
 
         close();
+    }
+
+    public void firstLvl(){
+        product1ToSell = new Label("Яйця: "+storage.getProduct1()+"\nВартість: "+storage.getProduct1Cost()+" монет/шт\nВведіть кількість для продажу:");
+        product1ToSell.setLayoutX(20);
+        product1ToSell.setLayoutY(20);
+        amountOfProduct1 = new TextField();
+        amountOfProduct1.setLayoutX(20);
+        amountOfProduct1.setLayoutY(75);
+        sellProduct1 = new Button("Продати");
+        sellProduct1.setLayoutX(180);
+        sellProduct1.setLayoutY(75);
+
+        product2ToSell = new Label("Молоко: "+storage.getProduct3()+"\nВартість: "+storage.getProduct3Cost()+" монет/шт\nВведіть кількість для продажу:");
+        product2ToSell.setLayoutX(20);
+        product2ToSell.setLayoutY(115);
+        amountOfProduct2 = new TextField();
+        amountOfProduct2.setLayoutX(20);
+        amountOfProduct2.setLayoutY(170);
+        sellProduct2 = new Button("Продати");
+        sellProduct2.setLayoutX(180);
+        sellProduct2.setLayoutY(170);
+
+        product3ToSell = new Label("Хутро: "+storage.getProduct2()+"\nВартість: "+storage.getProduct2Cost()+" монет/шт\nВведіть кількість для продажу:");
+        product3ToSell.setLayoutX(20);
+        product3ToSell.setLayoutY(210);
+        amountOfProduct3 = new TextField();
+        amountOfProduct3.setLayoutX(20);
+        amountOfProduct3.setLayoutY(265);
+        sellProduct3 = new Button("Продати");
+        sellProduct3.setLayoutX(180);
+        sellProduct3.setLayoutY(265);
+
+        product4ToSell = new Label("Свинка: "+storage.getProduct4()+"\nВартість: "+storage.getProduct4Cost()+" монет/шт\nВведіть кількість для продажу:");
+        product4ToSell.setLayoutX(20);
+        product4ToSell.setLayoutY(305);
+        amountOfProduct4 = new TextField();
+        amountOfProduct4.setLayoutX(20);
+        amountOfProduct4.setLayoutY(360);
+        sellProduct4 = new Button("Продати");
+        sellProduct4.setLayoutX(180);
+        sellProduct4.setLayoutY(360);
+
+        product5ToSell = new Label("Кролик: "+storage.getProduct5()+"\nВартість: "+storage.getProduct5Cost()+" монет/шт\nВведіть кількість для продажу:");
+        product5ToSell.setLayoutX(20);
+        product5ToSell.setLayoutY(400);
+        amountOfProduct5 = new TextField();
+        amountOfProduct5.setLayoutX(20);
+        amountOfProduct5.setLayoutY(455);
+        sellProduct5 = new Button("Продати");
+        sellProduct5.setLayoutX(180);
+        sellProduct5.setLayoutY(455);
+
+        root.getChildren().addAll(product1ToSell, amountOfProduct1, sellProduct1, product2ToSell, amountOfProduct2, sellProduct2,
+                product3ToSell, amountOfProduct3, sellProduct3, product4ToSell, amountOfProduct4, sellProduct4, product5ToSell, amountOfProduct5, sellProduct5);
+
         sellEggs();
         sellMilk();
         sellWool();
         sellPigMeat();
         sellRabbitMeat();
+    }
+
+    public void secondLvl(){
+        product1ToSell = new Label("Банани: "+storage.getProduct1()+"\nВартість: "+storage.getProduct1Cost()+" монет/шт\nВведіть кількість для продажу:");
+        product1ToSell.setLayoutX(20);
+        product1ToSell.setLayoutY(20);
+        amountOfProduct1 = new TextField();
+        amountOfProduct1.setLayoutX(20);
+        amountOfProduct1.setLayoutY(75);
+        sellProduct1 = new Button("Продати");
+        sellProduct1.setLayoutX(180);
+        sellProduct1.setLayoutY(75);
+
+        product2ToSell = new Label("Бабка сушена: "+storage.getProduct2()+"\nВартість: "+storage.getProduct2Cost()+" монет/шт\nВведіть кількість для продажу:");
+        product2ToSell.setLayoutX(20);
+        product2ToSell.setLayoutY(115);
+        amountOfProduct2 = new TextField();
+        amountOfProduct2.setLayoutX(20);
+        amountOfProduct2.setLayoutY(170);
+        sellProduct2 = new Button("Продати");
+        sellProduct2.setLayoutX(180);
+        sellProduct2.setLayoutY(170);
+
+        product3ToSell = new Label("Пір'я павича: "+storage.getProduct3()+"\nВартість: "+storage.getProduct3Cost()+" монет/шт\nВведіть кількість для продажу:");
+        product3ToSell.setLayoutX(20);
+        product3ToSell.setLayoutY(210);
+        amountOfProduct3 = new TextField();
+        amountOfProduct3.setLayoutX(20);
+        amountOfProduct3.setLayoutY(265);
+        sellProduct3 = new Button("Продати");
+        sellProduct3.setLayoutX(180);
+        sellProduct3.setLayoutY(265);
+
+        product4ToSell = new Label("Манго: "+storage.getProduct4()+"\nВартість: "+storage.getProduct4Cost()+" монет/шт\nВведіть кількість для продажу:");
+        product4ToSell.setLayoutX(20);
+        product4ToSell.setLayoutY(305);
+        amountOfProduct4 = new TextField();
+        amountOfProduct4.setLayoutX(20);
+        amountOfProduct4.setLayoutY(360);
+        sellProduct4 = new Button("Продати");
+        sellProduct4.setLayoutX(180);
+        sellProduct4.setLayoutY(360);
+
+        product5ToSell = new Label("Горіхи: "+storage.getProduct5()+"\nВартість: "+storage.getProduct5Cost()+" монет/шт\nВведіть кількість для продажу:");
+        product5ToSell.setLayoutX(20);
+        product5ToSell.setLayoutY(400);
+        amountOfProduct5 = new TextField();
+        amountOfProduct5.setLayoutX(20);
+        amountOfProduct5.setLayoutY(455);
+        sellProduct5 = new Button("Продати");
+        sellProduct5.setLayoutX(180);
+        sellProduct5.setLayoutY(455);
+
+        root.getChildren().addAll(product1ToSell, amountOfProduct1, sellProduct1, product2ToSell, amountOfProduct2, sellProduct2,
+                product3ToSell, amountOfProduct3, sellProduct3, product4ToSell, amountOfProduct4, sellProduct4, product5ToSell, amountOfProduct5, sellProduct5);
+
+
+        sellDragonflyPr();
     }
 
     private void close(){
@@ -136,173 +198,105 @@ public class StorageMenu {
     }
 
     private void sellEggs(){
-        sellEggs.setOnAction(event -> {
-            String text = amountOfEggs.getText();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Помилка!");
-
-            if (!text.isEmpty()) {
-                try {
-                    int toSell = Integer.parseInt(text);
-                    if (toSell >= 1 && toSell <= storage.getProduct1()) {
-                        storage.sellProduct1(toSell);
-                        eggsToSell.setText("Яйця: "+storage.getProduct1()+"\nВартість: "+storage.getEggsCost()+" монет/шт\nВведіть кількість для продажу:");
-                        amountOfEggs.setText("");
-                    }
-                    else if(toSell<0){
-                        alert.setContentText("Введіть додатнє число");
-                        alert.showAndWait();
-                    }
-                    else {
-                        alert.setContentText("У Вас немає стільки яєць");
-                        alert.showAndWait();
-                    }
-                } catch (NumberFormatException e) {
-                    alert.setContentText("Введіть кількість яєць для продажу");
-                    alert.showAndWait();
-                }
-            } else {
-                alert.setContentText("Введіть кількість яєць для продажу");
-                alert.showAndWait();
+        sellProduct1.setOnAction(event -> {
+            if(sell(amountOfProduct1, storage.getProduct1())){
+                int toSell = Integer.parseInt(amountOfProduct1.getText());
+                storage.sellProduct1(toSell);
+                product1ToSell.setText("Яйця: "+storage.getProduct1()+"\nВартість: "+storage.getProduct1Cost()+" монет/шт\nВведіть кількість для продажу:");
+                amountOfProduct1.setText("");
             }
         });
     }
 
     private void sellMilk(){
-        sellMilk.setOnAction(event -> {
-            String text = amountOfMilk.getText();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Помилка!");
-
-            if (!text.isEmpty()) {
-                try {
-                    int toSell = Integer.parseInt(text);
-                    if (toSell >= 1 && toSell <= storage.getProduct3()) {
-                        storage.sellProduct3(toSell);
-                        milkToSell.setText("Молоко: "+storage.getProduct3()+"\nВартість: "+storage.getMilkCost()+" монет/шт\nВведіть кількість для продажу:");
-                        amountOfMilk.setText("");
-                    }
-                    else if(toSell<0){
-                        alert.setContentText("Введіть додатнє число");
-                        alert.showAndWait();
-                    }
-                    else {
-                        alert.setContentText("У Вас немає стільки молока");
-                        alert.showAndWait();
-                    }
-                } catch (NumberFormatException e) {
-                    alert.setContentText("Введіть кількість галонів молока для продажу");
-                    alert.showAndWait();
-                }
-            } else {
-                alert.setContentText("Введіть кількість галонів молока для продажу");
-                alert.showAndWait();
+        sellProduct2.setOnAction(event -> {
+            if(sell(amountOfProduct2, storage.getProduct3())){
+                int toSell = Integer.parseInt(amountOfProduct2.getText());
+                storage.sellProduct3(toSell);
+                product2ToSell.setText("Молоко: "+storage.getProduct3()+"\nВартість: "+storage.getProduct3Cost()+" монет/шт\nВведіть кількість для продажу:");
+                amountOfProduct2.setText("");
             }
         });
     }
 
     private void sellWool(){
-        sellWool.setOnAction(event -> {
-            String text = amountOfWool.getText();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Помилка!");
-
-            if (!text.isEmpty()) {
-                try {
-                    int toSell = Integer.parseInt(text);
-                    if (toSell >= 1 && toSell <= storage.getProduct2()) {
-                        storage.sellProduct2(toSell);
-                        woolToSell.setText("Хутро: "+storage.getProduct2()+"\nВартість: "+storage.getWoolCost()+" монет/шт\nВведіть кількість для продажу:");
-                        amountOfWool.setText("");
-                    }
-                    else if(toSell<0){
-                        alert.setContentText("Введіть додатнє число");
-                        alert.showAndWait();
-                    }
-                    else {
-                        alert.setContentText("У Вас немає стільки хутра");
-                        alert.showAndWait();
-                    }
-                } catch (NumberFormatException e) {
-                    alert.setContentText("Введіть кількість хутра для продажу");
-                    alert.showAndWait();
-                }
-            } else {
-                alert.setContentText("Введіть кількість хутра для продажу");
-                alert.showAndWait();
+        sellProduct3.setOnAction(event -> {
+            if(sell(amountOfProduct3, storage.getProduct2())){
+                int toSell = Integer.parseInt(amountOfProduct3.getText());
+                storage.sellProduct2(toSell);
+                product3ToSell.setText("Хутро: "+storage.getProduct2()+"\nВартість: "+storage.getProduct2Cost()+" монет/шт\nВведіть кількість для продажу:");
+                amountOfProduct3.setText("");
             }
         });
     }
 
     private void sellPigMeat(){
-        sellPigMeat.setOnAction(event -> {
-            String text = amountOfPigMeat.getText();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Помилка!");
-
-            if (!text.isEmpty()) {
-                try {
-                    int toSell = Integer.parseInt(text);
-                    if (toSell >= 1 && toSell <= storage.getProduct4()) {
-                        storage.sellProduct4(toSell);
-                        pigMeatToSell.setText("Свинка: "+storage.getProduct4()+"\nВартість: "+storage.getPigMeatCost()+" монет/шт\nВведіть кількість для продажу:");
-                        amountOfPigMeat.setText("");
-                    }
-                    else if(toSell<0){
-                        alert.setContentText("Введіть додатнє число");
-                        alert.showAndWait();
-                    }
-                    else {
-                        alert.setContentText("У Вас немає стільки свинини");
-                        alert.showAndWait();
-                    }
-                } catch (NumberFormatException e) {
-                    alert.setContentText("Введіть кількість свинини для продажу");
-                    alert.showAndWait();
-                }
-            } else {
-                alert.setContentText("Введіть кількість свинини для продажу");
-                alert.showAndWait();
+        sellProduct4.setOnAction(event -> {
+            if(sell(amountOfProduct4, storage.getProduct4())){
+                int toSell = Integer.parseInt(amountOfProduct4.getText());
+                storage.sellProduct4(toSell);
+                product4ToSell.setText("Свинка: "+storage.getProduct4()+"\nВартість: "+storage.getProduct4Cost()+" монет/шт\nВведіть кількість для продажу:");
+                amountOfProduct4.setText("");
             }
+
         });
     }
 
     private void sellRabbitMeat(){
-        sellRabbitMeat.setOnAction(event -> {
-            String text = amountOfRabbitMeat.getText();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Помилка!");
+        sellProduct5.setOnAction(event -> {
+            if(sell(amountOfProduct5, storage.getProduct5())){
+                int toSell = Integer.parseInt(amountOfProduct5.getText());
+                storage.sellProduct5(toSell);
+                product5ToSell.setText("Кролик: "+storage.getProduct5()+"\nВартість: "+storage.getProduct5Cost()+" монет/шт\nВведіть кількість для продажу:");
+                amountOfProduct5.setText("");
+            }
 
-            if (!text.isEmpty()) {
-                try {
-                    int toSell = Integer.parseInt(text);
-                    if (toSell >= 1 && toSell <= storage.getProduct5()) {
-                        storage.sellProduct5(toSell);
-                        rabbitMeatToSell.setText("Кролик: "+storage.getProduct5()+"\nВартість: "+storage.getRabbitMeatCost()+" монет/шт\nВведіть кількість для продажу:");
-                        amountOfRabbitMeat.setText("");
-                    }
-                    else if(toSell<0){
-                        alert.setContentText("Введіть додатнє число");
-                        alert.showAndWait();
-                    }
-                    else {
-                        alert.setContentText("У Вас немає стільки кролятини");
-                        alert.showAndWait();
-                    }
-                } catch (NumberFormatException e) {
-                    alert.setContentText("Введіть кількість кролятини для продажу");
-                    alert.showAndWait();
-                }
-            } else {
-                alert.setContentText("Введіть кількість кролятини для продажу");
-                alert.showAndWait();
+        });
+    }
+
+    private void sellDragonflyPr(){
+        sellProduct2.setOnAction(event -> {
+            if(sell(amountOfProduct2, storage.getProduct2())){
+                int toSell = Integer.parseInt(amountOfProduct2.getText());
+                storage.sellProduct2(toSell);
+                product2ToSell.setText("Бабка сушена: "+storage.getProduct2()+"\nВартість: "+storage.getProduct2Cost()+" монет/шт\nВведіть кількість для продажу:");
+                amountOfProduct2.setText("");
             }
         });
+    }
+
+    private boolean sell(TextField amount, int nProd){
+        String text = amount.getText();
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Помилка!");
+
+        if (!text.isEmpty()) {
+            try {
+                int toSell = Integer.parseInt(text);
+                if (toSell >= 1 && toSell <= nProd) {
+                    return true;
+                }
+                else if(toSell<0){
+                    alert.setContentText("Введіть додатнє число");
+                    alert.showAndWait();
+                    return false;
+                }
+                else {
+                    alert.setContentText("У Вас немає стільки продукту");
+                    alert.showAndWait();
+                    return false;
+                }
+            } catch (NumberFormatException e) {
+                alert.setContentText("Введіть кількість продукту для продажу");
+                alert.showAndWait();
+                return false;
+            }
+        } else {
+            alert.setContentText("Введіть кількість продукту для продажу");
+            alert.showAndWait();
+            return false;
+        }
     }
 
     public Pane getRoot() {

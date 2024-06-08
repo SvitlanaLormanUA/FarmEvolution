@@ -29,7 +29,7 @@ public class Dragonfly extends AbstractAnimal implements AnimalMeat{
                 "file:src/main/resources/images/secondLevel/animals/dragonflyRight.png",
                 "file:src/main/resources/images/secondLevel/animals/dragonflyLeft.png",
                 "src/main/resources/sound/monkey.mp3",
-                "file:src/main/resources/images/secondLevel/bananaThoughts.png"
+                "file:src/main/resources/images/secondLevel/products/dragonflyPr.png"
         );
         animalView.setFitWidth(70);
         animalView.setFitHeight(50);
@@ -42,7 +42,7 @@ public class Dragonfly extends AbstractAnimal implements AnimalMeat{
     @Override
     public void movement() {
         translateTransition = new TranslateTransition();
-        translateTransition.setDuration(Duration.millis(1000));
+        translateTransition.setDuration(Duration.millis(5000));
         translateTransition.setNode(animalView);
         directionRight = true;
         translateTransition.setOnFinished(event -> {
@@ -122,11 +122,13 @@ public class Dragonfly extends AbstractAnimal implements AnimalMeat{
 
     @Override
     public void feed() {
-        /*if(hungerLvl<100) {
-            hungerLvl += 50;
-            amountOfMeals++;
-            if(amountOfMeals<7) {
-                animalMeatMenu.getFeed().setText("Нагодовано: " + amountOfMeals + "/" + 7);
+        if(hungerLvl<100) {
+            if(AbstractAnimal.feeder.haveFood()){
+                hungerLvl += 50;
+                amountOfMeals++;
+            }
+            if(amountOfMeals<12) {
+                animalMeatMenu.getFeed().setText("Нагодовано: " + amountOfMeals + "/" + 12);
             } else {
                 animalMeatMenu.update();
             }
@@ -134,25 +136,21 @@ public class Dragonfly extends AbstractAnimal implements AnimalMeat{
                 hungerLvl = 100;
             }
             AbstractAnimal.feeder.getFood();
-        }*/
+        }
     }
 
 
     @Override
     public void giveProduct() {
 //        if (FirstLevel.countGoose >= 1) {
-            List<ImageView> productViews = new ArrayList<>();
 
-            if (amountOfMeals >= 7) {
-                ImageView productView1 = createProductView(animalView.getLayoutX() + 50, animalView.getLayoutY() + 30);
-                productViews.add(productView1);
+            if (amountOfMeals >= 12) {
+                ImageView productView = createProductView(animalView.getLayoutX() + 50, animalView.getLayoutY() + 30);
+
+                Platform.runLater(() -> {
+                    AbstractAnimal.root.getChildren().add(productView);
+                });
             }
-
-            Platform.runLater(() -> {
-                for (ImageView productView : productViews) {
-                    AbstractAnimal.root.getChildren().add(1, productView);
-                }
-            });
 
             if(openedMenu) {
                 removeMenu();
@@ -163,15 +161,15 @@ public class Dragonfly extends AbstractAnimal implements AnimalMeat{
 
     private ImageView createProductView(double x, double y) {
         ImageView productView = new ImageView(product);
-        productView.setFitWidth(50);
-        productView.setFitHeight(50);
+        productView.setFitWidth(80);
+        productView.setFitHeight(80);
         productView.setLayoutX(x);
         productView.setLayoutY(y);
         productView.setCursor(Cursor.HAND);
 
         productView.setOnMouseClicked(event -> {
-            AbstractAnimal.root.getChildren().remove(productView);
-//            storage.addProduct4();
+            root.getChildren().remove(productView);
+            storage.addDragonflyPr();
         });
 
         return productView;
@@ -179,7 +177,7 @@ public class Dragonfly extends AbstractAnimal implements AnimalMeat{
 
     @Override
     public void addMeatMenu(double x, double y) {
-        animalMeatMenu = new AnimalMeatMenu(this, x, y, amountOfMeals, 7);
+        animalMeatMenu = new AnimalMeatMenu(this, x, y, amountOfMeals, 12);
         root.getChildren().add(animalMeatMenu.getRoot());
         openedMeatMenu = true;
     }
@@ -201,20 +199,9 @@ public class Dragonfly extends AbstractAnimal implements AnimalMeat{
 
     @Override
     public int getProductCost() {
-        if(amountOfMeals>=7 && amountOfMeals<14){
-
-            productCost=140;
-
-        } else if(amountOfMeals>=14 && amountOfMeals<21){
-
-            productCost=280;
-
-        } else if(amountOfMeals>=21){
-
-            productCost=420;
-
+        if(amountOfMeals>=12){
+            productCost=500;
         }
-
         return productCost;
     }
 

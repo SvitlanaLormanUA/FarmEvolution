@@ -9,14 +9,21 @@ import org.example.some.otherGameObjects.Wallet;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Storage {
 
-    private int eggsCost = 5;
-    private int woolCost = 10;
-    private int milkCost = 8;
-    private int pigMeatCost = 80;
-    private int rabbitMeatCost = 40;
+    private int product1Cost;
+    private int product2Cost;
+    private int product3Cost;
+    private int product4Cost;
+    private int product5Cost;
+
+    private int bananaCost = 30;
+    private int dragonflyPrCost = 200;
+    private int featherCost = 100;
+    private int mangoCost = 110;
+    private int nutCost = 120;
     private ImageView storageView;
     private Wallet wallet;
     private Pane root;
@@ -38,6 +45,8 @@ public class Storage {
     List<ImageView> product3Views;
     List<ImageView> product4Views;
     List<ImageView> product5Views;
+
+    private Random random = new Random();
 
     private int nWool;
     private int nEggs;
@@ -76,6 +85,22 @@ public class Storage {
          this.soldMilk = 0;
          this.soldPig = 0;
          this.soldRabbit = 0;
+    }
+
+    public void lvl1(){
+        product1Cost = 5;
+        product2Cost = 10;
+        product3Cost = 8;
+        product4Cost = 80;
+        product5Cost = 40;
+    }
+
+    public void lvl2(){
+        product1Cost = 60;
+        product2Cost = 500;
+        product3Cost = 100;
+        product4Cost = 110;
+        product5Cost = 120;
     }
 
     public void addEgg(){
@@ -212,24 +237,51 @@ public class Storage {
         }
     }
 
+    public void addBanana(){
+
+    }
+
+    public void addDragonflyPr(){
+        product2++;
+        nWool++;
+        if(product2<=5) {
+            double x;
+            double y;
+            int width = 50;
+            int height = 50;
+            for (int i = 1; i <= 5; i++) {
+                if (i == product2) {
+                    x = random.nextInt(880, 1000);
+                    y = random.nextInt(540, 560);
+                    ImageView productView = createProduct(product2Image, x, y, width, height);
+                    product2Views.add(productView);
+                    int num = product2 - 1;
+                    Platform.runLater(() -> {
+                        root.getChildren().add(1, product2Views.get(num));
+                    });
+                }
+            }
+        }
+    }
+
     public void sellProduct1(int toSell){
         int t = product1;
         product1 -= toSell;
-        wallet.income(eggsCost *toSell);
+        wallet.income(product1Cost *toSell);
         removeProductView(product1Views, t, toSell);
     }
 
     public void sellProduct2(int toSell){
         int t = product2;
         product2 -= toSell;
-        wallet.income(woolCost *toSell);
+        wallet.income(product2Cost *toSell);
         removeProductView(product2Views, t, toSell);
     }
 
     public void sellProduct3(int toSell){
         int t = product3;
         product3 -= toSell;
-        wallet.income(milkCost *toSell);
+        wallet.income(product3Cost *toSell);
         removeProductView(product3Views, t, toSell);
         soldMilk++;
     }
@@ -237,7 +289,7 @@ public class Storage {
     public void sellProduct4(int toSell){
         int t = product4;
         product4 -= toSell;
-        wallet.income(pigMeatCost *toSell);
+        wallet.income(product4Cost *toSell);
         removeProductView(product4Views, t, toSell);
         soldPig++;
     }
@@ -245,7 +297,7 @@ public class Storage {
     public void sellProduct5(int toSell){
         int t = product5;
         product5 -= toSell;
-        wallet.income(rabbitMeatCost *toSell);
+        wallet.income(product5Cost *toSell);
         removeProductView(product5Views, t, toSell);
         soldRabbit++;
     }
@@ -293,24 +345,28 @@ public class Storage {
         return product5;
     }
 
-    public int getEggsCost() {
-        return eggsCost;
+    public int getProduct1Cost() {
+        return product1Cost;
     }
 
-    public int getWoolCost() {
-        return woolCost;
+    public int getProduct2Cost() {
+        return product2Cost;
     }
 
-    public int getMilkCost() {
-        return milkCost;
+    public void setProduct2Cost(int product2Cost) {
+        this.product2Cost = product2Cost;
     }
 
-    public int getPigMeatCost() {
-        return pigMeatCost;
+    public int getProduct3Cost() {
+        return product3Cost;
     }
 
-    public int getRabbitMeatCost() {
-        return rabbitMeatCost;
+    public int getProduct4Cost() {
+        return product4Cost;
+    }
+
+    public int getProduct5Cost() {
+        return product5Cost;
     }
 
     public Pane getRoot() {

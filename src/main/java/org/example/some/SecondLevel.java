@@ -12,7 +12,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.effect.GaussianBlur;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -23,6 +25,7 @@ import org.example.some.animals.Monkey;
 import org.example.some.otherGameObjects.Instr;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
+import javafx.scene.control.ProgressBar;
 import org.example.some.products.Banana;
 
 import java.io.*;
@@ -32,9 +35,19 @@ import java.util.*;
 
 public class SecondLevel  implements Initializable {
 
+    public static int WIDTH = 1255;
+    public static int HEIGHT = 707;
+
     public  Well well;
     public  Feeder feeder;
+    @FXML
+    private ImageView feeder2View;
+    @FXML
+    private ProgressBar foodBar;
+
     public Storage storage;
+    @FXML
+    private ImageView storage2View;
 
     public static int countMonkeys = 1;
     public static Wallet wallet;
@@ -59,12 +72,15 @@ public class SecondLevel  implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        foodBar.setStyle("-fx-accent: #f37a39;");
+
         //addMultiProducts();
         addWallet();
         loadState();
+        addStorage();
+        addFeeder();
         addMonkey();
         addDragonfly();
-
     }
 
 
@@ -115,6 +131,22 @@ public class SecondLevel  implements Initializable {
     public void addWallet() {
         wallet = FirstLevel.wallet;
         anchorPane.getChildren().add(wallet.getRoot());
+    }
+
+    private void addFeeder(){
+        feeder = new Feeder(feeder2View, foodBar, wallet, 54, anchorPane);
+        anchorPane.getChildren().add(feeder.getFoodView());
+    }
+
+    public void addStorage(){
+        Image banana = new Image("file:src/main/resources/images/secondLevel/products/banana.png");
+        Image dragonflyPr = new Image("file:src/main/resources/images/secondLevel/products/dragonflyPr.png");
+        Image feather = new Image("file:src/main/resources/images/secondLevel/products/feather.png");
+        Image mango = new Image("file:src/main/resources/images/secondLevel/products/mango.png");
+        Image nut = new Image("file:src/main/resources/images/secondLevel/products/nut.png");
+        storage = new Storage(storage2View, wallet, banana, dragonflyPr, feather, mango, nut);
+        storage.lvl2();
+        anchorPane.getChildren().add(storage.getRoot());
     }
 
     public void addMonkey() {
@@ -178,6 +210,13 @@ public class SecondLevel  implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @FXML
+    void addStorageMenu(MouseEvent event) {
+        StorageMenu storageMenu = new  StorageMenu(storage, wallet, WIDTH/2-140, HEIGHT/4-100, anchorPane);
+        storageMenu.secondLvl();
+        anchorPane.getChildren().add(storageMenu.getRoot());
     }
 
 

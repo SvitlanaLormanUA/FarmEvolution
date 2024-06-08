@@ -61,8 +61,10 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
     @Override
     public void feed() {
         if(hungerLvl<100) {
-            hungerLvl += 50;
-            amountOfMeals++;
+            if(AbstractAnimal.feeder.haveFood()) {
+                hungerLvl += 50;
+                amountOfMeals++;
+            }
             if(amountOfMeals<5) {
                 animalMeatMenu.getFeed().setText("Нагодовано: " + amountOfMeals + "/" + 5);
             } else {
@@ -78,7 +80,7 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
 
     @Override
     public void giveProduct() {
-        if (FirstLevel.countGoose >= 1) {
+        if (FirstLevel.countPig >= 1) {
             List<ImageView> productViews = new ArrayList<>();
 
             if (amountOfMeals >= 5) {

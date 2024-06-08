@@ -67,7 +67,9 @@ public class Goose extends AbstractAnimal{
     @Override
     public void feed() {
         if(hungerLvl<100) {
-            hungerLvl += 55;
+            if(AbstractAnimal.feeder.haveFood()) {
+                hungerLvl += 55;
+            }
             if (hungerLvl > 100) {
                 hungerLvl = 100;
             }
