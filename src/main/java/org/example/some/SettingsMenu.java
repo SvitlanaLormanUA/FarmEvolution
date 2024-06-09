@@ -27,10 +27,10 @@ public class SettingsMenu {
 
     private Stage stage;
     private Scene scene;
+    private AnchorPane anchorPane;
 
-
-    private final double MENU_WIDTH = 307;
-    private final double MENU_HEIGHT = 430;
+    private final double MENU_WIDTH = 300;
+    private final double MENU_HEIGHT = 400;
 
     private static double lastVolume;
     public static boolean start = false; // Default volume value
@@ -39,6 +39,7 @@ public class SettingsMenu {
         if (!new File("settings.dat").exists()) {
             lastVolume = 100.0;
         }
+        this.anchorPane = anchorPane;
         loadSettings();
         addPane(anchorPane);
         addCLosingForMenu(anchorPane);
@@ -46,21 +47,20 @@ public class SettingsMenu {
         addStartAgainButton();
     }
 
-    private void addStartAgainButton() {
-        startAgain = new Button("Почати знову");
-        startAgain.setLayoutX(30);
-        startAgain.setLayoutY(150);
-        startAgain.setPrefSize(251, 25);
-        startAgain.setStyle("-fx-background-color: #2D819D; -fx-text-fill: white; -fx-font-size: 20; -fx-border-radius: 100px;");
-        startAgain.setOnAction(event -> {
-            startAgain.setStyle("-fx-background-color: #3aacd3; -fx-text-fill: white; -fx-font-size: 20; -fx-border-radius: 100px; -fx-border-color:  #004153");
-            wallet.setCoins(100);
+    private void askUser() {
+        AskingMenu askingMenu = new AskingMenu("Ви впевнені, що хочете почати спочатку?  \n  Весь Ваш прогрес на всіх рівнях буде втрачено", 500, 250);
+        Button yesButton = askingMenu.getYes();
+        Button noButton = askingMenu.getNo();
+        Button closeButton = askingMenu.getClose();
 
+        yesButton.setOnAction(event -> {
             try{
+
                 start = true;
                 root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("menu.fxml")));
                 stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
                 mediaPlayerBack.stop();
+                anchorPane.getChildren().remove(askingMenu.getRoot());
                 mediaPlayerBack.seek(mediaPlayerBack.getStartTime());
                 mediaPlayerBack.play();
                 FirstLevel.countCow = 1;
@@ -84,25 +84,45 @@ public class SettingsMenu {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+        });
 
+        noButton.setOnAction(event -> {
+            anchorPane.getChildren().remove(askingMenu.getRoot());
+        });
+        closeButton.setOnAction(event -> {
+            anchorPane.getChildren().remove(askingMenu.getRoot());
+        });
+        anchorPane.getChildren().add(askingMenu.getRoot());
 
+    }
+    private void addStartAgainButton() {
+        startAgain = new Button("Почати знову");
+        startAgain.setLayoutX(30);
+        startAgain.setLayoutY(200);
+        startAgain.setPrefSize(251, 25);
+        startAgain.setStyle("-fx-background-color: #2D819D; -fx-text-fill: white; -fx-font-size: 20; -fx-border-radius: 100px;");
+        startAgain.setOnAction(event -> {
+            startAgain.setStyle("-fx-background-color: #3aacd3; -fx-text-fill: white; -fx-font-size: 20; -fx-border-radius: 100px;");
+            wallet.setCoins(100);
+            askUser();
         });
         root.getChildren().add(startAgain);
     }
+
 
     private void addPane(AnchorPane anchorPane) {
         root = new Pane();
         root.setStyle("-fx-background-color: rgba(0,0,0,0.63); -fx-background-radius: 10; -fx-background-insets: 0; -fx-padding: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.63), 10, 0, 0, 0);");
         root.setPrefSize(MENU_WIDTH, MENU_HEIGHT);
         root.setLayoutX(500);
-        root.setLayoutY(100);
+        root.setLayoutY(150);
     }
 
     public void addCLosingForMenu(AnchorPane anchorPane) {
         close = new ImageView("file:src/main/resources/images/menuSettings/closingForMenu.png");
         close.setFitWidth(30);
         close.setFitHeight(30);
-        close.setLayoutX(270);
+        close.setLayoutX(250);
         close.setLayoutY(10);
         root.getChildren().add(close);
         close.setOnMouseClicked(event -> {
@@ -123,7 +143,7 @@ public class SettingsMenu {
     public void addVolumeLabel() {
         volumeLabel = new Label("Музика");
         volumeLabel.setLayoutX(MENU_WIDTH / 2 - 30);
-        volumeLabel.setLayoutY(40);
+        volumeLabel.setLayoutY(70);
         volumeLabel.setStyle("-fx-font-size: 20; -fx-text-fill: white;");
         root.getChildren().add(volumeLabel);
     }
@@ -131,7 +151,7 @@ public class SettingsMenu {
     public void addVolumeSlider() {
         volumeLevel = new Slider(0, 100, lastVolume); // Min: 0, Max: 100, Initial: lastVolume (default volume)
         volumeLevel.setLayoutX(30);
-        volumeLevel.setLayoutY(80);
+        volumeLevel.setLayoutY(120);
         volumeLevel.setPrefSize(251, 25);
 
         volumeLevel.valueProperty().addListener((observable, oldValue, newValue) -> {

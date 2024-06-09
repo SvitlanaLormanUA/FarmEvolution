@@ -18,6 +18,7 @@ public class Cow extends AbstractAnimal {
     private boolean movingForward = true;
 
     private boolean hasProduct = true;
+    private boolean emotionIsShown = false;
 
     ImageView productView;
 
@@ -53,7 +54,7 @@ public class Cow extends AbstractAnimal {
     @Override
     public void giveProduct() {
         if (FirstLevel.countSheep >= 1) {
-            if (hungerLvl > 20) {
+            if (hungerLvl > 20 && !emotionIsShown) {
                 // Створення таймера (завдання, яке виконується через певний час
                 Timer timer = new Timer();
                 TimerTask task = new TimerTask() {
@@ -64,6 +65,7 @@ public class Cow extends AbstractAnimal {
                             productView.setFitWidth(60);
                             productView.setFitHeight(50);
                             productView.setCursor(Cursor.HAND);
+                            emotionIsShown = true;
 
                             // Initial positioning
                             updateProductViewPosition();
@@ -72,6 +74,7 @@ public class Cow extends AbstractAnimal {
                                 AbstractAnimal.root.getChildren().remove(productView);
                                 storage.addMilk();
                                 hasProduct = true;
+                                emotionIsShown = false;
                             });
 
                             Platform.runLater(() -> AbstractAnimal.root.getChildren().add( productView));
