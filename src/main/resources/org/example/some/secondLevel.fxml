@@ -58,7 +58,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="buttonTasks1" layoutX="1168.0" layoutY="22.0" mnemonicParsing="false" onAction="#showSettings" prefHeight="42.0" prefWidth="42.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css">
+      <Button fx:id="settings" layoutX="1168.0" layoutY="22.0" mnemonicParsing="false" onAction="#showSettings" prefHeight="42.0" prefWidth="42.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>

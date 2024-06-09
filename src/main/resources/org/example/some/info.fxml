@@ -5,7 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.some.InfoController">
+<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.some.InfoController">
    <children>
       <ImageView fitHeight="707.0" fitWidth="1351.0" layoutX="-2.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -18,5 +18,6 @@
          </image>
       </ImageView>
       <Button fx:id="startButton" layoutX="544.0" layoutY="600.0" mnemonicParsing="false" onAction="#onAction" prefHeight="52.0" prefWidth="187.0" stylesheets="@../../../styles/info.css" text="Почати" />
+      <Button layoutX="45.0" layoutY="601.0" mnemonicParsing="false" onAction="#showSettings" prefHeight="47.0" prefWidth="55.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css" />
    </children>
 </AnchorPane>

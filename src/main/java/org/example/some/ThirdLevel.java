@@ -10,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.example.some.animals.*;
+import org.example.some.otherGameObjects.Instr;
 import org.example.some.otherGameObjects.Wallet;
 
 import java.io.IOException;
@@ -30,6 +31,8 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
     public static int countMinotaur = 1;
     public static int countMushroom = 1;
     public static int countUnicorn = 1;
+
+    private SettingsMenu settingsMenu;
 
 
     @Override
@@ -126,4 +129,23 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
     }
 
 
+    public void showSettings(ActionEvent event) {
+        settingsMenu = new SettingsMenu(anchorPane);
+        anchorPane.getChildren().add(settingsMenu.getRoot());
+
+        //settingsMenu.applyBlur(true,  anchorPane);
+
+    }
+
+    public void showExtraTasks(ActionEvent event) {
+    }
+
+    public void showTasks(ActionEvent event) {
+    }
+
+    public void showInfo(ActionEvent event) {
+        Instr infoWindow = new Instr(anchorPane);
+        infoWindow.createImagePane();
+        anchorPane.getChildren().add(infoWindow.getRoot());
+    }
 }

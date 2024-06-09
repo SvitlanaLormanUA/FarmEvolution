@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -14,6 +15,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class MenuController {
+    public AnchorPane anchorPane;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -24,6 +26,7 @@ public class MenuController {
 
     @FXML
     private URL location;
+    SettingsMenu settingsMenu;
 
    public void onAction(ActionEvent event) {
         try {
@@ -35,5 +38,12 @@ public class MenuController {
         } catch (IOException e) {
           System.out.println(e);
         }
+   }
+
+   @FXML
+    public void showSettings() {
+        settingsMenu = new SettingsMenu(anchorPane);
+        anchorPane.getChildren().add(settingsMenu.getRoot());
     }
+
 }

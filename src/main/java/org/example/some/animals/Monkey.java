@@ -210,9 +210,9 @@ public class Monkey extends AbstractAnimal {
             KeyFrame kf2 = new KeyFrame(Duration.seconds(1), kvX);
             Timeline timeline2 = new Timeline(kf2);
             timeline2.play();
-
-            movement(); // Assuming this is your movement method
             SecondLevel.countBanana = 0;
+            movement(); // Assuming this is your movement method
+
         });
         translateTransition.play();
     }

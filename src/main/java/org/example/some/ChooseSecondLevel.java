@@ -6,16 +6,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
 
 public class ChooseSecondLevel {
+    public AnchorPane anchorPane;
     private Stage stage;
     private Scene scene;
     private Parent root;
 
+    private SettingsMenu settingsMenu;
 
     @FXML
 
@@ -32,5 +35,12 @@ public class ChooseSecondLevel {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+    public void showSettings(ActionEvent event) {
+        settingsMenu = new SettingsMenu(anchorPane);
+        anchorPane.getChildren().add(settingsMenu.getRoot());
+
+        //settingsMenu.applyBlur(true,  anchorPane);
+
     }
 }

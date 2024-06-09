@@ -248,7 +248,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     public void showSettings(ActionEvent event) {
          settingsMenu = new SettingsMenu(anchorPane);
         anchorPane.getChildren().add(settingsMenu.getRoot());
-        countBanana = 10;
+
         //settingsMenu.applyBlur(true,  anchorPane);
 
     }
