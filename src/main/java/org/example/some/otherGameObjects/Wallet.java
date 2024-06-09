@@ -41,7 +41,7 @@ public class Wallet implements Serializable {
         updateCoinsLabel();
     }
 
-    private void updateCoinsLabel() {
+    public void updateCoinsLabel() {
         this.nCoins.setText(String.valueOf(coins));
     }
 
@@ -60,5 +60,9 @@ public class Wallet implements Serializable {
     public void setCoins(int coins) {
         this.coins = coins;
         updateCoinsLabel();
+    }
+    public void resetWallet() {
+        coins = 100;
+        updateCoinsLabel(); // Якщо потрібно оновити лейбл
     }
 }

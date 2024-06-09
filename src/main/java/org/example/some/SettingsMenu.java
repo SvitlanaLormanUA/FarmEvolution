@@ -1,14 +1,21 @@
 package org.example.some;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import org.example.some.LevelMusicBack;
+import org.example.some.otherGameObjects.Wallet;
 
 import java.io.*;
+import java.util.Objects;
 
+import static org.example.some.FirstLevel.*;
 import static org.example.some.LevelMusicBack.mediaPlayerBack;
 
 public class SettingsMenu {
@@ -16,11 +23,17 @@ public class SettingsMenu {
     public ImageView close;
     public Label volumeLabel;
     public Slider volumeLevel;
+    public Button startAgain;
+
+    private Stage stage;
+    private Scene scene;
+
 
     private final double MENU_WIDTH = 307;
     private final double MENU_HEIGHT = 507;
 
-    private static double lastVolume; // Default volume value
+    private static double lastVolume;
+    public static boolean start = false; // Default volume value
 
     SettingsMenu(AnchorPane anchorPane) {
         if (!new File("settings.dat").exists()) {
@@ -30,6 +43,51 @@ public class SettingsMenu {
         addPane(anchorPane);
         addCLosingForMenu(anchorPane);
         addVolume();
+        addStartAgainButton();
+    }
+
+    private void addStartAgainButton() {
+        startAgain = new Button("Почати знову");
+        startAgain.setLayoutX(30);
+        startAgain.setLayoutY(150);
+        startAgain.setPrefSize(251, 25);
+        startAgain.setStyle("-fx-background-color: #2D819D; -fx-text-fill: white; -fx-font-size: 20; -fx-border-radius: 100px;");
+        startAgain.setOnAction(event -> {
+            startAgain.setStyle("-fx-background-color: #3aacd3; -fx-text-fill: white; -fx-font-size: 20; -fx-border-radius: 100px; -fx-border-color:  #004153");
+            wallet.setCoins(100);
+
+            try{
+                start = true;
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("menu.fxml")));
+                stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+                mediaPlayerBack.stop();
+                mediaPlayerBack.seek(mediaPlayerBack.getStartTime());
+                mediaPlayerBack.play();
+                FirstLevel.countCow = 1;
+
+                FirstLevel.countSheep = 1;
+                FirstLevel.countPig = 1;
+                FirstLevel.countGoose = 1;
+                FirstLevel.countRabbit = 1;
+
+
+
+
+                SecondLevel.countBanana = 0;
+                SecondLevel.countMonkeys = 1;
+                SecondLevel.countDragonflies = 1;
+                wallet.resetWallet();
+
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+
+        });
+        root.getChildren().add(startAgain);
     }
 
     private void addPane(AnchorPane anchorPane) {
@@ -48,6 +106,7 @@ public class SettingsMenu {
         close.setLayoutY(10);
         root.getChildren().add(close);
         close.setOnMouseClicked(event -> {
+            close.setStyle("-fx-cursor: hand;");
             anchorPane.getChildren().remove(root);
             lastVolume = volumeLevel.getValue();
             saveSettings(); // Save the last volume before closing

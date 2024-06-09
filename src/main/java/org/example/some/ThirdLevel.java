@@ -52,7 +52,7 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
             throw new RuntimeException(e);
         }
     }
-    public void saveState() {
+    public static void saveState() {
 
     }
 

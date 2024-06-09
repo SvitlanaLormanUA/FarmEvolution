@@ -49,7 +49,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     @FXML
     private ImageView storage2View;
 
-    public static int countMonkeys = 1;
+
     public static Wallet wallet;
     public  AnchorPane anchorPane;
     public ImageView lian;
@@ -60,6 +60,9 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     private Parent root;
     private static int coins;
     private static SettingsMenu settingsMenu;
+
+    public static int countMonkeys = 1;
+    public static int countDragonflies = 1;
 
 
 

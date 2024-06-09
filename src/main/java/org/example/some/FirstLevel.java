@@ -40,8 +40,6 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
     public static int countGoose = 1;
     public static int countPig = 1;
     public static int countRabbit = 1;
-    public static int donkeyCount = 1;
-
 
     public static double walletX = 263;
     public static double walletY = 32;
@@ -87,7 +85,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
 
     @FXML
 
-    private static int coins;
+    static int coins;
 
 
     private Stage stage;
@@ -257,20 +255,6 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
     }
 
 
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        waterBar.setStyle("-fx-accent: #4392FF;");
-        foodBar.setStyle("-fx-accent: #f37a39;");
-
-
-        addWallet();
-        loadState();
-        addFeeder();
-        addWell();
-        addStorage();
-        setAnimals();
-        saveState();
-        addMusic();
-    }
 
     private void addWallet(){
 
@@ -307,13 +291,14 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
     }
 
 
+
+
     static void saveState() {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("gameState.ser"))) {
             if (wallet!=null) {
                 out.writeInt(wallet.getCoins());
             }
             out.writeInt(countCow);
-            out.writeInt(donkeyCount);
             out.writeInt(countSheep);
             out.writeInt(countGoose);
             out.writeInt(countPig);
@@ -328,7 +313,6 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("gameState.ser"))) {
             coins = in.readInt();
             countCow = in.readInt();
-            donkeyCount = in.readInt();
             countSheep = in.readInt();
             countGoose = in.readInt();
             countPig = in.readInt();
@@ -385,6 +369,33 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
         anchorPane.getChildren().add(settingsMenu.getRoot());
 
     }
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        waterBar.setStyle("-fx-accent: #4392FF;");
+        foodBar.setStyle("-fx-accent: #f37a39;");
+
+
+
+        addWallet();
+        loadState();
+
+        if (SettingsMenu.start) {
+            wallet.setCoins(100);
+            countGoose = 1;
+            countCow = 1;
+            countSheep = 1;
+            countPig = 1;
+            countRabbit = 1;
+            SettingsMenu.start = false;
+
+        }
+        addFeeder();
+        addWell();
+        addStorage();
+        setAnimals();
+        saveState();
+        addMusic();
+    }
+
 
 
 
