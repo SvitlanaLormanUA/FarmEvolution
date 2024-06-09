@@ -28,7 +28,7 @@ public class Dragonfly extends AbstractAnimal implements AnimalMeat{
         super(worldStartX, worldStartY, worldEndX, worldEndY, anchorPane, well, feeder, storage,
                 "file:src/main/resources/images/secondLevel/animals/dragonflyRight.png",
                 "file:src/main/resources/images/secondLevel/animals/dragonflyLeft.png",
-                "src/main/resources/sound/monkey.mp3",
+                "src/main/resources/sound/dragonfly.mp3",
                 "file:src/main/resources/images/secondLevel/products/dragonflyPr.png"
         );
         animalView.setFitWidth(70);
