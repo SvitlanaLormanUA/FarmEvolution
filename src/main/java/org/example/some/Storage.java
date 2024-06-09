@@ -5,6 +5,7 @@ import javafx.scene.Cursor;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import org.example.some.animals.AbstractAnimal;
 import org.example.some.otherGameObjects.Wallet;
 
 import java.util.ArrayList;
@@ -96,7 +97,7 @@ public class Storage {
     }
 
     public void lvl2(){
-        product1Cost = 60;
+        product1Cost = 100;
         product2Cost = 500;
         product3Cost = 100;
         product4Cost = 110;
@@ -238,7 +239,7 @@ public class Storage {
     }
 
     public void addBanana(){
-
+        product1++;
     }
 
     public void addDragonflyPr(){
@@ -300,6 +301,22 @@ public class Storage {
         wallet.income(product5Cost *toSell);
         removeProductView(product5Views, t, toSell);
         soldRabbit++;
+    }
+
+    public void sellBananas(int toSell){
+        int t = product1;
+        product1 -= toSell;
+        wallet.income(product1Cost *toSell);
+
+        int start = product1 - 1;
+        int end = product1 - toSell;
+        if (end < 0) end = 0;
+
+        for (int i = start; i >= end; i--) {
+            ImageView view = SecondLevel.bananas.get(i).getProductView();
+            Platform.runLater(() -> AbstractAnimal.root.getChildren().remove(view));
+            SecondLevel.bananas.remove(i);
+        }
     }
 
     private ImageView createProduct(Image productImage, double x, double y, double width, double height){

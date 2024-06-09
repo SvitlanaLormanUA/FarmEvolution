@@ -44,6 +44,12 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     private ImageView feeder2View;
     @FXML
     private ProgressBar foodBar;
+    @FXML
+    private ProgressBar waterBar;
+
+    @FXML
+    private ImageView well2View;
+
 
     public Storage storage;
     @FXML
@@ -82,6 +88,8 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
         loadState();
         addStorage();
         addFeeder();
+        addWell();
+
         addMonkey();
         addDragonfly();
     }
@@ -139,6 +147,11 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     private void addFeeder(){
         feeder = new Feeder(feeder2View, foodBar, wallet, 54, anchorPane);
         anchorPane.getChildren().add(feeder.getFoodView());
+    }
+
+    private void addWell(){
+        well = new Well(well2View, waterBar);
+        anchorPane.getChildren().add(well.getWellView());
     }
 
     public void addStorage(){

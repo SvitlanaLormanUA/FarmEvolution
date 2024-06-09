@@ -186,7 +186,7 @@ public class StorageMenu {
         root.getChildren().addAll(product1ToSell, amountOfProduct1, sellProduct1, product2ToSell, amountOfProduct2, sellProduct2,
                 product3ToSell, amountOfProduct3, sellProduct3, product4ToSell, amountOfProduct4, sellProduct4, product5ToSell, amountOfProduct5, sellProduct5);
 
-
+        sellBanana();
         sellDragonflyPr();
     }
 
@@ -251,6 +251,17 @@ public class StorageMenu {
                 amountOfProduct5.setText("");
             }
 
+        });
+    }
+
+    private void sellBanana(){
+        sellProduct1.setOnAction(event -> {
+            if(sell(amountOfProduct1, storage.getProduct1())){
+                int toSell = Integer.parseInt(amountOfProduct1.getText());
+                storage.sellBananas(toSell);
+                product1ToSell.setText("Банани: "+storage.getProduct1()+"\nВартість: "+storage.getProduct1Cost()+" монет/шт\nВведіть кількість для продажу:");
+                amountOfProduct1.setText("");
+            }
         });
     }
 

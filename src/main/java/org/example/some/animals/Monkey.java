@@ -41,7 +41,15 @@ public class Monkey extends AbstractAnimal {
 
     @Override
     public void feed() {
-        // Implement the feed method
+        if(hungerLvl<100) {
+            if(AbstractAnimal.feeder.haveFood()) {
+                hungerLvl += 40;
+            }
+            if (hungerLvl > 100) {
+                hungerLvl = 100;
+            }
+            AbstractAnimal.feeder.getFood();
+        }
     }
 
     @Override
@@ -199,6 +207,7 @@ public class Monkey extends AbstractAnimal {
             // Check if bananas are present and animate if necessary
             if (!(SecondLevel.bananas == null)) {
                 SecondLevel.bananas.forEach(banana -> {
+                    storage.addBanana();
                     KeyValue kvY = new KeyValue(banana.getProductView().layoutYProperty(), 600);
                     KeyFrame kf = new KeyFrame(Duration.seconds(1), kvY);
                     Timeline timeline = new Timeline(kf);
@@ -219,5 +228,22 @@ public class Monkey extends AbstractAnimal {
         translateTransition.play();
     }
 
+    @Override
+    public void hunger(){
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                if (hungerLvl > 0) {
+                    hungerLvl--;
+                    cost = (int) (350 * ((double)hungerLvl / 100));
+                } else {
+                    timer.cancel();
+                }
+            }
+        };
+
+        timer.scheduleAtFixedRate(task, 0, 3000);
+    }
 
 }

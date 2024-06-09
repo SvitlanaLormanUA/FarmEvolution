@@ -25,6 +25,7 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
     private int amountOfMeals;
     private AnimalMeatMenu animalMeatMenu;
     private boolean openedMeatMenu;
+    private int puposedAmount = 3;
     private boolean enoughFood;
     private Path path;
     private double currX;
@@ -108,8 +109,8 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
                 hungerLvl += 100;
                 amountOfMeals++;
             }
-            if(amountOfMeals<3) {
-                animalMeatMenu.getFeed().setText("Нагодовано: " + amountOfMeals + "/" + 3);
+            if(amountOfMeals<puposedAmount) {
+                animalMeatMenu.getFeed().setText("Нагодовано: " + amountOfMeals + "/" + puposedAmount);
             } else {
                 animalMeatMenu.update();
             }
@@ -126,15 +127,15 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
         if (FirstLevel.countRabbit >= 1) {
             List<ImageView> productViews = new ArrayList<>();
 
-            if (amountOfMeals >= 3) {
+            if (amountOfMeals >= puposedAmount) {
                 ImageView productView1 = createProductView(animalView.getLayoutX() + 50, animalView.getLayoutY() + 30);
                 productViews.add(productView1);
             }
-            if (amountOfMeals >= 6) {
+            if (amountOfMeals >= puposedAmount*2) {
                 ImageView productView2 = createProductView(animalView.getLayoutX() - 50, animalView.getLayoutY() - 30);
                 productViews.add(productView2);
             }
-            if (amountOfMeals >= 9) {
+            if (amountOfMeals >= puposedAmount*3) {
                 ImageView productView3 = createProductView(animalView.getLayoutX(), animalView.getLayoutY() + 20);
                 productViews.add(productView3);
             }
@@ -170,7 +171,7 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
 
     @Override
     public void addMeatMenu(double x, double y) {
-        animalMeatMenu = new AnimalMeatMenu(this, x, y, amountOfMeals, 3);
+        animalMeatMenu = new AnimalMeatMenu(this, x, y, amountOfMeals, puposedAmount);
         root.getChildren().add(animalMeatMenu.getRoot());
         openedMeatMenu = true;
     }
@@ -192,15 +193,15 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
 
     @Override
     public int getProductCost() {
-        if(amountOfMeals>=3 && amountOfMeals<6){
+        if(amountOfMeals>=puposedAmount && amountOfMeals<puposedAmount*2){
 
             productCost=40;
 
-        } else if(amountOfMeals>=6 && amountOfMeals<9){
+        } else if(amountOfMeals>=puposedAmount*2 && amountOfMeals<puposedAmount*3){
 
             productCost=80;
 
-        } else if(amountOfMeals>=9){
+        } else if(amountOfMeals>=puposedAmount*3){
 
             productCost=120;
 
