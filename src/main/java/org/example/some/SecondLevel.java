@@ -109,10 +109,10 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
                         });
 
                         countBanana++;
-                    } else {
+                    } else if (countBanana == 5) {
+
                         timer.cancel();
                     }
-
                 });
 
             }
@@ -262,8 +262,12 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
 
     static void saveState() {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("gameState.ser"))) {
-            out.writeInt(wallet.getCoins());
+            out.writeInt(coins);
             out.writeInt(countMonkeys);
+            out.writeInt(countDragonflies);
+            out.writeInt(countBanana);
+
+
 
 
 
@@ -275,7 +279,11 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     static void loadState() {
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("gameState.ser"))) {
             coins = in.readInt();
-            wallet.setCoins(coins);
+            countMonkeys = in.readInt();
+            countDragonflies = in.readInt();
+            countBanana = in.readInt();
+
+
             /* countMonkeys = in.readInt();*/
 
             setCoins(coins);

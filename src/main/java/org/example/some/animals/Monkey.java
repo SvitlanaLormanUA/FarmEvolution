@@ -21,6 +21,7 @@ import org.example.some.otherGameObjects.Well;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static org.example.some.SecondLevel.countBanana;
 import static org.example.some.SecondLevel.wallet;
 
 public class Monkey extends AbstractAnimal {
@@ -177,6 +178,7 @@ public class Monkey extends AbstractAnimal {
     }
 
     private void takeBananaDown() {
+        countBanana = 0;
         if (translateTransition != null) {
             translateTransition.stop();
         }
@@ -210,7 +212,7 @@ public class Monkey extends AbstractAnimal {
             KeyFrame kf2 = new KeyFrame(Duration.seconds(1), kvX);
             Timeline timeline2 = new Timeline(kf2);
             timeline2.play();
-            SecondLevel.countBanana = 0;
+
             movement(); // Assuming this is your movement method
 
         });
