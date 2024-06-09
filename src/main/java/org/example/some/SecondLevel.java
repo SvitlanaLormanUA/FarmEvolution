@@ -67,7 +67,12 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     public static int countMonkeys = 1;
     public static int countDragonflies = 1;
 
+    public static ArrayList<Monkey> monkeyArrayList = new ArrayList<>();
+    public static ArrayList<Dragonfly> dragonflyArrayList = new ArrayList<>();
+    public static ArrayList<Lemur> lemurArrayList = new ArrayList<>();
 
+    /*public static ArrayList<Peacock> peacockArrayList = new ArrayList<>();
+    public static ArrayList<Parrot> parrotArrayList = new ArrayList<>();*/
 
     public static boolean bananaIsAdded = false;
     public static boolean productIsAdded = false;
@@ -168,18 +173,20 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
         anchorPane.getChildren().add(monkey.getAnimalView());
         addProducts(monkey);
         addThought(monkey);
-
+        monkeyArrayList.add(monkey);
         //  System.out.println(lian.getBoundsInParent());
     }
 
     public void addDragonfly() {
         Dragonfly dragonfly = new Dragonfly(50, 50, 1200, 300, anchorPane, well, feeder, storage);
         anchorPane.getChildren().add(dragonfly.getAnimalView());
+        dragonflyArrayList.add(dragonfly);
     }
 
     public void addLemur(){
         Lemur lemur = new Lemur(80, 270, 700, 630, anchorPane, well, feeder, storage);
         anchorPane.getChildren().add(25, lemur.getAnimalView());
+        lemurArrayList.add(lemur);
     }
 
     @FXML
@@ -222,7 +229,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
             saveState();
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("firstLevel.fxml")));
             stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-
+            deleteAllObjects();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
@@ -238,12 +245,41 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
         anchorPane.getChildren().addLast(storageMenu.getRoot());
     }
 
+    public void deleteAllObjects(){
+        for(int i=0; i<monkeyArrayList.size(); i++){
+            monkeyArrayList.get(i).delete();
+            monkeyArrayList.set(i, null);
+        }
+        for(int i=0; i<dragonflyArrayList.size(); i++){
+            dragonflyArrayList.get(i).delete();
+            dragonflyArrayList.set(i, null);
+        }
+        for(int i=0; i<lemurArrayList.size(); i++){
+            lemurArrayList.get(i).delete();
+            lemurArrayList.set(i, null);
+        }
+        /*for(int i=0; i<peacockArrayList.size(); i++){
+            peacockArrayList.get(i).delete();
+            peacockArrayList.set(i, null);
+        }
+        for(int i=0; i<parrotArrayList.size(); i++){
+            parrotArrayList.get(i).delete();
+            parrotArrayList.set(i, null);
+        }*/
+
+        storage = null;
+        well = null;
+        feeder = null;
+        foodBar = null;
+        waterBar = null;
+    }
 
     public void nextLevel(ActionEvent event) {
         try {
             saveState();
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("thirdLevel.fxml")));
             stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            deleteAllObjects();
 
             scene = new Scene(root);
             stage.setScene(scene);

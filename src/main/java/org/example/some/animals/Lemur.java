@@ -70,12 +70,12 @@ public class Lemur extends AbstractAnimal{
     @Override
     public void giveProduct() {
 //        if (FirstLevel.countGoose >= 1) {
-            if (hungerLvl > 25) {
+            if (hungerLvl > 50) {
                 Timer timer = new Timer();
                 TimerTask task = new TimerTask() {
                     @Override
                     public void run() {
-                        if (hungerLvl > 25) {
+                        if (hungerLvl > 50) {
 
                             ImageView productView = new ImageView(product);
                             productView.setFitWidth(30);
