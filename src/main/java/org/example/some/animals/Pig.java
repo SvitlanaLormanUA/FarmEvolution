@@ -22,6 +22,7 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
     private int amountOfMeals;
     private AnimalMeatMenu animalMeatMenu;
     private boolean openedMeatMenu;
+    private int puposedAmount = 5;
     private boolean enoughFood;
     public Pig(int worldStartX, int worldStartY, int worldEndX, int worldEndY, AnchorPane anchorPane, Well well, Feeder feeder, Storage storage) {
         super(worldStartX, worldStartY, worldEndX, worldEndY, anchorPane, well, feeder, storage,
@@ -65,8 +66,8 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
                 hungerLvl += 50;
                 amountOfMeals++;
             }
-            if(amountOfMeals<5) {
-                animalMeatMenu.getFeed().setText("Нагодовано: " + amountOfMeals + "/" + 5);
+            if(amountOfMeals<puposedAmount) {
+                animalMeatMenu.getFeed().setText("Нагодовано: " + amountOfMeals + "/" + puposedAmount);
             } else {
                 animalMeatMenu.update();
             }
@@ -83,15 +84,15 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
         if (FirstLevel.countPig >= 1) {
             List<ImageView> productViews = new ArrayList<>();
 
-            if (amountOfMeals >= 5) {
+            if (amountOfMeals >= puposedAmount) {
                 ImageView productView1 = createProductView(animalView.getLayoutX() + 50, animalView.getLayoutY() + 30);
                 productViews.add(productView1);
             }
-            if (amountOfMeals >= 10) {
+            if (amountOfMeals >= puposedAmount*2) {
                 ImageView productView2 = createProductView(animalView.getLayoutX() - 50, animalView.getLayoutY() - 30);
                 productViews.add(productView2);
             }
-            if (amountOfMeals >= 15) {
+            if (amountOfMeals >= puposedAmount*3) {
                 ImageView productView3 = createProductView(animalView.getLayoutX(), animalView.getLayoutY() + 20);
                 productViews.add(productView3);
             }
@@ -149,15 +150,15 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
 
     @Override
     public int getProductCost() {
-        if(amountOfMeals>=5 && amountOfMeals<10){
+        if(amountOfMeals>=puposedAmount && amountOfMeals<puposedAmount*2){
 
             productCost=80;
 
-        } else if(amountOfMeals>=10 && amountOfMeals<15){
+        } else if(amountOfMeals>=puposedAmount*2 && amountOfMeals<puposedAmount*3){
 
             productCost=160;
 
-        } else if(amountOfMeals>=15){
+        } else if(amountOfMeals>=puposedAmount*3){
 
             productCost=240;
 

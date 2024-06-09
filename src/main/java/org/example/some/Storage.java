@@ -5,6 +5,7 @@ import javafx.scene.Cursor;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import org.example.some.animals.AbstractAnimal;
 import org.example.some.otherGameObjects.Wallet;
 
 import java.util.ArrayList;
@@ -96,7 +97,7 @@ public class Storage {
     }
 
     public void lvl2(){
-        product1Cost = 60;
+        product1Cost = 100;
         product2Cost = 500;
         product3Cost = 100;
         product4Cost = 110;
@@ -238,12 +239,11 @@ public class Storage {
     }
 
     public void addBanana(){
-
+        product1++;
     }
 
     public void addDragonflyPr(){
         product2++;
-        nWool++;
         if(product2<=5) {
             double x;
             double y;
@@ -258,6 +258,28 @@ public class Storage {
                     int num = product2 - 1;
                     Platform.runLater(() -> {
                         root.getChildren().add(1, product2Views.get(num));
+                    });
+                }
+            }
+        }
+    }
+
+    public void addMango(){
+        product4++;
+        if(product4<=7) {
+            double x;
+            double y;
+            int width = 30;
+            int height = 35;
+            for (int i = 1; i <= 7; i++) {
+                if (i == product4) {
+                    x = random.nextInt(880, 950);
+                    y = random.nextInt(550, 570);
+                    ImageView productView = createProduct(product4Image, x, y, width, height);
+                    product4Views.add(productView);
+                    int num = product4 - 1;
+                    Platform.runLater(() -> {
+                        root.getChildren().add(1, product4Views.get(num));
                     });
                 }
             }
@@ -300,6 +322,22 @@ public class Storage {
         wallet.income(product5Cost *toSell);
         removeProductView(product5Views, t, toSell);
         soldRabbit++;
+    }
+
+    public void sellBananas(int toSell){
+        int t = product1;
+        product1 -= toSell;
+        wallet.income(product1Cost *toSell);
+
+        int start = t - 1;
+        int end = t - toSell;
+        if (end < 0) end = 0;
+
+        for (int i = start; i >= end; i--) {
+            ImageView view = SecondLevel.bananas.get(i).getProductView();
+            SecondLevel.bananas.remove(i);
+            Platform.runLater(() -> AbstractAnimal.root.getChildren().remove(view));
+        }
     }
 
     private ImageView createProduct(Image productImage, double x, double y, double width, double height){

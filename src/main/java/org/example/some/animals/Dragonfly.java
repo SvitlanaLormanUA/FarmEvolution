@@ -23,6 +23,7 @@ public class Dragonfly extends AbstractAnimal implements AnimalMeat{
     private int amountOfMeals;
     private AnimalMeatMenu animalMeatMenu;
     private boolean openedMeatMenu;
+    private int puposedAmount = 12;
 
     public Dragonfly(int worldStartX, int worldStartY, int worldEndX, int worldEndY, AnchorPane anchorPane, Well well, Feeder feeder, Storage storage) {
         super(worldStartX, worldStartY, worldEndX, worldEndY, anchorPane, well, feeder, storage,
@@ -42,7 +43,7 @@ public class Dragonfly extends AbstractAnimal implements AnimalMeat{
     @Override
     public void movement() {
         translateTransition = new TranslateTransition();
-        translateTransition.setDuration(Duration.millis(5000));
+        translateTransition.setDuration(Duration.millis(2000));
         translateTransition.setNode(animalView);
         directionRight = true;
         translateTransition.setOnFinished(event -> {
@@ -127,8 +128,8 @@ public class Dragonfly extends AbstractAnimal implements AnimalMeat{
                 hungerLvl += 50;
                 amountOfMeals++;
             }
-            if(amountOfMeals<12) {
-                animalMeatMenu.getFeed().setText("Нагодовано: " + amountOfMeals + "/" + 12);
+            if(amountOfMeals<puposedAmount) {
+                animalMeatMenu.getFeed().setText("Нагодовано: " + amountOfMeals + "/" + puposedAmount);
             } else {
                 animalMeatMenu.update();
             }
@@ -144,7 +145,7 @@ public class Dragonfly extends AbstractAnimal implements AnimalMeat{
     public void giveProduct() {
 //        if (FirstLevel.countGoose >= 1) {
 
-            if (amountOfMeals >= 12) {
+            if (amountOfMeals >= puposedAmount) {
                 ImageView productView = createProductView(animalView.getLayoutX() + 50, animalView.getLayoutY() + 30);
 
                 Platform.runLater(() -> {
@@ -177,7 +178,7 @@ public class Dragonfly extends AbstractAnimal implements AnimalMeat{
 
     @Override
     public void addMeatMenu(double x, double y) {
-        animalMeatMenu = new AnimalMeatMenu(this, x, y, amountOfMeals, 12);
+        animalMeatMenu = new AnimalMeatMenu(this, x, y, amountOfMeals, puposedAmount);
         root.getChildren().add(animalMeatMenu.getRoot());
         openedMeatMenu = true;
     }
@@ -199,7 +200,7 @@ public class Dragonfly extends AbstractAnimal implements AnimalMeat{
 
     @Override
     public int getProductCost() {
-        if(amountOfMeals>=12){
+        if(amountOfMeals>=puposedAmount){
             productCost=500;
         }
         return productCost;
