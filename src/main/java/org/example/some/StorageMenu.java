@@ -41,6 +41,7 @@ public class StorageMenu {
 
     public StorageMenu(Storage storage, Wallet wallet, double x, double y, AnchorPane main){
 
+
         Image image = new Image("file:src/main/resources/images/animalMenu/animalMenu.JPG");
         this.menuView = new ImageView(image);
         menuView.setFitWidth(300);
