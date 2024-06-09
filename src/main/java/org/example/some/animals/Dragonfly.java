@@ -43,7 +43,7 @@ public class Dragonfly extends AbstractAnimal implements AnimalMeat{
     @Override
     public void movement() {
         translateTransition = new TranslateTransition();
-        translateTransition.setDuration(Duration.millis(5000));
+        translateTransition.setDuration(Duration.millis(2000));
         translateTransition.setNode(animalView);
         directionRight = true;
         translateTransition.setOnFinished(event -> {

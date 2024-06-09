@@ -188,6 +188,8 @@ public class StorageMenu {
 
         sellBanana();
         sellDragonflyPr();
+
+        sellMango();
     }
 
     private void close(){
@@ -272,6 +274,17 @@ public class StorageMenu {
                 storage.sellProduct2(toSell);
                 product2ToSell.setText("Бабка сушена: "+storage.getProduct2()+"\nВартість: "+storage.getProduct2Cost()+" монет/шт\nВведіть кількість для продажу:");
                 amountOfProduct2.setText("");
+            }
+        });
+    }
+
+    private void sellMango(){
+        sellProduct4.setOnAction(event -> {
+            if(sell(amountOfProduct4, storage.getProduct4())){
+                int toSell = Integer.parseInt(amountOfProduct4.getText());
+                storage.sellProduct4(toSell);
+                product4ToSell.setText("Манго: "+storage.getProduct4()+"\nВартість: "+storage.getProduct4Cost()+" монет/шт\nВведіть кількість для продажу:");
+                amountOfProduct4.setText("");
             }
         });
     }

@@ -18,10 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import org.example.some.animals.AbstractAnimal;
-import org.example.some.animals.Dragonfly;
-import org.example.some.animals.Feeder;
-import org.example.some.animals.Monkey;
+import org.example.some.animals.*;
 import org.example.some.otherGameObjects.Instr;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
@@ -92,6 +89,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
 
         addMonkey();
         addDragonfly();
+        addLemur();
     }
 
 
@@ -104,7 +102,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
                 Platform.runLater(() -> {
                     if (countBanana < 5) {
                         Banana  banana = new Banana(100);
-                        anchorPane.getChildren().add(banana.getProductView());
+                        anchorPane.getChildren().add(25, banana.getProductView());
                         bananaIsAdded = true;
                        bananas.add(banana);
                         banana.getProductView().setOnMouseClicked(event -> {
@@ -126,7 +124,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
             }
 
         };
-        timer.scheduleAtFixedRate(task, 0, 3000);
+        timer.scheduleAtFixedRate(task, 0, 20000);
 
 
 
@@ -145,7 +143,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     }
 
     private void addFeeder(){
-        feeder = new Feeder(feeder2View, foodBar, wallet, 54, anchorPane);
+        feeder = new Feeder(feeder2View, foodBar, wallet, 100, anchorPane);
         anchorPane.getChildren().add(feeder.getFoodView());
     }
 
@@ -177,6 +175,11 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     public void addDragonfly() {
         Dragonfly dragonfly = new Dragonfly(50, 50, 1200, 300, anchorPane, well, feeder, storage);
         anchorPane.getChildren().add(dragonfly.getAnimalView());
+    }
+
+    public void addLemur(){
+        Lemur lemur = new Lemur(80, 270, 700, 630, anchorPane, well, feeder, storage);
+        anchorPane.getChildren().add(25, lemur.getAnimalView());
     }
 
     @FXML
@@ -232,7 +235,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     void addStorageMenu(MouseEvent event) {
         StorageMenu storageMenu = new  StorageMenu(storage, wallet, WIDTH/2-140, HEIGHT/4-100, anchorPane);
         storageMenu.secondLvl();
-        anchorPane.getChildren().add(storageMenu.getRoot());
+        anchorPane.getChildren().addLast(storageMenu.getRoot());
     }
 
 
