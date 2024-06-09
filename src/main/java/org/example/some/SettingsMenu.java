@@ -30,7 +30,7 @@ public class SettingsMenu {
 
 
     private final double MENU_WIDTH = 307;
-    private final double MENU_HEIGHT = 507;
+    private final double MENU_HEIGHT = 430;
 
     private static double lastVolume;
     public static boolean start = false; // Default volume value
