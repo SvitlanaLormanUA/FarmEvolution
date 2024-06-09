@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
@@ -31,6 +32,8 @@ import java.util.ResourceBundle;
 
 public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializable, Serializable {
     public static boolean firstLevel = true;
+    public static boolean secondLevel = false;
+    public static boolean thirdLevel = false;
 
 
     public static int WIDTH = 1255;
@@ -161,7 +164,13 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
     @FXML
     public void showTasks(ActionEvent event) {
         Tasks tasksWindow = new Tasks(anchorPane);
-        tasksWindow.createMenu();
+        tasksWindow.createMenu("Завдання 1: «Досвідчений м’ясник»\n" +
+                "Продати м’ясо свині: "+storage.getSoldPig()+"/10 шматків\n" +
+                "Продати м’ясо кролів: "+storage.getSoldRabbit()+"/15 шматків", "Завдання 2: «Молоко, любов і гуси»\n" +
+                "Зібрати яйця: "+storage.getnEggs()+"/30 штук\n" +
+                "Продати молоко: "+storage.getSoldMilk()+"/15 галонів", "Завдання 3: «До зими готовий!»\n" +
+                "Зібрати хутро: "+storage.getnWool()+"/20 штук", "Завдання 4: «Туди сюди і мільйонер»\n" +
+                "Заробити монети: "+tasksWindow.nCoins +"/2000"   );
         anchorPane.getChildren().add(tasksWindow.getRoot());
     }
 
@@ -225,7 +234,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
         addCow();
     }
 
-    public void deleteAllObjects(){
+    public  void deleteAllObjects(){
         for(int i=0; i<sheepArrayList.size(); i++){
             sheepArrayList.get(i).delete();
             sheepArrayList.set(i, null);
@@ -336,7 +345,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
 
 
     @FXML
-    public void nextLevel(ActionEvent event) {
+    public  void nextLevel(ActionEvent event) {
         try {
             saveState();
 
@@ -400,5 +409,9 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
 
     public Parent getRoot() {
         return root;
+    }
+    public static void informUser(){
+
+
     }
 }

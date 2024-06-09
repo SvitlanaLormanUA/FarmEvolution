@@ -417,6 +417,8 @@ public class Storage {
             oos.writeInt(soldMilk);
             oos.writeInt(soldPig);
             oos.writeInt(soldRabbit);
+            oos.writeInt(nWool);
+            oos.writeInt(nEggs);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -433,6 +435,8 @@ public class Storage {
             soldMilk = ois.readInt();
             soldPig = ois.readInt();
             soldRabbit = ois.readInt();
+            nWool = ois.readInt();
+            nEggs = ois.readInt();
 
             // Додавання продуктів до списків
             addProductsToList(1, product1, product1Views, product1Image, 25, 25); // Приклад для першого продукту
@@ -450,6 +454,9 @@ public class Storage {
             soldMilk = 0;
             soldPig = 0;
             soldRabbit = 0;
+            nWool = 0;
+            nEggs = 0;
+
         }
     }
 

@@ -24,5 +24,6 @@ abstract class LevelMusicBack implements Initializable {
             mediaPlayerBack.play(); // Починаємо грати знову
         });
         mediaPlayerBack.play();
+        mediaPlayerBack.setVolume(SettingsMenu.lastVolume);
     }
 }

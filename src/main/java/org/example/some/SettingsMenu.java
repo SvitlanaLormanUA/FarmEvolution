@@ -32,7 +32,7 @@ public class SettingsMenu {
     private final double MENU_WIDTH = 300;
     private final double MENU_HEIGHT = 400;
 
-    private static double lastVolume;
+    static double lastVolume;
     public static boolean start = false; // Default volume value
 
     SettingsMenu(AnchorPane anchorPane) {

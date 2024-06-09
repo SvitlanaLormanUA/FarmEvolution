@@ -53,10 +53,6 @@ public class Wallet implements Serializable {
         return root;
     }
 
-    public int getCoins() {
-        return coins;
-    }
-
     public void setCoins(int coins) {
         this.coins = coins;
         updateCoinsLabel();
@@ -65,4 +61,8 @@ public class Wallet implements Serializable {
         coins = 100;
         updateCoinsLabel(); // Якщо потрібно оновити лейбл
     }
+    public int getCoins() {
+        return coins;
+    }
+
 }

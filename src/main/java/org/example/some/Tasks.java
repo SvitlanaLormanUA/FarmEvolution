@@ -1,5 +1,7 @@
 package org.example.some;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -7,7 +9,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import org.example.some.otherGameObjects.Wallet;
+
+import java.io.IOException;
+import java.util.Objects;
+
+import static org.example.some.FirstLevel.firstLevel;
 
 public class Tasks {
     private Pane root;
@@ -28,15 +37,24 @@ public class Tasks {
     private boolean task1 = false;
     private boolean task2 = false;
     private boolean task3 = false;
+    private boolean task4 = false;
 
-    private int nCoins;
+    int nCoins;
+    public Text text1, text2, text3, text4;
+
+    AnchorPane anchorPane;
+    Scene scene;
 
     public Tasks(AnchorPane main) {
         this.main = main;
         this.wallet = FirstLevel.wallet;
         this.storage = FirstLevel.storage;
         this.nCoins = 0;
-        createMenu();
+        //createMenu();
+
+        anchorPane = new AnchorPane();
+        nextLevel();
+        strikeThoughTasks();
     }
     private void addCloseButton(){
          close = new Button("×");
@@ -47,49 +65,90 @@ public class Tasks {
             main.getChildren().remove(root);
         });
     }
-    private void addTaskFour() {
+    private void addTaskFour(String task) {
         if (task1 && task2 && task3){
             nCoins = wallet.getCoins();
         }
-        taskLabel4 = new Label("Завдання 4: «Туди сюди і мільйонер»\n" +
-                "Заробити монети: "+nCoins+"/2000");
+         text4 = new Text(task);
+        taskLabel4 = new Label(text4.getText());
         taskLabel4.setLayoutX(20);
         taskLabel4.setLayoutY(190);
-        if (nCoins>=2000){
-            nextLvL = true;
+        taskFourFirstLevel();
+
+    }
+
+    private void strikeThoughTasks() {
+        if (task1) {
+            text1.setStyle(" -fx-strikethrough: true;");
+            taskLabel4.setStyle(" -fx-color: blue;");
+        } else if (task2) {
+            text2.setStyle(" -fx-strikethrough: true;");
+        } else if (task3) {
+            text3.setStyle(" -fx-strikethrough: true;");
+        } else if (task4) {
+            text4.setStyle(" -fx-strikethrough: true;");
         }
     }
-    private void addTaskThree() {
-        taskLabel3 = new Label("Завдання 3: «До зими готовий!»\n" +
-                "Зібрати хутро: "+storage.getnWool()+"/20 штук");
+    private void taskFourFirstLevel() {
+            if (nCoins >=20) {
+                task4 = true;
+            }
+
+    }
+    private void addTaskThree(String task) {
+        text3 = new Text(task);
+        taskLabel3 = new Label(text3.getText());
         taskLabel3.setLayoutX(20);
         taskLabel3.setLayoutY(140);
-        if(storage.getnWool()>=20){
-            task3 = true;
-        }
+        taskThreeFirstLevel();
     }
-    private void addTaskTwo() {
-        taskLabel2 = new Label("Завдання 2: «Молоко, любов і гуси»\n" +
-                "Зібрати яйця: "+storage.getnEggs()+"/30 штук\n" +
-                "Продати молоко: "+storage.getSoldMilk()+"/15 галонів");
+
+    private void taskThreeFirstLevel() {
+
+            if (storage.getnWool() >= 20 ) {
+                task3 = true;
+            }
+
+    }
+    private void addTaskTwo(String task) {
+        text2 = new Text(task);
+        taskLabel2 = new Label(text2.getText());
         taskLabel2.setLayoutX(20);
         taskLabel2.setLayoutY(80);
-        if (storage.getnEggs()>=30 && storage.getSoldMilk()>=15){
-            task2=true;
-        }
+        taskTwoFirstLevel();
     }
-    private void addTaskOne() {
-         taskLabel = new Label("Завдання 1: «Досвідчений м’ясник»\n" +
-                "Продати м’ясо свині: "+storage.getSoldPig()+"/10 шматків\n" +
-                "Продати м’ясо кролів: "+storage.getSoldRabbit()+"/15 шматків");
+
+    private void taskTwoFirstLevel() {
+
+
+            if (storage.getnEggs() >= 30 && storage.getSoldMilk() >= 15) {
+                task2 = true;
+            }
+
+    }
+    private void addTaskOne(String task) {
+        text1 = new Text(task);
+         taskLabel = new Label(text1.getText());
         taskLabel.setLayoutX(20);
         taskLabel.setLayoutY(20);
-        if (storage.getSoldPig()>=10 && storage.getSoldRabbit()>=15){
-            task1=true;
+        taskOneFirstLevel();
+
+    }
+    private void taskOneFirstLevel() {
+            if (storage.getSoldPig() >= 10 && storage.getSoldRabbit() >= 15) {
+                task1 = true;
+            }
+
+    }
+    public void nextLevel() {
+        if (task1 && task2 && task3 && task4){
+            FirstLevel.informUser();
         }
     }
 
-    public void createMenu() {
+
+
+    public void createMenu(String task1, String task2, String task3, String task4) {
         Image image = new Image("file:src/main/resources/images/animalMenu/animalMenu.JPG");
         this.menuView = new ImageView(image);
         menuView.setFitWidth(280);
@@ -100,10 +159,10 @@ public class Tasks {
         clip.setArcHeight(20);
         menuView.setClip(clip);
 
-        addTaskOne();
-        addTaskTwo();
-        addTaskThree();
-        addTaskFour();
+        addTaskOne(task1);
+        addTaskTwo(task2);
+        addTaskThree(task3);
+        addTaskFour(task4);
         addCloseButton();
 
 
