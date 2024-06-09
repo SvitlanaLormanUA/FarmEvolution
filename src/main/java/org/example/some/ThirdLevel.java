@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 
 import static org.example.some.Shop.getCurrentLevel;
 
-public class ThirdLevel   implements javafx.fxml.Initializable{
+public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initializable{
     public static Wallet wallet;
     public AnchorPane anchorPane;
     private Stage stage;

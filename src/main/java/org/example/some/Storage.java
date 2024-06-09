@@ -62,29 +62,29 @@ public class Storage {
         this.root = new Pane();
         root.getChildren().add(this.storageView);
 
-         this.product1 = 0;
-         this.product2 = 0;
-         this.product3 = 0;
-         this.product4 = 0;
-         this.product5 = 0;
+        this.product1 = 0;
+        this.product2 = 0;
+        this.product3 = 0;
+        this.product4 = 0;
+        this.product5 = 0;
 
-         this.product1Image = product1View;
-         this.product2Image = product2View;
-         this.product3Image = product3View;
-         this.product4Image = product4View;
-         this.product5Image = product5View;
+        this.product1Image = product1View;
+        this.product2Image = product2View;
+        this.product3Image = product3View;
+        this.product4Image = product4View;
+        this.product5Image = product5View;
 
-         product1Views = new ArrayList<>();
-         product2Views = new ArrayList<>();
-         product3Views = new ArrayList<>();
-         product4Views = new ArrayList<>();
-         product5Views = new ArrayList<>();
+        product1Views = new ArrayList<>();
+        product2Views = new ArrayList<>();
+        product3Views = new ArrayList<>();
+        product4Views = new ArrayList<>();
+        product5Views = new ArrayList<>();
 
-         this.nWool = 0;
-         this.nEggs = 0;
-         this.soldMilk = 0;
-         this.soldPig = 0;
-         this.soldRabbit = 0;
+        this.nWool = 0;
+        this.nEggs = 0;
+        this.soldMilk = 0;
+        this.soldPig = 0;
+        this.soldRabbit = 0;
     }
 
     public void lvl1(){

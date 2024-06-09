@@ -33,7 +33,7 @@ import java.net.URL;
 import java.util.*;
 
 
-public class SecondLevel  implements Initializable {
+public class SecondLevel  extends LevelMusicBack implements Initializable {
 
     public static int WIDTH = 1255;
     public static int HEIGHT = 707;
@@ -282,9 +282,8 @@ public class SecondLevel  implements Initializable {
             coins = 0; // Default value if there's an error or the file doesn't exist
         }
     }
-    public static void setCoins(int coins) {
-        SecondLevel.coins = coins;
-    }
+    public static void setCoins(int coins) {SecondLevel.coins = coins;}
+
 
 
 }

@@ -12,6 +12,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import org.example.some.animals.*;
 import org.example.some.otherGameObjects.Instr;
@@ -25,7 +27,9 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 
-public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
+
+
+public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializable, Serializable {
     public static boolean firstLevel = true;
 
 
@@ -42,6 +46,7 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
     public static double walletX = 263;
     public static double walletY = 32;
 
+    SettingsMenu settingsMenu;
 
 
     public double progress = 1.0;
@@ -94,6 +99,7 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
     public static ArrayList<Cow> cowArrayList = new ArrayList<>();
     public static ArrayList<Pig> pigArrayList = new ArrayList<>();
     public static ArrayList<Rabbit> rabbitArrayList = new ArrayList<>();
+
 
 
     public static void decreaseAnimalCount(String animalType) {
@@ -263,6 +269,7 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
         addStorage();
         setAnimals();
         saveState();
+        addMusic();
     }
 
     private void addWallet(){
@@ -374,7 +381,11 @@ public class FirstLevel  implements javafx.fxml.Initializable, Serializable {
     }
 
     public void showSettings(ActionEvent event) {
+        settingsMenu = new SettingsMenu(anchorPane);
+        anchorPane.getChildren().add(settingsMenu.getRoot());
+
     }
+
 
 
 }

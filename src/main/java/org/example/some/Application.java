@@ -1,15 +1,17 @@
 package org.example.some;
 
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
+import java.io.File;
 import java.io.IOException;
 
 public class Application extends javafx.application.Application {
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("menu.fxml"));
@@ -22,6 +24,7 @@ public class Application extends javafx.application.Application {
             FirstLevel.saveState();
             Platform.exit();
             System.exit(0);
+
         });
     }
 

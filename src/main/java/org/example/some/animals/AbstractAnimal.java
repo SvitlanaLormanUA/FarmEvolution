@@ -27,6 +27,7 @@ public abstract class AbstractAnimal implements Animal {
     public static Pane root;
 
 
+
     public int cost;
     protected int hungerLvl;
     protected int thirstLvl;
@@ -54,7 +55,7 @@ public abstract class AbstractAnimal implements Animal {
 
     ImageView animalView;
     Media media;
-    MediaPlayer mediaPlayer;
+    public static MediaPlayer mediaPlayer;
     Image product;
 
     AnimalMenu animalMenu;
@@ -64,7 +65,6 @@ public abstract class AbstractAnimal implements Animal {
         this.imagePath = imagePath;
 
 
-        this.imagePathLeft = imagePathLeft;
         this.animalView = new ImageView(new Image(this.imagePath));
         this.worldStartX = worldStartX;
         this.worldStartY = worldStartY;
@@ -452,9 +452,20 @@ public abstract class AbstractAnimal implements Animal {
 
 
 
+
+
     @Override
     public ImageView getAnimalView() {
         return animalView;
+    }
+    public static MediaPlayer getMediaPlayer() {
+        return mediaPlayer;
+    }
+    public static void setMediaPlayer(MediaPlayer mediaPlayer) {
+        AbstractAnimal.mediaPlayer = mediaPlayer;
+    }
+    public static void setVolume(double volume) {
+        mediaPlayer.setVolume(volume);
     }
 
 }
