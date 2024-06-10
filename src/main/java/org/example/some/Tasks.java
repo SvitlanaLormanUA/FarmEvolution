@@ -39,6 +39,12 @@ public class Tasks {
     private boolean task3 = false;
     private boolean task4 = false;
 
+    private int nWool;
+    private int nEggs;
+    private int soldMilk;
+    private int soldPig;
+    private int soldRabbit;
+
     int nCoins;
     public Text text1, text2, text3, text4;
 
@@ -51,6 +57,12 @@ public class Tasks {
         this.storage = FirstLevel.storage;
         this.nCoins = 0;
         //createMenu();
+
+        nWool = storage.getnWoolP();
+        nEggs = storage.getnEggsP();
+        soldMilk = storage.getSoldMilkP();
+        soldPig = storage.getSoldPigP();
+        soldRabbit = storage.getSoldRabbitP();
 
         anchorPane = new AnchorPane();
         nextLevel();
@@ -121,7 +133,7 @@ public class Tasks {
     private void taskTwoFirstLevel() {
 
 
-            if (storage.getnEggs() >= 30 && storage.getSoldMilk() >= 15) {
+            if (storage.getnEggs() >= nEggs && storage.getSoldMilk() >= soldMilk) {
                 task2 = true;
             }
 
@@ -135,7 +147,7 @@ public class Tasks {
 
     }
     private void taskOneFirstLevel() {
-            if (storage.getSoldPig() >= 10 && storage.getSoldRabbit() >= 15) {
+            if (storage.getSoldPig() >= soldPig && storage.getSoldRabbit() >= soldRabbit) {
                 task1 = true;
             }
 

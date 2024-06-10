@@ -400,6 +400,7 @@ public abstract class AbstractAnimal implements Animal {
             FirstLevel.wallet.expense(63);
             removeMenu();
             delete();
+//            FirstLevel.sellAnimal(this);
             String animalType = this.getClass().getSimpleName();
             FirstLevel.decreaseAnimalCount(animalType);
             mediaPlayer.stop();

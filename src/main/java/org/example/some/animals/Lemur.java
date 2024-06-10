@@ -97,7 +97,7 @@ public class Lemur extends AbstractAnimal{
                 };
 
 
-                timer.scheduleAtFixedRate(task, 0, 20000);
+                timer.scheduleAtFixedRate(task, 0, 70000);
             }
 //        }
     }

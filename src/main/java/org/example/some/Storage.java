@@ -57,6 +57,12 @@ public class Storage {
     private int soldPig;
     private int soldRabbit;
 
+    private int nWoolP = 20;
+    private int nEggsP = 30;
+    private int soldMilkP = 15;
+    private int soldPigP = 10;
+    private int soldRabbitP = 15;
+
     public Storage(ImageView storageView, Wallet wallet, Image product1View, Image product2View, Image product3View,
                    Image product4View, Image product5View) {
         this.storageView = storageView;
@@ -483,7 +489,7 @@ public class Storage {
         product3 -= toSell;
         wallet.income(product3Cost * toSell);
         removeProductView(product3Views, t, toSell);
-        soldMilk++;
+        soldMilk+=toSell;
         saveState();
     }
 
@@ -492,7 +498,7 @@ public class Storage {
         product4 -= toSell;
         wallet.income(product4Cost * toSell);
         removeProductView(product4Views, t, toSell);
-        soldPig++;
+        soldPig+=toSell;
         saveState();
     }
 
@@ -501,7 +507,7 @@ public class Storage {
         product5 -= toSell;
         wallet.income(product5Cost * toSell);
         removeProductView(product5Views, t, toSell);
-        soldRabbit++;
+        soldRabbit+=toSell;
         saveState();
     }
 
@@ -596,24 +602,60 @@ public class Storage {
     }
 
     public int getnWool() {
+        if(nWool>nWoolP){
+            nWool = nWoolP;
+        }
         return nWool;
     }
 
     public int getnEggs() {
+        if(nEggs>nEggsP){
+            nEggs = nEggsP;
+        }
         return nEggs;
     }
 
     public int getSoldMilk() {
+        if(soldMilk>soldMilkP){
+            soldMilk = soldMilkP;
+        }
         return soldMilk;
     }
 
     public int getSoldPig() {
+        if(soldPig>soldPigP){
+            soldPig = soldPigP;
+        }
         return soldPig;
     }
 
     public int getSoldRabbit() {
+        if (soldRabbit>soldRabbitP){
+            soldRabbit = soldRabbitP;
+        }
         return soldRabbit;
     }
+
+    public int getnEggsP() {
+        return nEggsP;
+    }
+
+    public int getnWoolP() {
+        return nWoolP;
+    }
+
+    public int getSoldMilkP() {
+        return soldMilkP;
+    }
+
+    public int getSoldPigP() {
+        return soldPigP;
+    }
+
+    public int getSoldRabbitP() {
+        return soldRabbitP;
+    }
+
     public int getProduct3Cost() {
         return product3Cost;
     }

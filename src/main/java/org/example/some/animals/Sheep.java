@@ -31,29 +31,30 @@ public class Sheep extends AbstractAnimal {
                 TimerTask task = new TimerTask() {
                     @Override
                     public void run() {
-
                         if (hungerLvl > 20) {
+                            Platform.runLater(() -> {
+//                                if (productView == null) {
+                                    ImageView productView = new ImageView(product);
+                                    productView.setId("product");
+                                    productView.setFitWidth(40);
+                                    productView.setFitHeight(40);
+                                    productView.setX(animalView.getLayoutX() + 30);
+                                    productView.setY(animalView.getLayoutY() + 30);
+                                    productView.setCursor(Cursor.HAND);
 
-                            ImageView productView = new ImageView(product);
-                            productView.setId("product");
-                            productView.setFitWidth(40);
-                            productView.setFitHeight(40);
-                            productView.setX(animalView.getLayoutX() + 30);
-                            productView.setY(animalView.getLayoutY() + 30);
-                            productView.setCursor(Cursor.HAND);
+                                    productView.setOnMouseClicked(event -> {
+                                        AbstractAnimal.root.getChildren().remove(productView);
+                                        storage.addWool();
+                                    });
 
-                            productView.setOnMouseClicked(event -> {
-                                AbstractAnimal.root.getChildren().remove(productView);
-                                storage.addWool();
+                                    AbstractAnimal.root.getChildren().add(1, productView);
+//                                }
                             });
-
-                            Platform.runLater(() -> AbstractAnimal.root.getChildren().add(1, productView));
                         } else {
                             timer.cancel();
                         }
                     }
                 };
-
 
                 timer.scheduleAtFixedRate(task, 0, 50000);
             }

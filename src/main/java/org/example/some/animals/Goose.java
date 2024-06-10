@@ -38,20 +38,24 @@ public class Goose extends AbstractAnimal{
                     @Override
                     public void run() {
                         if (hungerLvl > 25) {
+                            Platform.runLater(() -> {
+//                                if (productView == null) {
+                                ImageView productView = new ImageView(product);
+                                productView.setId("product");
+                                productView.setFitWidth(30);
+                                productView.setFitHeight(30);
+                                productView.setX(animalView.getLayoutX() + 30);
+                                productView.setY(animalView.getLayoutY() + 30);
+                                productView.setCursor(Cursor.HAND);
 
-                            ImageView productView = new ImageView(product);
-                            productView.setFitWidth(30);
-                            productView.setFitHeight(30);
-                            productView.setX(animalView.getLayoutX() + 30);
-                            productView.setY(animalView.getLayoutY() + 30);
-                            productView.setCursor(Cursor.HAND);
+                                productView.setOnMouseClicked(event -> {
+                                    AbstractAnimal.root.getChildren().remove(productView);
+                                    storage.addEgg();
+                                });
 
-                            productView.setOnMouseClicked(event -> {
-                                AbstractAnimal.root.getChildren().remove(productView);
-                                storage.addEgg();
+                                AbstractAnimal.root.getChildren().add(1, productView);
+//                                }
                             });
-
-                            Platform.runLater(() -> AbstractAnimal.root.getChildren().add(1, productView));
                         } else {
                             timer.cancel();
                         }
