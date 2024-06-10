@@ -33,7 +33,8 @@ public class SettingsMenu {
     private final double MENU_HEIGHT = 400;
 
     static double lastVolume;
-    public static boolean start = false; // Default volume value
+    public static boolean start = false;// Default volume value
+    public static boolean restart = false;
 
     SettingsMenu(AnchorPane anchorPane) {
         if (!new File("settings.dat").exists()) {
@@ -55,7 +56,7 @@ public class SettingsMenu {
 
         yesButton.setOnAction(event -> {
             try{
-
+                restart = true;
                 start = true;
                 root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("menu.fxml")));
                 stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
@@ -76,6 +77,8 @@ public class SettingsMenu {
                 SecondLevel.countBanana = 0;
                 SecondLevel.countMonkeys = 1;
                 SecondLevel.countDragonflies = 1;
+
+               // Storage.reset();
                 wallet.resetWallet();
 
                 scene = new Scene(root);

@@ -31,11 +31,11 @@ public class Storage {
     private Wallet wallet;
     private static Pane root;
 
-    private int product1;
-    private int product2;
-    private int product3;
-    private int product4;
-    private int product5;
+    private static int product1;
+    private static int product2;
+    private static int product3;
+    private static int product4;
+    private static int product5;
 
     private Image product1Image;
     private Image product2Image;
@@ -51,11 +51,11 @@ public class Storage {
 
     private Random random = new Random();
 
-    private int nWool;
-    private int nEggs;
-    private int soldMilk;
-    private int soldPig;
-    private int soldRabbit;
+    private static int nWool;
+    private static int nEggs;
+    private static int soldMilk;
+    private static int soldPig;
+    private static int soldRabbit;
 
     private int nWoolP = 20;
     private int nEggsP = 30;
@@ -661,4 +661,23 @@ public class Storage {
     }
 
 
+    public  void reset() {
+        removeProductView(product1Views, product1, product1);
+        removeProductView(product2Views, product2, product2);
+        removeProductView(product3Views, product3, product3);
+        removeProductView(product4Views, product4, product4);
+        removeProductView(product5Views, product5, product5);
+
+        product1 = 0;
+        product2 = 0;
+        product3 = 0;
+        product4 = 0;
+        product5 = 0;
+        soldMilk = 0;
+        soldPig = 0;
+        soldRabbit = 0;
+        nWool = 0;
+        nEggs = 0;
+        saveState();
+    }
 }

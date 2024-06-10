@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-
+import static org.example.some.SettingsMenu.restart;
 
 
 public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializable, Serializable {
@@ -232,34 +232,42 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
     }
 
     public void deleteAllObjects(){
-        for(int i=0; i<sheepArrayList.size(); i++){
-            sheepArrayList.get(i).delete();
-            sheepArrayList.set(i, null);
+        if (sheepArrayList!= null) {
+            for (int i = 0; i < sheepArrayList.size(); i++) {
+                sheepArrayList.get(i).delete();
+                sheepArrayList.set(i, null);
+            }
         }
-        for(int i=0; i<gooseArrayList.size(); i++){
-            gooseArrayList.get(i).delete();
-            gooseArrayList.set(i, null);
-        }
-        for(int i=0; i<cowArrayList.size(); i++){
-            cowArrayList.get(i).delete();
-            cowArrayList.set(i, null);
-        }
-        for(int i=0; i<pigArrayList.size(); i++){
-            pigArrayList.get(i).delete();
-            pigArrayList.set(i, null);
-        }
-        for(int i=0; i<rabbitArrayList.size(); i++){
-            rabbitArrayList.get(i).delete();
-            rabbitArrayList.set(i, null);
-        }
-
-        storage = null;
-        well = null;
-        feeder = null;
-        foodBar = null;
-        waterBar = null;
-    }
-
+      if (gooseArrayList!= null) {
+          for (int i = 0; i < gooseArrayList.size(); i++) {
+              gooseArrayList.get(i).delete();
+              gooseArrayList.set(i, null);
+          }
+      }
+      if(cowArrayList!=null) {
+          for (int i = 0; i < cowArrayList.size(); i++) {
+              cowArrayList.get(i).delete();
+              cowArrayList.set(i, null);
+          }
+      }
+      if (pigArrayList!= null) {
+          for (int i = 0; i < pigArrayList.size(); i++) {
+              pigArrayList.get(i).delete();
+              pigArrayList.set(i, null);
+          }
+      }
+      if (rabbitArrayList!=null) {
+          for (int i = 0; i < rabbitArrayList.size(); i++) {
+              rabbitArrayList.get(i).delete();
+              rabbitArrayList.set(i, null);
+          }
+      }
+          storage = null;
+          well = null;
+          feeder = null;
+          foodBar = null;
+          waterBar = null;
+      }
 
 
     private void addWallet(){
@@ -286,6 +294,11 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
         Image meatR = new Image("file:src/main/resources/images/firstLevel/products/meat.png");
         storage = new Storage(storageView, wallet, egg, wool, milk, meatP, meatR);
         storage.lvl1();
+
+        if (restart) {
+            storage.reset();
+            restart = false;
+        }
         anchorPane.getChildren().add(storage.getRoot());
     }
 
@@ -344,7 +357,8 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
     @FXML
     public void nextLevel(ActionEvent event) {
         try {
-            saveState();
+            //saveState();
+            storage.reset();
 
             Stage stage  = (Stage) ((Button) event.getSource()).getScene().getWindow();
             anchorPane.getChildren().clear();
