@@ -61,23 +61,29 @@ public class Cow extends AbstractAnimal {
                     @Override
                     public void run() {
                         if (hungerLvl > 20) {
-                            productView = new ImageView(product);
-                            productView.setFitWidth(60);
-                            productView.setFitHeight(50);
-                            productView.setCursor(Cursor.HAND);
-                            emotionIsShown = true;
+                            Platform.runLater(() -> {
+                                if (productView == null) {
+                                    productView = new ImageView(product);
+                                    productView.setId("product");
+                                    productView.setFitWidth(40);
+                                    productView.setFitHeight(40);
+                                    productView.setCursor(Cursor.HAND);
 
-                            // Initial positioning
-                            updateProductViewPosition();
-                            hasProduct = false;
-                            productView.setOnMouseClicked(event -> {
-                                AbstractAnimal.root.getChildren().remove(productView);
-                                storage.addMilk();
-                                hasProduct = true;
-                                emotionIsShown = false;
+                                    // Set initial position
+                                    updateProductViewPosition();
+
+                                    // Set mouse click handler
+                                    productView.setOnMouseClicked(event -> {
+                                        AbstractAnimal.root.getChildren().remove(productView);
+                                        storage.addWool();
+                                        productView = null; // Reset the product view
+                                    });
+
+                                    AbstractAnimal.root.getChildren().add(1, productView);
+                                } else {
+                                    updateProductViewPosition(); // Update position if product already exists
+                                }
                             });
-
-                            Platform.runLater(() -> AbstractAnimal.root.getChildren().add( productView));
                         } else {
                             timer.cancel();
                         }
@@ -85,7 +91,7 @@ public class Cow extends AbstractAnimal {
                 };
 
                 // Запуск завдання з інтервалом 35 секунд (70000 мілісекунд)
-                timer.scheduleAtFixedRate(task, 0, 70000);
+                timer.scheduleAtFixedRate(task, 0, 7000);
             }
         }
     }
