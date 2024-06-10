@@ -193,7 +193,10 @@ public class Storage {
                             }
                         }
                     } else if (secondLvl) {
-
+                        width = 20;
+                        height = 60;
+                        x = random.nextInt(880, 1000);
+                        y = random.nextInt(540, 560);
                     } else if (thirdLvl) {
 
                     }
@@ -410,6 +413,28 @@ public class Storage {
                     product2Views.add(productView);
                     int num = product2 - 1;
                     Platform.runLater(() -> root.getChildren().add(1, product2Views.get(num)));
+                }
+            }
+        }
+        saveState();
+    }
+
+    public void addFeather(){
+        product3++;
+
+        if (product3 <= 7) {
+            double x;
+            double y;
+            int width = 20;
+            int height = 60;
+            for (int i = 1; i <= 7; i++) {
+                if (i == product3) {
+                    x = random.nextInt(880, 1000);
+                    y = random.nextInt(540, 560);
+                    ImageView productView = createProduct(product3Image, x, y, width, height);
+                    product3Views.add(productView);
+                    int num = product3 - 1;
+                    Platform.runLater(() -> root.getChildren().add(1, product3Views.get(num)));
                 }
             }
         }
