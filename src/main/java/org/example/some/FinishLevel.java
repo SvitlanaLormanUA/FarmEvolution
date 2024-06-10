@@ -1,20 +1,32 @@
 package org.example.some;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 
-public class FinishFirstLevel {
+import java.io.IOException;
+import java.util.Objects;
+
+import static org.example.some.FirstLevel.deleteAllObjects;
+import static org.example.some.FirstLevel.storage;
+
+public class FinishLevel {
     private Pane root;
     private AnchorPane main;
     private ImageView imageView;
     private double x;
     private double y;
 
-    public FinishFirstLevel(AnchorPane main) {
+    private Stage stage;
+    private Scene scene;
+
+    public FinishLevel(AnchorPane main) {
         this.main = main;
         createImagePane();
     }
@@ -36,6 +48,24 @@ public class FinishFirstLevel {
         close.setStyle("-fx-background-color: #ff5757; -fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold; -fx-border-radius: 10px; -fx-background-radius: 10px;");
         close.setOnAction(event -> {
             main.getChildren().remove(root);
+            try {
+                //saveState();
+                storage.reset();
+                deleteAllObjects();
+
+                stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+                main.getChildren().clear();
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("secondLevel.fxml")));
+
+                deleteAllObjects();
+
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+
+            }
         });
 
         root = new Pane();
@@ -43,6 +73,8 @@ public class FinishFirstLevel {
         root.setTranslateY(this.y + 180);
         root.getChildren().addAll(imageView, close);
     }
+
+
 
     public Pane getRoot() {
         return root;

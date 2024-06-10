@@ -16,7 +16,6 @@ import org.example.some.otherGameObjects.Wallet;
 import java.io.IOException;
 import java.util.Objects;
 
-import static org.example.some.FirstLevel.firstLevel;
 
 public class Tasks {
     private Pane root;
@@ -47,16 +46,39 @@ public class Tasks {
 
     int nCoins;
     public Text text1, text2, text3, text4;
+    private boolean firstLevel = false;
+    private boolean secondLevel = false;
+    private boolean thirdLevel = false;
 
     AnchorPane anchorPane;
     Scene scene;
+    FinishLevel finishLevel;
 
-    public Tasks(AnchorPane main) {
+
+    public Tasks(AnchorPane main, int level) {
         this.main = main;
         this.wallet = FirstLevel.wallet;
         this.storage = FirstLevel.storage;
         this.nCoins = 0;
-        //createMenu();
+
+        switch (level) {
+            case 1 -> {
+                firstLevel = true;
+                secondLevel = false;
+                thirdLevel = false;
+            }
+            case 2 -> {
+                firstLevel = false;
+                secondLevel = true;
+                thirdLevel = false;
+            }
+            case 3 -> {
+                firstLevel = false;
+                secondLevel = false;
+                thirdLevel = true;
+            }
+
+        }        //createMenu();
 
         nWool = storage.getnWoolP();
         nEggs = storage.getnEggsP();
@@ -65,8 +87,14 @@ public class Tasks {
         soldRabbit = storage.getSoldRabbitP();
 
         anchorPane = new AnchorPane();
+        finishLevel = new FinishLevel(anchorPane);
         nextLevel();
         strikeThoughTasks();
+    }
+    public void setNextLvL() {
+        finishLevel = new FinishLevel(anchorPane);
+        root.getChildren().add(finishLevel.getRoot());
+
     }
     private void addCloseButton(){
          close = new Button("×");
@@ -85,6 +113,8 @@ public class Tasks {
         taskLabel4 = new Label(text4.getText());
         taskLabel4.setLayoutX(20);
         taskLabel4.setLayoutY(190);
+
+        if (firstLevel)
         taskFourFirstLevel();
 
     }
@@ -112,7 +142,9 @@ public class Tasks {
         taskLabel3 = new Label(text3.getText());
         taskLabel3.setLayoutX(20);
         taskLabel3.setLayoutY(140);
-        taskThreeFirstLevel();
+
+        if (firstLevel)
+            taskThreeFirstLevel();
     }
 
     private void taskThreeFirstLevel() {
@@ -127,11 +159,12 @@ public class Tasks {
         taskLabel2 = new Label(text2.getText());
         taskLabel2.setLayoutX(20);
         taskLabel2.setLayoutY(80);
-        taskTwoFirstLevel();
+
+        if (firstLevel)
+            taskTwoFirstLevel();
     }
 
     private void taskTwoFirstLevel() {
-
 
             if (storage.getnEggs() >= nEggs && storage.getSoldMilk() >= soldMilk) {
                 task2 = true;
@@ -143,7 +176,9 @@ public class Tasks {
          taskLabel = new Label(text1.getText());
         taskLabel.setLayoutX(20);
         taskLabel.setLayoutY(20);
-        taskOneFirstLevel();
+
+        if (firstLevel)
+            taskOneFirstLevel();
 
     }
     private void taskOneFirstLevel() {
@@ -154,7 +189,8 @@ public class Tasks {
     }
     public void nextLevel() {
         if (task1 && task2 && task3 && task4){
-            FirstLevel.informUser();
+          firstLevel = false;
+            setNextLvL();
         }
     }
 

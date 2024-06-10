@@ -31,7 +31,7 @@ import static org.example.some.SettingsMenu.restart;
 
 
 public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializable, Serializable {
-    public static boolean firstLevel = true;
+
 
 
     public static int WIDTH = 1255;
@@ -122,14 +122,14 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
 
     @FXML
     public void showTasks(ActionEvent event) {
-        Tasks tasksWindow = new Tasks(anchorPane);
+        Tasks tasksWindow = new Tasks(anchorPane, 1);
         tasksWindow.createMenu("Завдання 1: «Досвідчений м’ясник»\n" +
                 "Продати м’ясо свині: "+storage.getSoldPig()+"/10 шматків\n" +
                 "Продати м’ясо кролів: "+storage.getSoldRabbit()+"/15 шматків", "Завдання 2: «Молоко, любов і гуси»\n" +
                 "Зібрати яйця: "+storage.getnEggs()+"/30 штук\n" +
                 "Продати молоко: "+storage.getSoldMilk()+"/15 галонів", "Завдання 3: «До зими готовий!»\n" +
                 "Зібрати хутро: "+storage.getnWool()+"/20 штук", "Завдання 4: «Туди сюди і мільйонер»\n" +
-                "Заробити монети: "+tasksWindow.nCoins +"/2000"   );
+                "Заробити монети: "+tasksWindow.nCoins +"/2000");
         anchorPane.getChildren().add(tasksWindow.getRoot());
     }
 
@@ -193,7 +193,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
         addCow();
     }
 
-    public void deleteAllObjects(){
+    public static void deleteAllObjects(){
         if (sheepArrayList!= null) {
             for (int i = 0; i < sheepArrayList.size(); i++) {
                 if (sheepArrayList.get(i) != null) {
@@ -235,10 +235,10 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
           }
       }
           storage = null;
-          well = null;
-          feeder = null;
-          foodBar = null;
-          waterBar = null;
+          //well = null;
+          //feeder = null;
+          //foodBar = null;
+          //waterBar = null;
       }
 
 
@@ -295,7 +295,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
             out.writeInt(countGoose);
             out.writeInt(countPig);
             out.writeInt(countRabbit);
-            out.writeBoolean(firstLevel);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -310,7 +310,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
             countGoose = in.readInt();
             countPig = in.readInt();
             countRabbit = in.readInt();
-            firstLevel = in.readBoolean();
+
 
             setCoins(coins);
             wallet.setCoins(coins);
@@ -398,8 +398,5 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
         return root;
     }
 
-    public static void informUser(){
 
-
-    }
 }
