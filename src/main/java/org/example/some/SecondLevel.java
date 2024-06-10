@@ -64,6 +64,8 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     public static int countMonkeys = 1;
     public static int countDragonflies = 1;
     public static int countLemurs = 1;
+    public static int countPeacocks = 1;
+    public static int countParrots = 1;
 
     public static ArrayList<Monkey> monkeyArrayList = new ArrayList<>();
     public static ArrayList<Dragonfly> dragonflyArrayList = new ArrayList<>();
@@ -325,6 +327,8 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
             out.writeInt(countDragonflies);
             out.writeInt(countBanana);
             out.writeInt(countLemurs);
+            out.writeInt(countPeacocks);
+            out.writeInt(countParrots);
 
 
 
@@ -343,6 +347,8 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
             countDragonflies = in.readInt();
             countBanana = in.readInt();
             countLemurs = in.readInt();
+            countPeacocks = in.readInt();
+            countParrots = in.readInt();
 
 
 

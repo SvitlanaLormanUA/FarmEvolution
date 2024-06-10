@@ -497,6 +497,11 @@ public abstract class AbstractAnimal implements Animal {
             case "Dragonfly":
                 SecondLevel.countDragonflies--;
                 break;
+            case "Peacock":
+                SecondLevel.countPeacocks--;
+                break;
+            case "Parrot":
+                SecondLevel.countParrots--;
             default:
                 break;
         }

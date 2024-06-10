@@ -7,11 +7,7 @@ package org.example.some;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-
-import java.io.File;
 import java.io.IOException;
 
 public class Application extends javafx.application.Application {
@@ -26,8 +22,6 @@ public class Application extends javafx.application.Application {
         stage.show();
         stage.setOnCloseRequest(t -> {
             FirstLevel.saveState();
-            //SecondLevel.saveState();
-            //ThirdLevel.saveState();
             Platform.exit();
             System.exit(0);
 
