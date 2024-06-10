@@ -9,8 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import org.example.some.LevelMusicBack;
-import org.example.some.otherGameObjects.Wallet;
+
 
 import java.io.*;
 import java.util.Objects;
@@ -140,7 +139,9 @@ public class SettingsMenu {
         addVolumeLabel();
         addVolumeSlider();
         volumeLevel.setValue(lastVolume); // Set the volume slider value
-        mediaPlayerBack.setVolume(lastVolume / 100); // Set the volume for mediaPlayerBack
+        if (mediaPlayerBack!=null) {
+            mediaPlayerBack.setVolume(lastVolume / 100); // Set the volume for mediaPlayerBack
+        }
     }
 
     public void addVolumeLabel() {

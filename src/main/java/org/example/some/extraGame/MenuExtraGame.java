@@ -9,6 +9,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import org.example.some.FirstLevel;
 
 public class MenuExtraGame {
     private Pane root;
@@ -45,6 +46,7 @@ public class MenuExtraGame {
         Circle clickableArea = new Circle(125,75,30);
         clickableArea.setFill(Color.TRANSPARENT);
         clickableArea.setOnMouseClicked(event -> {
+            FirstLevel.saveState();
             main.getChildren().remove(root);
             AnimalCountingGame animalCountingGame = new AnimalCountingGame();
             Stage stage=new Stage();
@@ -54,6 +56,7 @@ public class MenuExtraGame {
         Circle clickable = new Circle(125,220,30);
         clickable.setFill(Color.TRANSPARENT);
         clickable.setOnMouseClicked(event -> {
+            FirstLevel.saveState();
             main.getChildren().remove(root);
 
         });
