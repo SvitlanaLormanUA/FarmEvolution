@@ -101,46 +101,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
 
 
 
-    public static void decreaseAnimalCount(String animalType) {
-        switch (animalType) {
-            case "Cow":
-                countCow--;
-                break;
-            case "Sheep":
-                countSheep--;
-                break;
-            case "Goose":
-                countGoose--;
-                break;
-            case "Pig":
-                countPig--;
-                break;
-            case "Rabbit":
-                countRabbit--;
-                break;
-            default:
-                break;
-        }
-    }
 
-
-
-    @FXML
-    public void backToMainMenu(ActionEvent event) {
-        try {
-            saveState();
-            ShopFirstLevel.setCurrentLevel("infoFirst.fxml");
-
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("info.fxml")));
-            stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     @FXML
     public void enterShop(ActionEvent event) {
@@ -235,32 +196,42 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
     public void deleteAllObjects(){
         if (sheepArrayList!= null) {
             for (int i = 0; i < sheepArrayList.size(); i++) {
-                sheepArrayList.get(i).delete();
-                sheepArrayList.set(i, null);
+                if (sheepArrayList.get(i) != null) {
+                    sheepArrayList.get(i).delete();
+                    sheepArrayList.set(i, null);
+                }
             }
         }
       if (gooseArrayList!= null) {
           for (int i = 0; i < gooseArrayList.size(); i++) {
-              gooseArrayList.get(i).delete();
-              gooseArrayList.set(i, null);
+              if (gooseArrayList.get(i)!=null) {
+                  gooseArrayList.get(i).delete();
+                  gooseArrayList.set(i, null);
+              }
           }
       }
       if(cowArrayList!=null) {
           for (int i = 0; i < cowArrayList.size(); i++) {
-              cowArrayList.get(i).delete();
-              cowArrayList.set(i, null);
+              if (cowArrayList.get(i)!=null) {
+                  cowArrayList.get(i).delete();
+                  cowArrayList.set(i, null);
+              }
           }
       }
       if (pigArrayList!= null) {
           for (int i = 0; i < pigArrayList.size(); i++) {
-              pigArrayList.get(i).delete();
-              pigArrayList.set(i, null);
+              if (pigArrayList.get(i)!=null) {
+                  pigArrayList.get(i).delete();
+                  pigArrayList.set(i, null);
+              }
           }
       }
       if (rabbitArrayList!=null) {
           for (int i = 0; i < rabbitArrayList.size(); i++) {
-              rabbitArrayList.get(i).delete();
-              rabbitArrayList.set(i, null);
+              if (rabbitArrayList.get(i) != null) {
+                  rabbitArrayList.get(i).delete();
+                  rabbitArrayList.set(i, null);
+              }
           }
       }
           storage = null;
@@ -360,6 +331,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
         try {
             //saveState();
             storage.reset();
+            deleteAllObjects();
 
             Stage stage  = (Stage) ((Button) event.getSource()).getScene().getWindow();
             anchorPane.getChildren().clear();
