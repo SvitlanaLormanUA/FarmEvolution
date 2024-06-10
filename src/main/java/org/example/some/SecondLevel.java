@@ -68,6 +68,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     public static ArrayList<Monkey> monkeyArrayList = new ArrayList<>();
     public static ArrayList<Dragonfly> dragonflyArrayList = new ArrayList<>();
     public static ArrayList<Lemur> lemurArrayList = new ArrayList<>();
+    public static ArrayList<Peacock> peacockArrayList = new ArrayList<>();
 
     /*public static ArrayList<Peacock> peacockArrayList = new ArrayList<>();
     public static ArrayList<Parrot> parrotArrayList = new ArrayList<>();*/
@@ -93,8 +94,14 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
         addMonkey();
         addDragonfly();
         addLemur();
+        addPeacock();
     }
 
+    private void addPeacock() {
+        Peacock peacock = new Peacock( 250, 300, 700, 700, anchorPane, well, feeder, storage);
+        anchorPane.getChildren().add(peacock.getAnimalView());
+        peacockArrayList.add(peacock);
+    }
 
 
     public void addProducts(Monkey monkey) {
@@ -183,7 +190,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
 
     public void addLemur(){
         Lemur lemur = new Lemur(80, 270, 700, 630, anchorPane, well, feeder, storage);
-        anchorPane.getChildren().add(25, lemur.getAnimalView());
+        anchorPane.getChildren().add(lemur.getAnimalView());
         lemurArrayList.add(lemur);
     }
 

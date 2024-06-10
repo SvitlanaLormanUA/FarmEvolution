@@ -37,6 +37,8 @@ public class Monkey extends AbstractAnimal {
                 "src/main/resources/sound/monkey.mp3",
                 "file:src/main/resources/images/secondLevel/bananaThoughts.png"
         );
+        animalView.setFitWidth(90);
+        animalView.setFitHeight(90);
     }
 
     @Override
