@@ -27,6 +27,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="47.0" layoutY="601.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="51.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css" />
+      <Button layoutX="47.0" layoutY="601.0" mnemonicParsing="false" onAction="#showSettings" prefHeight="51.0" prefWidth="51.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css" />
    </children>
 </AnchorPane>

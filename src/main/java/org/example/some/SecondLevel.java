@@ -1,23 +1,18 @@
 package org.example.some;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import org.example.some.animals.*;
 import org.example.some.otherGameObjects.Instr;
 import org.example.some.otherGameObjects.Wallet;
@@ -28,6 +23,8 @@ import org.example.some.products.Banana;
 import java.io.*;
 import java.net.URL;
 import java.util.*;
+
+import static org.example.some.FirstLevel.coins;
 
 
 public class SecondLevel  extends LevelMusicBack implements Initializable {
@@ -61,11 +58,12 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    private static int coins;
+
     private static SettingsMenu settingsMenu;
 
     public static int countMonkeys = 1;
     public static int countDragonflies = 1;
+    public static int countLemurs = 1;
 
     public static ArrayList<Monkey> monkeyArrayList = new ArrayList<>();
     public static ArrayList<Dragonfly> dragonflyArrayList = new ArrayList<>();
@@ -240,6 +238,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
 
     @FXML
     void addStorageMenu(MouseEvent event) {
+        saveState();
         StorageMenu storageMenu = new  StorageMenu(storage, wallet, WIDTH/2-140, HEIGHT/4-100, anchorPane);
         storageMenu.secondLvl();
         anchorPane.getChildren().addLast(storageMenu.getRoot());
@@ -318,6 +317,8 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
             out.writeInt(countMonkeys);
             out.writeInt(countDragonflies);
             out.writeInt(countBanana);
+            out.writeInt(countLemurs);
+
 
 
 
@@ -334,9 +335,10 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
             countMonkeys = in.readInt();
             countDragonflies = in.readInt();
             countBanana = in.readInt();
+            countLemurs = in.readInt();
 
 
-            /* countMonkeys = in.readInt();*/
+
 
             setCoins(coins);
             wallet.setCoins(coins);
@@ -345,7 +347,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
             coins = 0; // Default value if there's an error or the file doesn't exist
         }
     }
-    public static void setCoins(int coins) {SecondLevel.coins = coins;}
+    public static void setCoins(int coins) {FirstLevel.coins = coins;}
 
 
 
