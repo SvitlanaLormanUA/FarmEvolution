@@ -23,8 +23,8 @@ public class Lemur extends AbstractAnimal{
                 "file:src/main/resources/images/secondLevel/products/mango.png"
         );
 
-        animalView.setFitWidth(100);
-        animalView.setFitHeight(110);
+        animalView.setFitWidth(110);
+        animalView.setFitHeight(120);
 
         giveProduct();
     }

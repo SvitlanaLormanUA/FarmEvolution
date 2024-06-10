@@ -1,9 +1,12 @@
 package org.example.some.animals;
 
+import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.scene.Cursor;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 import org.example.some.FirstLevel;
 import org.example.some.Storage;
 import org.example.some.otherGameObjects.Well;
@@ -18,8 +21,8 @@ public class Peacock extends AbstractAnimal{
                 "src/main/resources/sound/peacock.mp3",
                 "file:src/main/resources/images/secondLevel/products/feather.png"
         );
-        animalView.setFitWidth(130);
-        animalView.setFitHeight(120);
+        animalView.setFitWidth(150);
+        animalView.setFitHeight(140);
         giveProduct();
     }
     @Override
@@ -90,5 +93,70 @@ public class Peacock extends AbstractAnimal{
         };
 
         timer.scheduleAtFixedRate(task, 0, 5000);
+    }
+
+    @Override
+    public void movement() {
+        translateTransition = new TranslateTransition();
+        translateTransition.setDuration(Duration.millis(800));
+        translateTransition.setNode(animalView);
+        directionRight = true;  // Initial direction
+
+        translateTransition.setOnFinished(event -> {
+            animalView.setLayoutX(animalView.getLayoutX() + deltaX);
+
+            // Reset translateX after movement
+            animalView.setTranslateX(0);
+
+            // Determine new direction and set deltaX
+            setRandomDirection();
+
+            // Play the transition again
+            translateTransition.play();
+        });
+
+        // Start the movement
+        setRandomDirection();
+        translateTransition.play();
+
+        // Set mouse event handlers
+        animalView.setOnMouseClicked(this::handleMouseClicked);
+        animalView.setOnMouseDragged(this::handleMouseDragged);
+        animalView.setOnMouseReleased(this::handleMouseReleased);
+    }
+
+
+    @Override
+    public void setRandomDirection() {
+        double x = animalView.getLayoutX();
+        double y = animalView.getLayoutY();
+
+        deltaX = 7; // Small step forward
+        deltaY = random.nextInt(10) - 5; // Slight variation in y-direction
+
+        // Check if the cow has reached the end of the movement range
+        if (directionRight && (x + deltaX > worldEndX - animalView.getFitWidth())) {
+            animalView.setImage(new Image(imagePathLeft));
+            directionRight = false; // Switch to moving backward
+        } else if (!directionRight && (x - deltaX < worldStartX)) {
+            animalView.setImage(new Image(imagePath));
+            directionRight = true; // Switch to moving forward
+        }
+
+        // Adjust deltaX based on the current direction
+        if (!directionRight) {
+            deltaX = -deltaX;
+        }
+
+        double newX = x + deltaX;
+        double newY = y + deltaY;
+
+        if (newY < worldStartY || newY > worldEndY - animalView.getFitHeight()) {
+            deltaY = -deltaY;
+        }
+
+        translateTransition.setByX(deltaX);
+        translateTransition.setByY(deltaY);
+
     }
 }
