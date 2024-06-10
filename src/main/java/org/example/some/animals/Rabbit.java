@@ -18,11 +18,13 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static org.example.some.SettingsMenu.restart;
+
 
 public class Rabbit extends AbstractAnimal implements AnimalMeat{
 
+    public static int amountOfMeals;
     private int productCost;
-    private int amountOfMeals;
     private AnimalMeatMenu animalMeatMenu;
     private boolean openedMeatMenu;
     private int puposedAmount = 3;
@@ -38,13 +40,16 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
                 "src/main/resources/sound/jumpRabbit.mp3",
                 "file:src/main/resources/images/firstLevel/products/meat.png"
         );
-        this.amountOfMeals = 0;
+        FirstLevel.loadState();
+
         this.productCost = 0;
         this.openedMeatMenu = false;
         this.enoughFood = false;
         animalView.setFitWidth(70);
         animalView.setFitHeight(90);
     }
+
+
 
 
     @Override
@@ -150,6 +155,7 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
                 removeMenu();
             }
             root.getChildren().remove(this.animalView);
+            FirstLevel.countRabbit--;
         }
     }
 

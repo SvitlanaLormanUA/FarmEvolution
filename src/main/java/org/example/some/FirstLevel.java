@@ -164,6 +164,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
             Pig pig = new Pig(250, 300, 1000, 630, anchorPane, well, feeder, storage);
             anchorPane.getChildren().add(pig.getAnimalView());
             pigArrayList.add(pig);
+
         }
 
 
@@ -191,6 +192,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
         addPig();
         addRabbit();
         addCow();
+
     }
 
     public static void deleteAllObjects(){
@@ -269,10 +271,12 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
 
         if (restart) {
             storage.reset();
+
             restart = false;
         }
         anchorPane.getChildren().add(storage.getRoot());
     }
+
 
     public void setWater() {
         if (progress < 0.1) {
@@ -295,13 +299,15 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
             out.writeInt(countGoose);
             out.writeInt(countPig);
             out.writeInt(countRabbit);
+            out.writeInt(Pig.amountOfMeals);
+            out.writeInt(Rabbit.amountOfMeals);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    static void loadState() {
+    public static void loadState() {
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("gameState.ser"))) {
 
             coins = in.readInt();
@@ -310,6 +316,11 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
             countGoose = in.readInt();
             countPig = in.readInt();
             countRabbit = in.readInt();
+            if (!restart) {
+                Pig.amountOfMeals = in.readInt();
+                Rabbit.amountOfMeals = in.readInt();
+            }
+
 
 
             setCoins(coins);
@@ -317,6 +328,8 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
             wallet.nCoins.setText(String.valueOf(coins));
         } catch (IOException e) {
             coins = 0; // Default value if there's an error or the file doesn't exist
+            Pig.amountOfMeals = 0;
+            Rabbit.amountOfMeals = 0;
             System.out.println("Error loading game state: " + e.getMessage());
         }
     }
@@ -376,13 +389,17 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
         addWallet();
         loadState();
 
-        if (SettingsMenu.start) {
+        if (SettingsMenu.restart) {
             wallet.setCoins(100);
             countGoose = 1;
             countCow = 1;
             countSheep = 1;
             countPig = 1;
             countRabbit = 1;
+            Pig.amountOfMeals = 0;
+            Rabbit.amountOfMeals = 0;
+            saveState();
+
             SettingsMenu.start = false;
 
         }
