@@ -13,8 +13,8 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.util.Duration;
 import org.example.some.FirstLevel;
+import org.example.some.SecondLevel;
 import org.example.some.Storage;
-import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
 
 import java.io.File;
@@ -390,7 +390,8 @@ public abstract class AbstractAnimal implements Animal {
         removeMenu();
         delete();
         String animalType = this.getClass().getSimpleName();
-        FirstLevel.decreaseAnimalCount(animalType);
+        decreaseAnimalCount(animalType);
+
         mediaPlayer.stop();
     }
 
@@ -402,7 +403,7 @@ public abstract class AbstractAnimal implements Animal {
             delete();
 //            FirstLevel.sellAnimal(this);
             String animalType = this.getClass().getSimpleName();
-            FirstLevel.decreaseAnimalCount(animalType);
+             decreaseAnimalCount(animalType);
             mediaPlayer.stop();
         }
     }
@@ -467,6 +468,38 @@ public abstract class AbstractAnimal implements Animal {
     }
     public static void setVolume(double volume) {
         mediaPlayer.setVolume(volume);
+    }
+
+    public static void decreaseAnimalCount(String animalType) {
+        switch (animalType) {
+            case "Cow":
+                FirstLevel.countCow--;
+                break;
+            case "Sheep":
+                FirstLevel.countSheep--;
+                break;
+            case "Goose":
+                FirstLevel.countGoose--;
+                break;
+            case "Pig":
+                FirstLevel.countPig--;
+                break;
+            case "Rabbit":
+                FirstLevel.countRabbit--;
+                break;
+            case "Monkey":
+                SecondLevel.countMonkeys--;
+                break;
+            case "Lemur":
+                SecondLevel.countLemurs--;
+                break;
+
+            case "Dragonfly":
+                SecondLevel.countDragonflies--;
+                break;
+            default:
+                break;
+        }
     }
 
 }
