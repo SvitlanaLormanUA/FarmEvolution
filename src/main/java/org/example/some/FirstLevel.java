@@ -16,6 +16,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import org.example.some.animals.*;
+import org.example.some.extraGame.MenuExtraGame;
 import org.example.some.otherGameObjects.Instr;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
@@ -384,6 +385,9 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
     }
 
     public void showExtraTasks(ActionEvent event) {
+        MenuExtraGame gameMenu = new MenuExtraGame(anchorPane);
+        gameMenu.createImagePane();
+        anchorPane.getChildren().add(gameMenu.getRoot());
     }
 
     public void showSettings(ActionEvent event) {

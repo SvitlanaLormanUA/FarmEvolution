@@ -27,7 +27,7 @@ public class AnimalCountingGame extends Application {
         primaryStage.setTitle("Animal Counting Game");
 
         // Load the image
-        Image image = new Image("file:src/main/resources/images/extraGame/AnimalCoutingGame.png");
+        Image image = new Image("file:src/main/resources/images/extraGame/AnimalCountingGame.png");
         ImageView imageView = new ImageView(image);
         imageView.setFitWidth(500);
         imageView.setPreserveRatio(true);
@@ -219,9 +219,5 @@ public class AnimalCountingGame extends Application {
 
         instructionOverlay.getChildren().add(closeBox);
         return instructionOverlay;
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }
