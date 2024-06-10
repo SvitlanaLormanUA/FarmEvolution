@@ -65,8 +65,8 @@ public class Cow extends AbstractAnimal {
                                 if (productView == null) {
                                     productView = new ImageView(product);
                                     productView.setId("product");
-                                    productView.setFitWidth(40);
-                                    productView.setFitHeight(40);
+                                    productView.setFitWidth(50);
+                                    productView.setFitHeight(50);
                                     productView.setCursor(Cursor.HAND);
 
                                     // Set initial position
@@ -75,7 +75,7 @@ public class Cow extends AbstractAnimal {
                                     // Set mouse click handler
                                     productView.setOnMouseClicked(event -> {
                                         AbstractAnimal.root.getChildren().remove(productView);
-                                        storage.addWool();
+                                        storage.addMilk();
                                         productView = null; // Reset the product view
                                     });
 
