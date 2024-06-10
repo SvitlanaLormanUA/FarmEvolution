@@ -63,6 +63,10 @@ public class Storage {
     private int soldPigP = 10;
     private int soldRabbitP = 15;
 
+    private boolean firstLvl;
+    private boolean secondLvl;
+    private boolean thirdLvl;
+
     public Storage(ImageView storageView, Wallet wallet, Image product1View, Image product2View, Image product3View,
                    Image product4View, Image product5View) {
         this.storageView = storageView;
@@ -83,7 +87,7 @@ public class Storage {
         product4Views = new ArrayList<>();
         product5Views = new ArrayList<>();
 
-        loadState();
+//        loadState();
     }
 
     public void lvl1() {
@@ -92,6 +96,10 @@ public class Storage {
         product3Cost = 8;
         product4Cost = 80;
         product5Cost = 40;
+        firstLvl = true;
+        secondLvl = false;
+        thirdLvl = false;
+        loadState();
     }
 
     public void lvl2() {
@@ -100,6 +108,22 @@ public class Storage {
         product3Cost = 100;
         product4Cost = 110;
         product5Cost = 120;
+        firstLvl = false;
+        secondLvl = true;
+        thirdLvl = false;
+        loadState();
+    }
+
+    public void lvl3() {
+        product1Cost = 0;
+        product2Cost = 0;
+        product3Cost = 0;
+        product4Cost = 0;
+        product5Cost = 0;
+        firstLvl = false;
+        secondLvl = false;
+        thirdLvl = true;
+        loadState();
     }
     private void addProductsToList(int product, int quantity, List<ImageView> viewsList, Image productImage, int width,  int height) {
         double startX = storageView.getLayoutX();
@@ -109,78 +133,112 @@ public class Storage {
         for (int i = 0; i < quantity; i++) {
             switch(product) {
                 case 1 -> {
-                    x = startX + i*13;
-                    y = startY + 52; // Висота, на якій розташовані продукти
-                    if (i == product1) {
-                        if (product1 != 1) {
-                            for (int j = 2; j <= product1; j++) {
-                                x += 13;
+                    if(firstLvl) {
+                        x = startX + i * 13;
+                        y = startY + 52; // Висота, на якій розташовані продукти
+                        if (i == product1) {
+                            if (product1 != 1) {
+                                for (int j = 2; j <= product1; j++) {
+                                    x += 13;
+                                }
                             }
                         }
+                    } else if (secondLvl) {
+                        width = 55;
+                        height = 55;
+                        x = random.nextInt(880, 1000);
+                        y = random.nextInt(540, 560);
+                    } else if (thirdLvl) {
+
                     }
                 }
 
                 case 2->{
-                    x = storageView.getLayoutX() + i*12;
-                    y = storageView.getLayoutY() + 22;
-                    if (i == product2) {
-                        if (product2 == 2 || product2 == 3) {
-                            for (int j = 2; j <= product2; j++) {
-                                x += 24;
+                    if(firstLvl) {
+                        x = storageView.getLayoutX() + i * 12;
+                        y = storageView.getLayoutY() + 22;
+                        if (i == product2) {
+                            if (product2 == 2 || product2 == 3) {
+                                for (int j = 2; j <= product2; j++) {
+                                    x += 24;
+                                }
+                            } else if (product2 == 4) {
+                                x = storageView.getLayoutX() + 15;
+                                y = storageView.getLayoutY() + 10;
+                            } else if (product2 == 5) {
+                                x = storageView.getLayoutX() + 34;
+                                y = storageView.getLayoutY() + 10;
                             }
-                        } else if (product2 == 4) {
-                            x = storageView.getLayoutX() + 15;
-                            y = storageView.getLayoutY() + 10;
-                        } else if (product2 == 5) {
-                            x = storageView.getLayoutX() + 34;
-                            y = storageView.getLayoutY() + 10;
                         }
+                    } else if (secondLvl) {
+                        x = random.nextInt(880, 1000);
+                        y = random.nextInt(540, 560);
+                    } else if (thirdLvl) {
+
                     }
                 }
 
                 case 3 -> {
-                    x = storageView.getLayoutX() + i*16;
-                    y = storageView.getLayoutY() - 39;
+                    if (firstLvl) {
+                        x = storageView.getLayoutX() + i * 16;
+                        y = storageView.getLayoutY() - 39;
 
-                    for (int j = 1; j <= 5; j++) {
-                        if (i == product3) {
-                            if (product3 != 1) {
-                                for (int l = 2; l <= product3; l++) {
-                                    x += 16;
+                        for (int j = 1; j <= 5; j++) {
+                            if (i == product3) {
+                                if (product3 != 1) {
+                                    for (int l = 2; l <= product3; l++) {
+                                        x += 16;
+                                    }
                                 }
                             }
                         }
+                    } else if (secondLvl) {
+
+                    } else if (thirdLvl) {
+
                     }
                 }
 
                 case 4 -> {
-              x = storageView.getLayoutX() + 2 + i*22;
-                    y = storageView.getLayoutY() + 97;
-                    if (i == product4) {
-                        if (product4 == 2 || product4 == 3) {
-                            for (int j = 2; j <= product4; j++) {
-                                x += 22;
+                    if (firstLvl) {
+                        x = storageView.getLayoutX() + 2 + i * 22;
+                        y = storageView.getLayoutY() + 97;
+                        if (i == product4) {
+                            if (product4 == 2 || product4 == 3) {
+                                for (int j = 2; j <= product4; j++) {
+                                    x += 22;
+                                }
+                            } else if (product4 == 4) {
+                                x += 10;
+                                y = storageView.getLayoutY() + 87;
+                            } else if (product4 == 5) {
+                                x += 30;
+                                y = storageView.getLayoutY() + 87;
                             }
-                        } else if (product4 == 4) {
-                            x += 10;
-                            y = storageView.getLayoutY() + 87;
-                        } else if (product4 == 5) {
-                            x += 30;
-                            y = storageView.getLayoutY() + 87;
                         }
-                    }
+                    } else if (secondLvl) {
+                        x = random.nextInt(880, 1000);
+                        y = random.nextInt(550, 570);
+                    } else if (thirdLvl) {
 
+                    }
                 }
 
                 case 5 -> {
-                    x = storageView.getLayoutX() + 2 + i*13;
-                    y = storageView.getLayoutY() + 127;
-                    if (i == product5) {
-                        if (product5 != 1) {
-                            for (int j = 2; j <= product5; j++) {
-                                x += 13;
+                    if (firstLvl) {
+                        x = storageView.getLayoutX() + 2 + i * 13;
+                        y = storageView.getLayoutY() + 127;
+                        if (i == product5) {
+                            if (product5 != 1) {
+                                for (int j = 2; j <= product5; j++) {
+                                    x += 13;
+                                }
                             }
                         }
+                    } else if (secondLvl) {
+
+                    } else if (thirdLvl) {
+
                     }
                 }
                 default -> {
@@ -369,7 +427,7 @@ public class Storage {
             for (int i = 1; i <= 7; i++) {
                 if (i == product4) {
                     x = random.nextInt(880, 1000);
-                    y = random.nextInt(530, 540);
+                    y = random.nextInt(550, 570);
                     ImageView productView = createProduct(product4Image, x, y, width, height);
                     product4Views.add(productView);
                     int num = product4 - 1;
