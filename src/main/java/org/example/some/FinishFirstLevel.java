@@ -20,27 +20,27 @@ public class FinishFirstLevel {
     }
 
     public void createImagePane() {
-        Image image = new Image("file:src/main/resources/images/instrPicture.png");
+        Image image = new Image("file:src/main/resources/images/FinishLevel.png");
         this.imageView = new ImageView(image);
-        imageView.setFitWidth(350);
-        imageView.setFitHeight(600);
+        imageView.setFitWidth(370);
+        imageView.setFitHeight(200);
 
         Rectangle clip = new Rectangle(imageView.getFitWidth(), imageView.getFitHeight());
         clip.setArcWidth(20);
         clip.setArcHeight(20);
         imageView.setClip(clip);
 
-        Button close = new Button("×");
-        close.setLayoutX(25);
-        close.setLayoutY(10);
+        Button close = new Button("  Ок  ");
+        close.setLayoutX(170);
+        close.setLayoutY(160);
         close.setStyle("-fx-background-color: #ff5757; -fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold; -fx-border-radius: 10px; -fx-background-radius: 10px;");
         close.setOnAction(event -> {
             main.getChildren().remove(root);
         });
 
         root = new Pane();
-        root.setTranslateX(this.x + 720);
-        root.setTranslateY(this.y + 30);
+        root.setTranslateX(this.x + 480);
+        root.setTranslateY(this.y + 180);
         root.getChildren().addAll(imageView, close);
     }
 
