@@ -1,5 +1,9 @@
 package org.example.some;
-
+/**
+ * "Farm Evolution Game"
+ * @authors Svitlana Lorman, Alona Dmytrokina, Dariia Shyn
+ * @version 1.3
+ * */
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
