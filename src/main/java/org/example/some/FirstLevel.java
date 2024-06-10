@@ -313,7 +313,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
 
 
 
-    static void saveState() {
+    public static void saveState() {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("gameState.ser"))) {
 
             if (wallet!=null) {
