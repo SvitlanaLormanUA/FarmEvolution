@@ -63,24 +63,25 @@ public class Feeder {
         }
     }
 
-
+    private int n;
 //    потрібно буде щось зробити із зняттям гроше + при натисканні на колодязь чомусь теж знімаються гроші
     private void handleMouseClicked(MouseEvent event){
         if(progress < 1.0) {
+            n = 0;
             AskingMenu askingMenu = new AskingMenu("\t   Чи бажаєте ви поповнити годівничку за\n\t\t\t\t "+renewal+" монети?", FirstLevel.WIDTH / 3 + 60, FirstLevel.HEIGHT / 3);
             Button yesButton = askingMenu.getYes();
             Button noButton = askingMenu.getNo();
             Button closeButton = askingMenu.getClose();
-
             yesButton.setOnAction(even -> {
                 Timer timer = new Timer();
                 TimerTask task = new TimerTask() {
                     @Override
                     public void run() {
-                        if (foodLvl < 10 && progress < 1) {
+                        if (n < 10 && progress < 1.0) {
                             foodLvl++;
                             progress += 0.1;
                             foodBar.setProgress(progress);
+                            n++;
                         } else {
                             timer.cancel();
                         }

@@ -61,12 +61,14 @@ public class Well {
         root.getChildren().remove(waterLvlLabel);
     }
 
+    private int n;
     private void handleMouseClicked(MouseEvent event){
+        n = 0;
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                if (waterLvl < 10 && progress<1.0) {
+                if (n<10 && waterLvl < 10 && progress<1.0) {
                     waterLvl++;
                     waterLvlLabel.setText("Рівень води: " + waterLvl);
 

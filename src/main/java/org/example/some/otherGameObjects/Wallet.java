@@ -1,5 +1,6 @@
 package org.example.some.otherGameObjects;
 
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -37,8 +38,16 @@ public class Wallet implements Serializable {
     }
 
     public void expense(int n) {
-        coins -= n;
-        updateCoinsLabel();
+        if(coins-n>=0) {
+            coins -= n;
+            updateCoinsLabel();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Помилка!");
+            alert.setContentText("У Вас недостатньо грошей! \nВиконайте додаткові завдання для заробітку");
+            alert.showAndWait();
+        }
     }
 
     public void updateCoinsLabel() {

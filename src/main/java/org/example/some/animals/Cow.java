@@ -91,7 +91,7 @@ public class Cow extends AbstractAnimal {
                 };
 
                 // Запуск завдання з інтервалом 35 секунд (70000 мілісекунд)
-                timer.scheduleAtFixedRate(task, 0, 7000);
+                timer.scheduleAtFixedRate(task, 0, 70000);
             }
         }
     }

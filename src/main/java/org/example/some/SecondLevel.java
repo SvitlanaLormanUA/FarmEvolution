@@ -72,8 +72,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     public static ArrayList<Lemur> lemurArrayList = new ArrayList<>();
     public static ArrayList<Peacock> peacockArrayList = new ArrayList<>();
 
-    /*public static ArrayList<Peacock> peacockArrayList = new ArrayList<>();
-    public static ArrayList<Parrot> parrotArrayList = new ArrayList<>();*/
+    public static ArrayList<Parrot> parrotArrayList = new ArrayList<>();
 
     public static boolean bananaIsAdded = false;
     public static boolean productIsAdded = false;
@@ -97,6 +96,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
         addDragonfly();
         addLemur();
         addPeacock();
+        addParrot();
     }
 
     private void addPeacock() {
@@ -136,7 +136,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
             }
 
         };
-        timer.scheduleAtFixedRate(task, 0, 20000);
+        timer.scheduleAtFixedRate(task, 0, 50000);
 
 
 
@@ -194,6 +194,12 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
         Lemur lemur = new Lemur(80, 270, 700, 630, anchorPane, well, feeder, storage);
         anchorPane.getChildren().add(lemur.getAnimalView());
         lemurArrayList.add(lemur);
+    }
+
+    public void addParrot(){
+        Parrot parrot = new Parrot(20, 90, 300, 400, anchorPane, well, feeder, storage);
+        anchorPane.getChildren().add(parrot.getAnimalView());
+        parrotArrayList.add(parrot);
     }
 
     @FXML
@@ -266,14 +272,14 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
             lemurArrayList.get(i).delete();
             lemurArrayList.set(i, null);
         }
-        /*for(int i=0; i<peacockArrayList.size(); i++){
+        for(int i=0; i<peacockArrayList.size(); i++){
             peacockArrayList.get(i).delete();
             peacockArrayList.set(i, null);
         }
         for(int i=0; i<parrotArrayList.size(); i++){
             parrotArrayList.get(i).delete();
             parrotArrayList.set(i, null);
-        }*/
+        }
 
         storage = null;
         well = null;

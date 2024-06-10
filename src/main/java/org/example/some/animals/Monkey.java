@@ -214,6 +214,7 @@ public class Monkey extends AbstractAnimal {
                     KeyFrame kf = new KeyFrame(Duration.seconds(1), kvY);
                     Timeline timeline = new Timeline(kf);
                     timeline.play();
+                    banana.getProductView().setMouseTransparent(true);
                 });
             }
 
@@ -238,7 +239,7 @@ public class Monkey extends AbstractAnimal {
             public void run() {
                 if (hungerLvl > 0) {
                     hungerLvl--;
-                    cost = (int) (350 * ((double)hungerLvl / 100));
+                    cost = (int) (550 * ((double)hungerLvl / 100));
                 } else {
                     timer.cancel();
                 }
