@@ -60,7 +60,6 @@ public class Parrot extends AbstractAnimal{
         double x = animalView.getLayoutX();
         double y = animalView.getLayoutY();
 
-
         if (directionRight) {
             deltaX = random.nextInt(10, 30);
         } else {
