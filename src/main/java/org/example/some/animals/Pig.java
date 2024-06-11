@@ -7,22 +7,20 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import org.example.some.FirstLevel;
-import org.example.some.SecondLevel;
 import org.example.some.Storage;
 import org.example.some.otherGameObjects.Well;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static org.example.some.SettingsMenu.restart;
-
 
 public class Pig extends AbstractAnimal implements AnimalMeat{
 
-    public static int amountOfMeals;
     private int productCost;
+    public static int amountOfMeals;
     private AnimalMeatMenu animalMeatMenu;
     private boolean openedMeatMenu;
     private int puposedAmount = 5;
@@ -34,14 +32,13 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
                 "src/main/resources/sound/pigSound.mp3",
                 "file:src/main/resources/images/firstLevel/products/meat.png"
         ) ;
-       FirstLevel.loadState();
+    //    loadAmountOfMeals();
         this.productCost = 0;
         this.openedMeatMenu = false;
         this.enoughFood = false;
         giveProduct();
 
     }
-
 
     @Override
     public void handleMouseClicked(MouseEvent event) {
@@ -70,7 +67,6 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
             if(AbstractAnimal.feeder.haveFood()) {
                 hungerLvl += 50;
                 amountOfMeals++;
-                SecondLevel.saveState();
             }
             if(amountOfMeals<puposedAmount) {
                 animalMeatMenu.getFeed().setText("Нагодовано: " + amountOfMeals + "/" + puposedAmount);
@@ -93,12 +89,10 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
             if (amountOfMeals >= puposedAmount) {
                 ImageView productView1 = createProductView(animalView.getLayoutX() + 50, animalView.getLayoutY() + 30);
                 productViews.add(productView1);
-
             }
             if (amountOfMeals >= puposedAmount*2) {
                 ImageView productView2 = createProductView(animalView.getLayoutX() - 50, animalView.getLayoutY() - 30);
                 productViews.add(productView2);
-
             }
             if (amountOfMeals >= puposedAmount*3) {
                 ImageView productView3 = createProductView(animalView.getLayoutX(), animalView.getLayoutY() + 20);
@@ -108,7 +102,6 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
             Platform.runLater(() -> {
                 for (ImageView productView : productViews) {
                     AbstractAnimal.root.getChildren().add(1, productView);
-
                 }
             });
 
@@ -116,7 +109,6 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
                 removeMenu();
             }
             root.getChildren().remove(this.animalView);
-            FirstLevel.countPig--;
         }
     }
 
@@ -193,5 +185,20 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
         };
 
         timer.scheduleAtFixedRate(task, 0, 3000);
+    }
+
+    public static void saveAmountOfMeals() {
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("amountOfMeals.dat"))) {
+            oos.writeInt(amountOfMeals);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void loadAmountOfMeals() {
+        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("amountOfMeals.dat"))) {
+            amountOfMeals = ois.readInt();
+        } catch (IOException e) {
+           amountOfMeals = 0;
+        }
     }
 }

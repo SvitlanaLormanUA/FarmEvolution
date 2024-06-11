@@ -9,10 +9,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import org.example.some.FirstLevel;
-import org.example.some.SecondLevel;
 import org.example.some.Storage;
 import org.example.some.otherGameObjects.Well;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -20,8 +20,8 @@ import java.util.TimerTask;
 
 public class Dragonfly extends AbstractAnimal implements AnimalMeat{
 
-    public static int amountOfMeals;
     private int productCost;
+    public static int amountOfMeals;
     private AnimalMeatMenu animalMeatMenu;
     private boolean openedMeatMenu;
     private int puposedAmount = 12;
@@ -33,7 +33,7 @@ public class Dragonfly extends AbstractAnimal implements AnimalMeat{
                 "src/main/resources/sound/dragonfly.mp3",
                 "file:src/main/resources/images/secondLevel/products/dragonflyPr.png"
         );
-        SecondLevel.loadState();
+      //  loadAmountOfMeals();
         animalView.setFitWidth(70);
         animalView.setFitHeight(50);
         this.productCost = 0;
@@ -128,7 +128,6 @@ public class Dragonfly extends AbstractAnimal implements AnimalMeat{
             if(AbstractAnimal.feeder.haveFood()){
                 hungerLvl += 50;
                 amountOfMeals++;
-                SecondLevel.saveState();
             }
             if(amountOfMeals<puposedAmount) {
                 animalMeatMenu.getFeed().setText("Нагодовано: " + amountOfMeals + "/" + puposedAmount);
@@ -159,7 +158,6 @@ public class Dragonfly extends AbstractAnimal implements AnimalMeat{
                 removeMenu();
             }
             root.getChildren().remove(this.animalView);
-            SecondLevel.countDragonflies--;
 //        }
     }
 
@@ -226,5 +224,20 @@ public class Dragonfly extends AbstractAnimal implements AnimalMeat{
         };
 
         timer.scheduleAtFixedRate(task, 0, 3000);
+    }
+
+    public static void saveAmountOfMeals() {
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("amountOfMeals.ser"))) {
+            oos.writeInt(amountOfMeals);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void loadAmountOfMeals() {
+        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("amountOfMeals.ser"))) {
+            amountOfMeals = ois.readInt();
+        } catch (IOException e) {
+            amountOfMeals = 0;
+        }
     }
 }

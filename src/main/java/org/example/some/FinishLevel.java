@@ -55,7 +55,7 @@ public class FinishLevel {
 
                 stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
                 main.getChildren().clear();
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("secondLevel.fxml")));
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("chooseSecondLevel.fxml")));
 
                 deleteAllObjects();
 

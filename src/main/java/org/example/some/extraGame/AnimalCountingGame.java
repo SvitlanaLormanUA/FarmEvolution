@@ -123,7 +123,7 @@ public class AnimalCountingGame  {
         StackPane instructionOverlay = createInstructionOverlay();
 
         // Main layout with instruction overlay
-         root = new StackPane();
+        root = new StackPane();
         root.getChildren().addAll(vbox, instructionOverlay);
 
         Scene scene = new Scene(root, 550, 450);

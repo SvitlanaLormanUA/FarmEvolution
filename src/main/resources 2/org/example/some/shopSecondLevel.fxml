@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="anchorPane" fx:id="anchorPane" prefHeight="706.0" prefWidth="1256.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.some.ShopSecondLevel">
+   <children>
+      <ImageView fitHeight="707.0" fitWidth="1255.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/shop/tropical/tropical.png" />
+         </image>
+      </ImageView>
+      <ImageView id="coins" fx:id="coinsView" fitHeight="43.0" fitWidth="164.0" layoutX="37.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/coins.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="closeButtonView" fitHeight="49.0" fitWidth="52.0" layoutX="1163.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/shop/close.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="closeButton" layoutX="1162.0" layoutY="40.0" mnemonicParsing="false" onAction="#backToGame" prefHeight="50.0" prefWidth="50.0" styleClass="close" stylesheets="@../../../styles/shop.css" />
+      <ImageView fx:id="backButtonView" fitHeight="80.0" fitWidth="84.0" layoutX="1147.0" layoutY="404.0" preserveRatio="true" rotate="180.0" styleClass="backButton">
+         <image>
+            <Image url="@../../../images/shop/backButton.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </ImageView>
+      <Button fx:id="nextButton" layoutX="1154.0" layoutY="412.0" mnemonicParsing="false" onAction="#thirdShop" prefHeight="65.0" prefWidth="66.0" styleClass="backButton" stylesheets="@../../../styles/shop.css" />
+      <ImageView fx:id="nextButtonView" fitHeight="80.0" fitWidth="84.0" layoutX="41.0" layoutY="405.0" preserveRatio="true" styleClass="backButton">
+         <image>
+            <Image url="@../../../images/shop/backButton.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </ImageView>
+      <Button fx:id="backButton" layoutX="48.0" layoutY="412.0" mnemonicParsing="false" onAction="#firstShop" prefHeight="65.0" prefWidth="66.0" styleClass="backButton" stylesheets="@../../../styles/shop.css" />
+      <Button layoutX="234.0" layoutY="279.0" mnemonicParsing="false" onAction="#buyParrot" prefHeight="27.0" prefWidth="173.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 905 монет" />
+      <Button layoutX="585.0" layoutY="279.0" mnemonicParsing="false" onAction="#buyMonkey" prefHeight="27.0" prefWidth="173.0" rotate="1.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 1120 монет" />
+      <Button layoutX="892.0" layoutY="279.0" mnemonicParsing="false" onAction="#buyPeacock" prefHeight="27.0" prefWidth="173.0" rotate="8.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 1545 монет" />
+      <Button layoutX="385.0" layoutY="599.0" mnemonicParsing="false" onAction="#buyLemur" prefHeight="27.0" prefWidth="173.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 1700 монет" />
+      <Button layoutX="771.0" layoutY="599.0" mnemonicParsing="false" onAction="#buyDragonfly" prefHeight="27.0" prefWidth="173.0" rotate="1.0" styleClass="buyButton" stylesheets="@../../../styles/shop.css" text="Купити за 700 монет" />
+   </children>
+</AnchorPane>

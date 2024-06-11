@@ -9,8 +9,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import org.example.some.animals.Pig;
-import org.example.some.animals.Rabbit;
 
 
 import java.io.*;
@@ -65,7 +63,7 @@ public class SettingsMenu {
                 anchorPane.getChildren().remove(askingMenu.getRoot());
                 mediaPlayerBack.seek(mediaPlayerBack.getStartTime());
                 mediaPlayerBack.play();
-               /* FirstLevel.countCow = 1;
+                FirstLevel.countCow = 1;
 
                 FirstLevel.countSheep = 1;
                 FirstLevel.countPig = 1;
@@ -78,8 +76,6 @@ public class SettingsMenu {
                 SecondLevel.countBanana = 0;
                 SecondLevel.countMonkeys = 1;
                 SecondLevel.countDragonflies = 1;
-                Pig.amountOfMeals = 0;
-                Rabbit.amountOfMeals = 0;*/
 
                // Storage.reset();
                 wallet.resetWallet();

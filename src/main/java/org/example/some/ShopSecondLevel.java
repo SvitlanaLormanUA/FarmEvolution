@@ -118,9 +118,7 @@ public class ShopSecondLevel extends Shop implements Initializable {
 
     public void firstShop(ActionEvent event) {
         try {
-            FirstLevel.saveState();
-            SecondLevel.saveState();
-
+            saveState();
             if (level == 1) {
                 ShopFirstLevel.setCurrentLevel("firstLevel.fxml");
             } else if (level == 2) {
@@ -142,8 +140,7 @@ public class ShopSecondLevel extends Shop implements Initializable {
 
     public void thirdShop(ActionEvent event) {
         try {
-            FirstLevel.saveState();
-            SecondLevel.saveState();
+            saveState();
             if (level == 1) {
                 ShopThirdLevel.setCurrentLevel("firstLevel.fxml");
             } else if (level == 2) {
@@ -165,7 +162,6 @@ public class ShopSecondLevel extends Shop implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         addImageBasedOnPreviousLevel();
     }
 }

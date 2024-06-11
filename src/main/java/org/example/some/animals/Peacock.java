@@ -136,8 +136,10 @@ public class Peacock extends AbstractAnimal{
 
         // Check if the cow has reached the end of the movement range
         if (directionRight && (x + deltaX > worldEndX - animalView.getFitWidth())) {
+
             directionRight = false; // Switch to moving backward
         } else if (!directionRight && (x - deltaX < worldStartX)) {
+
             directionRight = true; // Switch to moving forward
         }
 

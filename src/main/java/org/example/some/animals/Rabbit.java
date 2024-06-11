@@ -13,18 +13,17 @@ import org.example.some.otherGameObjects.Well;
 
 import javafx.util.Duration;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static org.example.some.SettingsMenu.restart;
-
 
 public class Rabbit extends AbstractAnimal implements AnimalMeat{
 
-    public static int amountOfMeals;
     private int productCost;
+    public static int amountOfMeals;
     private AnimalMeatMenu animalMeatMenu;
     private boolean openedMeatMenu;
     private int puposedAmount = 3;
@@ -40,16 +39,14 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
                 "src/main/resources/sound/jumpRabbit.mp3",
                 "file:src/main/resources/images/firstLevel/products/meat.png"
         );
-        FirstLevel.loadState();
-
+       // loadAmountOfMeals();
         this.productCost = 0;
         this.openedMeatMenu = false;
         this.enoughFood = false;
         animalView.setFitWidth(70);
         animalView.setFitHeight(90);
+
     }
-
-
 
 
     @Override
@@ -113,6 +110,7 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
             if(AbstractAnimal.feeder.haveFood()) {
                 hungerLvl += 100;
                 amountOfMeals++;
+
             }
             if(amountOfMeals<puposedAmount) {
                 animalMeatMenu.getFeed().setText("Нагодовано: " + amountOfMeals + "/" + puposedAmount);
@@ -155,7 +153,6 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
                 removeMenu();
             }
             root.getChildren().remove(this.animalView);
-            FirstLevel.countRabbit--;
         }
     }
 
@@ -232,6 +229,20 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
         };
 
         timer.scheduleAtFixedRate(task, 0, 3000);
+    }
+    public static void saveAmountOfMeals() {
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("amountOfMeals.dat"))) {
+            oos.writeInt(amountOfMeals);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void loadAmountOfMeals() {
+        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("amountOfMeals.dat"))) {
+            amountOfMeals = ois.readInt();
+        } catch (IOException e) {
+            amountOfMeals = 0;
+        }
     }
 
 }

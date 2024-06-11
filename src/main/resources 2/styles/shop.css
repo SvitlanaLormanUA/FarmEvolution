@@ -1,0 +1,35 @@
+.backButton {
+    -fx-background-color: transparent;
+    -fx-border-color: black;
+    -fx-border-radius: 150;
+    -fx-background-radius: 150;
+
+}
+
+.backButton:hover {
+    -fx-border-color: lightgray;
+}
+.buyButton {
+    -fx-background-color: #00c3ad;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-color: #022c27;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-cursor: pointer;
+}
+.buyButton:hover {
+    -fx-background-color: #01e1c9;
+    -fx-text-fill: black;
+    -fx-border-color: #036a5c;
+}
+
+.close {
+    -fx-background-color: transparent;
+    -fx-border-color: black;
+    -fx-border-radius: 150;
+    -fx-background-radius: 150;
+}
+.close:hover {
+    -fx-border-color: lightgray;
+}
