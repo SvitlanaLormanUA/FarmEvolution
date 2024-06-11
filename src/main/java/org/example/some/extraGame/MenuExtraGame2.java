@@ -10,21 +10,22 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import org.example.some.FirstLevel;
+import org.example.some.SecondLevel;
 
-public class MenuExtraGame {
+public class MenuExtraGame2 {
     private Pane root;
     private AnchorPane main;
     private ImageView imageView;
     private double x;
     private double y;
 
-    public MenuExtraGame(AnchorPane main) {
+    public MenuExtraGame2(AnchorPane main) {
         this.main = main;
         createImagePane();
     }
 
     public void createImagePane() {
-        Image image = new Image("file:src/main/resources/images/extraGame/Extra_game1.png");
+        Image image = new Image("file:src/main/resources/images/extraGame/Extra_game2.png");
         this.imageView = new ImageView(image);
         imageView.setFitWidth(250);
         imageView.setFitHeight(300);
@@ -42,29 +43,28 @@ public class MenuExtraGame {
             main.getChildren().remove(root);
         });
 
-
-        Circle clickableArea = new Circle(125,75,30);
+        Circle clickableArea = new Circle(125, 75, 30);
         clickableArea.setFill(Color.TRANSPARENT);
         clickableArea.setOnMouseClicked(event -> {
-            FirstLevel.saveState();
             main.getChildren().remove(root);
-            AnimalCountingGame animalCountingGame = new AnimalCountingGame();
-            Stage stage=new Stage();
-            animalCountingGame.start(stage);
+            findAnimals find = new findAnimals();
+            Stage stage = new Stage();
+            find.start(stage);
         });
 
-        Circle clickable = new Circle(125,220,30);
+        Circle clickable = new Circle(125, 250, 100);
         clickable.setFill(Color.TRANSPARENT);
         clickable.setOnMouseClicked(event -> {
-            FirstLevel.saveState();
             main.getChildren().remove(root);
-
+            FindDifferences findDiff= new FindDifferences();
+            Stage stage = new Stage();
+            findDiff.start(stage);
         });
 
         root = new Pane();
         root.setTranslateX(this.x + 900);
         root.setTranslateY(this.y + 80);
-        root.getChildren().addAll(imageView, close, clickableArea);
+        root.getChildren().addAll(imageView, close, clickableArea, clickable);
     }
 
     public Pane getRoot() {

@@ -31,7 +31,7 @@ public class FindDifferences extends Application {
     @Override
     public void start(Stage primaryStage) {
         // Завантаження головного зображення
-        Image mainImage = new Image("file:src/main/resources/images/extraGame/FindDifferences");
+        Image mainImage = new Image("file:src/main/resources/images/extraGame/findDifferences.png");
         ImageView mainImageView = new ImageView(mainImage);
         mainImageView.setFitWidth(550);
         mainImageView.setFitHeight(700);

@@ -189,8 +189,9 @@ public class StorageMenu {
 
         sellBanana();
         sellDragonflyPr();
-
+        sellFeather();
         sellMango();
+        sellNut();
     }
 
     private void close(){
@@ -279,6 +280,17 @@ public class StorageMenu {
         });
     }
 
+    private void sellFeather(){
+        sellProduct3.setOnAction(event -> {
+            if(sell(amountOfProduct3, storage.getProduct3())){
+                int toSell = Integer.parseInt(amountOfProduct3.getText());
+                storage.sellProduct3(toSell);
+                product3ToSell.setText("Пір'я: "+storage.getProduct3()+"\nВартість: "+storage.getProduct3Cost()+" монет/шт\nВведіть кількість для продажу:");
+                amountOfProduct3.setText("");
+            }
+        });
+    }
+
     private void sellMango(){
         sellProduct4.setOnAction(event -> {
             if(sell(amountOfProduct4, storage.getProduct4())){
@@ -286,6 +298,17 @@ public class StorageMenu {
                 storage.sellProduct4(toSell);
                 product4ToSell.setText("Манго: "+storage.getProduct4()+"\nВартість: "+storage.getProduct4Cost()+" монет/шт\nВведіть кількість для продажу:");
                 amountOfProduct4.setText("");
+            }
+        });
+    }
+
+    private void sellNut(){
+        sellProduct5.setOnAction(event -> {
+            if(sell(amountOfProduct5, storage.getProduct5())){
+                int toSell = Integer.parseInt(amountOfProduct5.getText());
+                storage.sellProduct5(toSell);
+                product5ToSell.setText("Горіхи: "+storage.getProduct5()+"\nВартість: "+storage.getProduct5Cost()+" монет/шт\nВведіть кількість для продажу:");
+                amountOfProduct5.setText("");
             }
         });
     }
