@@ -6,18 +6,23 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.example.some.animals.*;
 import org.example.some.otherGameObjects.Instr;
 import org.example.some.otherGameObjects.Wallet;
+import javafx.scene.control.ProgressBar;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import org.example.some.otherGameObjects.Well;
 
+//import static org.example.some.SecondLevel.coins;
 import static org.example.some.Shop.getCurrentLevel;
 
 public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initializable{
@@ -33,12 +38,22 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
     public static int countUnicorn = 1;
 
     private SettingsMenu settingsMenu;
-
+    private Well well;
+    @FXML
+    private ImageView wellView;
+    @FXML
+    private ProgressBar wellBar;
+    private Feeder feeder;
+    private Storage storage;
+    private ArrayList<Gnome> gnomeArrayList = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         wallet = FirstLevel.wallet;
         anchorPane.getChildren().add(wallet.getRoot());
+
+        addWell();
+        addGnome();
     }
 
     @FXML
@@ -96,16 +111,22 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
         }
     }
 
+    private void addWell(){
+        well = new Well(wellView, wellBar);
+        anchorPane.getChildren().add(well.getWellView());
+    }
+
     public void addFairy() {
 
 
 
     }
     public void addGnome() {
-
-
-
+        Gnome gnome = new Gnome(300, 350, 1000, 700, anchorPane, well, feeder, storage);
+        anchorPane.getChildren().add(gnome.getAnimalView());
+        gnomeArrayList.add(gnome);
     }
+
     public void addMinotaur() {
 
     }
