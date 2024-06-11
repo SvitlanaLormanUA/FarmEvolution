@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 
+
 public class Tasks {
     private Pane root;
     private AnchorPane main;
@@ -43,6 +44,7 @@ public class Tasks {
     private int soldMilk;
     private int soldPig;
     private int soldRabbit;
+    private int driedDragonfly;
 
     int nCoins;
     public Text text1, text2, text3, text4;
@@ -66,11 +68,20 @@ public class Tasks {
                 firstLevel = true;
                 secondLevel = false;
                 thirdLevel = false;
+
+                nWool = storage.getnWoolP();
+                nEggs = storage.getnEggsP();
+                soldMilk = storage.getSoldMilkP();
+                soldPig = storage.getSoldPigP();
+                soldRabbit = storage.getSoldRabbitP();
             }
             case 2 -> {
                 firstLevel = false;
                 secondLevel = true;
                 thirdLevel = false;
+                driedDragonfly = storage.getDriedDragonflyP();
+
+
             }
             case 3 -> {
                 firstLevel = false;
@@ -80,19 +91,18 @@ public class Tasks {
 
         }        //createMenu();
 
-        nWool = storage.getnWoolP();
-        nEggs = storage.getnEggsP();
-        soldMilk = storage.getSoldMilkP();
-        soldPig = storage.getSoldPigP();
-        soldRabbit = storage.getSoldRabbitP();
+
+
+
 
         anchorPane = new AnchorPane();
-        finishLevel = new FinishLevel(anchorPane);
-        nextLevel();
+        finishLevel = new FinishLevel(anchorPane, level);
+        nextLevel(level);
         strikeThoughTasks();
     }
-    public void setNextLvL() {
-        finishLevel = new FinishLevel(anchorPane);
+    public void setNextLvL(int level) {
+
+        finishLevel = new FinishLevel(anchorPane, level);
         root.getChildren().add(finishLevel.getRoot());
 
     }
@@ -187,10 +197,10 @@ public class Tasks {
             }
 
     }
-    public void nextLevel() {
+    public void nextLevel(int level) {
         if (task1 && task2 && task3 && task4){
           firstLevel = false;
-            setNextLvL();
+            setNextLvL(level);
         }
     }
 

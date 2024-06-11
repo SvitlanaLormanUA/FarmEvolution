@@ -25,13 +25,14 @@ public class FinishLevel {
 
     private Stage stage;
     private Scene scene;
+    String fxmlFile;
 
-    public FinishLevel(AnchorPane main) {
+    public FinishLevel(AnchorPane main, int level) {
         this.main = main;
-        createImagePane();
+        createImagePane(level);
     }
 
-    public void createImagePane() {
+    public void createImagePane(int level) {
         Image image = new Image("file:src/main/resources/images/FinishLevel.png");
         this.imageView = new ImageView(image);
         imageView.setFitWidth(370);
@@ -55,7 +56,14 @@ public class FinishLevel {
 
                 stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
                 main.getChildren().clear();
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("chooseSecondLevel.fxml")));
+                if(level == 1)
+                    fxmlFile = "chooseFirstLevel.fxml";
+                else if(level == 2)
+                    fxmlFile = "chooseSecondLevel.fxml";
+                else
+                    fxmlFile = "chooseThirdLevel.fxml";
+
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource( fxmlFile )));
 
                 deleteAllObjects();
 

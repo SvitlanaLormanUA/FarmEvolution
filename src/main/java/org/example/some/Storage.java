@@ -56,12 +56,15 @@ public class Storage {
     private static int soldMilk;
     private static int soldPig;
     private static int soldRabbit;
+    private static int soldDragonfly;
 
     private int nWoolP = 20;
     private int nEggsP = 30;
     private int soldMilkP = 15;
     private int soldPigP = 10;
     private int soldRabbitP = 15;
+
+    private static int driedDragonflyP = 5;
 
     private boolean firstLvl;
     private boolean secondLvl;
@@ -740,6 +743,16 @@ public class Storage {
         return product3Cost;
     }
 
+    public static int getSoldDragonfly() {
+        if (soldDragonfly >= driedDragonflyP){
+            soldDragonfly = driedDragonflyP;
+        }
+        return soldDragonfly;
+    }
+
+    public int getDriedDragonflyP() {
+        return driedDragonflyP;
+    }
 
     public  void reset() {
         removeProductView(product1Views, product1, product1);

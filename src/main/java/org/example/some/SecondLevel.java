@@ -118,7 +118,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     }
 
     private void addPeacock() {
-        Peacock peacock = new Peacock( 250, 300, 700, 700, anchorPane, well, feeder, storage);
+        Peacock peacock = new Peacock( 300, 400, 700, 600, anchorPane, well, feeder, storage);
         anchorPane.getChildren().add(peacock.getAnimalView());
         peacockArrayList.add(peacock);
     }
@@ -338,6 +338,15 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
 
 
     public void showTasks(ActionEvent event) {
+        Tasks tasksWindow = new Tasks(anchorPane, 1);
+        tasksWindow.createMenu("Завдання 1: «Недоспівала»\n" +
+                "Засушити: " + storage.getSoldDragonfly() +"/10 шматків\n" +
+                "Продати м’ясо кролів: "+storage.getSoldRabbit()+"/15 шматків", "Завдання 2: «Молоко, любов і гуси»\n" +
+                "Зібрати яйця: "+storage.getnEggs()+"/30 штук\n" +
+                "Продати молоко: "+storage.getSoldMilk()+"/15 галонів", "Завдання 3: «До зими готовий!»\n" +
+                "Зібрати хутро: "+storage.getnWool()+"/20 штук", "Завдання 4: «Туди сюди і мільйонер»\n" +
+                "Заробити монети: "+tasksWindow.nCoins +"/2000");
+        anchorPane.getChildren().add(tasksWindow.getRoot());
     }
 
     public void showExtraTasks(ActionEvent event) {
