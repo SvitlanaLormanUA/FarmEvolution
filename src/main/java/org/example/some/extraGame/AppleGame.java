@@ -1,24 +1,32 @@
 package org.example.some.extraGame;
-
-import javafx.application.Application;
 import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.util.*;
 
-public class AppleGame extends Application {
-    private static final int WIDTH = 800;
-    private static final int HEIGHT = 600;
-    private static final int BASKET_WIDTH = 100;
-    private static final int BASKET_HEIGHT = 50;
-    private static final int APPLE_SIZE = 30;
-    private static final int APPLE_DROP_INTERVAL = 1000; // milliseconds
+public class AppleGame {
+    private static final int WIDTH = 580;
+    private static final int HEIGHT = 700;
+    private static final int BASKET_WIDTH = 110;
+    private static final int BASKET_HEIGHT = 90;
+    private static final int APPLE_SIZE = 40;
+    private static final int APPLE_DROP_INTERVAL = 2000; // milliseconds
 
     private Image redAppleImage;
     private Image greenAppleImage;
@@ -34,25 +42,30 @@ public class AppleGame extends Application {
     private long lastAppleDropTime = 0;
 
     private int score = 0;
+    private int redAppleCount = 0;
+    private boolean gameWon = false;
+    private AnimationTimer gameLoop;
 
-    @Override
     public void start(Stage primaryStage) {
         Pane root = new Pane();
         Canvas canvas = new Canvas(WIDTH, HEIGHT);
         root.getChildren().add(canvas);
 
-        Scene scene = new Scene(root);
+        StackPane mainPane = new StackPane(root);
+        mainPane.getChildren().add(createInstructionOverlay(mainPane));
+
+        Scene scene = new Scene(mainPane);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Apple Catch Game");
+        primaryStage.setTitle("Apple Game");
         primaryStage.show();
 
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
         // Load images
-        redAppleImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/red_apple.png")));
-        greenAppleImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/green_apple.png")));
-        basketImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/basket.png")));
-        backgroundImage = new Image((getClass().getResourceAsStream("/images/appleGame.png")));
+        redAppleImage = new Image("file:src/main/resources/images/extraGame/red_apple.png");
+        greenAppleImage = new Image("file:src/main/resources/images/extraGame/green_apple.png");
+        basketImage = new Image("file:src/main/resources/images/extraGame/basket.png");
+        backgroundImage = new Image("file:src/main/resources/images/extraGame/AppleGameBackgr.png");
 
         // Initialize basket position
         basketX = (double) (WIDTH - BASKET_WIDTH) / 2;
@@ -76,9 +89,13 @@ public class AppleGame extends Application {
         });
 
         // Game loop
-        new AnimationTimer() {
+        gameLoop = new AnimationTimer() {
             @Override
             public void handle(long now) {
+                if (gameWon) {
+                    return;
+                }
+
                 // Clear canvas
                 gc.clearRect(0, 0, WIDTH, HEIGHT);
 
@@ -113,8 +130,19 @@ public class AppleGame extends Application {
                             apple.x + APPLE_SIZE > basketX && apple.x < basketX + BASKET_WIDTH) {
                         if (apple.isRed) {
                             score++;
+                            redAppleCount++;
+                        } else {
+                            score--;
                         }
                         iterator.remove();
+
+                        // Check if the game is won
+                        if (score >= 15) {
+                            gameWon = true;
+                            stop();
+                            Platform.runLater(() -> showAlert());
+                            return;
+                        }
                     }
 
                     // Remove apples that fall off the screen
@@ -133,7 +161,9 @@ public class AppleGame extends Application {
                 // Display score
                 gc.fillText("Score: " + score, 10, 20);
             }
-        }.start();
+        };
+
+        gameLoop.start();
     }
 
     private void dropApple() {
@@ -154,7 +184,58 @@ public class AppleGame extends Application {
         }
     }
 
-    public static void main(String[] args) {
-        launch();
+    private void showAlert() {
+        Alert alert = new Alert(Alert.AlertType.NONE);
+        alert.setTitle("Гру закінчено");
+        alert.setHeaderText(null);
+
+        Label message = new Label("Всі яблука зібрано!");
+        Button closeButton = new Button("Закрити гру");
+        closeButton.setOnAction(e -> Platform.exit());
+
+        VBox vbox = new VBox(10, message, closeButton);
+        vbox.setAlignment(Pos.CENTER);
+        vbox.setPrefSize(300, 100);
+
+        alert.getDialogPane().setContent(vbox);
+        alert.showAndWait();
+    }
+
+    private StackPane createInstructionOverlay(Pane mainPane) {
+        // Створення прозорого фону
+        Rectangle bg = new Rectangle(580, 700, Color.BLACK);
+        bg.setOpacity(0.8);
+
+        // Текст інструкції
+        Label instructions = new Label("Інструкція:\n" +
+                "1. Використовуйте клавіші стрілок вліво і вправо, щоб переміщати кошик.\n" +
+                "2. Ловіть червоні яблука, щоб заробити очки.\n" +
+                "3. Уникайте зелених яблук, вони зменшують ваші очки.\n" +
+                "4. Гра закінчується, коли ви зловите 15 червоних яблук.\n" +
+                "Натисніть 'Почати' для початку гри.");
+        instructions.setTextFill(Color.WHITE);
+        instructions.setStyle("-fx-font-size: 16px;");
+        instructions.setWrapText(true);
+
+        VBox instructionBox = new VBox(instructions);
+        instructionBox.setAlignment(Pos.CENTER);
+        instructionBox.setPadding(new Insets(20));
+        instructionBox.setSpacing(10);
+
+        StackPane instructionOverlay = new StackPane(bg, instructionBox);
+        instructionOverlay.setAlignment(Pos.CENTER);
+
+        // Кнопка для закриття інструкції
+        Button closeButton = new Button("Почати");
+        closeButton.setOnAction(e -> instructionOverlay.setVisible(false));
+        VBox closeBox = new VBox(closeButton);
+        closeBox.setAlignment(Pos.BOTTOM_CENTER);
+        closeBox.setPadding(new Insets(10));
+        StackPane.setAlignment(closeButton, Pos.BOTTOM_CENTER);
+        StackPane.setMargin(closeButton, new Insets(20));
+
+        instructionOverlay.getChildren().add(closeBox);
+
+        return instructionOverlay;
     }
 }

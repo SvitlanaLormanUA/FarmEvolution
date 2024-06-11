@@ -42,29 +42,30 @@ public class MenuExtraGame {
             main.getChildren().remove(root);
         });
 
-
-        Circle clickableArea = new Circle(125,75,30);
+        Circle clickableArea = new Circle(125, 75, 30);
         clickableArea.setFill(Color.TRANSPARENT);
         clickableArea.setOnMouseClicked(event -> {
             FirstLevel.saveState();
             main.getChildren().remove(root);
-            AnimalCountingGame animalCountingGame = new AnimalCountingGame();
-            Stage stage=new Stage();
-            animalCountingGame.start(stage);
+            AnimalCountingGame animalGame = new AnimalCountingGame();
+            Stage stage = new Stage();
+            animalGame.start(stage);
         });
 
-        Circle clickable = new Circle(125,220,30);
+        Circle clickable = new Circle(125, 250, 100);
         clickable.setFill(Color.TRANSPARENT);
         clickable.setOnMouseClicked(event -> {
             FirstLevel.saveState();
             main.getChildren().remove(root);
-
+            AppleGame appleGame = new AppleGame();
+            Stage stage = new Stage();
+            appleGame.start(stage);
         });
 
         root = new Pane();
         root.setTranslateX(this.x + 900);
         root.setTranslateY(this.y + 80);
-        root.getChildren().addAll(imageView, close, clickableArea);
+        root.getChildren().addAll(imageView, close, clickableArea, clickable);
     }
 
     public Pane getRoot() {
