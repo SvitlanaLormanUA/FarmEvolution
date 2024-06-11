@@ -9,6 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import org.example.some.FirstLevel;
+import org.example.some.SecondLevel;
 import org.example.some.Storage;
 import org.example.some.otherGameObjects.Well;
 
@@ -19,8 +20,8 @@ import java.util.TimerTask;
 
 public class Dragonfly extends AbstractAnimal implements AnimalMeat{
 
+    public static int amountOfMeals;
     private int productCost;
-    private int amountOfMeals;
     private AnimalMeatMenu animalMeatMenu;
     private boolean openedMeatMenu;
     private int puposedAmount = 12;
@@ -32,9 +33,9 @@ public class Dragonfly extends AbstractAnimal implements AnimalMeat{
                 "src/main/resources/sound/dragonfly.mp3",
                 "file:src/main/resources/images/secondLevel/products/dragonflyPr.png"
         );
+        SecondLevel.loadState();
         animalView.setFitWidth(70);
         animalView.setFitHeight(50);
-        this.amountOfMeals = 0;
         this.productCost = 0;
         this.openedMeatMenu = false;
         giveProduct();
@@ -127,6 +128,7 @@ public class Dragonfly extends AbstractAnimal implements AnimalMeat{
             if(AbstractAnimal.feeder.haveFood()){
                 hungerLvl += 50;
                 amountOfMeals++;
+                SecondLevel.saveState();
             }
             if(amountOfMeals<puposedAmount) {
                 animalMeatMenu.getFeed().setText("Нагодовано: " + amountOfMeals + "/" + puposedAmount);
@@ -157,6 +159,7 @@ public class Dragonfly extends AbstractAnimal implements AnimalMeat{
                 removeMenu();
             }
             root.getChildren().remove(this.animalView);
+            SecondLevel.countDragonflies--;
 //        }
     }
 

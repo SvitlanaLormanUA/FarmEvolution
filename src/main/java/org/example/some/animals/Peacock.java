@@ -136,10 +136,8 @@ public class Peacock extends AbstractAnimal{
 
         // Check if the cow has reached the end of the movement range
         if (directionRight && (x + deltaX > worldEndX - animalView.getFitWidth())) {
-            animalView.setImage(new Image(imagePathLeft));
             directionRight = false; // Switch to moving backward
         } else if (!directionRight && (x - deltaX < worldStartX)) {
-            animalView.setImage(new Image(imagePath));
             directionRight = true; // Switch to moving forward
         }
 

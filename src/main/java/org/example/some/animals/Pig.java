@@ -7,6 +7,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import org.example.some.FirstLevel;
+import org.example.some.SecondLevel;
 import org.example.some.Storage;
 import org.example.some.otherGameObjects.Well;
 
@@ -69,7 +70,7 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
             if(AbstractAnimal.feeder.haveFood()) {
                 hungerLvl += 50;
                 amountOfMeals++;
-                FirstLevel.saveState();
+                SecondLevel.saveState();
             }
             if(amountOfMeals<puposedAmount) {
                 animalMeatMenu.getFeed().setText("Нагодовано: " + amountOfMeals + "/" + puposedAmount);

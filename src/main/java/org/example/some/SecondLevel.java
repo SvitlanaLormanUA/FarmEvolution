@@ -25,6 +25,8 @@ import java.net.URL;
 import java.util.*;
 
 import static org.example.some.FirstLevel.coins;
+import static org.example.some.SettingsMenu.restart;
+import static org.example.some.animals.Dragonfly.amountOfMeals;
 
 
 public class SecondLevel  extends LevelMusicBack implements Initializable {
@@ -88,17 +90,32 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
         //addMultiProducts();
         addWallet();
         loadState();
+
+        if (restart) {
+            wallet.setCoins(100);
+            countDragonflies = 1;
+            countParrots = 1;
+            countPeacocks = 1;
+            countBanana = 1;
+            countLemurs = 1;
+            Dragonfly.amountOfMeals = 0;
+
+            saveState();
+            SettingsMenu.start = false;
+
+        }
         addStorage();
         addFeeder();
         addWell();
-
+       setAnimals();
+    }
+    private void setAnimals() {
         addMonkey();
         addDragonfly();
         addLemur();
         addPeacock();
         addParrot();
     }
-
     private void addPeacock() {
         Peacock peacock = new Peacock( 250, 300, 700, 700, anchorPane, well, feeder, storage);
         anchorPane.getChildren().add(peacock.getAnimalView());
@@ -220,7 +237,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     @FXML
     public void enterShop(ActionEvent event) {
         try {
-            saveState();
+            SecondLevel.saveState();
             ShopFirstLevel.setCurrentLevel("secondLevel.fxml");
 
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("shopSecondLevel.fxml")));
@@ -326,7 +343,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
         anchorPane.getChildren().add(infoWindow.getRoot());
     }
 
-    static void saveState() {
+    public static void saveState() {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("gameState.ser"))) {
             out.writeInt(coins);
             out.writeInt(countMonkeys);
@@ -335,9 +352,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
             out.writeInt(countLemurs);
             out.writeInt(countPeacocks);
             out.writeInt(countParrots);
-
-
-
+                out.writeInt(Dragonfly.amountOfMeals);
 
 
 
@@ -346,7 +361,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
         }
     }
 
-    static void loadState() {
+    public static void loadState() {
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("gameState.ser"))) {
             coins = in.readInt();
             countMonkeys = in.readInt();
@@ -355,7 +370,9 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
             countLemurs = in.readInt();
             countPeacocks = in.readInt();
             countParrots = in.readInt();
-
+            if(!restart) {
+                Dragonfly.amountOfMeals = in.readInt();
+            }
 
 
 

@@ -34,6 +34,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
 
 
 
+
     public static int WIDTH = 1255;
     public static int HEIGHT = 707;
     public static int countCow = 1;
@@ -344,6 +345,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
         try {
             //saveState();
             storage.reset();
+            loadState();
             deleteAllObjects();
 
             Stage stage  = (Stage) ((Button) event.getSource()).getScene().getWindow();

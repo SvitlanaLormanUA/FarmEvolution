@@ -502,6 +502,7 @@ public class Storage {
             oos.writeInt(soldRabbit);
             oos.writeInt(nWool);
             oos.writeInt(nEggs);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
