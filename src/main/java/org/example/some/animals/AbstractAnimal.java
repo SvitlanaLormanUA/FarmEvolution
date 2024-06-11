@@ -391,7 +391,6 @@ public abstract class AbstractAnimal implements Animal {
         delete();
         String animalType = this.getClass().getSimpleName();
         decreaseAnimalCount(animalType);
-
         mediaPlayer.stop();
     }
 
@@ -493,7 +492,6 @@ public abstract class AbstractAnimal implements Animal {
             case "Lemur":
                 SecondLevel.countLemurs--;
                 break;
-
             case "Dragonfly":
                 SecondLevel.countDragonflies--;
                 break;

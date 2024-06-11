@@ -473,7 +473,10 @@ public class Storage {
                     ImageView productView = createProduct(product5Image, x, y, width, height);
                     product5Views.add(productView);
                     int num = product5 - 1;
-                    Platform.runLater(() -> root.getChildren().add(1, product5Views.get(num)));
+                    if( product5Views.get(num)!=null) {
+                        Platform.runLater(() -> root.getChildren().add(1, product5Views.get(num)));
+                    }
+                  //  Platform.runLater(() -> root.getChildren().add(1, product5Views.get(num)));
                 }
             }
         }

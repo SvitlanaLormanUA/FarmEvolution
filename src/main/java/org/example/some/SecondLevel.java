@@ -194,30 +194,39 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     }
 
     public void addMonkey() {
-        Monkey monkey = new Monkey(250, 300, 700, 700, anchorPane, well, feeder, storage);
-        anchorPane.getChildren().add(monkey.getAnimalView());
-        addProducts(monkey);
-        addThought(monkey);
-        monkeyArrayList.add(monkey);
-        //  System.out.println(lian.getBoundsInParent());
+        for (int i = 0; i < countMonkeys; i++) {
+            Monkey monkey = new Monkey(250, 300, 700, 700, anchorPane, well, feeder, storage);
+            anchorPane.getChildren().add(monkey.getAnimalView());
+            addProducts(monkey);
+            addThought(monkey);
+            monkeyArrayList.add(monkey);
+        }
+
     }
 
     public void addDragonfly() {
-        Dragonfly dragonfly = new Dragonfly(50, 50, 1100, 300, anchorPane, well, feeder, storage);
-        anchorPane.getChildren().add(dragonfly.getAnimalView());
-        dragonflyArrayList.add(dragonfly);
+        for (int i = 0; i < countDragonflies; i++) {
+            Dragonfly dragonfly = new Dragonfly(50, 50, 1100, 300, anchorPane, well, feeder, storage);
+            anchorPane.getChildren().add(dragonfly.getAnimalView());
+            dragonflyArrayList.add(dragonfly);
+        }
     }
 
     public void addLemur(){
-        Lemur lemur = new Lemur(80, 270, 700, 630, anchorPane, well, feeder, storage);
-        anchorPane.getChildren().add(lemur.getAnimalView());
-        lemurArrayList.add(lemur);
+        for (int i = 0; i < countLemurs; i++) {
+            Lemur lemur = new Lemur(80, 270, 700, 630, anchorPane, well, feeder, storage);
+            anchorPane.getChildren().add(lemur.getAnimalView());
+            lemurArrayList.add(lemur);
+        }
+
     }
 
     public void addParrot(){
-        Parrot parrot = new Parrot(20, 90, 300, 400, anchorPane, well, feeder, storage);
-        anchorPane.getChildren().add(parrot.getAnimalView());
-        parrotArrayList.add(parrot);
+        for (int i = 0; i < countParrots; i++) {
+            Parrot parrot = new Parrot(20, 90, 300, 400, anchorPane, well, feeder, storage);
+            anchorPane.getChildren().add(parrot.getAnimalView());
+            parrotArrayList.add(parrot);
+        }
     }
 
     @FXML
@@ -279,22 +288,27 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
 
     public void deleteAllObjects(){
         for(int i=0; i<monkeyArrayList.size(); i++){
+            if (monkeyArrayList.get(i) == null) continue;
             monkeyArrayList.get(i).delete();
             monkeyArrayList.set(i, null);
         }
         for(int i=0; i<dragonflyArrayList.size(); i++){
+            if(dragonflyArrayList.get(i) == null) continue;
             dragonflyArrayList.get(i).delete();
             dragonflyArrayList.set(i, null);
         }
         for(int i=0; i<lemurArrayList.size(); i++){
+            if(lemurArrayList.get(i) == null) continue;
             lemurArrayList.get(i).delete();
             lemurArrayList.set(i, null);
         }
         for(int i=0; i<peacockArrayList.size(); i++){
+            if(peacockArrayList.get(i) == null) continue;
             peacockArrayList.get(i).delete();
             peacockArrayList.set(i, null);
         }
         for(int i=0; i<parrotArrayList.size(); i++){
+            if(parrotArrayList.get(i) == null) continue;
             parrotArrayList.get(i).delete();
             parrotArrayList.set(i, null);
         }
@@ -368,7 +382,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
 
     static void loadState() {
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("gameState.ser"))) {
-            coins = in.readInt();
+             coins = in.readInt();
             countMonkeys = in.readInt();
             countDragonflies = in.readInt();
             countBanana = in.readInt();
