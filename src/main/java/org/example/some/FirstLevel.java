@@ -3,7 +3,6 @@ package org.example.some;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,11 +11,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import org.example.some.animals.*;
-import org.example.some.extraGame.MenuExtraGame;
+import org.example.some.extraGame.MenuExtraGame1;
 import org.example.some.otherGameObjects.Instr;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
@@ -361,7 +358,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
     }
 
     public void showExtraTasks(ActionEvent event) {
-        MenuExtraGame gameMenu = new MenuExtraGame(anchorPane);
+        MenuExtraGame1 gameMenu = new MenuExtraGame1(anchorPane);
         gameMenu.createImagePane();
         anchorPane.getChildren().add(gameMenu.getRoot());
     }

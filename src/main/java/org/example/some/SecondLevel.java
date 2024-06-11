@@ -14,6 +14,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.example.some.animals.*;
+import org.example.some.extraGame.MenuExtraGame1;
+import org.example.some.extraGame.MenuExtraGame2;
 import org.example.some.otherGameObjects.Instr;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;
@@ -341,6 +343,9 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     }
 
     public void showExtraTasks(ActionEvent event) {
+        MenuExtraGame2 gameM = new MenuExtraGame2(anchorPane);
+        gameM.createImagePane();
+        anchorPane.getChildren().add(gameM.getRoot());
     }
 
     public void showSettings(ActionEvent event) {

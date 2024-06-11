@@ -10,21 +10,22 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import org.example.some.FirstLevel;
+import org.example.some.SecondLevel;
 
-public class MenuExtraGame {
+public class MenuExtraGame2 {
     private Pane root;
     private AnchorPane main;
     private ImageView imageView;
     private double x;
     private double y;
 
-    public MenuExtraGame(AnchorPane main) {
+    public MenuExtraGame2(AnchorPane main) {
         this.main = main;
         createImagePane();
     }
 
     public void createImagePane() {
-        Image image = new Image("file:src/main/resources/images/extraGame/Extra_game1.png");
+        Image image = new Image("file:src/main/resources/images/extraGame/Extra_game2.png");
         this.imageView = new ImageView(image);
         imageView.setFitWidth(250);
         imageView.setFitHeight(300);
@@ -45,21 +46,19 @@ public class MenuExtraGame {
         Circle clickableArea = new Circle(125, 75, 30);
         clickableArea.setFill(Color.TRANSPARENT);
         clickableArea.setOnMouseClicked(event -> {
-            FirstLevel.saveState();
             main.getChildren().remove(root);
-            AnimalCountingGame animalGame = new AnimalCountingGame();
+            findAnimals find = new findAnimals();
             Stage stage = new Stage();
-            animalGame.start(stage);
+            find.start(stage);
         });
 
         Circle clickable = new Circle(125, 250, 100);
         clickable.setFill(Color.TRANSPARENT);
         clickable.setOnMouseClicked(event -> {
-            FirstLevel.saveState();
             main.getChildren().remove(root);
-            AppleGame appleGame = new AppleGame();
+            FindDifferences findDiff= new FindDifferences();
             Stage stage = new Stage();
-            appleGame.start(stage);
+            findDiff.start(stage);
         });
 
         root = new Pane();
