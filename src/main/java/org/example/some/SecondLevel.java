@@ -117,7 +117,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
         addParrot();
     }
     private void addPeacock() {
-        Peacock peacock = new Peacock( 250, 300, 700, 700, anchorPane, well, feeder, storage);
+        Peacock peacock = new Peacock( 250, 300, 700, 600, anchorPane, well, feeder, storage);
         anchorPane.getChildren().add(peacock.getAnimalView());
         peacockArrayList.add(peacock);
     }
@@ -202,7 +202,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     }
 
     public void addDragonfly() {
-        Dragonfly dragonfly = new Dragonfly(50, 50, 1200, 300, anchorPane, well, feeder, storage);
+        Dragonfly dragonfly = new Dragonfly(50, 50, 1100, 300, anchorPane, well, feeder, storage);
         anchorPane.getChildren().add(dragonfly.getAnimalView());
         dragonflyArrayList.add(dragonfly);
     }

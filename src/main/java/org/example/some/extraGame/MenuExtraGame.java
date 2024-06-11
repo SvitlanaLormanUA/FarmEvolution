@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import org.example.some.FirstLevel;
 
 public class MenuExtraGame {
+
     private Pane root;
     private AnchorPane main;
     private ImageView imageView;

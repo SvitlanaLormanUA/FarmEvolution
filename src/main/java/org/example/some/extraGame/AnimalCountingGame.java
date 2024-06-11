@@ -3,6 +3,7 @@ package org.example.some.extraGame;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -19,11 +20,16 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import org.example.some.FirstLevel;
 
-public class AnimalCountingGame extends Application {
+import static org.example.some.FirstLevel.coins;
 
-    @Override
-    public void start(Stage primaryStage) {
+public class AnimalCountingGame  {
+    public static final int COINS = 85;
+    StackPane root;
+    Stage primaryStage;
+    public void start( Stage primaryStage) {
+        this.primaryStage = primaryStage;
         primaryStage.setTitle("Animal Counting Game");
 
         // Load the image
@@ -117,7 +123,7 @@ public class AnimalCountingGame extends Application {
         StackPane instructionOverlay = createInstructionOverlay();
 
         // Main layout with instruction overlay
-        StackPane root = new StackPane();
+         root = new StackPane();
         root.getChildren().addAll(vbox, instructionOverlay);
 
         Scene scene = new Scene(root, 550, 450);
@@ -161,8 +167,18 @@ public class AnimalCountingGame extends Application {
 
             resetComboBoxes(butterflyInput, elephantInput, snakeInput, penguinInput, octopusInput, crabInput, bearInput);
         }
+        if (allCorrect) {
+            addCoins();
+        }
+
     }
 
+    private void addCoins() {
+        coins+=COINS;
+        FirstLevel.wallet.income(COINS);
+        FirstLevel.wallet.setCoins(coins);
+        FirstLevel.saveState();
+    }
     private boolean checkAnswer(ComboBox<Integer> input, int correctValue) {
         if (input.getValue() == correctValue) {
             input.setStyle("-fx-background-color: green;");
