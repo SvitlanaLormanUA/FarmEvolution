@@ -250,7 +250,7 @@ public class StorageMenu {
 
         sellPouch();
         sellFairyDust();
-
+        sellHorn();
         sellUnicornBlood();
     }
 
@@ -404,6 +404,18 @@ public class StorageMenu {
                 storage.sellProduct2(toSell);
                 product2ToSell.setText("Пил феї: "+storage.getProduct2()+"\nВартість: "+storage.getProduct2Cost()+" монет/шт\nВведіть кількість для продажу:");
                 amountOfProduct2.setText("");
+            }
+        });
+    }
+
+    private void sellHorn(){
+        sellProduct3.setOnAction(event -> {
+            if(sell(amountOfProduct3, storage.getProduct3())){
+                int toSell = Integer.parseInt(amountOfProduct3.getText());
+                storage.sellProduct3(toSell);
+                Storage.soldFeather++;
+                product3ToSell.setText("Рога: "+storage.getProduct3()+"\nВартість: "+storage.getProduct3Cost()+" монет/шт\nВведіть кількість для продажу:");
+                amountOfProduct3.setText("");
             }
         });
     }

@@ -138,9 +138,9 @@ public class Storage {
     public void lvl3() {
         product1Cost = 580;
         product2Cost = 320;
-        product3Cost = 0;
+        product3Cost = 200;
         product4Cost = 1600;
-        product5Cost = 0;
+        product5Cost = 180;
         firstLvl = false;
         secondLvl = false;
         thirdLvl = true;
@@ -153,6 +153,8 @@ public class Storage {
         if(quantity>5){
             quantity = 5;
         }
+
+        boolean under = true;
 
         for (int i = 0; i < quantity; i++) {
             switch(product) {
@@ -256,7 +258,17 @@ public class Storage {
                         x = random.nextInt(880, 1000);
                         y = random.nextInt(540, 560);
                     } else if (thirdLvl) {
-
+                        under = false;
+                        x = storageView.getLayoutX() + 60;
+                        y = storageView.getLayoutY() - 10;
+                        width = 40;
+                        height = 25;
+                        if (i>0) {
+                            for (int j = 1; j <= i; j++) {
+                                x += 20;
+                                y += 5;
+                            }
+                        }
                     }
                 }
 
@@ -315,7 +327,11 @@ public class Storage {
             if (i < 5) {
                 ImageView productView = createProduct(productImage, x, y, width, height);
                 viewsList.add(productView);
-                Platform.runLater(() -> root.getChildren().add(1, productView));
+                if (under){
+                    Platform.runLater(() -> root.getChildren().add(1, productView));
+                } else {
+                    Platform.runLater(() -> root.getChildren().add(productView));
+                }
             }
 
         }
@@ -622,7 +638,31 @@ public class Storage {
         saveState();
     }
 
+    public void addHorn() {
 
+        product3++;
+        if (product3 <= 5) {
+            double x = storageView.getLayoutX() + 60;
+            double y = storageView.getLayoutY() - 10;
+            int width = 40;
+            int height = 25;
+            for (int i = 1; i <= 5; i++) {
+                if (i == product3) {
+                    if (product3>1) {
+                        for (int j = 2; j <= product3; j++) {
+                            x += 20;
+                            y += 5;
+                        }
+                    }
+                    ImageView productView = createProduct(product3Image, x, y, width, height);
+                    product3Views.add(productView);
+                    int num = product3 - 1;
+                    Platform.runLater(() -> root.getChildren().add(product3Views.get(num)));
+                }
+            }
+        }
+        saveState();
+    }
 
     public void addUnicornBlood() {
         product4++;

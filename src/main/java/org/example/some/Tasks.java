@@ -180,7 +180,6 @@ public class Tasks {
             if (storage.getnWool() >= 20) {
                 task3 = true;
             }
-            task3 = true;
         }
 
     }
@@ -208,7 +207,6 @@ public class Tasks {
             if (storage.getnEggs() >= nEggs && storage.getSoldMilk() >= soldMilk) {
                 task2 = true;
             }
-            task2 = true;
         }
     }
     private void addTaskOne(String task) {
@@ -235,7 +233,6 @@ public class Tasks {
             if (storage.getSoldPig() >= 1 && storage.getSoldRabbit() >= 1) {
                 task1 = true;
             }
-            task1 = true;
         }
     }
 
