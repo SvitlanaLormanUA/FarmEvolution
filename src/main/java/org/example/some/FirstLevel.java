@@ -97,6 +97,12 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
     public static ArrayList<Rabbit> rabbitArrayList = new ArrayList<>();
 
 
+    Sheep sheep;
+    Goose goose;
+    Cow cow;
+    Pig pig;
+    Rabbit rabbit;
+
 
 
 
@@ -141,7 +147,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
     public void addSheep() {
         //додана овечка на основну панель
         for (int i = 0; i < countSheep; i++) {
-            Sheep sheep = new Sheep(250, 300, 1000, 630, anchorPane, well, feeder,storage);
+             sheep = new Sheep(250, 300, 1000, 630, anchorPane, well, feeder,storage);
             anchorPane.getChildren().add(sheep.getAnimalView());
             sheepArrayList.add(sheep);
         }
@@ -150,7 +156,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
     public void addGoose() {
         //додаємо гуся
         for (int i = 0; i < countGoose; i++) {
-            Goose goose = new Goose(250, 300, 1000, 630, anchorPane, well, feeder, storage);
+             goose = new Goose(250, 300, 1000, 630, anchorPane, well, feeder, storage);
             anchorPane.getChildren().add(goose.getAnimalView());
             gooseArrayList.add(goose);
         }
@@ -158,7 +164,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
     public void addPig() {
         //додаємо свинку
         for (int i = 0; i < countPig; i++) {
-            Pig pig = new Pig(250, 300, 1000, 630, anchorPane, well, feeder, storage);
+             pig = new Pig(250, 300, 1000, 630, anchorPane, well, feeder, storage);
             anchorPane.getChildren().add(pig.getAnimalView());
             pigArrayList.add(pig);
         }
@@ -167,7 +173,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
     }
     public void addRabbit() {
         for (int i = 0; i < countRabbit; i++) {
-            Rabbit rabbit = new Rabbit(250, 250, 1000, 630, anchorPane, well, feeder, storage);
+             rabbit = new Rabbit(250, 250, 1000, 630, anchorPane, well, feeder, storage);
             anchorPane.getChildren().add(2, rabbit.getAnimalView());
             rabbitArrayList.add(rabbit);
         }
@@ -175,7 +181,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
 
     public void addCow() {
         for (int i = 0; i < countCow; i++) {
-            Cow cow = new Cow(250, 200, 1000, 630, anchorPane, well, feeder, storage);
+             cow = new Cow(250, 200, 1000, 630, anchorPane, well, feeder, storage);
             anchorPane.getChildren().add(cow.getAnimalView());
             cowArrayList.add(cow);
         }
@@ -282,7 +288,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
 
 
     public static void saveState() {
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("gameState.ser"))) {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("levelOne.ser"))) {
             coins = wallet.getCoins();
 
             if (wallet!=null) {
@@ -303,7 +309,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
     }
 
     static void loadState() {
-        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("gameState.ser"))) {
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("levelOne.ser"))) {
 
             coins = in.readInt();
             countCow = in.readInt();

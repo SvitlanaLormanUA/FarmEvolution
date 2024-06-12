@@ -82,6 +82,13 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     public static int countBanana = 0;
     public static ArrayList<Banana> bananas = new ArrayList<>();
 
+    private Monkey monkey;
+    private Dragonfly dragonfly;
+    private Lemur lemur;
+    private Peacock peacock;
+    private Parrot parrot;
+
+
 
     private void addAnimals(){
         addMonkey();
@@ -92,9 +99,11 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     }
 
     private void addPeacock() {
-        Peacock peacock = new Peacock( 300, 400, 700, 600, anchorPane, well, feeder, storage);
-        anchorPane.getChildren().add(peacock.getAnimalView());
-        peacockArrayList.add(peacock);
+        for (int i = 0; i < countPeacocks; i++) {
+            peacock = new Peacock(300, 400, 700, 600, anchorPane, well, feeder, storage);
+            anchorPane.getChildren().add(peacock.getAnimalView());
+            peacockArrayList.add(peacock);
+        }
     }
 
 
@@ -169,7 +178,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
 
     public void addMonkey() {
         for (int i = 0; i < countMonkeys; i++) {
-            Monkey monkey = new Monkey(250, 300, 700, 700, anchorPane, well, feeder, storage);
+             monkey = new Monkey(250, 300, 700, 700, anchorPane, well, feeder, storage);
             anchorPane.getChildren().add(monkey.getAnimalView());
             addProducts(monkey);
             addThought(monkey);
@@ -180,7 +189,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
 
     public void addDragonfly() {
         for (int i = 0; i < countDragonflies; i++) {
-            Dragonfly dragonfly = new Dragonfly(50, 50, 1100, 300, anchorPane, well, feeder, storage);
+             dragonfly = new Dragonfly(50, 50, 1100, 300, anchorPane, well, feeder, storage);
             anchorPane.getChildren().add(dragonfly.getAnimalView());
             dragonflyArrayList.add(dragonfly);
         }
@@ -188,7 +197,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
 
     public void addLemur(){
         for (int i = 0; i < countLemurs; i++) {
-            Lemur lemur = new Lemur(80, 270, 700, 630, anchorPane, well, feeder, storage);
+             lemur = new Lemur(80, 270, 700, 630, anchorPane, well, feeder, storage);
             anchorPane.getChildren().add(lemur.getAnimalView());
             lemurArrayList.add(lemur);
         }
@@ -197,7 +206,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
 
     public void addParrot(){
         for (int i = 0; i < countParrots; i++) {
-            Parrot parrot = new Parrot(20, 90, 300, 400, anchorPane, well, feeder, storage);
+             parrot = new Parrot(20, 90, 300, 400, anchorPane, well, feeder, storage);
             anchorPane.getChildren().add(parrot.getAnimalView());
             parrotArrayList.add(parrot);
         }
@@ -346,7 +355,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     }
 
     static void saveState() {
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("gameState.ser"))) {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("levelTwo.ser"))) {
             out.writeInt(coins);
             out.writeInt(countMonkeys);
             out.writeInt(countDragonflies);
@@ -368,7 +377,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     }
 
     static void loadState() {
-        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("gameState.ser"))) {
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("levelTwo.ser"))) {
             coins = in.readInt();
             countMonkeys = in.readInt();
             countDragonflies = in.readInt();

@@ -472,38 +472,34 @@ public abstract class AbstractAnimal implements Animal {
 
     public static void decreaseAnimalCount(String animalType) {
         switch (animalType) {
-            case "Cow":
+            case "Cow" ->
                 FirstLevel.countCow--;
-                break;
-            case "Sheep":
-                FirstLevel.countSheep--;
-                break;
-            case "Goose":
-                FirstLevel.countGoose--;
-                break;
-            case "Pig":
-                FirstLevel.countPig--;
-                break;
-            case "Rabbit":
-                FirstLevel.countRabbit--;
-                break;
-            case "Monkey":
-                SecondLevel.countMonkeys--;
-                break;
-            case "Lemur":
-                SecondLevel.countLemurs--;
-                break;
 
-            case "Dragonfly":
+            case "Sheep" ->
+                FirstLevel.countSheep--;
+
+            case "Goose" ->
+                FirstLevel.countGoose--;
+
+            case "Pig" ->
+                FirstLevel.countPig--;
+
+            case "Rabbit" ->
+                FirstLevel.countRabbit--;
+
+            case "Monkey" ->
+                SecondLevel.countMonkeys--;
+
+            case "Lemur" ->
+                SecondLevel.countLemurs--;
+
+            case "Dragonfly" ->
                 SecondLevel.countDragonflies--;
-                break;
-            case "Peacock":
+            case "Peacock" ->
                 SecondLevel.countPeacocks--;
-                break;
-            case "Parrot":
+            case "Parrot" ->
                 SecondLevel.countParrots--;
-            default:
-                break;
+
         }
     }
 

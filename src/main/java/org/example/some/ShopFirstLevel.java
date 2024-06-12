@@ -115,7 +115,8 @@ public class ShopFirstLevel extends Shop implements Initializable {
     @FXML
     public void secondShop(ActionEvent event) {
         try {
-            saveState();
+            FirstLevel.saveState();
+            SecondLevel.saveState();
            if( level == 2) {
                ShopFirstLevel.setCurrentLevel("secondLevel.fxml");
            } else if( level == 3) {

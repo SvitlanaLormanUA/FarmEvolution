@@ -118,7 +118,8 @@ public class ShopSecondLevel extends Shop implements Initializable {
 
     public void firstShop(ActionEvent event) {
         try {
-            saveState();
+           FirstLevel.saveState();
+           SecondLevel.saveState();
             if (level == 1) {
                 ShopFirstLevel.setCurrentLevel("firstLevel.fxml");
             } else if (level == 2) {
@@ -140,7 +141,8 @@ public class ShopSecondLevel extends Shop implements Initializable {
 
     public void thirdShop(ActionEvent event) {
         try {
-            saveState();
+            FirstLevel.saveState();
+            SecondLevel.saveState();
             if (level == 1) {
                 ShopThirdLevel.setCurrentLevel("firstLevel.fxml");
             } else if (level == 2) {
