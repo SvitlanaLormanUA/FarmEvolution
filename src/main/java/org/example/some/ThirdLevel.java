@@ -41,6 +41,10 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
     public static int countUnicorn = 1;
 
     private SettingsMenu settingsMenu;
+    @FXML
+    private Button shopButton;
+    @FXML
+    private ImageView background;
     private Well well;
     @FXML
     private ImageView wellView;
@@ -59,6 +63,8 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        background.setMouseTransparent(true);
+        shopButton.toFront();
         foodBar.setStyle("-fx-accent: #e13be7;");
         wallet = SecondLevel.wallet;
         anchorPane.getChildren().add(wallet.getRoot());
@@ -111,6 +117,7 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
     @FXML
     public void enterShop(ActionEvent event) {
         try {
+            System.out.println("Shop button clicked");
             saveState();
             ShopFirstLevel.setCurrentLevel("thirdLevel.fxml");
 
@@ -139,7 +146,7 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
         Image pouch = new Image("file:src/main/resources/images/thirdLevel/products/pouch.png");
         Image fairyDust = new Image("file:src/main/resources/images/secondLevel/products/dragonflyPr.png");
         Image horn = new Image("file:src/main/resources/images/secondLevel/products/feather.png");
-        Image unicornBlood = new Image("file:src/main/resources/images/secondLevel/products/mango.png");
+        Image unicornBlood = new Image("file:src/main/resources/images/thirdLevel/products/unicornBlood.png");
         Image mushroom = new Image("file:src/main/resources/images/secondLevel/products/nut.png");
         storage = new Storage(storageView, wallet, pouch, fairyDust, horn, unicornBlood, mushroom);
         storage.lvl3();
