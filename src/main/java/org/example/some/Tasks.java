@@ -151,7 +151,7 @@ public class Tasks {
         }
     }
     private void taskFourFirstLevel() {
-        if (nCoins >=2000) {
+        if (nCoins >=200) {
             task4 = true;
         }
 
