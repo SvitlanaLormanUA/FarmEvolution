@@ -136,7 +136,7 @@ public class Storage {
     }
 
     public void lvl3() {
-        product1Cost = 0;
+        product1Cost = 580;
         product2Cost = 0;
         product3Cost = 0;
         product4Cost = 0;
@@ -170,7 +170,27 @@ public class Storage {
                         x = random.nextInt(880, 1000);
                         y = random.nextInt(540, 560);
                     } else if (thirdLvl) {
-
+                        width = 35;
+                        height = 35;
+                        x = storageView.getLayoutX();
+                        y = storageView.getLayoutY();
+                        if (i < 4) {
+                            for (int j = 2; j <= i; j++) {
+                                x += 25;
+                            }
+                            if(i!=2){
+                                y-=15;
+                            }
+                        } else {
+                            if(i==4) {
+                                x+=25;
+                            }
+                            if(i==5){
+                                x+=30;
+                                y-=15;
+                            }
+                            y-=25;
+                        }
                     }
                 }
 
@@ -226,7 +246,6 @@ public class Storage {
                         x = storageView.getLayoutX() + 2 + i * 22;
                         y = storageView.getLayoutY() + 97;
                             if (i == 3) {
-                                System.out.println("wjxbhqwb");
                                 x = storageView.getLayoutX() + 12;
                                 y = storageView.getLayoutY() + 87;
                             } else if (i == 4) {
@@ -498,6 +517,44 @@ public class Storage {
                         Platform.runLater(() -> root.getChildren().add(1, product5Views.get(num)));
                     }
                   //  Platform.runLater(() -> root.getChildren().add(1, product5Views.get(num)));
+                }
+            }
+        }
+        saveState();
+    }
+
+    public void addPouch() {
+
+        product1++;
+
+        if (product1 <= 5) {
+            double x = storageView.getLayoutX()-100;
+            double y = storageView.getLayoutY() + 150;
+            int width = 35;
+            int heidht = 35;
+            for (int i = 1; i <= 5; i++) {
+                if (i == product1) {
+                    if (product1 < 4) {
+                        for (int j = 2; j <= product1; j++) {
+                            x += 25;
+                        }
+                        if(product1!=2){
+                            y-=15;
+                        }
+                    } else {
+                        if(product1==4) {
+                            x+=25;
+                        }
+                        if(product1==5){
+                            x+=30;
+                            y-=15;
+                        }
+                        y-=25;
+                    }
+                    ImageView productView = createProduct(product1Image, x, y, width, heidht);
+                    product1Views.add(productView);
+                    int num = product1 - 1;
+                    Platform.runLater(() -> root.getChildren().add(1, product1Views.get(num)));
                 }
             }
         }

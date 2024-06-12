@@ -2,6 +2,7 @@ package org.example.some.animals;
 
 import javafx.animation.PathTransition;
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.geometry.Bounds;
 import javafx.scene.Cursor;
 import javafx.scene.image.Image;
@@ -396,26 +397,30 @@ public abstract class AbstractAnimal implements Animal {
 
     @Override
     public void death() {
-        if (this.hungerLvl == 0 || this.thirstLvl == 0) {
-            FirstLevel.wallet.expense(63);
+        if (hungerLvl == 0 || thirstLvl == 0) {
             removeMenu();
             delete();
 //            FirstLevel.sellAnimal(this);
             String animalType = this.getClass().getSimpleName();
              decreaseAnimalCount(animalType);
-            mediaPlayer.stop();
+//            mediaPlayer.stop();
         }
     }
 
     @Override
     public void delete(){
         releaseResources();
-        root.getChildren().remove(animalView);
+        Platform.runLater(() -> {
+            root.getChildren().remove(animalView);
+        });
     }
 
     @Override
     public void releaseResources(){
-        translateTransition.stop();
+        Platform.runLater(() -> {
+            translateTransition.stop();
+            translateTransition = null;
+        });
         hungerLvl = 0;
         thirstLvl = 0;
     }

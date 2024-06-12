@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -26,6 +27,8 @@ import org.example.some.otherGameObjects.Well;
 import static org.example.some.Shop.getCurrentLevel;
 
 public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initializable{
+    public static int WIDTH = 1255;
+    public static int HEIGHT = 707;
     public static Wallet wallet;
     public AnchorPane anchorPane;
     private Stage stage;
@@ -44,15 +47,25 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
     @FXML
     private ProgressBar wellBar;
     private Feeder feeder;
+    @FXML
+    private ImageView feederView;
+
+    @FXML
+    private ProgressBar foodBar;
     private Storage storage;
+    @FXML
+    private ImageView storageView;
     private ArrayList<Gnome> gnomeArrayList = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        foodBar.setStyle("-fx-accent: #e13be7;");
         wallet = FirstLevel.wallet;
         anchorPane.getChildren().add(wallet.getRoot());
 
         addWell();
+        addFeeder();
+        addStorage();
         addGnome();
     }
 
@@ -114,6 +127,30 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
     private void addWell(){
         well = new Well(wellView, wellBar);
         anchorPane.getChildren().add(well.getWellView());
+    }
+
+    private void addFeeder(){
+        feeder = new Feeder(feederView,foodBar, wallet, 200, anchorPane);
+        anchorPane.getChildren().add(feeder.getFoodView());
+    }
+
+    private void addStorage(){
+        Image pouch = new Image("file:src/main/resources/images/thirdLevel/products/pouch.png");
+        Image fairyDust = new Image("file:src/main/resources/images/secondLevel/products/dragonflyPr.png");
+        Image horn = new Image("file:src/main/resources/images/secondLevel/products/feather.png");
+        Image unicornBlood = new Image("file:src/main/resources/images/secondLevel/products/mango.png");
+        Image mushroom = new Image("file:src/main/resources/images/secondLevel/products/nut.png");
+        storage = new Storage(storageView, wallet, pouch, fairyDust, horn, unicornBlood, mushroom);
+        storage.lvl3();
+        anchorPane.getChildren().add(storage.getRoot());
+    }
+
+    @FXML
+    void addStorageMenu(MouseEvent event) {
+        saveState();
+        StorageMenu storageMenu = new  StorageMenu(storage, wallet, WIDTH/2-140, HEIGHT/4-100, anchorPane);
+        storageMenu.thirdLvl();
+        anchorPane.getChildren().addLast(storageMenu.getRoot());
     }
 
     public void addFairy() {
