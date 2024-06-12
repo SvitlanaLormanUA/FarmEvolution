@@ -60,6 +60,7 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
     @FXML
     private ImageView storageView;
     private ArrayList<Gnome> gnomeArrayList = new ArrayList<>();
+    private ArrayList<Unicorn> unicornArrayList = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -74,6 +75,7 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
         addFeeder();
 
         addGnome();
+        addUnicorn();
     }
 
     @FXML
@@ -179,8 +181,9 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
 
     }
     public void addUnicorn() {
-
-
+        Unicorn unicorn = new Unicorn(300, 350, 900, 700, anchorPane, well, feeder, storage);
+        anchorPane.getChildren().add(unicorn.getAnimalView());
+        unicornArrayList.add(unicorn);
     }
 
 

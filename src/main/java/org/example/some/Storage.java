@@ -139,7 +139,7 @@ public class Storage {
         product1Cost = 580;
         product2Cost = 0;
         product3Cost = 0;
-        product4Cost = 0;
+        product4Cost = 1600;
         product5Cost = 0;
         firstLvl = false;
         secondLvl = false;
@@ -256,7 +256,16 @@ public class Storage {
                         x = random.nextInt(880, 1000);
                         y = random.nextInt(550, 570);
                     } else if (thirdLvl) {
-
+                        x = storageView.getLayoutX()+35;
+                        y = storageView.getLayoutY()+63;
+                        width = 30;
+                        height = 40;
+                        if (i > 1) {
+                            for (int j = 2; j <= product4; j++) {
+                                x += 20;
+                                y += 6;
+                            }
+                        }
                     }
                 }
 
@@ -555,6 +564,35 @@ public class Storage {
                     product1Views.add(productView);
                     int num = product1 - 1;
                     Platform.runLater(() -> root.getChildren().add(1, product1Views.get(num)));
+                }
+            }
+        }
+        saveState();
+    }
+
+
+
+    public void addUnicornBlood() {
+        product4++;
+
+        if (product4 <= 4) {
+            double x = storageView.getLayoutX()+35;
+            double y = storageView.getLayoutY()+63;
+            int width = 30;
+            int height = 40;
+            for (int i = 1; i <= 4; i++) {
+                if (i == product4) {
+                    if (product4 > 1) {
+                        for (int j = 2; j <= product4; j++) {
+                            x += 20;
+                            y += 6;
+                        }
+                    }
+
+                    ImageView productView = createProduct(product4Image, x, y, width, height);
+                    product4Views.add(productView);
+                    int num = product4 - 1;
+                    Platform.runLater(() -> root.getChildren().add(1, product4Views.get(num)));
                 }
             }
         }

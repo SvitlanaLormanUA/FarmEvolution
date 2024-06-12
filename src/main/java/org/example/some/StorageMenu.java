@@ -250,6 +250,8 @@ public class StorageMenu {
 
         sellPouch();
 
+
+        sellUnicornBlood();
     }
 
     private void close(){
@@ -378,6 +380,17 @@ public class StorageMenu {
                 storage.sellProduct1(toSell);
                 product1ToSell.setText("Мішечки: "+storage.getProduct1()+"\nВартість: "+storage.getProduct1Cost()+" монет/шт\nВведіть кількість для продажу:");
                 amountOfProduct1.setText("");
+            }
+        });
+    }
+
+    private void sellUnicornBlood(){
+        sellProduct4.setOnAction(event -> {
+            if(sell(amountOfProduct4, storage.getProduct4())){
+                int toSell = Integer.parseInt(amountOfProduct4.getText());
+                storage.sellProduct4(toSell);
+                product4ToSell.setText("Кров єдинорога: "+storage.getProduct4()+"\nВартість: "+storage.getProduct4Cost()+" монет/шт\nВведіть кількість для продажу:");
+                amountOfProduct4.setText("");
             }
         });
     }
