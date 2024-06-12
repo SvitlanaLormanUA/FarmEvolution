@@ -89,24 +89,24 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
     }
 
 
-   @FXML
-   public void backToMainMenu(ActionEvent event) {
-       try {
-           saveState();
+    @FXML
+    public void backToMainMenu(ActionEvent event) {
+        try {
+            saveState();
 
 
-           root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("chooseThirdLevel.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("chooseThirdLevel.fxml")));
 
 
-           stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
 
-           scene = new Scene(root);
-           stage.setScene(scene);
-           stage.show();
-       } catch (IOException e) {
-           throw new RuntimeException(e);
-       }
-   }
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @FXML
     public void enterShop(ActionEvent event) {
