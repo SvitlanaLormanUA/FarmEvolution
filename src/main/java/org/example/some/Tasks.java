@@ -128,6 +128,7 @@ public class Tasks {
         }
         text4 = new Text(task);
         taskLabel4 = new Label(text4.getText());
+        taskLabel4.setText("Заробити монети: "+nCoins +"/2000");
         taskLabel4.setLayoutX(20);
         taskLabel4.setLayoutY(190);
 
