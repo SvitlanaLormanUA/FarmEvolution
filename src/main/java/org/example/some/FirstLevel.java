@@ -11,6 +11,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import org.example.some.animals.*;
 import org.example.some.extraGame.MenuExtraGame1;
@@ -80,6 +82,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
     static Feeder feeder;
     public static Storage storage;
     public static Wallet wallet ;
+    String fxmlFile;
 
     @FXML
 
@@ -103,6 +106,8 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
       static Pig pig;
     Rabbit rabbit;
 
+    public FinishLevel finishLevel;
+    public Tasks tasksWindow;
 
 
 
@@ -126,7 +131,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
 
     @FXML
     public void showTasks(ActionEvent event) {
-        Tasks tasksWindow = new Tasks(anchorPane, 1);
+        // tasksWindow = new Tasks(anchorPane, 1);
         tasksWindow.createMenu("Завдання 1: «Досвідчений м’ясник»\n" +
                 "Продати м’ясо свині: "+storage.getSoldPig()+"/10 шматків\n" +
                 "Продати м’ясо кролів: "+storage.getSoldRabbit()+"/15 шматків", "Завдання 2: «Молоко, любов і гуси»\n" +
@@ -135,7 +140,16 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
                 "Зібрати хутро: "+storage.getnWool()+"/20 штук", "Завдання 4: «Туди сюди і мільйонер»\n" +
                 "Заробити монети: "+tasksWindow.nCoins +"/2000");
         anchorPane.getChildren().add(tasksWindow.getRoot());
+        tasksWindow = new Tasks(anchorPane, 1);
+        if (tasksWindow.task1 && tasksWindow.task2 && tasksWindow.task3 && tasksWindow.task4) {
+            finishLevel = new FinishLevel();
+
+            finishLevel.createImagePane(anchorPane,1);
+        }
+
+
     }
+
 
     @FXML
     void addStorageMenu(MouseEvent event) {
@@ -410,6 +424,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
         setAnimals();
         saveState();
         addMusic();
+
     }
 
     public Parent getRoot() {

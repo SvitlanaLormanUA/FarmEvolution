@@ -28,10 +28,10 @@ public class Tasks {
     private boolean nextLvL = false;
 
 
-    private boolean task1 ;
-    private boolean task2 ;
-    private boolean task3 ;
-    private boolean task4 ;
+    public boolean task1 ;
+    public boolean task2 ;
+    public boolean task3 ;
+    public boolean task4 ;
 
     private int nWool;
     private int nEggs;
@@ -103,16 +103,11 @@ public class Tasks {
 
 
         anchorPane = new AnchorPane();
-        finishLevel = new FinishLevel(anchorPane, level);
-        nextLevel(level);
+        finishLevel = new FinishLevel();
+      //  nextLevel();
         strikeThoughTasks();
     }
-    public void setNextLvL(int level) {
 
-        finishLevel = new FinishLevel(anchorPane, level);
-        root.getChildren().add(finishLevel.getRoot());
-
-    }
     private void addCloseButton(){
         close = new Button("×");
         close.setLayoutX(240);
@@ -237,19 +232,13 @@ public class Tasks {
 
     private void taskOneFirstLevel() {
         if (storage!=null) {
-            if (storage.getSoldPig() >= soldPig && storage.getSoldRabbit() >= soldRabbit) {
+            if (storage.getSoldPig() >= 1 && storage.getSoldRabbit() >= 1) {
                 task1 = true;
             }
             task1 = true;
         }
     }
-    public void nextLevel(int level) {
 
-        if (task1 && task2 && task3 && task4){
-            firstLevel = false;
-            setNextLvL(level);
-        }
-    }
 
 
 

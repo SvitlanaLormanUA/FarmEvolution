@@ -1,5 +1,6 @@
 package org.example.some;
 
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -27,14 +28,14 @@ public class FinishLevel {
     private Scene scene;
     String fxmlFile;
 
-    public FinishLevel(AnchorPane main, int level) {
-        this.main = main;
-        createImagePane(level);
+    public FinishLevel() {
+
     }
 
-    public void createImagePane(int level) {
+
+    void createImagePane(AnchorPane anchorPane, int level) {
         Image image = new Image("file:src/main/resources/images/FinishLevel.png");
-        this.imageView = new ImageView(image);
+        ImageView imageView = new ImageView(image);
         imageView.setFitWidth(370);
         imageView.setFitHeight(200);
 
@@ -48,14 +49,15 @@ public class FinishLevel {
         close.setLayoutY(160);
         close.setStyle("-fx-background-color: #ff5757; -fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold; -fx-border-radius: 10px; -fx-background-radius: 10px;");
         close.setOnAction(event -> {
-            main.getChildren().remove(root);
+            anchorPane.getChildren().remove(root);
             try {
                 //saveState();
                 storage.reset();
                 deleteAllObjects();
 
                 stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-                main.getChildren().clear();
+                anchorPane.getChildren().clear();
+
                 if(level == 1)
                     fxmlFile = "chooseSecondLevel.fxml";
                 else if(level == 2)
@@ -76,10 +78,11 @@ public class FinishLevel {
             }
         });
 
-        root = new Pane();
-        root.setTranslateX(this.x + 480);
-        root.setTranslateY(this.y + 180);
+        Pane root = new Pane();
+        root.setTranslateX( 480);
+        root.setTranslateY( 180);
         root.getChildren().addAll(imageView, close);
+      Platform.runLater(() -> anchorPane.getChildren().add(root));
     }
 
 

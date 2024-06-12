@@ -89,6 +89,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     private Peacock peacock;
     private Parrot parrot;
 
+    private FinishLevel finishLevel;
 
 
     private void addAnimals(){
@@ -336,6 +337,11 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
                 "\nЗавдання 4: «Тоні Старк відпочиває» \n" + "Заробити:  " + tasksWindow.nCoins + "/5500 монет"
         );
         anchorPane.getChildren().add(tasksWindow.getRoot());
+        tasksWindow = new Tasks(anchorPane, 1);
+        if (tasksWindow.task1 && tasksWindow.task2 && tasksWindow.task3 && tasksWindow.task4) {
+            finishLevel = new FinishLevel();
+            finishLevel.createImagePane(anchorPane,2);
+        }
     }
 
     public void showExtraTasks(ActionEvent event) {
