@@ -5,7 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -44,24 +46,53 @@ public class ShopSecondLevel extends Shop implements Initializable {
     public Button nextButton;
     public ImageView nextButtonView;
 
+    private void showAlert(Alert.AlertType type, String message) {
+        Alert alert = new Alert(type, message);
+        alert.showAndWait()
+                .filter(response -> response == ButtonType.OK)
+                .ifPresent(response -> alert.close());
+    }
+
+    private void handleBuy(ActionEvent event, int price, String animalName, Runnable onSuccess) {
+        if (wallet.getCoins() >= price) {
+            SecondLevel.wallet.expense(price);
+            wallet.expense(price);
+
+            onSuccess.run();
+            showAlert(Alert.AlertType.INFORMATION, "Ви купили " + animalName);
+        } else {
+            showAlert(Alert.AlertType.ERROR, "У Вас недостатньо монет для покупки " + animalName);
+        }
+    }
+
     public void buyParrot(ActionEvent event) {
-        // Implement buying logic for Parrot
+        handleBuy(event, PARROT_PRICE, "Папугу", () -> {
+            SecondLevel.countParrots++;
+        });
     }
 
     public void buyMonkey(ActionEvent event) {
-        // Implement buying logic for Monkey
+        handleBuy(event, MONKEY_PRICE, "Мавпу", () -> {
+            SecondLevel.countMonkeys++;
+        });
     }
 
     public void buyPeacock(ActionEvent event) {
-        // Implement buying logic for Peacock
+        handleBuy(event, PEACOCK_PRICE, "Павича", () -> {
+            SecondLevel.countPeacocks++;
+        });
     }
 
     public void buyLemur(ActionEvent event) {
-        // Implement buying logic for Lemur
+        handleBuy(event, LEMUR_PRICE, "Лємура", () -> {
+            SecondLevel.countLemurs++;
+        });
     }
 
     public void buyDragonfly(ActionEvent event) {
-        // Implement buying logic for Dragonfly
+        handleBuy(event, DRAGONFLY_PRICE, "Бабку", () -> {
+            SecondLevel.countDragonflies++;
+        });
     }
 
     private void addImageBasedOnPreviousLevel() {
@@ -118,8 +149,8 @@ public class ShopSecondLevel extends Shop implements Initializable {
 
     public void firstShop(ActionEvent event) {
         try {
-           FirstLevel.saveState();
-           SecondLevel.saveState();
+            FirstLevel.saveState();
+            SecondLevel.saveState();
             if (level == 1) {
                 ShopFirstLevel.setCurrentLevel("firstLevel.fxml");
             } else if (level == 2) {
