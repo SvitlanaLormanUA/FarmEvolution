@@ -249,7 +249,7 @@ public class StorageMenu {
                 product3ToSell, amountOfProduct3, sellProduct3, product4ToSell, amountOfProduct4, sellProduct4, product5ToSell, amountOfProduct5, sellProduct5);
 
         sellPouch();
-
+        sellFairyDust();
 
         sellUnicornBlood();
     }
@@ -393,6 +393,17 @@ public class StorageMenu {
                 storage.sellProduct4(toSell);
                 product4ToSell.setText("Кров єдинорога: "+storage.getProduct4()+"\nВартість: "+storage.getProduct4Cost()+" монет/шт\nВведіть кількість для продажу:");
                 amountOfProduct4.setText("");
+            }
+        });
+    }
+
+    private void sellFairyDust(){
+        sellProduct2.setOnAction(event -> {
+            if(sell(amountOfProduct2, storage.getProduct2())){
+                int toSell = Integer.parseInt(amountOfProduct2.getText());
+                storage.sellProduct2(toSell);
+                product2ToSell.setText("Пил феї: "+storage.getProduct2()+"\nВартість: "+storage.getProduct2Cost()+" монет/шт\nВведіть кількість для продажу:");
+                amountOfProduct2.setText("");
             }
         });
     }

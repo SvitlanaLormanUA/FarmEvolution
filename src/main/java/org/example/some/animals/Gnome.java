@@ -76,7 +76,7 @@ public class Gnome extends AbstractAnimal{
             public void run() {
                 if (hungerLvl > 0) {
                     hungerLvl--;
-                    cost = (int) (850 * ((double)hungerLvl / 100));
+                    cost = (int) (1250 * ((double)hungerLvl / 100));
                 } else {
                     timer.cancel();
                     timer.purge();

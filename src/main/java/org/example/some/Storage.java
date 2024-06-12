@@ -137,7 +137,7 @@ public class Storage {
 
     public void lvl3() {
         product1Cost = 580;
-        product2Cost = 0;
+        product2Cost = 320;
         product3Cost = 0;
         product4Cost = 1600;
         product5Cost = 0;
@@ -150,6 +150,9 @@ public class Storage {
         double startX = storageView.getLayoutX();
         double startY = storageView.getLayoutY();
         double x = 0, y = 0;
+        if(quantity>5){
+            quantity = 5;
+        }
 
         for (int i = 0; i < quantity; i++) {
             switch(product) {
@@ -172,20 +175,20 @@ public class Storage {
                     } else if (thirdLvl) {
                         width = 35;
                         height = 35;
-                        x = storageView.getLayoutX();
-                        y = storageView.getLayoutY();
-                        if (i < 4) {
-                            for (int j = 2; j <= i; j++) {
+                        x = storageView.getLayoutX()-100;
+                        y = storageView.getLayoutY() + 150;
+                        if (i < 3) {
+                            for (int j = 1; j <= i; j++) {
                                 x += 25;
                             }
-                            if(i!=2){
+                            if(i!=1){
                                 y-=15;
                             }
                         } else {
-                            if(i==4) {
+                            if(i==3) {
                                 x+=25;
                             }
-                            if(i==5){
+                            if(i==4){
                                 x+=30;
                                 y-=15;
                             }
@@ -213,7 +216,23 @@ public class Storage {
                         x = random.nextInt(880, 1000);
                         y = random.nextInt(540, 560);
                     } else if (thirdLvl) {
-
+                        width = 40;
+                        height = 40;
+                        x = storageView.getLayoutX() + 20;
+                        y = storageView.getLayoutY() + 55;
+                        if (i > 0 && i < 3) {
+                            for (int j = 1; j <= i; j++) {
+                                x += 25;
+                                y += 5;
+                            }
+                        } else if(i>=3){
+                            x = storageView.getLayoutX() + 20;
+                            y = storageView.getLayoutY() + 70;
+                            for (int j = 3; j <= i; j++) {
+                                x += 25;
+                                y += 5;
+                            }
+                        }
                     }
                 }
 
@@ -260,8 +279,8 @@ public class Storage {
                         y = storageView.getLayoutY()+63;
                         width = 30;
                         height = 40;
-                        if (i > 1) {
-                            for (int j = 2; j <= product4; j++) {
+                        if (i > 0 && i<4) {
+                            for (int j = 1; j <= i; j++) {
                                 x += 20;
                                 y += 6;
                             }
@@ -566,6 +585,37 @@ public class Storage {
                     product1Views.add(productView);
                     int num = product1 - 1;
                     Platform.runLater(() -> root.getChildren().add(1, product1Views.get(num)));
+                }
+            }
+        }
+        saveState();
+    }
+
+    public void addFairyDust() {
+        product2++;
+        if (product2 <= 5) {
+            double x = storageView.getLayoutX() + 20;
+            double y = storageView.getLayoutY() + 55;
+            int width = 40;
+            for (int i = 1; i <= 5; i++) {
+                if (i == product2) {
+                    if (product2 > 1 && product2 < 4) {
+                        for (int j = 2; j <= product2; j++) {
+                            x += 25;
+                            y += 5;
+                        }
+                    } else if(product2>=4){
+                        x = storageView.getLayoutX() + 20;
+                        y = storageView.getLayoutY() + 70;
+                        for (int j = 4; j <= product2; j++) {
+                            x += 25;
+                            y += 5;
+                        }
+                    }
+                    ImageView productView = createProduct(product2Image, x, y, width, width);
+                    product2Views.add(productView);
+                    int num = product2 - 1;
+                    Platform.runLater(() -> root.getChildren().add(product2Views.get(num)));
                 }
             }
         }

@@ -1,12 +1,18 @@
 package org.example.some.animals;
 
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
+import javafx.scene.Cursor;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import org.example.some.Storage;
 import org.example.some.otherGameObjects.Well;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Fairy extends AbstractAnimal{
 
@@ -20,17 +26,75 @@ public class Fairy extends AbstractAnimal{
         );
         animalView.setFitHeight(110);
         animalView.setFitWidth(80);
+        giveProduct();
     }
 
     @Override
     public void feed() {
-
+        if(hungerLvl<100) {
+            if(AbstractAnimal.feeder.haveFood()) {
+                hungerLvl += 40;
+            }
+            if (hungerLvl > 100) {
+                hungerLvl = 100;
+            }
+            AbstractAnimal.feeder.getFood();
+        }
     }
 
     @Override
     public void giveProduct() {
+        if (hungerLvl > 0) {
+            Timer timer = new Timer();
+            TimerTask task = new TimerTask() {
+                @Override
+                public void run() {
+                    if (hungerLvl > 0) {
 
+                        ImageView productView = new ImageView(product);
+                        productView.setFitWidth(40);
+                        productView.setFitHeight(40);
+                        productView.setX(animalView.getLayoutX() + 20);
+                        productView.setY(animalView.getLayoutY() + 20);
+                        productView.setCursor(Cursor.HAND);
+
+                        productView.setOnMouseClicked(event -> {
+                            AbstractAnimal.root.getChildren().remove(productView);
+                            storage.addFairyDust();
+                        });
+
+                        Platform.runLater(() -> AbstractAnimal.root.getChildren().add(productView));
+                    } else {
+                        timer.cancel();
+                        timer.purge();
+                    }
+                }
+            };
+
+
+            timer.scheduleAtFixedRate(task, 0, 70000);
+        }
     }
+
+    @Override
+    public void hunger() {
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                if (hungerLvl > 0) {
+                    hungerLvl--;
+                    cost = (int) (1500 * ((double)hungerLvl / 100));
+                } else {
+                    timer.cancel();
+                    timer.purge();
+                }
+            }
+        };
+
+        timer.scheduleAtFixedRate(task, 0, 3000);
+    }
+
     @Override
     public void movement() {
         translateTransition = new TranslateTransition();

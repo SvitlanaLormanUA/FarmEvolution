@@ -152,7 +152,7 @@ public class Tasks {
         }
     }
     private void taskFourFirstLevel() {
-        if (nCoins >=200) {
+        if (nCoins >=300) {
             task4 = true;
         }
 
@@ -185,6 +185,7 @@ public class Tasks {
             if (storage.getnWool() >= 20) {
                 task3 = true;
             }
+            task3 = true;
         }
 
     }
@@ -212,6 +213,7 @@ public class Tasks {
             if (storage.getnEggs() >= nEggs && storage.getSoldMilk() >= soldMilk) {
                 task2 = true;
             }
+            task2 = true;
         }
     }
     private void addTaskOne(String task) {
@@ -238,6 +240,7 @@ public class Tasks {
             if (storage.getSoldPig() >= soldPig && storage.getSoldRabbit() >= soldRabbit) {
                 task1 = true;
             }
+            task1 = true;
         }
     }
     public void nextLevel(int level) {
