@@ -33,6 +33,7 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
                 "file:src/main/resources/images/firstLevel/products/meat.png"
         ) ;
     //    loadAmountOfMeals();
+      FirstLevel.loadState();
         this.productCost = 0;
         this.openedMeatMenu = false;
         this.enoughFood = false;
@@ -185,6 +186,14 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
         };
 
         timer.scheduleAtFixedRate(task, 0, 3000);
+    }
+
+    public int getAmountOfMeals() {
+        return amountOfMeals;
+    }
+
+    public void setAmountOfMeals(int amountOfMeals) {
+        this.amountOfMeals = amountOfMeals;
     }
 
     public static void saveAmountOfMeals() {

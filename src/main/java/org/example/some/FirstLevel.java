@@ -100,7 +100,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
     Sheep sheep;
     Goose goose;
     Cow cow;
-    Pig pig;
+      static Pig pig;
     Rabbit rabbit;
 
 
@@ -168,6 +168,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
              pig = new Pig(250, 300, 1000, 630, anchorPane, well, feeder, storage);
             anchorPane.getChildren().add(pig.getAnimalView());
             pigArrayList.add(pig);
+
         }
 
 
@@ -303,16 +304,17 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
             out.writeInt(countGoose);
             out.writeInt(countPig);
             out.writeInt(countRabbit);
+            //out.writeInt(pig.amountOfMeals);
 
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Pig.saveAmountOfMeals();
+        pig.saveAmountOfMeals();
         Rabbit.saveAmountOfMeals();
     }
 
-    static void loadState() {
+    public static void loadState(){
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("levelOne.ser"))) {
 
             coins = in.readInt();
@@ -321,6 +323,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
             countGoose = in.readInt();
             countPig = in.readInt();
             countRabbit = in.readInt();
+           // pig.amountOfMeals = in.readInt();
 
 
             setCoins(coins);
@@ -397,7 +400,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
             countPig = 1;
             countRabbit = 1;
             Rabbit.amountOfMeals = 0;
-            Pig.amountOfMeals = 0;
+            pig.amountOfMeals = 0;
             SettingsMenu.start = false;
 
         }
