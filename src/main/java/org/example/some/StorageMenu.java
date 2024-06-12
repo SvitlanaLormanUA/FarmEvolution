@@ -194,6 +194,64 @@ public class StorageMenu {
         sellNut();
     }
 
+    public void thirdLvl(){
+        product1ToSell = new Label("Мішечки: "+storage.getProduct1()+"\nВартість: "+storage.getProduct1Cost()+" монет/шт\nВведіть кількість для продажу:");
+        product1ToSell.setLayoutX(20);
+        product1ToSell.setLayoutY(20);
+        amountOfProduct1 = new TextField();
+        amountOfProduct1.setLayoutX(20);
+        amountOfProduct1.setLayoutY(75);
+        sellProduct1 = new Button("Продати");
+        sellProduct1.setLayoutX(180);
+        sellProduct1.setLayoutY(75);
+
+        product2ToSell = new Label("Пил феї: "+storage.getProduct2()+"\nВартість: "+storage.getProduct2Cost()+" монет/шт\nВведіть кількість для продажу:");
+        product2ToSell.setLayoutX(20);
+        product2ToSell.setLayoutY(115);
+        amountOfProduct2 = new TextField();
+        amountOfProduct2.setLayoutX(20);
+        amountOfProduct2.setLayoutY(170);
+        sellProduct2 = new Button("Продати");
+        sellProduct2.setLayoutX(180);
+        sellProduct2.setLayoutY(170);
+
+        product3ToSell = new Label("Рога: "+storage.getProduct3()+"\nВартість: "+storage.getProduct3Cost()+" монет/шт\nВведіть кількість для продажу:");
+        product3ToSell.setLayoutX(20);
+        product3ToSell.setLayoutY(210);
+        amountOfProduct3 = new TextField();
+        amountOfProduct3.setLayoutX(20);
+        amountOfProduct3.setLayoutY(265);
+        sellProduct3 = new Button("Продати");
+        sellProduct3.setLayoutX(180);
+        sellProduct3.setLayoutY(265);
+
+        product4ToSell = new Label("Кров єдинорога: "+storage.getProduct4()+"\nВартість: "+storage.getProduct4Cost()+" монет/шт\nВведіть кількість для продажу:");
+        product4ToSell.setLayoutX(20);
+        product4ToSell.setLayoutY(305);
+        amountOfProduct4 = new TextField();
+        amountOfProduct4.setLayoutX(20);
+        amountOfProduct4.setLayoutY(360);
+        sellProduct4 = new Button("Продати");
+        sellProduct4.setLayoutX(180);
+        sellProduct4.setLayoutY(360);
+
+        product5ToSell = new Label("Гриби: "+storage.getProduct5()+"\nВартість: "+storage.getProduct5Cost()+" монет/шт\nВведіть кількість для продажу:");
+        product5ToSell.setLayoutX(20);
+        product5ToSell.setLayoutY(400);
+        amountOfProduct5 = new TextField();
+        amountOfProduct5.setLayoutX(20);
+        amountOfProduct5.setLayoutY(455);
+        sellProduct5 = new Button("Продати");
+        sellProduct5.setLayoutX(180);
+        sellProduct5.setLayoutY(455);
+
+        root.getChildren().addAll(product1ToSell, amountOfProduct1, sellProduct1, product2ToSell, amountOfProduct2, sellProduct2,
+                product3ToSell, amountOfProduct3, sellProduct3, product4ToSell, amountOfProduct4, sellProduct4, product5ToSell, amountOfProduct5, sellProduct5);
+
+        sellPouch();
+
+    }
+
     private void close(){
         close.setStyle("-fx-background-color: #ff5757; -fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold; -fx-border-radius: 10px; -fx-background-radius: 10px; ");
         close.setOnAction(event -> {
@@ -309,6 +367,17 @@ public class StorageMenu {
                 storage.sellProduct5(toSell);
                 product5ToSell.setText("Горіхи: "+storage.getProduct5()+"\nВартість: "+storage.getProduct5Cost()+" монет/шт\nВведіть кількість для продажу:");
                 amountOfProduct5.setText("");
+            }
+        });
+    }
+
+    private void sellPouch(){
+        sellProduct1.setOnAction(event -> {
+            if(sell(amountOfProduct1, storage.getProduct1())){
+                int toSell = Integer.parseInt(amountOfProduct1.getText());
+                storage.sellProduct1(toSell);
+                product1ToSell.setText("Мішечки: "+storage.getProduct1()+"\nВартість: "+storage.getProduct1Cost()+" монет/шт\nВведіть кількість для продажу:");
+                amountOfProduct1.setText("");
             }
         });
     }

@@ -10,7 +10,7 @@
 <AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.some.ThirdLevel">
    <children>
 
-      <ImageView fx:id="wellView" fitHeight="707.0" fitWidth="1351.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="feederView" fitHeight="707.0" fitWidth="1351.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/backGrounds/magicBack.png" />
          </image>
@@ -74,12 +74,23 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <ImageView fx:id="wellView" fitHeight="64.0" fitWidth="247.0" layoutX="48.0" layoutY="601.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="storageView" fitHeight="189.0" fitWidth="178.0" layoutX="1059.0" layoutY="485.0" onMouseClicked="#addStorageMenu" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/thirdLevel/otherObjects/coffer.png" />
+         </image>
+      </ImageView>
+      <ProgressBar fx:id="wellBar" layoutX="64.0" layoutY="664.0" prefHeight="17.0" prefWidth="175.0" progress="1.0" stylesheets="@../../../styles/firstLevel.css" />
+      <ProgressBar fx:id="foodBar" layoutX="-24.0" layoutY="484.0" prefHeight="17.0" prefWidth="175.0" progress="1.0" rotate="-90.0" stylesheets="@../../../styles/firstLevel.css" />
+      <ImageView fx:id="wellView" fitHeight="64.0" fitWidth="247.0" layoutX="38.0" layoutY="601.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/thirdLevel/otherObjects/fountain.png" />
          </image>
       </ImageView>
-      <ProgressBar fx:id="wellBar" layoutX="-55.0" layoutY="556.0" prefHeight="17.0" prefWidth="175.0" progress="1.0" rotate="-90.0" stylesheets="@../../../styles/firstLevel.css" />
+      <ImageView fx:id="feederView" fitHeight="150.0" fitWidth="200.0" layoutX="79.0" layoutY="430.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/thirdLevel/otherObjects/boiler.png" />
+         </image>
+      </ImageView>
 
 
    </children>

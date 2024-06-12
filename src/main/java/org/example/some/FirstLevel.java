@@ -231,7 +231,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
               }
           }
       }
-          storage = null;
+          //storage = null;
           //well = null;
           //feeder = null;
           //foodBar = null;

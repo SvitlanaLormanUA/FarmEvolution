@@ -51,20 +51,34 @@ public class Storage {
 
     private Random random = new Random();
 
+
+    //FIrstLevelProducts
     private static int nWool;
     private static int nEggs;
     private static int soldMilk;
     private static int soldPig;
     private static int soldRabbit;
-    private static int soldDragonfly;
-
+    //FIrstLevelTasks
     private int nWoolP = 20;
     private int nEggsP = 30;
     private int soldMilkP = 15;
     private int soldPigP = 10;
     private int soldRabbitP = 15;
 
-    private static int driedDragonflyP = 5;
+    //SecondLeveLProducts
+    private static int driedDragonfly;
+    private static int soldFeather;
+    private static int soldMango;
+    private static int gatheredNuts;
+    private static int soldBananas;
+
+    //SecondLeveLTasks
+    private  int driedDragonflyP = 5;
+    private  int soldFeatherP = 15;
+    private  int soldMangoP = 17;
+    private  int gatheredNutsP = 13;
+    private  int soldBananasP =25;
+
 
     private boolean firstLvl;
     private boolean secondLvl;
@@ -93,6 +107,10 @@ public class Storage {
 //        loadState();
     }
 
+    public static void setSoldFeather(int soldFeather) {
+        Storage.soldFeather = soldFeather;
+    }
+
     public void lvl1() {
         product1Cost = 5;
         product2Cost = 10;
@@ -118,7 +136,7 @@ public class Storage {
     }
 
     public void lvl3() {
-        product1Cost = 0;
+        product1Cost = 580;
         product2Cost = 0;
         product3Cost = 0;
         product4Cost = 0;
@@ -152,7 +170,27 @@ public class Storage {
                         x = random.nextInt(880, 1000);
                         y = random.nextInt(540, 560);
                     } else if (thirdLvl) {
-
+                        width = 35;
+                        height = 35;
+                        x = storageView.getLayoutX();
+                        y = storageView.getLayoutY();
+                        if (i < 4) {
+                            for (int j = 2; j <= i; j++) {
+                                x += 25;
+                            }
+                            if(i!=2){
+                                y-=15;
+                            }
+                        } else {
+                            if(i==4) {
+                                x+=25;
+                            }
+                            if(i==5){
+                                x+=30;
+                                y-=15;
+                            }
+                            y-=25;
+                        }
                     }
                 }
 
@@ -208,7 +246,6 @@ public class Storage {
                         x = storageView.getLayoutX() + 2 + i * 22;
                         y = storageView.getLayoutY() + 97;
                             if (i == 3) {
-                                System.out.println("wjxbhqwb");
                                 x = storageView.getLayoutX() + 12;
                                 y = storageView.getLayoutY() + 87;
                             } else if (i == 4) {
@@ -486,6 +523,44 @@ public class Storage {
         saveState();
     }
 
+    public void addPouch() {
+
+        product1++;
+
+        if (product1 <= 5) {
+            double x = storageView.getLayoutX()-100;
+            double y = storageView.getLayoutY() + 150;
+            int width = 35;
+            int heidht = 35;
+            for (int i = 1; i <= 5; i++) {
+                if (i == product1) {
+                    if (product1 < 4) {
+                        for (int j = 2; j <= product1; j++) {
+                            x += 25;
+                        }
+                        if(product1!=2){
+                            y-=15;
+                        }
+                    } else {
+                        if(product1==4) {
+                            x+=25;
+                        }
+                        if(product1==5){
+                            x+=30;
+                            y-=15;
+                        }
+                        y-=25;
+                    }
+                    ImageView productView = createProduct(product1Image, x, y, width, heidht);
+                    product1Views.add(productView);
+                    int num = product1 - 1;
+                    Platform.runLater(() -> root.getChildren().add(1, product1Views.get(num)));
+                }
+            }
+        }
+        saveState();
+    }
+
     private ImageView createProduct(Image productView, double x, double y, int width, int height) {
         ImageView product = new ImageView(productView);
         product.setFitWidth(width);
@@ -743,16 +818,65 @@ public class Storage {
         return product3Cost;
     }
 
-    public static int getSoldDragonfly() {
-        if (soldDragonfly >= driedDragonflyP){
-            soldDragonfly = driedDragonflyP;
+    public  int getDriedDragonfly() {
+        if (driedDragonfly >= driedDragonflyP){
+            driedDragonfly = driedDragonflyP;
         }
-        return soldDragonfly;
+        return driedDragonfly;
     }
 
     public int getDriedDragonflyP() {
         return driedDragonflyP;
     }
+
+
+    public int getSoldFeatherP() {
+        return soldFeatherP;
+    }
+    public int getSoldFeather() {
+        if (soldFeather >= soldFeatherP){
+            soldFeather= soldFeatherP;
+        }
+        return soldFeather;
+
+    }
+
+    public  int getSoldMango() {
+        if (soldMango >= soldMangoP){
+            soldMango= soldMangoP;
+        }
+        return soldMango;
+    }
+
+    public  int getGatheredNuts() {
+        if (gatheredNuts >= gatheredNutsP){
+            gatheredNuts= gatheredNutsP;
+        }
+        return gatheredNuts;
+    }
+
+    public  int getSoldBananas() {
+        if (soldBananas >= soldBananasP){
+            soldBananas= soldBananasP;
+        }
+
+        return soldBananas;
+    }
+
+    public int getSoldManagoP() {
+        return soldMangoP;
+    }
+
+    public   int getGatheredNutsP() {
+        return gatheredNutsP;
+    }
+
+    public   int getSoldBananasP() {
+        return soldBananasP;
+    }
+
+
+
 
     public  void reset() {
         removeProductView(product1Views, product1, product1);
@@ -771,6 +895,10 @@ public class Storage {
         soldRabbit = 0;
         nWool = 0;
         nEggs = 0;
+
         saveState();
     }
+
+
+
 }
