@@ -1,4 +1,6 @@
 package org.example.some.extraGame;
+
+import javafx.application.Application;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
@@ -20,7 +22,7 @@ import javafx.stage.Stage;
 
 import java.util.*;
 
-public class AppleGame {
+public class AppleGame extends Application {
     private static final int WIDTH = 580;
     private static final int HEIGHT = 700;
     private static final int BASKET_WIDTH = 110;
@@ -45,9 +47,11 @@ public class AppleGame {
     private int redAppleCount = 0;
     private boolean gameWon = false;
     private AnimationTimer gameLoop;
+    Pane root;
 
+    @Override
     public void start(Stage primaryStage) {
-        Pane root = new Pane();
+        root = new Pane();
         Canvas canvas = new Canvas(WIDTH, HEIGHT);
         root.getChildren().add(canvas);
 
@@ -56,14 +60,14 @@ public class AppleGame {
 
         Scene scene = new Scene(mainPane);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Apple Game");
+        primaryStage.setTitle("Apple Catch Game");
         primaryStage.show();
 
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
         // Load images
         redAppleImage = new Image("file:src/main/resources/images/extraGame/red_apple.png");
-        greenAppleImage = new Image("file:src/main/resources/images/extraGame/green_apple.png");
+        greenAppleImage = new Image("file:src/main/resources/images/extraGame/green_apple .png");
         basketImage = new Image("file:src/main/resources/images/extraGame/basket.png");
         backgroundImage = new Image("file:src/main/resources/images/extraGame/AppleGameBackgr.png");
 
@@ -191,7 +195,15 @@ public class AppleGame {
 
         Label message = new Label("Всі яблука зібрано!");
         Button closeButton = new Button("Закрити гру");
-        closeButton.setOnAction(e -> Platform.exit());
+        closeButton.setOnAction(e -> {
+            // Close the primary stage (game window)
+            Stage gameStage = (Stage) root.getScene().getWindow();
+            gameStage.close();
+
+            // Close the alert
+            Stage alertStage = (Stage) closeButton.getScene().getWindow();
+            alertStage.close();
+        });
 
         VBox vbox = new VBox(10, message, closeButton);
         vbox.setAlignment(Pos.CENTER);
