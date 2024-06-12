@@ -26,22 +26,22 @@
     </ImageView>
     <ImageView fitHeight="48.0" fitWidth="42.0" layoutX="1093.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
         <image>
-            <Image url="@../../../images/secondLevel/icons/instr2.png" />
+            <Image url="@../../../images/firstLevel/icons/instr.png" />
         </image>
     </ImageView>
     <ImageView fitHeight="48.0" fitWidth="42.0" layoutX="1168.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
         <image>
-            <Image url="@../../../images/secondLevel/icons/settings2.png" />
+            <Image url="@../../../images/thirdLevel/icons/settingThird.png" />
         </image>
     </ImageView>
     <ImageView fitHeight="48.0" fitWidth="42.0" layoutX="1168.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
         <image>
-            <Image url="@../../../images/secondLevel/icons/tasks2.png" />
+            <Image url="@../../../images/thirdLevel/icons/Tasks.png" />
         </image>
     </ImageView>
     <ImageView fitHeight="48.0" fitWidth="42.0" layoutX="1169.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
         <image>
-            <Image url="@../../../images/secondLevel/icons/extra2.png" />
+            <Image url="@../../../images/thirdLevel/icons/Extra.png" />
         </image>
     </ImageView>
 
