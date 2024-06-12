@@ -32,7 +32,7 @@ public class Unicorn extends AbstractAnimal implements AnimalMeat{
         super(worldStartX, worldStartY, worldEndX, worldEndY, root, well, feeder, storage,
                 "file:src/main/resources/images/thirdLevel/animals/UnicornRight.png",
                 "file:src/main/resources/images/thirdLevel/animals/UnicornLeft.png",
-                "src/main/resources/sound/dragonfly.mp3",
+                "src/main/resources/sound/gallop.mp3",
                 "file:src/main/resources/images/thirdLevel/products/unicornBlood.png");
         animalView.setFitWidth(170);
         animalView.setFitHeight(140);

@@ -16,7 +16,7 @@ import org.example.some.otherGameObjects.Instr;
 import org.example.some.otherGameObjects.Wallet;
 import javafx.scene.control.ProgressBar;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -24,6 +24,7 @@ import java.util.ResourceBundle;
 import org.example.some.otherGameObjects.Well;
 
 //import static org.example.some.SecondLevel.coins;
+import static org.example.some.FirstLevel.coins;
 import static org.example.some.Shop.getCurrentLevel;
 
 public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initializable{
@@ -61,22 +62,8 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
     private ImageView storageView;
     private ArrayList<Gnome> gnomeArrayList = new ArrayList<>();
     private ArrayList<Unicorn> unicornArrayList = new ArrayList<>();
+    private ArrayList<Fairy> fairyArrayList = new ArrayList<>();
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        background.setMouseTransparent(true);
-        shopButton.toFront();
-        foodBar.setStyle("-fx-accent: #e13be7;");
-        wallet = SecondLevel.wallet;
-        anchorPane.getChildren().add(wallet.getRoot());
-
-        addStorage();
-        addWell();
-        addFeeder();
-
-        addGnome();
-        addUnicorn();
-    }
 
     @FXML
     public void previousLevel(ActionEvent event) {
@@ -92,9 +79,7 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
             throw new RuntimeException(e);
         }
     }
-    public static void saveState() {
 
-    }
 
 
     @FXML
@@ -164,6 +149,9 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
     }
 
     public void addFairy() {
+        Fairy fairy = new Fairy(300, 50, 1000, 300, anchorPane, well, feeder, storage);
+        anchorPane.getChildren().add(fairy.getAnimalView());
+        fairyArrayList.add(fairy);
 
 
 
@@ -181,7 +169,7 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
 
     }
     public void addUnicorn() {
-        Unicorn unicorn = new Unicorn(300, 350, 900, 700, anchorPane, well, feeder, storage);
+        Unicorn unicorn = new Unicorn(300, 350, 900, 600, anchorPane, well, feeder, storage);
         anchorPane.getChildren().add(unicorn.getAnimalView());
         unicornArrayList.add(unicorn);
     }
@@ -217,4 +205,63 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
         infoWindow.createImagePane();
         anchorPane.getChildren().add(infoWindow.getRoot());
     }
+    static void saveState() {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("levelThree.ser"))) {
+            out.writeInt(coins);
+            out.writeInt(countGnome);
+            out.writeInt(countUnicorn);
+            out.writeInt(countFairy);
+            out.writeInt(countMinotaur);
+            out.writeInt(countMushroom);
+
+
+
+
+
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Dragonfly.saveAmountOfMeals();
+    }
+
+    static void loadState() {
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("levelThree.ser"))) {
+            coins = in.readInt();
+            countGnome = in.readInt();
+            countUnicorn = in.readInt();
+            countFairy = in.readInt();
+            countMinotaur = in.readInt();
+            countMushroom = in.readInt();
+
+
+
+            setCoins(coins);
+            wallet.setCoins(coins);
+            wallet.nCoins.setText(String.valueOf(coins));
+        } catch (IOException e) {
+            coins = 0; // Default value if there's an error or the file doesn't exist
+        }
+    }
+    public static void setCoins(int coins){
+
+        FirstLevel.coins = coins;
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        background.setMouseTransparent(true);
+        shopButton.toFront();
+        foodBar.setStyle("-fx-accent: #e13be7;");
+        wallet = SecondLevel.wallet;
+        anchorPane.getChildren().add(wallet.getRoot());
+
+        addStorage();
+        addWell();
+        addFeeder();
+
+        setAnimals();
+    }
+
 }
