@@ -156,6 +156,4 @@ public class FindDifferences extends Application {
 
         alert.show();
     }
-
-
 }
