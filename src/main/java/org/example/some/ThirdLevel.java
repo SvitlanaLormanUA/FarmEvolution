@@ -12,6 +12,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.example.some.animals.*;
+import org.example.some.extraGame.MenuExtraGame2;
+import org.example.some.extraGame.MenuExtraGame3;
 import org.example.some.otherGameObjects.Instr;
 import org.example.some.otherGameObjects.Wallet;
 import javafx.scene.control.ProgressBar;
@@ -207,6 +209,9 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
     }
 
     public void showExtraTasks(ActionEvent event) {
+        MenuExtraGame3 game = new MenuExtraGame3(anchorPane);
+        game.createImagePane();
+        anchorPane.getChildren().add(game.getRoot());
     }
 
     public void showTasks(ActionEvent event) {

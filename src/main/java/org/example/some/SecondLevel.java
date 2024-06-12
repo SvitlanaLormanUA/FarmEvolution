@@ -15,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.example.some.animals.*;
 import org.example.some.extraGame.MenuExtraGame2;
+import org.example.some.extraGame.MenuExtraGame3;
 import org.example.some.otherGameObjects.Instr;
 import org.example.some.otherGameObjects.Wallet;
 import org.example.some.otherGameObjects.Well;

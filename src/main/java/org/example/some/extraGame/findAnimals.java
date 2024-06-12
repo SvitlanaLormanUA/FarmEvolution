@@ -79,7 +79,7 @@ public class findAnimals extends Application {
                         foundCircles.add(circle);
                         foundAnimals++;
                         if (foundAnimals == totalAnimals) {
-                            showAlert();
+                            showAlert(primaryStage);
                         }
                     }
                     break;
@@ -138,26 +138,27 @@ public class findAnimals extends Application {
         return instructionOverlay;
     }
 
-    private void showAlert() {
-        Alert alert = new Alert(Alert.AlertType.NONE);
-        alert.setTitle("Гру закінчено");
-        alert.setHeaderText(null);
+    private void showAlert(Stage primaryStage) {
+        Stage alertStage = new Stage();
 
         Label message = new Label("Всі тварини знайдені!");
         Button closeButton = new Button("Закрити гру");
-        closeButton.setOnAction(e -> Platform.exit());
+        closeButton.setOnAction(e -> {
+            alertStage.close();
+            primaryStage.close();
+        });
 
         VBox vbox = new VBox(10, message, closeButton);
         vbox.setAlignment(Pos.CENTER);
         vbox.setPrefSize(300, 100);
 
-        alert.getDialogPane().setContent(vbox);
-        alert.showAndWait();
+        Scene alertScene = new Scene(vbox);
+        alertStage.setScene(alertScene);
+        alertStage.setTitle("Гру закінчено");
+        alertStage.show();
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+
 }
 
 

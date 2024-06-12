@@ -5,7 +5,6 @@ import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -18,37 +17,41 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class FindDifferences extends Application {
+public class FindItem extends Application {
 
     private int foundAnimals = 0;
-    private final int totalAnimals = 7; // Кількість тварин
+    private final int totalAnimals = 12; // Кількість предметів
     private Set<Circle> foundCircles = new HashSet<>();
 
     @Override
     public void start(Stage primaryStage) {
         // Завантаження головного зображення
-        Image mainImage = new Image("file:src/main/resources/images/extraGame/FindDifferences.png");
+        Image mainImage = new Image("file:src/main/resources/images/extraGame/FindItem.png");
         ImageView mainImageView = new ImageView(mainImage);
-        mainImageView.setFitWidth(550);
-        mainImageView.setFitHeight(700);
+        mainImageView.setFitWidth(800);
+        mainImageView.setFitHeight(600);
 
         // Створення Pane для зображення
         Pane pane = new Pane(mainImageView);
 
-        // Координати тварин
-        double[][] animalCoordinates = {
-                {80, 445},
-                {210, 410},
-                {400, 410},
-                {350, 440},
-                {190, 630},
-                {180, 560},
-                {250, 580},
+        // Координати
+        double[][] coordinates = {
+                {440, 450}, // годинник
+                {515, 565}, // барабан
+                {770, 340}, // кролик
+                {440, 60}, // замок
+                {695, 315}, // книга
+                {690, 440}, // ключ
+                {420, 510}, // кулька
+                {760, 230}, // лампа
+                {710, 530}, // пісочні
+                {550, 510}, // маска
+                {680, 120}, // шляпа
+                {560, 185}, // бант
         };
 
         // Додавання обробника кліків миші
@@ -56,8 +59,8 @@ public class FindDifferences extends Application {
             double x = event.getX();
             double y = event.getY();
 
-            // Перевірка, чи клік зроблено на будь-якій тварині (в межах радіусу 20 пікселів, наприклад)
-            for (double[] coords : animalCoordinates) {
+            // Перевірка, чи клік зроблено на будь-який предмет (в межах радіусу 20 пікселів, наприклад)
+            for (double[] coords : coordinates) {
                 if (Math.hypot(x - coords[0], y - coords[1]) <= 20) {
                     boolean alreadyFound = false;
 
@@ -70,8 +73,8 @@ public class FindDifferences extends Application {
                     }
 
                     if (!alreadyFound) {
-                        Circle circle = new Circle(coords[0], coords[1], 30, Color.RED);
-                        circle.setOpacity(0.4); // Напівпрозорість
+                        Circle circle = new Circle(coords[0], coords[1], 25, Color.YELLOW);
+                        circle.setOpacity(0.3); // Напівпрозорість
                         pane.getChildren().add(circle);
                         foundCircles.add(circle);
                         foundAnimals++;
@@ -92,22 +95,22 @@ public class FindDifferences extends Application {
         root.setAlignment(Pos.CENTER);
 
         // Налаштування сцени та етапу
-        Scene scene = new Scene(root, 550, 700);
-        primaryStage.setTitle("Знайди 7 відмінностей");
+        Scene scene = new Scene(root, 800, 600);
+        primaryStage.setTitle("Знайди предмети");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
     private StackPane createInstructionOverlay(Pane mainPane) {
         // Створення прозорого фону
-        Rectangle bg = new Rectangle(550, 700, Color.BLACK);
+        Rectangle bg = new Rectangle(800, 600, Color.BLACK);
         bg.setOpacity(0.8);
 
         // Текст інструкції
-        Label instructions = new Label("Інструкція 'Find 7 Differences':\n\n" +
-                "1. Знайдені відмінності треба відмічати на зображені знизу.\n" +
-                "Для цього просто натисніть на той об'єкт, що відрізняється від верхньої картинки.\n" +
-                "2. Коли всі відмінності будуть знайдені, з'явиться повідомлення.\n" +
+        Label instructions = new Label("Інструкція:\n\n" +
+                "1. Натисніть на предмет, щоб відмітити його.\n" +
+                "Знайдені будуть відмічені напівпрозорим колом.\n" +
+                "2. Коли всі предмети будуть знайдені, з'явиться повідомлення.\n" +
                 "3. Натисніть кнопку 'Почати', щоб розпочати гру.");
         instructions.setTextFill(Color.WHITE);
         instructions.setStyle("-fx-font-size: 16px;");
@@ -135,26 +138,24 @@ public class FindDifferences extends Application {
         return instructionOverlay;
     }
 
-    private void showAlert(Stage stage) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Гру закінчено");
-        alert.setHeaderText(null);
+    private void showAlert(Stage primaryStage) {
+        Stage alertStage = new Stage();
 
-        Label message = new Label("Всі тварини знайдені!");
+        Label message = new Label("Всі предмети знайдені!");
         Button closeButton = new Button("Закрити гру");
+        closeButton.setOnAction(e -> {
+            alertStage.close();
+            primaryStage.close();
+        });
 
         VBox vbox = new VBox(10, message, closeButton);
         vbox.setAlignment(Pos.CENTER);
         vbox.setPrefSize(300, 100);
 
-        alert.getDialogPane().setContent(vbox);
-
-        closeButton.setOnAction(e -> {
-            alert.hide();
-            stage.close();
-        });
-
-        alert.show();
+        Scene alertScene = new Scene(vbox);
+        alertStage.setScene(alertScene);
+        alertStage.setTitle("Гру закінчено");
+        alertStage.show();
     }
 
 
