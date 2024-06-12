@@ -54,4 +54,5 @@ public class Mushroom extends AbstractAnimal {
 
         timer.scheduleAtFixedRate(task, 0, 3000);
     }
+
 }
