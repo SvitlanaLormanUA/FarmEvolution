@@ -34,10 +34,10 @@ public class Tasks {
     private boolean nextLvL = false;
 
 
-    private boolean task1 = false;
-    private boolean task2 = false;
-    private boolean task3 = false;
-    private boolean task4 = false;
+    private boolean task1 ;
+    private boolean task2 ;
+    private boolean task3 ;
+    private boolean task4 ;
 
     private int nWool;
     private int nEggs;
@@ -45,6 +45,10 @@ public class Tasks {
     private int soldPig;
     private int soldRabbit;
     private int driedDragonfly;
+    private int soldMango;
+    private int gatheredNuts;
+    private int gatheredBananas;
+    private int soldFeathers;
 
     int nCoins;
     public Text text1, text2, text3, text4;
@@ -62,6 +66,10 @@ public class Tasks {
         this.wallet = FirstLevel.wallet;
         this.storage = FirstLevel.storage;
         this.nCoins = 0;
+        task1 = false;
+        task2 = false;
+        task3 = false;
+        task4 = false;
 
         switch (level) {
             case 1 -> {
@@ -69,17 +77,24 @@ public class Tasks {
                 secondLevel = false;
                 thirdLevel = false;
 
-                nWool = storage.getnWoolP();
-                nEggs = storage.getnEggsP();
-                soldMilk = storage.getSoldMilkP();
-                soldPig = storage.getSoldPigP();
-                soldRabbit = storage.getSoldRabbitP();
+                if (storage!=null) {
+                    nWool = storage.getnWoolP();
+                    nEggs = storage.getnEggsP();
+                    soldMilk = storage.getSoldMilkP();
+                    soldPig = storage.getSoldPigP();
+                    soldRabbit = storage.getSoldRabbitP();
+                }
             }
             case 2 -> {
                 firstLevel = false;
                 secondLevel = true;
                 thirdLevel = false;
                 driedDragonfly = storage.getDriedDragonflyP();
+                soldMango = storage.getSoldMango();
+                gatheredNuts = storage.getGatheredNuts();
+                gatheredBananas = storage.getSoldBananas();
+                soldFeathers = storage.getSoldFeather();
+
 
 
             }
@@ -126,6 +141,8 @@ public class Tasks {
 
         if (firstLevel)
         taskFourFirstLevel();
+        if (secondLevel)
+            taskFourSecondLevel();
 
     }
 
@@ -142,10 +159,15 @@ public class Tasks {
         }
     }
     private void taskFourFirstLevel() {
-            if (nCoins >=20) {
+            if (nCoins >=2000) {
                 task4 = true;
             }
 
+    }
+    private void taskFourSecondLevel() {
+        if (nCoins >= 5500) {
+            task4 = true;
+        }
     }
     private void addTaskThree(String task) {
         text3 = new Text(task);
@@ -158,10 +180,11 @@ public class Tasks {
     }
 
     private void taskThreeFirstLevel() {
-
-            if (storage.getnWool() >= 20 ) {
-                task3 = true;
-            }
+if (storage!=null) {
+    if (storage.getnWool() >= 20) {
+        task3 = true;
+    }
+}
 
     }
     private void addTaskTwo(String task) {
@@ -176,10 +199,11 @@ public class Tasks {
 
     private void taskTwoFirstLevel() {
 
+        if(storage!=null) {
             if (storage.getnEggs() >= nEggs && storage.getSoldMilk() >= soldMilk) {
                 task2 = true;
             }
-
+        }
     }
     private void addTaskOne(String task) {
         text1 = new Text(task);
@@ -192,12 +216,14 @@ public class Tasks {
 
     }
     private void taskOneFirstLevel() {
+        if (storage!=null) {
             if (storage.getSoldPig() >= soldPig && storage.getSoldRabbit() >= soldRabbit) {
                 task1 = true;
             }
-
+        }
     }
     public void nextLevel(int level) {
+
         if (task1 && task2 && task3 && task4){
           firstLevel = false;
             setNextLvL(level);

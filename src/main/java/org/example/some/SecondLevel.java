@@ -14,7 +14,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.example.some.animals.*;
-import org.example.some.extraGame.MenuExtraGame1;
 import org.example.some.extraGame.MenuExtraGame2;
 import org.example.some.otherGameObjects.Instr;
 import org.example.some.otherGameObjects.Wallet;
@@ -83,34 +82,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     public static int countBanana = 0;
     public static ArrayList<Banana> bananas = new ArrayList<>();
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        foodBar.setStyle("-fx-accent: #f37a39;");
 
-        //addMultiProducts();
-        addWallet();
-        loadState();
-
-        if (SettingsMenu.start) {
-            deleteAllObjects();
-            wallet.setCoins(100);
-            countLemurs = 1;
-            countPeacocks = 1;
-            countMonkeys = 1;
-            countDragonflies = 1;
-            countParrots = 1;
-            Dragonfly.amountOfMeals = 0;
-
-            SettingsMenu.start = false;
-
-        }
-        addStorage();
-        addFeeder();
-        addWell();
-        addAnimals();
-
-
-    }
     private void addAnimals(){
         addMonkey();
         addDragonfly();
@@ -340,14 +312,15 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
 
 
     public void showTasks(ActionEvent event) {
-        Tasks tasksWindow = new Tasks(anchorPane, 1);
-        tasksWindow.createMenu("Завдання 1: «Недоспівала»\n" +
-                "Засушити: " + storage.getSoldDragonfly() +"/10 шматків\n" +
-                "Продати м’ясо кролів: "+storage.getSoldRabbit()+"/15 шматків", "Завдання 2: «Молоко, любов і гуси»\n" +
-                "Зібрати яйця: "+storage.getnEggs()+"/30 штук\n" +
-                "Продати молоко: "+storage.getSoldMilk()+"/15 галонів", "Завдання 3: «До зими готовий!»\n" +
-                "Зібрати хутро: "+storage.getnWool()+"/20 штук", "Завдання 4: «Туди сюди і мільйонер»\n" +
-                "Заробити монети: "+tasksWindow.nCoins +"/2000");
+        Tasks tasksWindow = new Tasks(anchorPane, 2);
+        tasksWindow.createMenu(
+                "Завдання 1: «Недоспівала»\n" + "Засушити: " + storage.getDriedDragonfly() +" /" + storage.getDriedDragonflyP() + " бабок" ,
+                "Завдання 2: «Ні пуху, ні пера» \n"   + "Продати " + storage.getSoldFeather()+ " /" + storage.getSoldFeatherP() + " пірʼїнок" ,
+                "Завдання 3: «Тропічні делікатеси» \n"+ "Продати манго: " + storage.getSoldMango() + " /" + storage.getSoldManagoP() + "\n" +
+                        "Зібрати горіхи: " + storage.getGatheredNuts() + " /" + storage.getGatheredNutsP() + "\n" +
+                         "Продати звʼязки бананів: " + storage.getSoldBananas() + " /" + storage.getSoldBananasP() + "\n",
+                "\nЗавдання 4: «Тоні Старк відпочиває» \n" + "Заробити:  " + tasksWindow.nCoins + "/5500 монет"
+              );
         anchorPane.getChildren().add(tasksWindow.getRoot());
     }
 
@@ -417,5 +390,33 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     public static void setCoins(int coins) {FirstLevel.coins = coins;}
 
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        foodBar.setStyle("-fx-accent: #f37a39;");
+
+        //addMultiProducts();
+        addWallet();
+        loadState();
+
+        if (SettingsMenu.start) {
+            deleteAllObjects();
+            wallet.setCoins(100);
+            countLemurs = 1;
+            countPeacocks = 1;
+            countMonkeys = 1;
+            countDragonflies = 1;
+            countParrots = 1;
+            Dragonfly.amountOfMeals = 0;
+
+            SettingsMenu.start = false;
+
+        }
+        addStorage();
+        addFeeder();
+        addWell();
+        addAnimals();
+
+
+    }
 
 }

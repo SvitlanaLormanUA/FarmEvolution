@@ -51,20 +51,34 @@ public class Storage {
 
     private Random random = new Random();
 
+
+    //FIrstLevelProducts
     private static int nWool;
     private static int nEggs;
     private static int soldMilk;
     private static int soldPig;
     private static int soldRabbit;
-    private static int soldDragonfly;
-
+    //FIrstLevelTasks
     private int nWoolP = 20;
     private int nEggsP = 30;
     private int soldMilkP = 15;
     private int soldPigP = 10;
     private int soldRabbitP = 15;
 
-    private static int driedDragonflyP = 5;
+    //SecondLeveLProducts
+    private static int driedDragonfly;
+    private static int soldFeather;
+    private static int soldMango;
+    private static int gatheredNuts;
+    private static int soldBananas;
+
+    //SecondLeveLTasks
+    private  int driedDragonflyP = 5;
+    private  int soldFeatherP = 15;
+    private  int soldMangoP = 17;
+    private  int gatheredNutsP = 13;
+    private  int soldBananasP =25;
+
 
     private boolean firstLvl;
     private boolean secondLvl;
@@ -91,6 +105,10 @@ public class Storage {
         product5Views = new ArrayList<>();
 
 //        loadState();
+    }
+
+    public static void setSoldFeather(int soldFeather) {
+        Storage.soldFeather = soldFeather;
     }
 
     public void lvl1() {
@@ -743,16 +761,65 @@ public class Storage {
         return product3Cost;
     }
 
-    public static int getSoldDragonfly() {
-        if (soldDragonfly >= driedDragonflyP){
-            soldDragonfly = driedDragonflyP;
+    public  int getDriedDragonfly() {
+        if (driedDragonfly >= driedDragonflyP){
+            driedDragonfly = driedDragonflyP;
         }
-        return soldDragonfly;
+        return driedDragonfly;
     }
 
     public int getDriedDragonflyP() {
         return driedDragonflyP;
     }
+
+
+    public int getSoldFeatherP() {
+        return soldFeatherP;
+    }
+    public int getSoldFeather() {
+        if (soldFeather >= soldFeatherP){
+            soldFeather= soldFeatherP;
+        }
+        return soldFeather;
+
+    }
+
+    public  int getSoldMango() {
+        if (soldMango >= soldMangoP){
+            soldMango= soldMangoP;
+        }
+        return soldMango;
+    }
+
+    public  int getGatheredNuts() {
+        if (gatheredNuts >= gatheredNutsP){
+            gatheredNuts= gatheredNutsP;
+        }
+        return gatheredNuts;
+    }
+
+    public  int getSoldBananas() {
+        if (soldBananas >= soldBananasP){
+            soldBananas= soldBananasP;
+        }
+
+        return soldBananas;
+    }
+
+    public int getSoldManagoP() {
+        return soldMangoP;
+    }
+
+    public   int getGatheredNutsP() {
+        return gatheredNutsP;
+    }
+
+    public   int getSoldBananasP() {
+        return soldBananasP;
+    }
+
+
+
 
     public  void reset() {
         removeProductView(product1Views, product1, product1);
@@ -771,6 +838,10 @@ public class Storage {
         soldRabbit = 0;
         nWool = 0;
         nEggs = 0;
+
         saveState();
     }
+
+
+
 }
