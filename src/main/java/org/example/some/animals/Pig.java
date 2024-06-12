@@ -90,6 +90,7 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
             if (amountOfMeals >= puposedAmount) {
                 ImageView productView1 = createProductView(animalView.getLayoutX() + 50, animalView.getLayoutY() + 30);
                 productViews.add(productView1);
+
             }
             if (amountOfMeals >= puposedAmount*2) {
                 ImageView productView2 = createProductView(animalView.getLayoutX() - 50, animalView.getLayoutY() - 30);
@@ -120,6 +121,7 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
         productView.setLayoutX(x);
         productView.setLayoutY(y);
         productView.setCursor(Cursor.HAND);
+        FirstLevel.countPig--;
 
         productView.setOnMouseClicked(event -> {
             AbstractAnimal.root.getChildren().remove(productView);
