@@ -80,7 +80,6 @@ public class FinishLevel {
         root.setTranslateX(this.x + 480);
         root.setTranslateY(this.y + 180);
         root.getChildren().addAll(imageView, close);
-        main.getChildren().add(root);
     }
 
 
