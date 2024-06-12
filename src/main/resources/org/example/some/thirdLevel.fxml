@@ -79,18 +79,18 @@
             <Image url="@../../../images/thirdLevel/otherObjects/coffer.png" />
          </image>
       </ImageView>
+      <ProgressBar fx:id="wellBar" layoutX="64.0" layoutY="664.0" prefHeight="17.0" prefWidth="175.0" progress="1.0" stylesheets="@../../../styles/firstLevel.css" />
+      <ProgressBar fx:id="foodBar" layoutX="-24.0" layoutY="484.0" prefHeight="17.0" prefWidth="175.0" progress="1.0" rotate="-90.0" stylesheets="@../../../styles/firstLevel.css" />
       <ImageView fx:id="wellView" fitHeight="64.0" fitWidth="247.0" layoutX="38.0" layoutY="601.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/thirdLevel/otherObjects/fountain.png" />
          </image>
       </ImageView>
-      <ProgressBar fx:id="wellBar" layoutX="64.0" layoutY="664.0" prefHeight="17.0" prefWidth="175.0" progress="1.0" stylesheets="@../../../styles/firstLevel.css" />
       <ImageView fx:id="feederView" fitHeight="150.0" fitWidth="200.0" layoutX="79.0" layoutY="430.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/thirdLevel/otherObjects/boiler.png" />
          </image>
       </ImageView>
-      <ProgressBar fx:id="foodBar" layoutX="-24.0" layoutY="484.0" prefHeight="17.0" prefWidth="175.0" progress="1.0" rotate="-90.0" stylesheets="@../../../styles/firstLevel.css" />
 
 
    </children>

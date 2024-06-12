@@ -60,12 +60,13 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         foodBar.setStyle("-fx-accent: #e13be7;");
-        wallet = FirstLevel.wallet;
+        wallet = SecondLevel.wallet;
         anchorPane.getChildren().add(wallet.getRoot());
 
+        addStorage();
         addWell();
         addFeeder();
-        addStorage();
+
         addGnome();
     }
 
