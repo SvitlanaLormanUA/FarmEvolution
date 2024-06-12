@@ -221,6 +221,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     @FXML
     public void enterShop(ActionEvent event) {
         try {
+            deleteAllObjects();
             saveState();
             ShopFirstLevel.setCurrentLevel("secondLevel.fxml");
 
@@ -286,7 +287,9 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
             parrotArrayList.get(i).delete();
             parrotArrayList.set(i, null);
         }
+    }
 
+    private void deleteObj(){
         storage = null;
         well = null;
         feeder = null;
@@ -300,6 +303,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("thirdLevel.fxml")));
             stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
             deleteAllObjects();
+            deleteObj();
 
             scene = new Scene(root);
             stage.setScene(scene);

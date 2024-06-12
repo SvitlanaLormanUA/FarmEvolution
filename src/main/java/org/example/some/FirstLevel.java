@@ -103,6 +103,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
     @FXML
     public void enterShop(ActionEvent event) {
         try {
+            deleteAllObjects();
             saveState();
             ShopFirstLevel.setCurrentLevel("firstLevel.fxml");
 
@@ -231,11 +232,14 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
                 }
             }
         }
-        //storage = null;
-        //well = null;
-        //feeder = null;
-        //foodBar = null;
-        //waterBar = null;
+    }
+
+    private void deleteObj(){
+        storage = null;
+        well = null;
+        feeder = null;
+        foodBar = null;
+        waterBar = null;
     }
 
 
@@ -333,6 +337,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
             //saveState();
             storage.reset();
             deleteAllObjects();
+            deleteObj();
 
             Stage stage  = (Stage) ((Button) event.getSource()).getScene().getWindow();
             anchorPane.getChildren().clear();
