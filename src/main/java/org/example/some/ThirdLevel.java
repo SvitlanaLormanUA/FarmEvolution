@@ -65,6 +65,7 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
     private ArrayList<Gnome> gnomeArrayList = new ArrayList<>();
     private ArrayList<Unicorn> unicornArrayList = new ArrayList<>();
     private ArrayList<Fairy> fairyArrayList = new ArrayList<>();
+    private ArrayList<Mushroom> mushroomArray = new ArrayList<>();
 
 
     @FXML
@@ -168,6 +169,10 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
 
     }
     public void addMushroom() {
+        Mushroom mushroom = new Mushroom(350, 350, 900, 600, anchorPane, well, feeder, storage);
+        anchorPane.getChildren().add(mushroom.getAnimalView());
+        mushroomArray.add(mushroom);
+
 
     }
     public void addUnicorn() {
