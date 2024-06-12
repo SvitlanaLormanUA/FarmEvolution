@@ -163,7 +163,7 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
         productView.setLayoutX(x);
         productView.setLayoutY(y);
         productView.setCursor(Cursor.HAND);
-
+        FirstLevel.countRabbit--;
         productView.setOnMouseClicked(event -> {
             AbstractAnimal.root.getChildren().remove(productView);
             storage.addRabbitMeat();

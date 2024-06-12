@@ -96,23 +96,12 @@ public class Tasks {
                 thirdLevel = true;
             }
 
-        }        //createMenu();
+        }
 
-
-
-
-
-        anchorPane = new AnchorPane();
-        finishLevel = new FinishLevel(anchorPane, level);
-        nextLevel(level);
+        nextLevel(main, level);
         strikeThoughTasks();
     }
-    public void setNextLvL(int level) {
 
-        finishLevel = new FinishLevel(anchorPane, level);
-        root.getChildren().add(finishLevel.getRoot());
-
-    }
     private void addCloseButton(){
         close = new Button("×");
         close.setLayoutX(240);
@@ -240,11 +229,12 @@ public class Tasks {
             }
         }
     }
-    public void nextLevel(int level) {
+    public void nextLevel(AnchorPane anchorPane, int level) {
 
         if (task1 && task2 && task3 && task4){
             firstLevel = false;
-            setNextLvL(level);
+            finishLevel = new FinishLevel(anchorPane, level);
+            anchorPane.getChildren().add(finishLevel.getRoot());
         }
     }
 
