@@ -66,18 +66,18 @@ public class Storage {
     private int soldRabbitP = 15;
 
     //SecondLeveLProducts
-    private static int driedDragonfly;
-    private static int soldFeather;
-    private static int soldMango;
+    public static int driedDragonfly;
+    static int soldFeather;
+    static int soldMango;
     private static int gatheredNuts;
-    private static int soldBananas;
+    private static int gatheredBananas;
 
     //SecondLeveLTasks
     private  int driedDragonflyP = 5;
     private  int soldFeatherP = 15;
     private  int soldMangoP = 17;
     private  int gatheredNutsP = 13;
-    private  int soldBananasP =25;
+    private  int getGatheredBananasP =25;
 
 
     private boolean firstLvl;
@@ -440,6 +440,7 @@ public class Storage {
 
     public void addBanana() {
         product1++;
+        gatheredBananas++;
         saveState();
     }
 
@@ -510,6 +511,7 @@ public class Storage {
 
     public void addNut() {
         product5++;
+        gatheredNuts++;
         if (product5 <= 7) {
             double x;
             double y;
@@ -893,13 +895,14 @@ public class Storage {
         return gatheredNuts;
     }
 
-    public  int getSoldBananas() {
-        if (soldBananas >= soldBananasP){
-            soldBananas= soldBananasP;
+    public  int getGatheredBananas() {
+        if (gatheredBananas >= getGatheredBananasP){
+            gatheredBananas = getGatheredBananasP;
         }
 
-        return soldBananas;
+        return gatheredBananas;
     }
+
 
     public int getSoldManagoP() {
         return soldMangoP;
@@ -909,8 +912,8 @@ public class Storage {
         return gatheredNutsP;
     }
 
-    public   int getSoldBananasP() {
-        return soldBananasP;
+    public   int getGatheredBananasP() {
+        return getGatheredBananasP;
     }
 
 

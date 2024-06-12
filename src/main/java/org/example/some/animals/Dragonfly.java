@@ -148,6 +148,7 @@ public class Dragonfly extends AbstractAnimal implements AnimalMeat{
 
             if (amountOfMeals >= puposedAmount) {
                 ImageView productView = createProductView(animalView.getLayoutX() + 50, animalView.getLayoutY() + 30);
+                Storage.driedDragonfly++;
 
                 Platform.runLater(() -> {
                     AbstractAnimal.root.getChildren().add(productView);

@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.example.some.animals.Pig;
 import org.example.some.otherGameObjects.Wallet;
 
 import java.io.IOException;
@@ -21,6 +22,9 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static org.example.some.FirstLevel.saveState;
+import static org.example.some.FirstLevel.storage;
+
+
 public class ShopFirstLevel extends Shop implements Initializable {
     private static final int COW_PRICE = 1000;
     private static final int GOOSE_PRICE = 200;

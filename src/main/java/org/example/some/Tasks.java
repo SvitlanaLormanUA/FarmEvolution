@@ -1,6 +1,5 @@
 package org.example.some;
 
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -10,12 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import org.example.some.otherGameObjects.Wallet;
-
-import java.io.IOException;
-import java.util.Objects;
-
 
 
 public class Tasks {
@@ -92,10 +86,8 @@ public class Tasks {
                 driedDragonfly = storage.getDriedDragonflyP();
                 soldMango = storage.getSoldMango();
                 gatheredNuts = storage.getGatheredNuts();
-                gatheredBananas = storage.getSoldBananas();
+                gatheredBananas = storage.getGatheredBananas();
                 soldFeathers = storage.getSoldFeather();
-
-
 
             }
             case 3 -> {
@@ -177,6 +169,14 @@ public class Tasks {
 
         if (firstLevel)
             taskThreeFirstLevel();
+        else if (secondLevel)
+            taskThreeSecondLevel();
+    }
+
+    private void taskThreeSecondLevel() {
+        if( (storage.getSoldMango() >= storage.getSoldManagoP()) && (storage.getGatheredNuts() >= storage.getGatheredNutsP()) && (storage.getGatheredBananas() >= storage.getGatheredBananas()) ) {
+            task3 = true;
+        }
     }
 
     private void taskThreeFirstLevel() {
@@ -195,6 +195,14 @@ public class Tasks {
 
         if (firstLevel)
             taskTwoFirstLevel();
+        else if (secondLevel)
+            taskTwoSecondLevel();
+    }
+
+    private void taskTwoSecondLevel() {
+        if (storage.getSoldFeather() >= storage.getSoldFeatherP()) {
+            task2 = true;
+        }
     }
 
     private void taskTwoFirstLevel() {
@@ -213,8 +221,17 @@ public class Tasks {
 
         if (firstLevel)
             taskOneFirstLevel();
+        else if (secondLevel)
+            taskOneSecondLevel();
 
     }
+
+    private void taskOneSecondLevel() {
+        if (storage.getDriedDragonfly() >= storage.getDriedDragonflyP()) {
+            task1 = true;
+        }
+    }
+
     private void taskOneFirstLevel() {
         if (storage!=null) {
             if (storage.getSoldPig() >= soldPig && storage.getSoldRabbit() >= soldRabbit) {

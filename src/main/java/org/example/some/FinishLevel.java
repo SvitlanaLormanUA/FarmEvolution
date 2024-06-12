@@ -57,11 +57,11 @@ public class FinishLevel {
                 stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
                 main.getChildren().clear();
                 if(level == 1)
-                    fxmlFile = "chooseFirstLevel.fxml";
-                else if(level == 2)
                     fxmlFile = "chooseSecondLevel.fxml";
-                else
+                else if(level == 2)
                     fxmlFile = "chooseThirdLevel.fxml";
+                else
+                    fxmlFile = "menu.fxml";
 
                 root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource( fxmlFile )));
 

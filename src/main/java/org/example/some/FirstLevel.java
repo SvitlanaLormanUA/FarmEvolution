@@ -46,7 +46,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
 
 
     public double progress = 1.0;
-    public AnchorPane anchorPane;
+    public  AnchorPane anchorPane;
 
     @FXML
     private Button buttonMenu;
@@ -76,8 +76,8 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
     @FXML
     private ProgressBar foodBar;
 
-    Well well;
-    Feeder feeder;
+    static Well well;
+    static Feeder feeder;
     public static Storage storage;
     public static Wallet wallet ;
 
@@ -241,7 +241,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
     }
 
     private void deleteObj(){
-        storage = null;
+       // storage = null;
         well = null;
         feeder = null;
         foodBar = null;
