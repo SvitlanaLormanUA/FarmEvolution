@@ -122,7 +122,7 @@ public class Tasks {
 
     }
     private void addCloseButton(){
-         close = new Button("×");
+        close = new Button("×");
         close.setLayoutX(240);
         close.setLayoutY(10);
         close.setStyle("-fx-background-color: #ff5757; -fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold; -fx-border-radius: 10px; -fx-background-radius: 10px; ");
@@ -134,13 +134,13 @@ public class Tasks {
         if (task1 && task2 && task3){
             nCoins = wallet.getCoins();
         }
-         text4 = new Text(task);
+        text4 = new Text(task);
         taskLabel4 = new Label(text4.getText());
         taskLabel4.setLayoutX(20);
         taskLabel4.setLayoutY(190);
 
         if (firstLevel)
-        taskFourFirstLevel();
+            taskFourFirstLevel();
         if (secondLevel)
             taskFourSecondLevel();
 
@@ -159,9 +159,9 @@ public class Tasks {
         }
     }
     private void taskFourFirstLevel() {
-            if (nCoins >=2000) {
-                task4 = true;
-            }
+        if (nCoins >=2000) {
+            task4 = true;
+        }
 
     }
     private void taskFourSecondLevel() {
@@ -180,11 +180,11 @@ public class Tasks {
     }
 
     private void taskThreeFirstLevel() {
-if (storage!=null) {
-    if (storage.getnWool() >= 20) {
-        task3 = true;
-    }
-}
+        if (storage!=null) {
+            if (storage.getnWool() >= 20) {
+                task3 = true;
+            }
+        }
 
     }
     private void addTaskTwo(String task) {
@@ -207,7 +207,7 @@ if (storage!=null) {
     }
     private void addTaskOne(String task) {
         text1 = new Text(task);
-         taskLabel = new Label(text1.getText());
+        taskLabel = new Label(text1.getText());
         taskLabel.setLayoutX(20);
         taskLabel.setLayoutY(20);
 
@@ -225,7 +225,7 @@ if (storage!=null) {
     public void nextLevel(int level) {
 
         if (task1 && task2 && task3 && task4){
-          firstLevel = false;
+            firstLevel = false;
             setNextLvL(level);
         }
     }
@@ -265,4 +265,3 @@ if (storage!=null) {
         return root;
     }
 }
-

@@ -1,6 +1,4 @@
 package org.example.some.extraGame;
-
-import javafx.application.Application;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
@@ -22,7 +20,7 @@ import javafx.stage.Stage;
 
 import java.util.*;
 
-public class AppleGame extends Application {
+public class AppleGame {
     private static final int WIDTH = 580;
     private static final int HEIGHT = 700;
     private static final int BASKET_WIDTH = 110;
@@ -47,11 +45,9 @@ public class AppleGame extends Application {
     private int redAppleCount = 0;
     private boolean gameWon = false;
     private AnimationTimer gameLoop;
-    Pane root;
 
-    @Override
     public void start(Stage primaryStage) {
-        root = new Pane();
+        Pane root = new Pane();
         Canvas canvas = new Canvas(WIDTH, HEIGHT);
         root.getChildren().add(canvas);
 
@@ -60,14 +56,14 @@ public class AppleGame extends Application {
 
         Scene scene = new Scene(mainPane);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Apple Catch Game");
+        primaryStage.setTitle("Apple Game");
         primaryStage.show();
 
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
         // Load images
         redAppleImage = new Image("file:src/main/resources/images/extraGame/red_apple.png");
-        greenAppleImage = new Image("file:src/main/resources/images/extraGame/green_apple .png");
+        greenAppleImage = new Image("file:src/main/resources/images/extraGame/green_apple.png");
         basketImage = new Image("file:src/main/resources/images/extraGame/basket.png");
         backgroundImage = new Image("file:src/main/resources/images/extraGame/AppleGameBackgr.png");
 
@@ -195,15 +191,7 @@ public class AppleGame extends Application {
 
         Label message = new Label("Всі яблука зібрано!");
         Button closeButton = new Button("Закрити гру");
-        closeButton.setOnAction(e -> {
-            // Close the primary stage (game window)
-            Stage gameStage = (Stage) root.getScene().getWindow();
-            gameStage.close();
-
-            // Close the alert
-            Stage alertStage = (Stage) closeButton.getScene().getWindow();
-            alertStage.close();
-        });
+        closeButton.setOnAction(e -> Platform.exit());
 
         VBox vbox = new VBox(10, message, closeButton);
         vbox.setAlignment(Pos.CENTER);
@@ -212,8 +200,6 @@ public class AppleGame extends Application {
         alert.getDialogPane().setContent(vbox);
         alert.showAndWait();
     }
-
-
 
     private StackPane createInstructionOverlay(Pane mainPane) {
         // Створення прозорого фону
@@ -252,5 +238,4 @@ public class AppleGame extends Application {
 
         return instructionOverlay;
     }
-
 }

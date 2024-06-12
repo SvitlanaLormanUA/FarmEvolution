@@ -198,17 +198,17 @@ public class Storage {
                     if(firstLvl) {
                         x = storageView.getLayoutX() + 1;
                         y = storageView.getLayoutY() + 22;
-                            if (i == 1 || i == 2) {
-                                for (int j = 1; j <= i; j++) {
-                                    x += 24;
-                                }
-                            } else if (i == 3) {
-                                x = storageView.getLayoutX() + 34;
-                                y = storageView.getLayoutY() + 10;
-                            } else if (i == 4) {
-                                x = storageView.getLayoutX() + 15;
-                                y = storageView.getLayoutY() + 10;
+                        if (i == 1 || i == 2) {
+                            for (int j = 1; j <= i; j++) {
+                                x += 24;
                             }
+                        } else if (i == 3) {
+                            x = storageView.getLayoutX() + 34;
+                            y = storageView.getLayoutY() + 10;
+                        } else if (i == 4) {
+                            x = storageView.getLayoutX() + 15;
+                            y = storageView.getLayoutY() + 10;
+                        }
                     } else if (secondLvl) {
                         x = random.nextInt(880, 1000);
                         y = random.nextInt(540, 560);
@@ -245,13 +245,13 @@ public class Storage {
                     if (firstLvl) {
                         x = storageView.getLayoutX() + 2 + i * 22;
                         y = storageView.getLayoutY() + 97;
-                            if (i == 3) {
-                                x = storageView.getLayoutX() + 12;
-                                y = storageView.getLayoutY() + 87;
-                            } else if (i == 4) {
-                                x = storageView.getLayoutX() + 32;
-                                y = storageView.getLayoutY() + 87;
-                            }
+                        if (i == 3) {
+                            x = storageView.getLayoutX() + 12;
+                            y = storageView.getLayoutY() + 87;
+                        } else if (i == 4) {
+                            x = storageView.getLayoutX() + 32;
+                            y = storageView.getLayoutY() + 87;
+                        }
                     } else if (secondLvl) {
                         x = random.nextInt(880, 1000);
                         y = random.nextInt(550, 570);
@@ -516,7 +516,7 @@ public class Storage {
                     if( product5Views.get(num)!=null) {
                         Platform.runLater(() -> root.getChildren().add(1, product5Views.get(num)));
                     }
-                  //  Platform.runLater(() -> root.getChildren().add(1, product5Views.get(num)));
+                    //  Platform.runLater(() -> root.getChildren().add(1, product5Views.get(num)));
                 }
             }
         }

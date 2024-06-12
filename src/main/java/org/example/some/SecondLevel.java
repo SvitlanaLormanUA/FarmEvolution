@@ -108,7 +108,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
                         Banana  banana = new Banana(100);
                         anchorPane.getChildren().add(25, banana.getProductView());
                         bananaIsAdded = true;
-                       bananas.add(banana);
+                        bananas.add(banana);
                         banana.getProductView().setOnMouseClicked(event -> {
                             banana.getProductView().setDisable(true);
                             AbstractAnimal.root.getChildren().remove(monkey.productView);
@@ -318,9 +318,9 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
                 "Завдання 2: «Ні пуху, ні пера» \n"   + "Продати " + storage.getSoldFeather()+ " /" + storage.getSoldFeatherP() + " пірʼїнок" ,
                 "Завдання 3: «Тропічні делікатеси» \n"+ "Продати манго: " + storage.getSoldMango() + " /" + storage.getSoldManagoP() + "\n" +
                         "Зібрати горіхи: " + storage.getGatheredNuts() + " /" + storage.getGatheredNutsP() + "\n" +
-                         "Продати звʼязки бананів: " + storage.getSoldBananas() + " /" + storage.getSoldBananasP() + "\n",
+                        "Продати звʼязки бананів: " + storage.getSoldBananas() + " /" + storage.getSoldBananasP() + "\n",
                 "\nЗавдання 4: «Тоні Старк відпочиває» \n" + "Заробити:  " + tasksWindow.nCoins + "/5500 монет"
-              );
+        );
         anchorPane.getChildren().add(tasksWindow.getRoot());
     }
 
@@ -331,7 +331,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     }
 
     public void showSettings(ActionEvent event) {
-         settingsMenu = new SettingsMenu(anchorPane);
+        settingsMenu = new SettingsMenu(anchorPane);
         anchorPane.getChildren().add(settingsMenu.getRoot());
 
         //settingsMenu.applyBlur(true,  anchorPane);
@@ -369,7 +369,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
 
     static void loadState() {
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("gameState.ser"))) {
-             coins = in.readInt();
+            coins = in.readInt();
             countMonkeys = in.readInt();
             countDragonflies = in.readInt();
             countBanana = in.readInt();

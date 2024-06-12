@@ -35,8 +35,7 @@ public class Shop implements Initializable {
     @FXML
     public void backToGame(ActionEvent event) {
         try {
-            FirstLevel.saveState();
-            SecondLevel.saveState();
+            saveState();
 
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(currentLevel)));
             stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
@@ -60,7 +59,6 @@ public class Shop implements Initializable {
         wallet = new Wallet(95, 50, FirstLevel.wallet.getCoins());
         anchorPane.getChildren().add(wallet.getRoot());
     }
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

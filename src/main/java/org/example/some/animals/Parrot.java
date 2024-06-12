@@ -20,7 +20,7 @@ public class Parrot extends AbstractAnimal{
         super(worldStartX, worldStartY, worldEndX, worldEndY, root, well, feeder, storage,
                 "file:src/main/resources/images/secondLevel/animals/parrotRight.png",
                 "file:src/main/resources/images/secondLevel/animals/parrotLeft.png",
-                "src/main/resources/sound/parrots.mp3",
+                "src/main/resources/sound/jumpRabbit.mp3",
                 "file:src/main/resources/images/secondLevel/products/nut.png"
         );
 

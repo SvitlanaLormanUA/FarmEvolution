@@ -199,44 +199,44 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
                 }
             }
         }
-      if (gooseArrayList!= null) {
-          for (int i = 0; i < gooseArrayList.size(); i++) {
-              if (gooseArrayList.get(i)!=null) {
-                  gooseArrayList.get(i).delete();
-                  gooseArrayList.set(i, null);
-              }
-          }
-      }
-      if(cowArrayList!=null) {
-          for (int i = 0; i < cowArrayList.size(); i++) {
-              if (cowArrayList.get(i)!=null) {
-                  cowArrayList.get(i).delete();
-                  cowArrayList.set(i, null);
-              }
-          }
-      }
-      if (pigArrayList!= null) {
-          for (int i = 0; i < pigArrayList.size(); i++) {
-              if (pigArrayList.get(i)!=null) {
-                  pigArrayList.get(i).delete();
-                  pigArrayList.set(i, null);
-              }
-          }
-      }
-      if (rabbitArrayList!=null) {
-          for (int i = 0; i < rabbitArrayList.size(); i++) {
-              if (rabbitArrayList.get(i) != null) {
-                  rabbitArrayList.get(i).delete();
-                  rabbitArrayList.set(i, null);
-              }
-          }
-      }
-          //storage = null;
-          //well = null;
-          //feeder = null;
-          //foodBar = null;
-          //waterBar = null;
-      }
+        if (gooseArrayList!= null) {
+            for (int i = 0; i < gooseArrayList.size(); i++) {
+                if (gooseArrayList.get(i)!=null) {
+                    gooseArrayList.get(i).delete();
+                    gooseArrayList.set(i, null);
+                }
+            }
+        }
+        if(cowArrayList!=null) {
+            for (int i = 0; i < cowArrayList.size(); i++) {
+                if (cowArrayList.get(i)!=null) {
+                    cowArrayList.get(i).delete();
+                    cowArrayList.set(i, null);
+                }
+            }
+        }
+        if (pigArrayList!= null) {
+            for (int i = 0; i < pigArrayList.size(); i++) {
+                if (pigArrayList.get(i)!=null) {
+                    pigArrayList.get(i).delete();
+                    pigArrayList.set(i, null);
+                }
+            }
+        }
+        if (rabbitArrayList!=null) {
+            for (int i = 0; i < rabbitArrayList.size(); i++) {
+                if (rabbitArrayList.get(i) != null) {
+                    rabbitArrayList.get(i).delete();
+                    rabbitArrayList.set(i, null);
+                }
+            }
+        }
+        //storage = null;
+        //well = null;
+        //feeder = null;
+        //foodBar = null;
+        //waterBar = null;
+    }
 
 
     private void addWallet(){
