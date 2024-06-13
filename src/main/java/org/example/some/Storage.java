@@ -853,10 +853,12 @@ public class Storage {
 
         for (int i = start; i >= end; i--) {
             if (i < 5) {
-                ImageView view = productViews.get(i);
-                Platform.runLater(() -> root.getChildren().remove(view));
-                productViews.remove(i);
-                saveState();
+                if (!productViews.isEmpty()) {
+                    ImageView view = productViews.get(i);
+                    Platform.runLater(() -> root.getChildren().remove(view));
+                    productViews.remove(i);
+                    saveState();
+                }
             }
         }
         saveState();

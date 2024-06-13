@@ -274,7 +274,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
         anchorPane.getChildren().addLast(storageMenu.getRoot());
     }
 
-    public void deleteAllObjects(){
+    public static void deleteAllObjects(){
         for(int i=0; i<monkeyArrayList.size(); i++){
             if (monkeyArrayList.get(i) == null) continue;
             monkeyArrayList.get(i).delete();
@@ -340,7 +340,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
         );
         anchorPane.getChildren().add(tasksWindow.getRoot());
 
-        if (tasksWindow.task1 && tasksWindow.task2 && tasksWindow.task3 && tasksWindow.task4) {
+        if (tasksWindow.task1 ) {
             finishLevel = new FinishLevel();
             finishLevel.createImagePane(anchorPane,2);
         }

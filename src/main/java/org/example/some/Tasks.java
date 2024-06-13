@@ -179,6 +179,7 @@ public class Tasks {
         if (storage!=null) {
             if (storage.getnWool() >= 20) {
                 task3 = true;
+
             }
         }
 
@@ -223,8 +224,10 @@ public class Tasks {
     }
 
     private void taskOneSecondLevel() {
-        if (storage.getDriedDragonfly() >= storage.getDriedDragonflyP()) {
+        if (storage.getDriedDragonfly() >= 1) {
             task1 = true;
+            text1.setStyle(" -fx-strikethrough: true;");
+
         }
     }
 

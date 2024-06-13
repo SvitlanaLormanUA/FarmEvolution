@@ -53,17 +53,23 @@ public class FinishLevel {
                 //saveState();
 
                 storage.reset();
-                deleteAllObjects();
+
+
 
 
 
                 stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
                 anchorPane.getChildren().clear();
 
-                if(level == 1)
+                if(level == 1) {
+                    deleteAllObjects();
                     fxmlFile = "chooseSecondLevel.fxml";
-                else if(level == 2)
+
+                }
+                else if(level == 2) {
+                    SecondLevel.deleteAllObjects();
                     fxmlFile = "chooseThirdLevel.fxml";
+                }
                 else
                     fxmlFile = "menu.fxml";
 
