@@ -386,7 +386,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
             e.printStackTrace();
         }
 
-        Dragonfly.saveAmountOfMeals();
+       // Dragonfly.saveAmountOfMeals();
     }
 
     static void loadState() {
@@ -428,7 +428,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
             countMonkeys = 1;
             countDragonflies = 1;
             countParrots = 1;
-            Dragonfly.amountOfMeals = 0;
+            dragonfly.amountOfMeals = 0;
 
             SettingsMenu.start = false;
 

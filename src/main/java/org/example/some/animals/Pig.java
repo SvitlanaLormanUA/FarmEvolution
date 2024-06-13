@@ -20,7 +20,7 @@ import java.util.TimerTask;
 public class Pig extends AbstractAnimal implements AnimalMeat{
 
     private int productCost;
-    public static int amountOfMeals;
+    public  int amountOfMeals;
     private AnimalMeatMenu animalMeatMenu;
     private boolean openedMeatMenu;
     private int puposedAmount = 5;
@@ -197,7 +197,7 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
         this.amountOfMeals = amountOfMeals;
     }
 
-    public static void saveAmountOfMeals() {
+    /*public static void saveAmountOfMeals() {
         try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("amountOfMeals.dat"))) {
             oos.writeInt(amountOfMeals);
         } catch (IOException e) {
@@ -210,5 +210,5 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
         } catch (IOException e) {
            amountOfMeals = 0;
         }
-    }
+    }*/
 }

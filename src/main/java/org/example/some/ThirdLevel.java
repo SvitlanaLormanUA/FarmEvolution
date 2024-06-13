@@ -69,6 +69,13 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
     private ArrayList<Mushroom> mushroomArray = new ArrayList<>();
     private ArrayList<Minotaur> minotaurArrayList = new ArrayList<>();
 
+     Gnome gnome;
+     Unicorn unicorn;
+     Fairy fairy;
+     Mushroom mushroom;
+     Minotaur minotaur;
+
+
 
 
 
@@ -137,7 +144,7 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
 
     public void addFairy() {
         for (int i = 0; i < countFairy; i++) {
-            Fairy fairy = new Fairy(300, 50, 1000, 300, anchorPane, well, feeder, storage);
+             fairy = new Fairy(300, 50, 1000, 300, anchorPane, well, feeder, storage);
             anchorPane.getChildren().add(fairy.getAnimalView());
             fairyArrayList.add(fairy);
         }
@@ -147,7 +154,7 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
     }
     public void addGnome() {
         for (int i = 0; i < countGnome; i++) {
-            Gnome gnome = new Gnome(300, 350, 1000, 700, anchorPane, well, feeder, storage);
+             gnome = new Gnome(300, 350, 1000, 700, anchorPane, well, feeder, storage);
             anchorPane.getChildren().add(gnome.getAnimalView());
             gnomeArrayList.add(gnome);
         }
@@ -155,14 +162,14 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
 
     public void addMinotaur() {
         for (int i = 0; i < countMinotaur; i++) {
-            Minotaur minotaur = new Minotaur(300, 350, 1000, 700, anchorPane, well, feeder, storage);
+             minotaur = new Minotaur(200, 350, 800, 700, anchorPane, well, feeder, storage);
             anchorPane.getChildren().add(minotaur.getAnimalView());
             minotaurArrayList.add(minotaur);
         }
     }
     public void addMushroom() {
         for (int i = 0; i < countMushroom; i++) {
-            Mushroom mushroom = new Mushroom(350, 350, 900, 600, anchorPane, well, feeder, storage);
+             mushroom = new Mushroom(350, 350, 900, 600, anchorPane, well, feeder, storage);
             anchorPane.getChildren().add(mushroom.getAnimalView());
             mushroomArray.add(mushroom);
         }
@@ -171,7 +178,7 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
     }
     public void addUnicorn() {
         for (int i = 0; i < countUnicorn; i++) {
-            Unicorn unicorn = new Unicorn(300, 350, 900, 600, anchorPane, well, feeder, storage);
+             unicorn = new Unicorn(300, 350, 800, 600, anchorPane, well, feeder, storage);
             anchorPane.getChildren().add(unicorn.getAnimalView());
             unicornArrayList.add(unicorn);
         }

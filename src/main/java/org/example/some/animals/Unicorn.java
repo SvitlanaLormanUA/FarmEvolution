@@ -10,6 +10,7 @@ import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import org.example.some.FirstLevel;
 import org.example.some.Storage;
+import org.example.some.ThirdLevel;
 import org.example.some.otherGameObjects.Well;
 
 import java.io.FileOutputStream;
@@ -180,6 +181,7 @@ public class Unicorn extends AbstractAnimal implements AnimalMeat{
         productView.setLayoutX(x);
         productView.setLayoutY(y);
         productView.setCursor(Cursor.HAND);
+        ThirdLevel.countUnicorn--;
 
         productView.setOnMouseClicked(event -> {
             AbstractAnimal.root.getChildren().remove(productView);

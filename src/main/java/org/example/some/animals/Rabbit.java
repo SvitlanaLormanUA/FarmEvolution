@@ -23,7 +23,7 @@ import java.util.TimerTask;
 public class Rabbit extends AbstractAnimal implements AnimalMeat{
 
     private int productCost;
-    public static int amountOfMeals;
+    public  int amountOfMeals;
     private AnimalMeatMenu animalMeatMenu;
     private boolean openedMeatMenu;
     private int puposedAmount = 3;
@@ -230,7 +230,7 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
 
         timer.scheduleAtFixedRate(task, 0, 3000);
     }
-    public static void saveAmountOfMeals() {
+  /*  public static void saveAmountOfMeals() {
         try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("amountOfMeals.dat"))) {
             oos.writeInt(amountOfMeals);
         } catch (IOException e) {
@@ -243,6 +243,6 @@ public class Rabbit extends AbstractAnimal implements AnimalMeat{
         } catch (IOException e) {
             amountOfMeals = 0;
         }
-    }
+    }*/
 
 }

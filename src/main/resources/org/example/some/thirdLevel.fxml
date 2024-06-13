@@ -9,7 +9,7 @@
 
 <AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.some.ThirdLevel">
 <children>
-    <ImageView fx:id="background" fitHeight="707.0" fitWidth="1351.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fx:id="background" fitHeight="708.0" fitWidth="1257.0" pickOnBounds="true" preserveRatio="true">
         <image>
             <Image url="@../../../images/backGrounds/magicBack.png" />
         </image>
@@ -24,67 +24,67 @@
             <Image url="@../../../images/coins.png" />
         </image>
     </ImageView>
-    <ImageView fitHeight="48.0" fitWidth="42.0" layoutX="1095.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fitHeight="48.0" fitWidth="42.0" layoutX="1093.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
         <image>
             <Image url="@../../../images/firstLevel/icons/instr.png" />
         </image>
     </ImageView>
-    <ImageView fitHeight="48.0" fitWidth="42.0" layoutX="1170.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fitHeight="48.0" fitWidth="42.0" layoutX="1168.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
         <image>
             <Image url="@../../../images/thirdLevel/icons/settingThird.png" />
         </image>
     </ImageView>
-    <ImageView fitHeight="48.0" fitWidth="42.0" layoutX="1170.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fitHeight="48.0" fitWidth="42.0" layoutX="1168.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
         <image>
             <Image url="@../../../images/thirdLevel/icons/Tasks.png" />
         </image>
     </ImageView>
-    <ImageView fitHeight="48.0" fitWidth="42.0" layoutX="1171.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fitHeight="48.0" fitWidth="42.0" layoutX="1169.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">
         <image>
             <Image url="@../../../images/thirdLevel/icons/Extra.png" />
         </image>
     </ImageView>
 
-    <Button fx:id="buttonInfo" layoutX="1095.0" layoutY="77.0" mnemonicParsing="false" onAction="#showInfo" prefHeight="42.0" prefWidth="43.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css">
+    <Button fx:id="buttonInfo" layoutX="1093.0" layoutY="40.0" mnemonicParsing="false" onAction="#showInfo" prefHeight="42.0" prefWidth="43.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css">
         <cursor>
             <Cursor fx:constant="HAND" />
         </cursor></Button>
-    <Button fx:id="buttonTasks" layoutX="1170.0" layoutY="140.0" mnemonicParsing="false" onAction="#showTasks" prefHeight="43.0" prefWidth="42.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css">
+    <Button fx:id="buttonTasks" layoutX="1168.0" layoutY="103.0" mnemonicParsing="false" onAction="#showTasks" prefHeight="43.0" prefWidth="42.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css">
         <cursor>
             <Cursor fx:constant="HAND" />
         </cursor></Button>
-    <Button fx:id="buttonExtraTasks" layoutX="1171.0" layoutY="206.0" mnemonicParsing="false" onAction="#showExtraTasks" prefHeight="42.0" prefWidth="42.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css">
+    <Button fx:id="buttonExtraTasks" layoutX="1169.0" layoutY="169.0" mnemonicParsing="false" onAction="#showExtraTasks" prefHeight="42.0" prefWidth="42.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css">
         <cursor>
             <Cursor fx:constant="HAND" />
         </cursor></Button>
-    <Button fx:id="settings" layoutX="1170.0" layoutY="77.0" mnemonicParsing="false" onAction="#showSettings" prefHeight="42.0" prefWidth="42.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css">
+    <Button fx:id="settings" layoutX="1168.0" layoutY="40.0" mnemonicParsing="false" onAction="#showSettings" prefHeight="42.0" prefWidth="42.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css">
         <cursor>
             <Cursor fx:constant="HAND" />
         </cursor></Button>
-    <ImageView fx:id="wellView" fitHeight="71.0" fitWidth="296.0" layoutX="41.0" layoutY="585.0" onMouseClicked="#addStorageMenu" pickOnBounds="true" preserveRatio="true">
+    <ImageView fx:id="wellView" fitHeight="71.0" fitWidth="296.0" layoutX="90.0" layoutY="580.0" onMouseClicked="#addStorageMenu" pickOnBounds="true" preserveRatio="true">
         <image>
             <Image url="@../../../images/thirdLevel/otherObjects/fountain.png" />
         </image>
     </ImageView>
-    <ImageView fx:id="feederView" fitHeight="121.0" fitWidth="121.0" layoutX="95.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fx:id="feederView" fitHeight="121.0" fitWidth="121.0" layoutX="119.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true">
         <image>
             <Image url="@../../../images/thirdLevel/otherObjects/boiler.png" />
         </image>
     </ImageView>
-    <ProgressBar fx:id="foodBar" layoutX="1.0" layoutY="459.0" prefHeight="17.0" prefWidth="140.0" progress="1.0" rotate="-90.0" stylesheets="@../../../styles/firstLevel.css" />
-      <ImageView fx:id="storageView" fitHeight="189.0" fitWidth="178.0" layoutX="1048.0" layoutY="417.0" onMouseClicked="#addStorageMenu" pickOnBounds="true" preserveRatio="true">
+    <ProgressBar fx:id="foodBar" layoutX="25.0" layoutY="460.0" prefHeight="17.0" prefWidth="140.0" progress="1.0" rotate="-90.0" stylesheets="@../../../styles/firstLevel.css" />
+      <ImageView fx:id="storageView" fitHeight="189.0" fitWidth="178.0" layoutX="926.0" layoutY="417.0" onMouseClicked="#addStorageMenu" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/thirdLevel/otherObjects/coffer.png" />
          </image>
       </ImageView>
-      <ProgressBar fx:id="wellBar" layoutX="104.0" layoutY="665.0" prefHeight="17.0" prefWidth="170.0" progress="1.0" stylesheets="@../../../styles/firstLevel.css" />
+      <ProgressBar fx:id="wellBar" layoutX="153.0" layoutY="660.0" prefHeight="17.0" prefWidth="170.0" progress="1.0" stylesheets="@../../../styles/firstLevel.css" />
 
-    <ImageView fitHeight="60.0" fitWidth="162.0" layoutX="1065.0" layoutY="644.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fitHeight="60.0" fitWidth="162.0" layoutX="1046.0" layoutY="639.0" pickOnBounds="true" preserveRatio="true">
         <image>
             <Image url="@../../../images/firstLevel/icons/shop.png" />
         </image>
     </ImageView>
-    <Button fx:id="shopButton" layoutX="1065.0" layoutY="643.0" mnemonicParsing="false" onAction="#enterShop" prefHeight="43.0" prefWidth="162.0" stylesheets="@../../../styles/firstLevel.css" />
+    <Button fx:id="shopButton" layoutX="1046.0" layoutY="638.0" mnemonicParsing="false" onAction="#enterShop" prefHeight="43.0" prefWidth="162.0" stylesheets="@../../../styles/firstLevel.css" />
 
 </children>
 

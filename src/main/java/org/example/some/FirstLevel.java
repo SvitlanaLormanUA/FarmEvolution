@@ -310,9 +310,9 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
 
     public static void saveState() {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("levelOne.ser"))) {
-            coins = wallet.getCoins();
 
             if (wallet!=null) {
+                coins = wallet.getCoins();
                 out.writeInt(wallet.getCoins());
             }
             out.writeInt(countCow);
@@ -326,8 +326,8 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
         } catch (IOException e) {
             e.printStackTrace();
         }
-        pig.saveAmountOfMeals();
-        Rabbit.saveAmountOfMeals();
+       /* pig.saveAmountOfMeals();
+        Rabbit.saveAmountOfMeals();*/
     }
 
     public static void loadState(){
@@ -417,7 +417,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
             countSheep = 1;
             countPig = 1;
             countRabbit = 1;
-            Rabbit.amountOfMeals = 0;
+            rabbit.amountOfMeals = 0;
             pig.amountOfMeals = 0;
             SettingsMenu.start = false;
 
