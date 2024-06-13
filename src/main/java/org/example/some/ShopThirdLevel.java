@@ -4,7 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -36,6 +38,12 @@ public class ShopThirdLevel extends Shop implements javafx.fxml.Initializable {
     public ImageView coinsView;
     public Button backButton;
 
+    private final int MINOTAUR_PRICE = 2100;
+    private final int FAIRY_PRICE = 3000;
+    private final int GNOME_PRICE = 2567;
+    private final int MUSHROOM_PRICE = 1300;
+    private final int UNICORN_PRICE = 3200;
+
     private void addImageBasedOnPreviousLevel() {
         if (getCurrentLevel() != null) {
             switch (getCurrentLevel()) {
@@ -59,6 +67,28 @@ public class ShopThirdLevel extends Shop implements javafx.fxml.Initializable {
         }
     }
 
+    private void showAlert(Alert.AlertType type, String message) {
+        Alert alert = new Alert(type, message);
+        alert.showAndWait()
+                .filter(response -> response == ButtonType.OK)
+                .ifPresent(response -> alert.close());
+    }
+
+    public void addWallet() {
+        wallet = new Wallet(95, 50, FirstLevel.wallet.getCoins());
+        anchorPane.getChildren().add(wallet.getRoot());
+    }
+    private void handleBuy(ActionEvent event, int price, String animalName, String animalNameTwo, Runnable onSuccess) {
+        if (wallet.getCoins() >= price) {
+            ThirdLevel.wallet.expense(price);
+            wallet.expense(price);
+
+            onSuccess.run();
+            showAlert(Alert.AlertType.INFORMATION, "Ви купили " + animalName);
+        } else {
+            showAlert(Alert.AlertType.ERROR, "У Вас недостатньо монет для покупки " + animalNameTwo);
+        }
+    }
     private void addImage(String imagePath) {
 
         imageView = new ImageView(new Image(imagePath));
@@ -120,17 +150,32 @@ public class ShopThirdLevel extends Shop implements javafx.fxml.Initializable {
 
 
     public void buyMino(ActionEvent event) {
+        handleBuy(event, MINOTAUR_PRICE, "мінотавра","мінотавра", () -> {
+        ThirdLevel. countMinotaur++;
+        });
     }
 
     public void buyFairy(ActionEvent event) {
+        handleBuy(event, FAIRY_PRICE, "фею","феї", () -> {
+            ThirdLevel.countFairy++;
+        });
     }
 
     public void buyDwarf(ActionEvent event) {
+        handleBuy(event, GNOME_PRICE, "гнома", "гнома", () -> {
+            ThirdLevel.countGnome++;
+        });
     }
 
     public void buyMushroom(ActionEvent event) {
+        handleBuy(event, MUSHROOM_PRICE, "гриб", "гриба", () -> {
+            ThirdLevel.countMushroom++;
+        });
     }
 
     public void buyUnicorn(ActionEvent event) {
+        handleBuy(event, UNICORN_PRICE, "єдинорога", "єдинорога", () -> {
+            ThirdLevel.countUnicorn++;
+        });
     }
 }

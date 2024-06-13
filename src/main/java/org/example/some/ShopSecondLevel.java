@@ -53,44 +53,44 @@ public class ShopSecondLevel extends Shop implements Initializable {
                 .ifPresent(response -> alert.close());
     }
 
-    private void handleBuy(ActionEvent event, int price, String animalName, Runnable onSuccess) {
+    private void handleBuy(ActionEvent event, int price, String animalName,String animalName2, Runnable onSuccess) {
         if (wallet.getCoins() >= price) {
             SecondLevel.wallet.expense(price);
             wallet.expense(price);
 
             onSuccess.run();
-            showAlert(Alert.AlertType.INFORMATION, "Ви купили " + animalName);
+            showAlert(Alert.AlertType.INFORMATION, "Ви купили " + animalName2);
         } else {
             showAlert(Alert.AlertType.ERROR, "У Вас недостатньо монет для покупки " + animalName);
         }
     }
 
     public void buyParrot(ActionEvent event) {
-        handleBuy(event, PARROT_PRICE, "Папугу", () -> {
+        handleBuy(event, PARROT_PRICE, "папугу", "папуги", () -> {
             SecondLevel.countParrots++;
         });
     }
 
     public void buyMonkey(ActionEvent event) {
-        handleBuy(event, MONKEY_PRICE, "Мавпу", () -> {
+        handleBuy(event, MONKEY_PRICE, "мавпу", "мавпи",  () -> {
             SecondLevel.countMonkeys++;
         });
     }
 
     public void buyPeacock(ActionEvent event) {
-        handleBuy(event, PEACOCK_PRICE, "Павича", () -> {
+        handleBuy(event, PEACOCK_PRICE, "павича","павича", () -> {
             SecondLevel.countPeacocks++;
         });
     }
 
     public void buyLemur(ActionEvent event) {
-        handleBuy(event, LEMUR_PRICE, "Лємура", () -> {
+        handleBuy(event, LEMUR_PRICE, "лємура", "лємура", () -> {
             SecondLevel.countLemurs++;
         });
     }
 
     public void buyDragonfly(ActionEvent event) {
-        handleBuy(event, DRAGONFLY_PRICE, "Бабку", () -> {
+        handleBuy(event, DRAGONFLY_PRICE, "бабку", "бабки", () -> {
             SecondLevel.countDragonflies++;
         });
     }

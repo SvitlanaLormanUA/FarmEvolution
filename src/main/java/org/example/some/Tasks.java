@@ -230,7 +230,7 @@ public class Tasks {
 
     private void taskOneFirstLevel() {
         if (storage!=null) {
-            if (storage.getSoldPig() >= 1 && storage.getSoldRabbit() >= 1) {
+            if (storage.getSoldPig() >= soldPig && storage.getSoldRabbit() >= soldRabbit) {
                 task1 = true;
             }
         }

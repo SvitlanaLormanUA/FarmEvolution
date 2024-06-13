@@ -22,6 +22,8 @@ public class Application extends javafx.application.Application {
         stage.show();
         stage.setOnCloseRequest(t -> {
             FirstLevel.saveState();
+            SecondLevel.saveState();
+            ThirdLevel.saveState();
             Platform.exit();
             System.exit(0);
 

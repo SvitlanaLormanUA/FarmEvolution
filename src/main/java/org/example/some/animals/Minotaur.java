@@ -18,7 +18,7 @@ public class Minotaur extends AbstractAnimal{
         super(worldStartX, worldStartY, worldEndX, worldEndY, root, well, feeder, storage,
                 "file:src/main/resources/images/thirdLevel/animals/minotaurRight.png",
                 "file:src/main/resources/images/thirdLevel/animals/minotaurLeft.png",
-                "src/main/resources/sound/gallop.mp3",
+                "src/main/resources/sound/bellMino.mp3",
                 "file:src/main/resources/images/thirdLevel/products/horn.png");
         giveProduct();
     }

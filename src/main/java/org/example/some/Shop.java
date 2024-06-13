@@ -37,6 +37,7 @@ public class Shop implements Initializable {
         try {
             FirstLevel.saveState();
            SecondLevel.saveState();
+            ThirdLevel.saveState();
 
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(currentLevel)));
             stage = (Stage) ((Button) event.getSource()).getScene().getWindow();

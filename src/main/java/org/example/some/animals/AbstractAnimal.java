@@ -2,6 +2,7 @@ package org.example.some.animals;
 
 import javafx.animation.PathTransition;
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.geometry.Bounds;
 import javafx.scene.Cursor;
 import javafx.scene.image.Image;
@@ -15,6 +16,7 @@ import javafx.util.Duration;
 import org.example.some.FirstLevel;
 import org.example.some.SecondLevel;
 import org.example.some.Storage;
+import org.example.some.ThirdLevel;
 import org.example.some.otherGameObjects.Well;
 
 import java.io.File;
@@ -411,7 +413,7 @@ public abstract class AbstractAnimal implements Animal {
     @Override
     public void delete(){
         releaseResources();
-        root.getChildren().remove(animalView);
+       Platform.runLater( () -> root.getChildren().remove(animalView));
     }
 
     @Override
@@ -499,6 +501,17 @@ public abstract class AbstractAnimal implements Animal {
                 SecondLevel.countPeacocks--;
             case "Parrot" ->
                 SecondLevel.countParrots--;
+            case "Fairy" ->
+                    ThirdLevel.countFairy--;
+            case "Gnome" ->
+                    ThirdLevel.countGnome--;
+            case "Unicorn" ->
+                    ThirdLevel.countUnicorn--;
+            case "Mushroom" ->
+                    ThirdLevel.countMushroom--;
+            case "Minotaur" ->
+                    ThirdLevel.countMinotaur--;
+
 
         }
     }

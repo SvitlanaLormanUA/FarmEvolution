@@ -141,12 +141,11 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
                 "Заробити монети: "+tasksWindow.nCoins +"/2000");
         anchorPane.getChildren().add(tasksWindow.getRoot());
         tasksWindow = new Tasks(anchorPane, 1);
+
         if (tasksWindow.task1 && tasksWindow.task2 && tasksWindow.task3 && tasksWindow.task4) {
             finishLevel = new FinishLevel();
-
             finishLevel.createImagePane(anchorPane,1);
         }
-
 
     }
 
@@ -424,6 +423,8 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
         setAnimals();
         saveState();
         addMusic();
+
+
 
     }
 

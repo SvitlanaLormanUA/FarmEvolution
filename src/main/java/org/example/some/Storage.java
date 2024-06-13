@@ -318,7 +318,13 @@ public class Storage {
                         y = random.nextInt(550, 570);
                     } else if (thirdLvl) {
 
-                    }
+                             width = 20;
+                             height = 15;
+
+                            x = random.nextInt(880, 1000);
+                            y = random.nextInt(550, 570);
+                        }
+
                 }
                 default -> {
                     return;
@@ -685,6 +691,29 @@ public class Storage {
                     product4Views.add(productView);
                     int num = product4 - 1;
                     Platform.runLater(() -> root.getChildren().add(1, product4Views.get(num)));
+                }
+            }
+        }
+        saveState();
+    }
+    public void addMiniMushrooms() {
+        product5++;
+        if (product5 <= 7) {
+            double x;
+            double y;
+            int width = 20;
+            int height = 15;
+            for (int i = 1; i <= 7; i++) {
+                if (i == product5) {
+                    x = random.nextInt(880, 1000);
+                    y = random.nextInt(550, 570);
+                    ImageView productView = createProduct(product5Image, x, y, width, height);
+                    product5Views.add(productView);
+                    int num = product5 - 1;
+
+                        Platform.runLater(() -> root.getChildren().add(1, product5Views.get(num)));
+
+                    //  Platform.runLater(() -> root.getChildren().add(1, product5Views.get(num)));
                 }
             }
         }

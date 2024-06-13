@@ -14,8 +14,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-import static org.example.some.FirstLevel.deleteAllObjects;
-import static org.example.some.FirstLevel.storage;
+import static org.example.some.FirstLevel.*;
 
 public class FinishLevel {
     private Pane root;
@@ -52,8 +51,11 @@ public class FinishLevel {
             anchorPane.getChildren().remove(root);
             try {
                 //saveState();
+
                 storage.reset();
                 deleteAllObjects();
+
+
 
                 stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
                 anchorPane.getChildren().clear();
@@ -82,7 +84,7 @@ public class FinishLevel {
         root.setTranslateX( 480);
         root.setTranslateY( 180);
         root.getChildren().addAll(imageView, close);
-      Platform.runLater(() -> anchorPane.getChildren().add(root));
+      Platform.runLater(() -> anchorPane.getChildren().add(25, root));
     }
 
 

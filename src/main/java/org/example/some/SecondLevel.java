@@ -154,6 +154,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     }
     public void addWallet() {
         wallet = FirstLevel.wallet;
+        wallet.setCoins(FirstLevel.wallet.getCoins());
         anchorPane.getChildren().add(wallet.getRoot());
     }
 
