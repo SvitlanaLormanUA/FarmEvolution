@@ -90,6 +90,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     private Parrot parrot;
 
     private FinishLevel finishLevel;
+    private Tasks tasksWindow;
 
 
     private void addAnimals(){
@@ -328,7 +329,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
 
 
     public void showTasks(ActionEvent event) {
-        Tasks tasksWindow = new Tasks(anchorPane, 2);
+         tasksWindow = new Tasks(anchorPane, 2);
         tasksWindow.createMenu(
                 "Завдання 1: «Недоспівала»\n" + "Засушити: " + storage.getDriedDragonfly() +" /" + storage.getDriedDragonflyP() + " бабок" ,
                 "Завдання 2: «Ні пуху, ні пера» \n"   + "Продати " + storage.getSoldFeather()+ " /" + storage.getSoldFeatherP() + " пірʼїнок" ,
@@ -338,7 +339,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
                 "\nЗавдання 4: «Тоні Старк відпочиває» \n" + "Заробити:  " + tasksWindow.nCoins + "/5500 монет"
         );
         anchorPane.getChildren().add(tasksWindow.getRoot());
-        tasksWindow = new Tasks(anchorPane, 1);
+
         if (tasksWindow.task1 && tasksWindow.task2 && tasksWindow.task3 && tasksWindow.task4) {
             finishLevel = new FinishLevel();
             finishLevel.createImagePane(anchorPane,2);
