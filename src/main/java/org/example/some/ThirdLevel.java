@@ -237,7 +237,7 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
             e.printStackTrace();
         }
 
-        Dragonfly.saveAmountOfMeals();
+        //Dragonfly.saveAmountOfMeals();
     }
 
     static void loadState() {
