@@ -252,6 +252,7 @@ public class StorageMenu {
         sellFairyDust();
         sellHorn();
         sellUnicornBlood();
+        sellMushroom();
     }
 
     private void close(){
@@ -419,6 +420,18 @@ public class StorageMenu {
             }
         });
     }
+
+    private void sellMushroom(){
+        sellProduct5.setOnAction(event -> {
+            if(sell(amountOfProduct5, storage.getProduct5())){
+                int toSell = Integer.parseInt(amountOfProduct5.getText());
+                storage.sellProduct5(toSell);
+                product5ToSell.setText("Гриби: "+storage.getProduct5()+"\nВартість: "+storage.getProduct5Cost()+" монет/шт\nВведіть кількість для продажу:");
+                amountOfProduct5.setText("");
+            }
+        });
+    }
+
 
     private boolean sell(TextField amount, int nProd){
         String text = amount.getText();

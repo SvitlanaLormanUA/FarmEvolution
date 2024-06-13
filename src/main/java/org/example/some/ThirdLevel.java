@@ -121,7 +121,7 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
         Image fairyDust = new Image("file:src/main/resources/images/thirdLevel/products/fairyDust.png");
         Image horn = new Image("file:src/main/resources/images/thirdLevel/products/horn.png");
         Image unicornBlood = new Image("file:src/main/resources/images/thirdLevel/products/unicornBlood.png");
-        Image mushroom = new Image("file:src/main/resources/images/secondLevel/products/nut.png");
+        Image mushroom = new Image("file:src/main/resources/images/thirdLevel/products/miniMushroom.png");
         storage = new Storage(storageView, wallet, pouch, fairyDust, horn, unicornBlood, mushroom);
         storage.lvl3();
         anchorPane.getChildren().add(storage.getRoot());

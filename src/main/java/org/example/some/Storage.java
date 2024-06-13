@@ -154,9 +154,10 @@ public class Storage {
             quantity = 5;
         }
 
-        boolean under = true;
+        boolean under;
 
         for (int i = 0; i < quantity; i++) {
+            under = true;
             switch(product) {
                 case 1 -> {
                     if(firstLvl) {
@@ -218,6 +219,7 @@ public class Storage {
                         x = random.nextInt(880, 1000);
                         y = random.nextInt(540, 560);
                     } else if (thirdLvl) {
+                        under = false;
                         width = 40;
                         height = 40;
                         x = storageView.getLayoutX() + 20;
@@ -317,13 +319,23 @@ public class Storage {
                         x = random.nextInt(880, 1000);
                         y = random.nextInt(550, 570);
                     } else if (thirdLvl) {
-
-                             width = 20;
-                             height = 15;
-
-                            x = random.nextInt(880, 1000);
-                            y = random.nextInt(550, 570);
+                        x = storageView.getLayoutX() + 20;
+                        y = storageView.getLayoutY() + 72;
+                        width = 25;
+                        height = 25;
+                        if (i != 0) {
+                            for (int j = 1; j <= i; j++) {
+                                x += 25;
+                                if(j%2!=0){
+                                    y-=10;
+                                }else {
+                                    y+=20;
+                                    x-=10;
+                                }
+                            }
                         }
+
+                    }
 
                 }
                 default -> {
@@ -696,24 +708,30 @@ public class Storage {
         }
         saveState();
     }
-    public void addMiniMushrooms() {
+    public void addMushroom() {
         product5++;
-        if (product5 <= 7) {
-            double x;
-            double y;
-            int width = 20;
-            int height = 15;
-            for (int i = 1; i <= 7; i++) {
+
+        if (product5 <= 5) {
+            double x = storageView.getLayoutX() + 20;
+            double y = storageView.getLayoutY() + 72;
+            int width = 25;
+            for (int i = 1; i <= 5; i++) {
                 if (i == product5) {
-                    x = random.nextInt(880, 1000);
-                    y = random.nextInt(550, 570);
-                    ImageView productView = createProduct(product5Image, x, y, width, height);
+                    if (product5 != 1) {
+                        for (int j = 2; j <= product5; j++) {
+                            x += 25;
+                            if(j%2==0){
+                                y-=10;
+                            }else {
+                                y+=20;
+                                x-=10;
+                            }
+                        }
+                    }
+                    ImageView productView = createProduct(product5Image, x, y, width, width);
                     product5Views.add(productView);
                     int num = product5 - 1;
-
-                        Platform.runLater(() -> root.getChildren().add(1, product5Views.get(num)));
-
-                    //  Platform.runLater(() -> root.getChildren().add(1, product5Views.get(num)));
+                    Platform.runLater(() -> root.getChildren().add(1, product5Views.get(num)));
                 }
             }
         }
