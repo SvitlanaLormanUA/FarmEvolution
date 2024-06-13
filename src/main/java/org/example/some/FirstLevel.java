@@ -131,6 +131,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
 
     @FXML
     public void showTasks(ActionEvent event) {
+        tasksWindow = new Tasks(anchorPane, 1);
         // tasksWindow = new Tasks(anchorPane, 1);
         tasksWindow.createMenu("Завдання 1: «Досвідчений м’ясник»\n" +
                 "Продати м’ясо свині: "+storage.getSoldPig()+"/10 шматків\n" +
@@ -140,7 +141,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
                 "Зібрати хутро: "+storage.getnWool()+"/20 штук", "Завдання 4: «Туди сюди і мільйонер»\n" +
                 "Заробити монети: "+tasksWindow.nCoins +"/2000");
         anchorPane.getChildren().add(tasksWindow.getRoot());
-        tasksWindow = new Tasks(anchorPane, 1);
+
 
         if (tasksWindow.task1 && tasksWindow.task2 && tasksWindow.task3 && tasksWindow.task4) {
             finishLevel = new FinishLevel();
