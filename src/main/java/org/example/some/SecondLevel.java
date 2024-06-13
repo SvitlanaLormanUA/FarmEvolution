@@ -182,7 +182,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
 
     public void addMonkey() {
         for (int i = 0; i < countMonkeys; i++) {
-             monkey = new Monkey(250, 300, 700, 700, anchorPane, well, feeder, storage);
+            monkey = new Monkey(250, 300, 700, 700, anchorPane, well, feeder, storage);
             anchorPane.getChildren().add(monkey.getAnimalView());
             addProducts(monkey);
             addThought(monkey);
@@ -193,7 +193,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
 
     public void addDragonfly() {
         for (int i = 0; i < countDragonflies; i++) {
-             dragonfly = new Dragonfly(50, 50, 1100, 300, anchorPane, well, feeder, storage);
+            dragonfly = new Dragonfly(50, 50, 1100, 300, anchorPane, well, feeder, storage);
             anchorPane.getChildren().add(dragonfly.getAnimalView());
             dragonflyArrayList.add(dragonfly);
         }
@@ -201,7 +201,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
 
     public void addLemur(){
         for (int i = 0; i < countLemurs; i++) {
-             lemur = new Lemur(80, 270, 700, 630, anchorPane, well, feeder, storage);
+            lemur = new Lemur(80, 270, 700, 630, anchorPane, well, feeder, storage);
             anchorPane.getChildren().add(lemur.getAnimalView());
             lemurArrayList.add(lemur);
         }
@@ -210,7 +210,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
 
     public void addParrot(){
         for (int i = 0; i < countParrots; i++) {
-             parrot = new Parrot(20, 90, 300, 400, anchorPane, well, feeder, storage);
+            parrot = new Parrot(20, 90, 300, 400, anchorPane, well, feeder, storage);
             anchorPane.getChildren().add(parrot.getAnimalView());
             parrotArrayList.add(parrot);
         }
@@ -329,7 +329,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
 
 
     public void showTasks(ActionEvent event) {
-         tasksWindow = new Tasks(anchorPane, 2);
+        tasksWindow = new Tasks(anchorPane, 2);
         tasksWindow.createMenu(
                 "Завдання 1: «Недоспівала»\n" + "Засушити: " + storage.getDriedDragonfly() +" /" + storage.getDriedDragonflyP() + " бабок" ,
                 "Завдання 2: «Ні пуху, ні пера» \n"   + "Продати " + storage.getSoldFeather()+ " /" + storage.getSoldFeatherP() + " пірʼїнок" ,

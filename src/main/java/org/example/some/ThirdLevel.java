@@ -248,7 +248,7 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
             wallet.setCoins(coins);
             wallet.nCoins.setText(String.valueOf(coins));
         } catch (IOException e) {
-            coins = 0; // Default value if there's an error or the file doesn't exist
+            coins = 100; // Default value if there's an error or the file doesn't exist
         }
     }
     public static void setCoins(int coins){

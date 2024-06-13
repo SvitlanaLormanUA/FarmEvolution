@@ -266,7 +266,9 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
 
     private void addWallet(){
 
+
         wallet = new Wallet(walletX, walletY, 100);
+        wallet.setCoins(coins);
         anchorPane.getChildren().add(wallet.getRoot());
     }
 
@@ -344,7 +346,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
             wallet.setCoins(coins);
             wallet.nCoins.setText(String.valueOf(coins));
         } catch (IOException e) {
-            coins = 0; // Default value if there's an error or the file doesn't exist
+            coins = 100; // Default value if there's an error or the file doesn't exist
             System.out.println("Error loading game state: " + e.getMessage());
         }
     }
@@ -402,12 +404,14 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
 
 
 
+
         addWallet();
         loadState();
 
         if (SettingsMenu.start) {
             deleteAllObjects();
-            wallet.setCoins(100);
+            coins = 100;
+            wallet.setCoins(0);
             countGoose = 1;
             countCow = 1;
             countSheep = 1;
