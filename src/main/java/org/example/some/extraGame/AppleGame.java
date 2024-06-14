@@ -170,7 +170,7 @@ public class AppleGame extends Application {
                 }
 
                 // Display score
-                gc.fillText("Score: " + score, 10, 20);
+                gc.fillText("Score: " + score + " / 15", 10, 20);
             }
         };
 
