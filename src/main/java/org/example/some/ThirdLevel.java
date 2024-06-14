@@ -144,7 +144,7 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
 
     public void addFairy() {
         for (int i = 0; i < countFairy; i++) {
-             fairy = new Fairy(300, 50, 1000, 300, anchorPane, well, feeder, storage);
+             fairy = new Fairy(100, 50, 1000, 300, anchorPane, well, feeder, storage);
             anchorPane.getChildren().add(fairy.getAnimalView());
             fairyArrayList.add(fairy);
         }

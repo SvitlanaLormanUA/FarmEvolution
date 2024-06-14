@@ -158,7 +158,6 @@ public class Cow extends AbstractAnimal {
         animalView.setLayoutY(newY);
 
         updateProductViewPosition();
-        playSound();
     }
 
     @Override

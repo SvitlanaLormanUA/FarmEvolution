@@ -259,7 +259,6 @@ public abstract class AbstractAnimal implements Animal {
 
         animalView.setLayoutX(newX);
         animalView.setLayoutY(newY);
-        playSound();
     }
 
     @Override
@@ -284,7 +283,7 @@ public abstract class AbstractAnimal implements Animal {
             outOfBounds = true;
         }
         translateTransition.play();
-        playSound();
+
     }
 
     @Override
