@@ -18,15 +18,20 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import org.example.some.FirstLevel;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import static org.example.some.FirstLevel.coins;
 
 public class findAnimals extends Application {
 
     private int foundAnimals = 0;
     private final int totalAnimals = 11; // Кількість тварин
     private Set<Circle> foundCircles = new HashSet<>();
+
+    private static final int COINS = 90;
 
     @Override
     public void start(Stage primaryStage) {
@@ -101,6 +106,7 @@ public class findAnimals extends Application {
         primaryStage.show();
     }
 
+
     private StackPane createInstructionOverlay(Pane mainPane) {
         // Створення прозорого фону
         Rectangle bg = new Rectangle(800, 600, Color.BLACK);
@@ -138,12 +144,14 @@ public class findAnimals extends Application {
         return instructionOverlay;
     }
 
+
     private void showAlert(Stage primaryStage) {
         Stage alertStage = new Stage();
 
         Label message = new Label("Всі тварини знайдені!");
         Button closeButton = new Button("Закрити гру");
         closeButton.setOnAction(e -> {
+            addCoins();
             alertStage.close();
             primaryStage.close();
         });
@@ -156,6 +164,12 @@ public class findAnimals extends Application {
         alertStage.setScene(alertScene);
         alertStage.setTitle("Гру закінчено");
         alertStage.show();
+    }
+    private void addCoins() {
+        coins+=COINS;
+        FirstLevel.wallet.income(COINS);
+        FirstLevel.wallet.setCoins(coins);
+        FirstLevel.saveCoins();
     }
 
 

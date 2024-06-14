@@ -17,15 +17,19 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import org.example.some.FirstLevel;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import static org.example.some.FirstLevel.coins;
 
 public class FindItem extends Application {
 
     private int foundAnimals = 0;
     private final int totalAnimals = 12; // Кількість предметів
     private Set<Circle> foundCircles = new HashSet<>();
+    private static final int COINS = 125;
 
     @Override
     public void start(Stage primaryStage) {
@@ -144,6 +148,7 @@ public class FindItem extends Application {
         Label message = new Label("Всі предмети знайдені!");
         Button closeButton = new Button("Закрити гру");
         closeButton.setOnAction(e -> {
+            addCoins();
             alertStage.close();
             primaryStage.close();
         });
@@ -158,5 +163,10 @@ public class FindItem extends Application {
         alertStage.show();
     }
 
-
+    private void addCoins() {
+        coins+=COINS;
+        FirstLevel.wallet.income(COINS);
+        FirstLevel.wallet.setCoins(coins);
+        FirstLevel.saveCoins();
+    }
 }

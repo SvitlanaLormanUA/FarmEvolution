@@ -177,7 +177,7 @@ public class AnimalCountingGame  {
         coins+=COINS;
         FirstLevel.wallet.income(COINS);
         FirstLevel.wallet.setCoins(coins);
-        FirstLevel.saveState();
+        FirstLevel.saveCoins();
     }
     private boolean checkAnswer(ComboBox<Integer> input, int correctValue) {
         if (input.getValue() == correctValue) {

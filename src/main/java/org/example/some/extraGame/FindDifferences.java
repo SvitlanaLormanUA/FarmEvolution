@@ -19,16 +19,19 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import org.example.some.FirstLevel;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class FindDifferences extends Application {
+import static org.example.some.FirstLevel.coins;
+
+public class FindDifferences extends Application{
 
     private int foundAnimals = 0;
     private final int totalAnimals = 7; // Кількість тварин
     private Set<Circle> foundCircles = new HashSet<>();
-
+private static final int COINS = 65;
     @Override
     public void start(Stage primaryStage) {
         // Завантаження головного зображення
@@ -150,10 +153,18 @@ public class FindDifferences extends Application {
         alert.getDialogPane().setContent(vbox);
 
         closeButton.setOnAction(e -> {
+            addCoins();
             alert.hide();
             stage.close();
+
         });
 
         alert.show();
+    }
+    private void addCoins() {
+        coins+=COINS;
+        FirstLevel.wallet.income(COINS);
+        FirstLevel.wallet.setCoins(coins);
+        FirstLevel.saveCoins();
     }
 }

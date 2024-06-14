@@ -19,8 +19,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import org.example.some.FirstLevel;
 
 import java.util.*;
+
+import static org.example.some.FirstLevel.coins;
 
 public class AppleGame extends Application {
     private static final int WIDTH = 580;
@@ -48,6 +51,8 @@ public class AppleGame extends Application {
     private boolean gameWon = false;
     private AnimationTimer gameLoop;
     Pane root;
+
+    public final static int COINS = 65;
 
     @Override
     public void start(Stage primaryStage) {
@@ -144,6 +149,8 @@ public class AppleGame extends Application {
                         if (score >= 15) {
                             gameWon = true;
                             stop();
+
+                            addCoins();
                             Platform.runLater(() -> showAlert());
                             return;
                         }
@@ -170,6 +177,12 @@ public class AppleGame extends Application {
         gameLoop.start();
     }
 
+    private void addCoins() {
+        coins+=COINS;
+        FirstLevel.wallet.income(COINS);
+        FirstLevel.wallet.setCoins(coins);
+        FirstLevel.saveCoins();
+    }
     private void dropApple() {
         boolean isRed = random.nextBoolean();
         double x = random.nextDouble() * (WIDTH - APPLE_SIZE);

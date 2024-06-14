@@ -17,13 +17,17 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import org.example.some.FirstLevel;
 
 import java.util.Random;
+
+import static org.example.some.FirstLevel.coins;
 
 public class PuzzleGame extends Application {
 
     Random random = new Random();
     static PuzzlePiece[] pieces;
+    private static final int COINS = 95;
 
     @Override
     public void start(Stage primaryStage) {
@@ -188,9 +192,11 @@ public class PuzzleGame extends Application {
             Label message = new Label("Пазл зібрано!");
             Button closeButton = new Button("Закрити гру");
             closeButton.setOnAction(e -> {
+                addCoins();
                 alertStage.close();
                 Stage primaryStage = (Stage) getScene().getWindow();
                 primaryStage.close();
+
             });
 
             VBox vbox = new VBox(10, message, closeButton);
@@ -215,6 +221,12 @@ public class PuzzleGame extends Application {
             return correctCol;
         }
 
+        private void addCoins() {
+            coins+=COINS;
+            FirstLevel.wallet.income(COINS);
+            FirstLevel.wallet.setCoins(coins);
+            FirstLevel.saveCoins();
+        }
     }
 
 }
