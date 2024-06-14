@@ -177,23 +177,20 @@ public class Tasks {
         }
     }
     private void taskFourFirstLevel() {
-        if (nCoins >=170) {
+        if (nCoins >=100) {
             task4 = true;
         }
-        task4 = true;
     }
     private void taskFourSecondLevel() {
         if (nCoins >= 200) {
             task4 = true;
         }
-        task4 = true;
     }
 
     private void taskFourThirdLevel() {
-        if (nCoins >= 200) {
+        if (nCoins >= 300) {
             task4 = true;
         }
-        task4 = true;
     }
     private void addTaskThree(String task) {
         text3 = new Text(task);
@@ -214,26 +211,23 @@ public class Tasks {
     }
 
     private void taskThreeThirdLevel() {
-        if ((storage.getGatheredHorns()>=storage.getGatheredHornsP()) && (storage.getSoldMushrooms()>=storage.getSoldMushroomsP())) {
+        if ((storage.getGatheredHorns()>=3/*storage.getGatheredHornsP()*/) && (storage.getSoldMushrooms()>=3/*storage.getSoldMushroomsP()*/)) {
             task3 = true;
         }
-        task3 = true;
     }
 
 
     private void taskThreeSecondLevel() {
-        if( (storage.getSoldMango() >= storage.getSoldManagoP()) && (storage.getGatheredNuts() >= storage.getGatheredNutsP()) && (storage.getGatheredBananas() >= storage.getGatheredBananas()) ) {
+        if( (storage.getSoldMango() >= 3/*storage.getSoldManagoP()*/) && (storage.getGatheredNuts() >= 3/*storage.getGatheredNutsP()*/) && (storage.getGatheredBananas() >= 3/*storage.getGatheredBananas()*/) ) {
             task3 = true;
         }
-        task3 = true;
     }
 
     private void taskThreeFirstLevel() {
         if (storage!=null) {
-            if (storage.getnWool() >= 20) {
+            if (storage.getnWool() >= 3) {
                 task3 = true;
             }
-            task3 = true;
         }
 
     }
@@ -256,26 +250,23 @@ public class Tasks {
     }
 
     private void taskTwoThirdLevel() {
-        if ((storage.getSoldDust() >= storage.getSoldDustP()) && (storage.getSoldPouch()>=storage.getSoldPouchP())) {
+        if ((storage.getSoldDust() >= 3/*storage.getSoldDustP()*/) && (storage.getSoldPouch()>=3/*storage.getSoldPouchP()*/)) {
             task2 = true;
         }
-        task2 = true;
     }
 
     private void taskTwoSecondLevel() {
-        if (storage.getSoldFeather() >= storage.getSoldFeatherP()) {
+        if (storage.getSoldFeather() >= 3/*storage.getSoldFeatherP()*/) {
             task2 = true;
         }
-        task2 = true;
     }
 
     private void taskTwoFirstLevel() {
 
         if(storage!=null) {
-            if (storage.getnEggs() >= nEggs && storage.getSoldMilk() >= soldMilk) {
+            if (storage.getnEggs() >= 3/*nEggs*/ && storage.getSoldMilk() >= 3/*soldMilk*/) {
                 task2 = true;
             }
-            task2 = true;
         }
     }
     private void addTaskOne(String task) {
@@ -295,25 +286,22 @@ public class Tasks {
     }
 
     private void taskOneThirdLevel() {
-        if (storage.getGatheredUnicornBlood() >= storage.getGatheredUnicornBloodP()) {
+        if (storage.getGatheredUnicornBlood() >= 1/*storage.getGatheredUnicornBloodP()*/) {
             task1 = true;
         }
-        task1 = true;
     }
 
     private void taskOneSecondLevel() {
-        if (storage.getDriedDragonfly() >= storage.getDriedDragonflyP()) {
+        if (storage.getDriedDragonfly() >= 1/*storage.getDriedDragonflyP()*/) {
             task1 = true;
         }
-        task1 = true;
     }
 
     private void taskOneFirstLevel() {
         if (storage!=null) {
-            if (storage.getSoldRabbit() >= soldRabbit && storage.getSoldPig() >= soldPig){
+            if (storage.getSoldRabbit() >= 1/*soldRabbit*/ && storage.getSoldPig() >= 1/*soldPig*/){
                 task1 = true;
             }
-            task1 = true;
         }
     }
 
