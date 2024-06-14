@@ -27,6 +27,7 @@ import java.net.URL;
 import java.util.*;
 
 import static org.example.some.FirstLevel.coins;
+import static org.example.some.FirstLevel.loadCoins;
 
 
 public class SecondLevel  extends LevelMusicBack implements Initializable {
@@ -155,6 +156,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     }
     public void addWallet() {
         wallet = FirstLevel.wallet;
+        loadCoins();
         wallet.setCoins(FirstLevel.wallet.getCoins());
         anchorPane.getChildren().add(wallet.getRoot());
     }
@@ -378,9 +380,10 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
         anchorPane.getChildren().add(infoWindow.getRoot());
     }
 
+
     static void saveState() {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("levelTwo.ser"))) {
-            out.writeInt(coins);
+
             out.writeInt(countMonkeys);
             out.writeInt(countDragonflies);
             out.writeInt(countBanana);
@@ -402,7 +405,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
 
     static void loadState() {
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("levelTwo.ser"))) {
-            coins = in.readInt();
+
             countMonkeys = in.readInt();
             countDragonflies = in.readInt();
             countBanana = in.readInt();
@@ -413,9 +416,6 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
 
 
 
-            setCoins(coins);
-            wallet.setCoins(coins);
-            wallet.nCoins.setText(String.valueOf(coins));
         } catch (IOException e) {
             coins = 0; // Default value if there's an error or the file doesn't exist
         }

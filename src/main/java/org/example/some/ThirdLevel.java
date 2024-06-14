@@ -284,7 +284,7 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
     }
     static void saveState() {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("levelThree.ser"))) {
-            out.writeInt(coins);
+
             out.writeInt(countGnome);
             out.writeInt(countUnicorn);
             out.writeInt(countFairy);
@@ -306,7 +306,7 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
 
     static void loadState() {
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("levelThree.ser"))) {
-            coins = in.readInt();
+
             countGnome = in.readInt();
             countUnicorn = in.readInt();
             countFairy = in.readInt();
@@ -315,9 +315,6 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
 
 
 
-            setCoins(coins);
-            wallet.setCoins(coins);
-            wallet.nCoins.setText(String.valueOf(coins));
         } catch (IOException e) {
             coins = 100; // Default value if there's an error or the file doesn't exist
         }
@@ -335,15 +332,29 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
 
 
         addWallet();
+        loadState();
+
+        if (SettingsMenu.start) {
+            countGnome = 1;
+            countUnicorn = 1;
+            countFairy = 1;
+            countMinotaur = 1;
+            countMushroom = 1;
+            if (unicorn!=null) {
+                unicorn.amountOfMeals = 0;
+            }
+            SettingsMenu.start = false;
+        }
         addStorage();
         addWell();
         addFeeder();
-        loadState();
+
         setAnimals();
     }
 
     private void addWallet() {
         wallet = FirstLevel.wallet;
+        loadState();
         wallet.setCoins(coins);
         anchorPane.getChildren().add(wallet.getRoot());
     }

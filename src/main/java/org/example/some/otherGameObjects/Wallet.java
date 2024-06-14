@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
+import org.example.some.FirstLevel;
 
 import java.io.Serializable;
 
@@ -34,12 +35,14 @@ public class Wallet implements Serializable {
 
     public void income(int n) {
         coins += n;
+        FirstLevel.saveCoins();
         updateCoinsLabel();
     }
 
     public void expense(int n) {
         if(coins-n>=0) {
             coins -= n;
+            FirstLevel.saveCoins();
             updateCoinsLabel();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);

@@ -281,7 +281,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
 
 
         wallet = new Wallet(walletX, walletY, 100);
-        wallet.setCoins(coins);
+       loadCoins();
         anchorPane.getChildren().add(wallet.getRoot());
     }
 
@@ -320,14 +320,33 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
 
 
 
-
-    public static void saveState() {
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("levelOne.ser"))) {
-
+    public static void saveCoins() {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("coins.ser"))) {
             if (wallet!=null) {
                 coins = wallet.getCoins();
                 out.writeInt(wallet.getCoins());
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void loadCoins(){
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("coins.ser"))) {
+            coins = in.readInt();
+            setCoins(coins);
+            wallet.setCoins(coins);
+            wallet.nCoins.setText(String.valueOf(coins));
+        } catch (IOException e) {
+            coins = 100; // Default value if there's an error or the file doesn't exist
+            System.out.println("Error loading game state: " + e.getMessage());
+        }
+    }
+
+
+    public static void saveState() {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("levelOne.ser"))) {
+
+
             out.writeInt(countCow);
             out.writeInt(countSheep);
             out.writeInt(countGoose);
@@ -346,7 +365,8 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
     public static void loadState(){
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("levelOne.ser"))) {
 
-            coins = in.readInt();
+
+
             countCow = in.readInt();
             countSheep = in.readInt();
             countGoose = in.readInt();
@@ -355,9 +375,6 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
            // pig.amountOfMeals = in.readInt();
 
 
-            setCoins(coins);
-            wallet.setCoins(coins);
-            wallet.nCoins.setText(String.valueOf(coins));
         } catch (IOException e) {
             coins = 100; // Default value if there's an error or the file doesn't exist
             System.out.println("Error loading game state: " + e.getMessage());
@@ -372,7 +389,8 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
     @FXML
     public void nextLevel(ActionEvent event) {
         try {
-            //saveState();
+            saveState();
+            saveCoins();
             storage.reset();
             deleteAllObjects();
             deleteObj();
@@ -424,14 +442,18 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
         if (SettingsMenu.start) {
             deleteAllObjects();
             coins = 100;
-            wallet.setCoins(0);
+            wallet.setCoins(100);
             countGoose = 1;
             countCow = 1;
             countSheep = 1;
             countPig = 1;
             countRabbit = 1;
-            rabbit.amountOfMeals = 0;
-            pig.amountOfMeals = 0;
+            if (rabbit!=null) {
+                rabbit.amountOfMeals = 0;
+            }
+            if (pig!=null) {
+                pig.amountOfMeals = 0;
+            }
             SettingsMenu.start = false;
 
         }
