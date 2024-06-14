@@ -1,6 +1,7 @@
 package org.example.some;
 
 import javafx.application.Platform;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -132,18 +133,24 @@ public class Tasks {
             taskLabel4.setText("Завдання 4: «Туди сюди і мільйонер»\n" + "Заробити монети: "+nCoins +"/2000");
         } else if (secondLevel) {
             taskLabel4.setText("Завдання 4: «Тоні Старк відпочиває» \n" + "Заробити:  " + nCoins + "/5500 монет");
+        } else if (thirdLevel) {
+            taskLabel4.setText("Завдання 4: «Геній, мільярдер, плейбой, \nфілантроп» \n" + "Заробити:  " + nCoins + "/10000 монет");
         }
         taskLabel4.setLayoutX(20);
         if(firstLevel) {
             taskLabel4.setLayoutY(190);
         } else if (secondLevel) {
             taskLabel4.setLayoutY(230);
+        } else if (thirdLevel) {
+            taskLabel4.setLayoutY(180);
         }
 
         if (firstLevel)
             taskFourFirstLevel();
         if (secondLevel)
             taskFourSecondLevel();
+        if (thirdLevel)
+            taskFourThirdLevel();
 
     }
 
@@ -173,29 +180,52 @@ public class Tasks {
         if (nCoins >=170) {
             task4 = true;
         }
-
+        task4 = true;
     }
     private void taskFourSecondLevel() {
-        if (nCoins >= 5500) {
+        if (nCoins >= 200) {
             task4 = true;
         }
+        task4 = true;
+    }
+
+    private void taskFourThirdLevel() {
+        if (nCoins >= 200) {
+            task4 = true;
+        }
+        task4 = true;
     }
     private void addTaskThree(String task) {
         text3 = new Text(task);
         taskLabel3 = new Label(text3.getText());
         taskLabel3.setLayoutX(20);
         taskLabel3.setLayoutY(140);
+        if(thirdLevel){
+            taskLabel3.setLayoutY(120);
+        }
 
         if (firstLevel)
             taskThreeFirstLevel();
         else if (secondLevel)
             taskThreeSecondLevel();
+        else if (thirdLevel) {
+            taskThreeThirdLevel();
+        }
     }
+
+    private void taskThreeThirdLevel() {
+        if ((storage.getGatheredHorns()>=storage.getGatheredHornsP()) && (storage.getSoldMushrooms()>=storage.getSoldMushroomsP())) {
+            task3 = true;
+        }
+        task3 = true;
+    }
+
 
     private void taskThreeSecondLevel() {
         if( (storage.getSoldMango() >= storage.getSoldManagoP()) && (storage.getGatheredNuts() >= storage.getGatheredNutsP()) && (storage.getGatheredBananas() >= storage.getGatheredBananas()) ) {
             task3 = true;
         }
+        task3 = true;
     }
 
     private void taskThreeFirstLevel() {
@@ -203,6 +233,7 @@ public class Tasks {
             if (storage.getnWool() >= 20) {
                 task3 = true;
             }
+            task3 = true;
         }
 
     }
@@ -211,17 +242,31 @@ public class Tasks {
         taskLabel2 = new Label(text2.getText());
         taskLabel2.setLayoutX(20);
         taskLabel2.setLayoutY(80);
+        if(thirdLevel){
+            taskLabel2.setLayoutY(60);
+        }
 
         if (firstLevel)
             taskTwoFirstLevel();
         else if (secondLevel)
             taskTwoSecondLevel();
+        else if (thirdLevel) {
+            taskTwoThirdLevel();
+        }
+    }
+
+    private void taskTwoThirdLevel() {
+        if ((storage.getSoldDust() >= storage.getSoldDustP()) && (storage.getSoldPouch()>=storage.getSoldPouchP())) {
+            task2 = true;
+        }
+        task2 = true;
     }
 
     private void taskTwoSecondLevel() {
         if (storage.getSoldFeather() >= storage.getSoldFeatherP()) {
             task2 = true;
         }
+        task2 = true;
     }
 
     private void taskTwoFirstLevel() {
@@ -230,6 +275,7 @@ public class Tasks {
             if (storage.getnEggs() >= nEggs && storage.getSoldMilk() >= soldMilk) {
                 task2 = true;
             }
+            task2 = true;
         }
     }
     private void addTaskOne(String task) {
@@ -242,13 +288,24 @@ public class Tasks {
             taskOneFirstLevel();
         else if (secondLevel)
             taskOneSecondLevel();
+        else if (thirdLevel) {
+            taskOneThirdLevel();
+        }
 
     }
 
-    private void taskOneSecondLevel() {
-        if (storage.getDriedDragonfly() >= 1) {
+    private void taskOneThirdLevel() {
+        if (storage.getGatheredUnicornBlood() >= storage.getGatheredUnicornBloodP()) {
             task1 = true;
         }
+        task1 = true;
+    }
+
+    private void taskOneSecondLevel() {
+        if (storage.getDriedDragonfly() >= storage.getDriedDragonflyP()) {
+            task1 = true;
+        }
+        task1 = true;
     }
 
     private void taskOneFirstLevel() {
@@ -256,6 +313,7 @@ public class Tasks {
             if (storage.getSoldRabbit() >= soldRabbit && storage.getSoldPig() >= soldPig){
                 task1 = true;
             }
+            task1 = true;
         }
     }
 
@@ -270,6 +328,8 @@ public class Tasks {
             menuView.setFitHeight(250);
         } else if (secondLevel) {
             menuView.setFitHeight(300);
+        } else if (thirdLevel) {
+            menuView.setFitHeight(260);
         }
 
         Rectangle clip = new Rectangle(menuView.getFitWidth(), menuView.getFitHeight());
@@ -288,10 +348,15 @@ public class Tasks {
 
         if(this.task4){
             nextLvlButton = new Button("Завершити рівень");
+            nextLvlButton.setLayoutX(70);
             if(firstLevel) {
-                nextLvlButton.setLayoutX(70);
                 nextLvlButton.setLayoutY(240);
+            } else if (secondLevel) {
+                nextLvlButton.setLayoutY(290);
+            } else if (thirdLevel) {
+                nextLvlButton.setLayoutY(250);
             }
+            nextLvlButton.setCursor(Cursor.HAND);
             nextLvlButton.setStyle("-fx-background-color: #ff5757; -fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold; -fx-border-radius: 10px; -fx-background-radius: 10px; ");
             nextLvlButton.setOnAction(event -> {
                 nextLvL = true;

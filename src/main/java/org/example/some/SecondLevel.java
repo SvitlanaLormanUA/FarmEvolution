@@ -118,7 +118,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
                 Platform.runLater(() -> {
                     if (countBanana < 5) {
                         Banana  banana = new Banana(100);
-                        anchorPane.getChildren().add(25, banana.getProductView());
+                        anchorPane.getChildren().add(banana.getProductView());
                         bananaIsAdded = true;
                         bananas.add(banana);
                         banana.getProductView().setOnMouseClicked(event -> {
@@ -303,7 +303,6 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     }
 
     private void deleteObj(){
-        storage = null;
         well = null;
         feeder = null;
         foodBar = null;
@@ -316,7 +315,6 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("thirdLevel.fxml")));
             stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
             deleteAllObjects();
-            deleteObj();
 
             scene = new Scene(root);
             stage.setScene(scene);
@@ -340,10 +338,23 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
         );
         anchorPane.getChildren().add(tasksWindow.getRoot());
 
-        if (tasksWindow.task1 ) {
-            finishLevel = new FinishLevel();
-            finishLevel.createImagePane(anchorPane,2);
-        }
+        new Thread(() -> {
+            while (!tasksWindow.isNextLvL()) {
+                try {
+                    Thread.sleep(100); // Check every 100ms
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            Platform.runLater(() -> {
+                if (tasksWindow.isNextLvL()) {
+                    deleteObj();
+                    Thread.currentThread().interrupt();
+                    finishLevel = new FinishLevel();
+                    finishLevel.createImagePane(anchorPane,2);
+                }
+            });
+        }).start();
     }
 
     public void showExtraTasks(ActionEvent event) {

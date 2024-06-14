@@ -62,15 +62,16 @@ public class FinishLevel {
                 anchorPane.getChildren().clear();
 
                 if(level == 1) {
-                    deleteAllObjects();
+                    FirstLevel.deleteAllObjects();
                     fxmlFile = "chooseSecondLevel.fxml";
-
                 }
                 else if(level == 2) {
                     SecondLevel.deleteAllObjects();
                     fxmlFile = "chooseThirdLevel.fxml";
-                }
-                else
+                } else if (level==3) {
+                    ThirdLevel.deleteAllObjects();
+                    fxmlFile = "theEnd.fxml";
+                } else
                     fxmlFile = "menu.fxml";
 
                 root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource( fxmlFile )));

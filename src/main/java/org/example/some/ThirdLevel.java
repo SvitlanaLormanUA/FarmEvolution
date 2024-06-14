@@ -1,5 +1,6 @@
 package org.example.some;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -63,19 +64,19 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
     private Storage storage;
     @FXML
     private ImageView storageView;
-    private ArrayList<Gnome> gnomeArrayList = new ArrayList<>();
-    private ArrayList<Unicorn> unicornArrayList = new ArrayList<>();
-    private ArrayList<Fairy> fairyArrayList = new ArrayList<>();
-    private ArrayList<Mushroom> mushroomArray = new ArrayList<>();
-    private ArrayList<Minotaur> minotaurArrayList = new ArrayList<>();
+    private static ArrayList<Gnome> gnomeArrayList = new ArrayList<>();
+    private static ArrayList<Unicorn> unicornArrayList = new ArrayList<>();
+    private static ArrayList<Fairy> fairyArrayList = new ArrayList<>();
+    private static ArrayList<Mushroom> mushroomArray = new ArrayList<>();
+    private static ArrayList<Minotaur> minotaurArrayList = new ArrayList<>();
 
      Gnome gnome;
      Unicorn unicorn;
      Fairy fairy;
      Mushroom mushroom;
      Minotaur minotaur;
-
-
+     Tasks tasksWindow;
+     FinishLevel finishLevel;
 
 
 
@@ -211,6 +212,69 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
     }
 
     public void showTasks(ActionEvent event) {
+        tasksWindow = new Tasks(anchorPane, 3);
+        tasksWindow.createMenu(
+                "Завдання 1: «Для темного лордаа»\n" + "Зібрати кров єдинорога: " + storage.getGatheredUnicornBlood() +" /" + storage.getGatheredUnicornBloodP(),
+                "Завдання 2: «Чарівні знахідки» \n"+ "Продати мішечки: " + storage.getSoldPouch() + " /" + storage.getSoldPouchP() + "\n" +
+                        "Продати пил феї: " + storage.getSoldDust() + " /" + storage.getSoldDustP(),
+                "Завдання 3: «До таверни гномів» \n"+ "Продати гриби: " + storage.getSoldMushrooms() + " /" + storage.getSoldMushroomsP() + "\n" +
+                        "Зібрати рога: " + storage.getGatheredHorns() + " /" + storage.getGatheredHornsP(),
+                "Завдання 4: «Геній, мільярдер, плейбой, \nфілантроп» \n" + "Заробити:  " + tasksWindow.nCoins + "/10000 монет"
+        );
+        anchorPane.getChildren().add(tasksWindow.getRoot());
+
+        new Thread(() -> {
+            while (!tasksWindow.isNextLvL()) {
+                try {
+                    Thread.sleep(100); // Check every 100ms
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            Platform.runLater(() -> {
+                if (tasksWindow.isNextLvL()) {
+                    deleteObj();
+                    Thread.currentThread().interrupt();
+                    finishLevel = new FinishLevel();
+                    finishLevel.createImagePane(anchorPane,3);
+                }
+            });
+        }).start();
+    }
+
+    public static void deleteAllObjects(){
+        for(int i=0; i<gnomeArrayList.size(); i++){
+            if (gnomeArrayList.get(i) == null) continue;
+            gnomeArrayList.get(i).delete();
+            gnomeArrayList.set(i, null);
+        }
+        for(int i=0; i<fairyArrayList.size(); i++){
+            if(fairyArrayList.get(i) == null) continue;
+            fairyArrayList.get(i).delete();
+            fairyArrayList.set(i, null);
+        }
+        for(int i=0; i<minotaurArrayList.size(); i++){
+            if(minotaurArrayList.get(i) == null) continue;
+            minotaurArrayList.get(i).delete();
+            minotaurArrayList.set(i, null);
+        }
+        for(int i=0; i<unicornArrayList.size(); i++){
+            if(unicornArrayList.get(i) == null) continue;
+            unicornArrayList.get(i).delete();
+            unicornArrayList.set(i, null);
+        }
+        for(int i=0; i<mushroomArray.size(); i++){
+            if(mushroomArray.get(i) == null) continue;
+            mushroomArray.get(i).delete();
+            mushroomArray.set(i, null);
+        }
+    }
+
+    private void deleteObj(){
+        well = null;
+        feeder = null;
+        foodBar = null;
+        wellBar = null;
     }
 
     public void showInfo(ActionEvent event) {

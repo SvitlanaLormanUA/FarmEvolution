@@ -79,6 +79,17 @@ public class Storage {
     private  int gatheredNutsP = 13;
     private  int getGatheredBananasP =25;
 
+    private int gatheredUnicornBlood;
+    private int soldDust;
+    private int soldPouch;
+    private int soldMushrooms;
+    private int gatheredHorns;
+    private int gatheredUnicornBloodP = 6;
+    private int soldDustP = 20;
+    private int soldPouchP = 25;
+    private int soldMushroomsP = 35;
+    private int gatheredHornsP = 25;
+
 
     private boolean firstLvl;
     private boolean secondLvl;
@@ -657,8 +668,8 @@ public class Storage {
     }
 
     public void addHorn() {
-
         product3++;
+        gatheredHorns++;
         if (product3 <= 5) {
             double x = storageView.getLayoutX() + 60;
             double y = storageView.getLayoutY() - 10;
@@ -684,7 +695,7 @@ public class Storage {
 
     public void addUnicornBlood() {
         product4++;
-
+        gatheredUnicornBlood++;
         if (product4 <= 4) {
             double x = storageView.getLayoutX()+35;
             double y = storageView.getLayoutY()+63;
@@ -804,6 +815,7 @@ public class Storage {
 
 
     public void sellProduct1(int toSell) {
+        soldPouch++;
         int t = product1;
         product1 -= toSell;
         wallet.income(product1Cost * toSell);
@@ -812,6 +824,7 @@ public class Storage {
     }
 
     public void sellProduct2(int toSell) {
+        soldDust++;
         int t = product2;
         product2 -= toSell;
         wallet.income(product2Cost * toSell);
@@ -838,6 +851,7 @@ public class Storage {
     }
 
     public void sellProduct5(int toSell) {
+        soldMushrooms++;
         int t = product5;
         product5 -= toSell;
         wallet.income(product5Cost * toSell);
@@ -1055,8 +1069,45 @@ public class Storage {
         return getGatheredBananasP;
     }
 
+    public int getSoldPouch() {
+        return soldPouch;
+    }
 
+    public int getSoldDust() {
+        return soldDust;
+    }
 
+    public int getGatheredHorns() {
+        return gatheredHorns;
+    }
+
+    public int getGatheredUnicornBlood() {
+        return gatheredUnicornBlood;
+    }
+
+    public int getSoldMushrooms() {
+        return soldMushrooms;
+    }
+
+    public int getSoldPouchP() {
+        return soldPouchP;
+    }
+
+    public int getSoldDustP() {
+        return soldDustP;
+    }
+
+    public int getGatheredHornsP() {
+        return gatheredHornsP;
+    }
+
+    public int getGatheredUnicornBloodP() {
+        return gatheredUnicornBloodP;
+    }
+
+    public int getSoldMushroomsP() {
+        return soldMushroomsP;
+    }
 
     public  void reset() {
         removeProductView(product1Views, product1, product1);

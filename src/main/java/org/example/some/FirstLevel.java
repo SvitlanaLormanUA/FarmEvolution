@@ -154,6 +154,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
             }
             Platform.runLater(() -> {
                 if (tasksWindow.isNextLvL()) {
+                    deleteObj();
                     Thread.currentThread().interrupt();
                     finishLevel = new FinishLevel();
                     finishLevel.createImagePane(anchorPane, 1);

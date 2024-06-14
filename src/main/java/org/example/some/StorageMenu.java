@@ -347,7 +347,7 @@ public class StorageMenu {
                 int toSell = Integer.parseInt(amountOfProduct3.getText());
                 storage.sellProduct3(toSell);
                 Storage.soldFeather++;
-                product3ToSell.setText("Пір'я: "+storage.getProduct3()+"\nВартість: "+storage.getProduct3Cost()+" монет/шт\nВведіть кількість для продажу:");
+                product3ToSell.setText("Пір'я павича: "+storage.getProduct3()+"\nВартість: "+storage.getProduct3Cost()+" монет/шт\nВведіть кількість для продажу:");
                 amountOfProduct3.setText("");
             }
         });
