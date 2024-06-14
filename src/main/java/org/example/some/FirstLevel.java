@@ -1,5 +1,6 @@
 package org.example.some;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -143,11 +144,22 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
         anchorPane.getChildren().add(tasksWindow.getRoot());
 
 
-        if (tasksWindow.task1 && tasksWindow.task2 && tasksWindow.task3 && tasksWindow.task4) {
-            finishLevel = new FinishLevel();
-            finishLevel.createImagePane(anchorPane,1);
-        }
-
+        new Thread(() -> {
+            while (!tasksWindow.isNextLvL()) {
+                try {
+                    Thread.sleep(100); // Check every 100ms
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            Platform.runLater(() -> {
+                if (tasksWindow.isNextLvL()) {
+                    Thread.currentThread().interrupt();
+                    finishLevel = new FinishLevel();
+                    finishLevel.createImagePane(anchorPane, 1);
+                }
+            });
+        }).start();
     }
 
 

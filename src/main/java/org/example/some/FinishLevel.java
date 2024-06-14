@@ -90,7 +90,7 @@ public class FinishLevel {
         root.setTranslateX( 480);
         root.setTranslateY( 180);
         root.getChildren().addAll(imageView, close);
-      Platform.runLater(() -> anchorPane.getChildren().add(25, root));
+      Platform.runLater(() -> anchorPane.getChildren().add(root));
     }
 
 

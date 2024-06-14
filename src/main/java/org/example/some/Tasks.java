@@ -1,5 +1,6 @@
 package org.example.some;
 
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -25,7 +26,9 @@ public class Tasks {
     private  Label taskLabel3;
     private  Label taskLabel4;
     private Button close;
-    private boolean nextLvL = false;
+
+    private Button nextLvlButton;
+    private boolean nextLvL;
 
 
     public boolean task1 ;
@@ -64,6 +67,7 @@ public class Tasks {
         task2 = false;
         task3 = false;
         task4 = false;
+        nextLvL = false;
 
         switch (level) {
             case 1 -> {
@@ -123,9 +127,18 @@ public class Tasks {
         }
         text4 = new Text(task);
         taskLabel4 = new Label(text4.getText());
-        taskLabel4.setText("Заробити монети: "+nCoins +"/2000");
+
+        if(firstLevel){
+            taskLabel4.setText("Завдання 4: «Туди сюди і мільйонер»\n" + "Заробити монети: "+nCoins +"/2000");
+        } else if (secondLevel) {
+            taskLabel4.setText("Завдання 4: «Тоні Старк відпочиває» \n" + "Заробити:  " + nCoins + "/5500 монет");
+        }
         taskLabel4.setLayoutX(20);
-        taskLabel4.setLayoutY(190);
+        if(firstLevel) {
+            taskLabel4.setLayoutY(190);
+        } else if (secondLevel) {
+            taskLabel4.setLayoutY(230);
+        }
 
         if (firstLevel)
             taskFourFirstLevel();
@@ -136,18 +149,28 @@ public class Tasks {
 
     private void strikeThoughTasks() {
         if (task1) {
-            text1.setStyle(" -fx-strikethrough: true;");
-            taskLabel4.setStyle(" -fx-color: blue;");
-        } else if (task2) {
-            text2.setStyle(" -fx-strikethrough: true;");
-        } else if (task3) {
-            text3.setStyle(" -fx-strikethrough: true;");
-        } else if (task4) {
-            text4.setStyle(" -fx-strikethrough: true;");
+            taskLabel.setText("");
+            text1.setStyle(" -fx-strikethrough: true;-fx-color: blue;");
+            taskLabel.setGraphic(text1);
+        }
+        if (task2) {
+            taskLabel2.setText("");
+            text2.setStyle(" -fx-strikethrough: true;-fx-color: blue;");
+            taskLabel2.setGraphic(text2);
+        }
+        if (task3) {
+            taskLabel3.setText("");
+            text3.setStyle(" -fx-strikethrough: true;-fx-color: blue;");
+            taskLabel3.setGraphic(text3);
+        }
+        if (task4) {
+            taskLabel4.setText("");
+            text4.setStyle(" -fx-strikethrough: true;-fx-color: blue;");
+            taskLabel4.setGraphic(text4);
         }
     }
     private void taskFourFirstLevel() {
-        if (nCoins >=300) {
+        if (nCoins >=170) {
             task4 = true;
         }
 
@@ -179,7 +202,6 @@ public class Tasks {
         if (storage!=null) {
             if (storage.getnWool() >= 20) {
                 task3 = true;
-
             }
         }
 
@@ -226,8 +248,6 @@ public class Tasks {
     private void taskOneSecondLevel() {
         if (storage.getDriedDragonfly() >= 1) {
             task1 = true;
-            text1.setStyle(" -fx-strikethrough: true;");
-
         }
     }
 
@@ -246,7 +266,11 @@ public class Tasks {
         Image image = new Image("file:src/main/resources/images/animalMenu/animalMenu.JPG");
         this.menuView = new ImageView(image);
         menuView.setFitWidth(280);
-        menuView.setFitHeight(250);
+        if(firstLevel) {
+            menuView.setFitHeight(250);
+        } else if (secondLevel) {
+            menuView.setFitHeight(300);
+        }
 
         Rectangle clip = new Rectangle(menuView.getFitWidth(), menuView.getFitHeight());
         clip.setArcWidth(20);
@@ -258,13 +282,31 @@ public class Tasks {
         addTaskThree(task3);
         addTaskFour(task4);
         addCloseButton();
+        strikeThoughTasks();
 
+
+
+        if(this.task4){
+            nextLvlButton = new Button("Завершити рівень");
+            if(firstLevel) {
+                nextLvlButton.setLayoutX(70);
+                nextLvlButton.setLayoutY(240);
+            }
+            nextLvlButton.setStyle("-fx-background-color: #ff5757; -fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold; -fx-border-radius: 10px; -fx-background-radius: 10px; ");
+            nextLvlButton.setOnAction(event -> {
+                nextLvL = true;
+            });
+        }
 
 
         root = new Pane();
         root.setTranslateX(this.x + 880);
         root.setTranslateY(this.y + 100);
-        root.getChildren().addAll(menuView, taskLabel, taskLabel2, taskLabel3, taskLabel4, close);
+        if(!this.task4) {
+            root.getChildren().addAll(menuView, taskLabel, taskLabel2, taskLabel3, taskLabel4, close);
+        } else {
+            root.getChildren().addAll(menuView, taskLabel, taskLabel2, taskLabel3, taskLabel4, close, nextLvlButton);
+        }
     }
 
     public boolean isNextLvL() {
