@@ -16,7 +16,7 @@
     </ImageView>
     <ImageView fitHeight="43.0" fitWidth="74.0" layoutX="24.0" layoutY="654.0" onMouseClicked="#backToMainMenu" pickOnBounds="true" preserveRatio="true">
         <image>
-            <Image url="@../../../images/homeUnactive.png" />
+            <Image url="@../../../images/mainMenu.png" />
         </image>
     </ImageView>
     <ImageView id="coinsImage" fitHeight="43.0" fitWidth="127.0" layoutX="206.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">

@@ -17,7 +17,7 @@
 
       <ImageView fitHeight="41.0" fitWidth="81.0" layoutX="33.0" layoutY="648.0" onMouseClicked="#backToMainMenu" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/homeUnactive.png" />
+            <Image url="@../../../images/mainMenu.png" />
          </image>
       </ImageView>
       <Button id="homeButton" fx:id="homeButton" layoutX="33.0" layoutY="647.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="42.0" prefWidth="81.0" stylesheets="@../../../styles/firstLevel.css" />
