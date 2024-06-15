@@ -53,11 +53,6 @@ public class FinishLevel {
                 //saveState();
 
                 storage.reset();
-
-
-
-
-
                 stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
                 anchorPane.getChildren().clear();
 

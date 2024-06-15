@@ -772,6 +772,20 @@ public class Storage {
             oos.writeInt(soldRabbit);
             oos.writeInt(nWool);
             oos.writeInt(nEggs);
+
+            oos.writeInt(driedDragonfly);
+            oos.writeInt(soldFeather);
+            oos.writeInt(soldMango);
+            oos.writeInt(gatheredNuts);
+            oos.writeInt(gatheredBananas);
+
+            oos.writeInt(gatheredUnicornBlood);
+            oos.writeInt(soldDust);
+            oos.writeInt(soldPouch);
+            oos.writeInt(soldMushrooms);
+            oos.writeInt(gatheredHorns);
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -790,6 +804,19 @@ public class Storage {
             soldRabbit = ois.readInt();
             nWool = ois.readInt();
             nEggs = ois.readInt();
+
+            driedDragonfly = ois.readInt();
+            soldFeather = ois.readInt();
+            soldMango = ois.readInt();
+            gatheredNuts = ois.readInt();
+            gatheredBananas = ois.readInt();
+
+            gatheredUnicornBlood = ois.readInt();
+            soldDust = ois.readInt();
+            soldPouch = ois.readInt();
+            soldMushrooms = ois.readInt();
+            gatheredHorns = ois.readInt();
+
 
             // Додавання продуктів до списків
             addProductsToList(1, product1, product1Views, product1Image, 25, 25); // Приклад для першого продукту

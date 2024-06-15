@@ -252,21 +252,6 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     }
 
 
-    //ВИДАЛИМО
-    @FXML
-    public void previousLevel(ActionEvent event) {
-        try {
-            saveState();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("firstLevel.fxml")));
-            stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-            deleteAllObjects();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     @FXML
     void addStorageMenu(MouseEvent event) {
