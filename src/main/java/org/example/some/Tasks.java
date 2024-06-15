@@ -37,17 +37,6 @@ public class Tasks {
     public boolean task3 ;
     public boolean task4 ;
 
-    private int nWool;
-    private int nEggs;
-    private int soldMilk;
-    private int soldPig;
-    private int soldRabbit;
-    private int driedDragonfly;
-    private int soldMango;
-    private int gatheredNuts;
-    private int gatheredBananas;
-    private int soldFeathers;
-
     int nCoins;
     public Text text1, text2, text3, text4;
     private boolean firstLevel = false;
@@ -75,25 +64,11 @@ public class Tasks {
                 firstLevel = true;
                 secondLevel = false;
                 thirdLevel = false;
-
-                if (storage!=null) {
-                    nWool = storage.getnWoolP();
-                    nEggs = storage.getnEggsP();
-                    soldMilk = storage.getSoldMilkP();
-                    soldPig = storage.getSoldPigP();
-                    soldRabbit = storage.getSoldRabbitP();
-                }
             }
             case 2 -> {
                 firstLevel = false;
                 secondLevel = true;
                 thirdLevel = false;
-                driedDragonfly = storage.getDriedDragonflyP();
-                soldMango = storage.getSoldMango();
-                gatheredNuts = storage.getGatheredNuts();
-                gatheredBananas = storage.getGatheredBananas();
-                soldFeathers = storage.getSoldFeather();
-
             }
             case 3 -> {
                 firstLevel = false;
@@ -101,11 +76,7 @@ public class Tasks {
                 thirdLevel = true;
             }
 
-        }        //createMenu();
-
-
-
-
+        }
 
         anchorPane = new AnchorPane();
         finishLevel = new FinishLevel();
@@ -203,9 +174,9 @@ public class Tasks {
 
         if (firstLevel)
             taskThreeFirstLevel();
-        else if (secondLevel)
+        if (secondLevel)
             taskThreeSecondLevel();
-        else if (thirdLevel) {
+        if (thirdLevel) {
             taskThreeThirdLevel();
         }
     }
@@ -218,7 +189,7 @@ public class Tasks {
 
 
     private void taskThreeSecondLevel() {
-        if( (storage.getSoldMango() >= storage.getSoldManagoP()) && (storage.getGatheredNuts() >= storage.getGatheredNutsP()) && (storage.getGatheredBananas() >= storage.getGatheredBananas()) ) {
+        if( (storage.getSoldMango() >= storage.getSoldManagoP()) && (storage.getGatheredNuts() >= storage.getGatheredNutsP()) && (storage.getGatheredBananas() >= storage.getGatheredBananasP()) ) {
             task3 = true;
         }
     }
@@ -242,9 +213,9 @@ public class Tasks {
 
         if (firstLevel)
             taskTwoFirstLevel();
-        else if (secondLevel)
+        if (secondLevel)
             taskTwoSecondLevel();
-        else if (thirdLevel) {
+        if (thirdLevel) {
             taskTwoThirdLevel();
         }
     }
@@ -277,9 +248,9 @@ public class Tasks {
 
         if (firstLevel)
             taskOneFirstLevel();
-        else if (secondLevel)
+        if (secondLevel)
             taskOneSecondLevel();
-        else if (thirdLevel) {
+        if (thirdLevel) {
             taskOneThirdLevel();
         }
 

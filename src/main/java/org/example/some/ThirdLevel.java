@@ -75,10 +75,8 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
      Fairy fairy;
      Mushroom mushroom;
      Minotaur minotaur;
-     Tasks tasksWindow;
      FinishLevel finishLevel;
-
-
+     Tasks tasksWindow;
 
 
     @FXML

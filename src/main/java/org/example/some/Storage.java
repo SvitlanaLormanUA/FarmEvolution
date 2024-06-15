@@ -59,11 +59,11 @@ public class Storage {
     private static int soldPig;
     private static int soldRabbit;
     //FIrstLevelTasks
-    private int nWoolP = 20;
-    private int nEggsP = 30;
-    private int soldMilkP = 15;
-    private int soldPigP = 10;
-    private int soldRabbitP = 15;
+    private int nWoolP = 3;
+    private int nEggsP = 3;
+    private int soldMilkP = 3;
+    private int soldPigP = 1;
+    private int soldRabbitP = 1;
 
     //SecondLeveLProducts
     public static int driedDragonfly;
@@ -73,22 +73,22 @@ public class Storage {
     private static int gatheredBananas;
 
     //SecondLeveLTasks
-    private  int driedDragonflyP = 5;
-    private  int soldFeatherP = 15;
-    private  int soldMangoP = 17;
-    private  int gatheredNutsP = 13;
-    private  int getGatheredBananasP =25;
+    private  int driedDragonflyP = 1;
+    private  int soldFeatherP = 3;
+    private  int soldMangoP = 3;
+    private  int gatheredNutsP = 3;
+    private  int getGatheredBananasP = 3;
 
     private int gatheredUnicornBlood;
     private int soldDust;
     private int soldPouch;
     private int soldMushrooms;
     private int gatheredHorns;
-    private int gatheredUnicornBloodP = 6;
-    private int soldDustP = 20;
-    private int soldPouchP = 25;
-    private int soldMushroomsP = 35;
-    private int gatheredHornsP = 25;
+    private int gatheredUnicornBloodP = 1;
+    private int soldDustP = 3;
+    private int soldPouchP = 3;
+    private int soldMushroomsP = 4;
+    private int gatheredHornsP = 3;
 
 
     private boolean firstLvl;
@@ -771,17 +771,6 @@ public class Storage {
             oos.writeInt(soldRabbit);
             oos.writeInt(nWool);
             oos.writeInt(nEggs);
-            oos.writeInt(soldFeather);
-            oos.writeInt(soldMango);
-            oos.writeInt(gatheredNuts);
-            oos.writeInt(gatheredBananas);
-            oos.writeInt(driedDragonfly);
-            oos.writeInt(soldDust);
-            oos.writeInt(soldPouch);
-            oos.writeInt(soldMushrooms);
-            oos.writeInt(gatheredHorns);
-            oos.writeInt(gatheredUnicornBlood);
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -801,17 +790,6 @@ public class Storage {
             nWool = ois.readInt();
             nEggs = ois.readInt();
 
-            soldFeather = ois.readInt();
-            soldMango = ois.readInt();
-            gatheredNuts = ois.readInt();
-            gatheredBananas = ois.readInt();
-            driedDragonfly = ois.readInt();
-            soldDust = ois.readInt();
-            soldPouch = ois.readInt();
-            soldMushrooms = ois.readInt();
-            gatheredHorns = ois.readInt();
-            gatheredUnicornBlood = ois.readInt();
-
             // Додавання продуктів до списків
             addProductsToList(1, product1, product1Views, product1Image, 25, 25); // Приклад для першого продукту
             addProductsToList(2, product2, product2Views, product2Image, 30, 30); // Приклад для другого продукту
@@ -830,17 +808,6 @@ public class Storage {
             soldRabbit = 0;
             nWool = 0;
             nEggs = 0;
-            soldFeather = 0;
-            soldMango = 0;
-            gatheredNuts = 0;
-            gatheredBananas = 0;
-            driedDragonfly = 0;
-            soldDust = 0;
-            soldPouch = 0;
-            soldMushrooms = 0;
-            gatheredHorns = 0;
-            gatheredUnicornBlood = 0;
-
 
         }
     }
@@ -848,20 +815,20 @@ public class Storage {
 
 
     public void sellProduct1(int toSell) {
-        soldPouch++;
         int t = product1;
         product1 -= toSell;
         wallet.income(product1Cost * toSell);
         removeProductView(product1Views, t, toSell);
+        soldPouch+=toSell;
         saveState();
     }
 
     public void sellProduct2(int toSell) {
-        soldDust++;
         int t = product2;
         product2 -= toSell;
         wallet.income(product2Cost * toSell);
         removeProductView(product2Views, t, toSell);
+        soldDust+=toSell;
         saveState();
     }
 
@@ -884,11 +851,11 @@ public class Storage {
     }
 
     public void sellProduct5(int toSell) {
-        soldMushrooms++;
         int t = product5;
         product5 -= toSell;
         wallet.income(product5Cost * toSell);
         removeProductView(product5Views, t, toSell);
+        soldMushrooms+=toSell;
         soldRabbit+=toSell;
         saveState();
     }
@@ -1090,7 +1057,6 @@ public class Storage {
     }
 
 
-
     public int getSoldManagoP() {
         return soldMangoP;
     }
@@ -1104,35 +1070,35 @@ public class Storage {
     }
 
     public int getSoldPouch() {
-        if (soldPouch >=soldPouchP) {
+        if(soldPouch>=soldPouchP){
             soldPouch = soldPouchP;
         }
         return soldPouch;
     }
 
     public int getSoldDust() {
-        if (soldDust >= soldDustP) {
-            soldDust = soldDustP;
+        if(soldDust>=soldDustP){
+            soldDust=soldDustP;
         }
         return soldDust;
     }
 
     public int getGatheredHorns() {
-        if (gatheredHorns >= gatheredHornsP) {
-            gatheredHorns = gatheredHornsP;
+        if(gatheredHorns>=gatheredHornsP){
+            gatheredHorns=gatheredHornsP;
         }
         return gatheredHorns;
     }
 
     public int getGatheredUnicornBlood() {
-        if (gatheredUnicornBlood >= gatheredUnicornBloodP) {
+        if(gatheredUnicornBlood>=gatheredUnicornBloodP){
             gatheredUnicornBlood = gatheredUnicornBloodP;
         }
         return gatheredUnicornBlood;
     }
 
     public int getSoldMushrooms() {
-        if (soldMushrooms >= soldMushroomsP) {
+        if(soldMushrooms>=soldMushroomsP){
             soldMushrooms = soldMushroomsP;
         }
         return soldMushrooms;
@@ -1156,26 +1122,6 @@ public class Storage {
 
     public int getSoldMushroomsP() {
         return soldMushroomsP;
-    }
-
-    public void setGatheredUnicornBlood(int gatheredUnicornBlood) {
-        this.gatheredUnicornBlood = gatheredUnicornBlood;
-    }
-
-    public void setSoldDust(int soldDust) {
-        this.soldDust = soldDust;
-    }
-
-    public void setSoldPouch(int soldPouch) {
-        this.soldPouch = soldPouch;
-    }
-
-    public void setSoldMushrooms(int soldMushrooms) {
-        this.soldMushrooms = soldMushrooms;
-    }
-
-    public void setGatheredHorns(int gatheredHorns) {
-        this.gatheredHorns = gatheredHorns;
     }
 
     public  void reset() {
