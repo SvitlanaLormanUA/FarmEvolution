@@ -20,6 +20,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import org.example.some.FirstLevel;
+import org.example.some.SecondLevel;
+import org.example.some.ThirdLevel;
 
 import java.util.*;
 
@@ -56,6 +58,17 @@ public class AppleGame extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        primaryStage.setOnCloseRequest(t -> {
+            FirstLevel.saveState();
+            SecondLevel.saveState();
+            ThirdLevel.saveState();
+           // System.out.println("closed");
+            try {
+                stop();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
         root = new Pane();
         Canvas canvas = new Canvas(WIDTH, HEIGHT);
         root.getChildren().add(canvas);
@@ -148,7 +161,7 @@ public class AppleGame extends Application {
                         // Check if the game is won
                         if (score >= 15) {
                             gameWon = true;
-                            stop();
+                            this.stop();
 
                             addCoins();
                             Platform.runLater(() -> showAlert());

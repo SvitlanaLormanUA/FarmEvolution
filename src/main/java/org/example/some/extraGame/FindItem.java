@@ -18,6 +18,8 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import org.example.some.FirstLevel;
+import org.example.some.SecondLevel;
+import org.example.some.ThirdLevel;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -33,6 +35,17 @@ public class FindItem extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        primaryStage.setOnCloseRequest(t -> {
+            FirstLevel.saveState();
+            SecondLevel.saveState();
+            ThirdLevel.saveState();
+            // System.out.println("closed");
+            try {
+                stop();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
         // Завантаження головного зображення
         Image mainImage = new Image("file:src/main/resources/images/extraGame/FindItem.png");
         ImageView mainImageView = new ImageView(mainImage);

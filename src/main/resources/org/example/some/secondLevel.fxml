@@ -65,8 +65,6 @@
             <Cursor fx:constant="HAND" />
          </cursor></Button>
       <ImageView fx:id="well2View" fitHeight="311.0" fitWidth="276.0" layoutX="907.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="1135.0" layoutY="507.0" mnemonicParsing="false" onAction="#previousLevel" prefHeight="51.0" prefWidth="98.0" text="1 level" />
-      <Button layoutX="1121.0" layoutY="442.0" mnemonicParsing="false" onAction="#nextLevel" prefHeight="51.0" prefWidth="118.0" text="3 level" />
       <ImageView id="palm" fx:id="palm" fitHeight="476.0" fitWidth="284.0" layoutX="661.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/secondLevel/palm.png" />

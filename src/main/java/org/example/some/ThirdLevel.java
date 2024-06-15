@@ -283,7 +283,7 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
         infoWindow.createImagePane();
         anchorPane.getChildren().add(infoWindow.getRoot());
     }
-    static void saveState() {
+    public static void saveState() {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("levelThree.ser"))) {
 
             out.writeInt(countGnome);

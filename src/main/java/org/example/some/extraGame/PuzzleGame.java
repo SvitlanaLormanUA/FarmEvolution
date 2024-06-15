@@ -18,6 +18,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import org.example.some.FirstLevel;
+import org.example.some.SecondLevel;
+import org.example.some.ThirdLevel;
 
 import java.util.Random;
 
@@ -31,6 +33,17 @@ public class PuzzleGame extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        primaryStage.setOnCloseRequest(t -> {
+            FirstLevel.saveState();
+            SecondLevel.saveState();
+            ThirdLevel.saveState();
+            // System.out.println("closed");
+            try {
+                stop();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
         primaryStage.setTitle("Puzzle Game");
 
         StackPane root = new StackPane();

@@ -79,6 +79,7 @@ public class SettingsMenu {
 
                // Storage.reset();
                 wallet.resetWallet();
+                wallet.setCoins(100);
 
                 scene = new Scene(root);
                 stage.setScene(scene);
@@ -105,7 +106,7 @@ public class SettingsMenu {
         startAgain.setStyle("-fx-background-color: #2D819D; -fx-text-fill: white; -fx-font-size: 20; -fx-border-radius: 100px;");
         startAgain.setOnAction(event -> {
             startAgain.setStyle("-fx-background-color: #3aacd3; -fx-text-fill: white; -fx-font-size: 20; -fx-border-radius: 100px;");
-            wallet.setCoins(100);
+
             askUser();
         });
         root.getChildren().add(startAgain);

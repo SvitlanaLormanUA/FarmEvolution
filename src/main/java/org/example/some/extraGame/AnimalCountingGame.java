@@ -29,6 +29,7 @@ public class AnimalCountingGame  {
     StackPane root;
     Stage primaryStage;
     public void start( Stage primaryStage) {
+
         this.primaryStage = primaryStage;
         primaryStage.setTitle("Animal Counting Game");
 

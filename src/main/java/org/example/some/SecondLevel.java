@@ -381,7 +381,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     }
 
 
-    static void saveState() {
+    public static void saveState() {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("levelTwo.ser"))) {
 
             out.writeInt(countMonkeys);

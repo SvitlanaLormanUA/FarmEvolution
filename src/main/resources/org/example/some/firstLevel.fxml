@@ -65,7 +65,6 @@
          </image>
       </ImageView>
       <Button id="shopButton" fx:id="shopButton" layoutX="367.0" layoutY="23.0" mnemonicParsing="false" onAction="#enterShop" prefHeight="43.0" prefWidth="162.0" stylesheets="@../../../styles/firstLevel.css" />
-      <Button layoutX="1116.0" layoutY="364.0" mnemonicParsing="false" onAction="#nextLevel" prefHeight="61.0" prefWidth="126.0" text="2 level" />
       <Button fx:id="buttonSettings" layoutX="1166.0" layoutY="23.0" mnemonicParsing="false" onAction="#showSettings" prefHeight="43.0" prefWidth="44.0" styleClass="yellowButtons" stylesheets="@../../../styles/firstLevel.css" />
       <ImageView id="coinsImage" fitHeight="39.0" fitWidth="79.0" layoutX="74.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
          <image>
