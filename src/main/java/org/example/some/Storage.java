@@ -16,6 +16,7 @@ import java.util.Random;
 
 public class Storage {
 
+    public int soldHorns;
     private int product1Cost;
     private int product2Cost;
     private int product3Cost;
@@ -79,10 +80,10 @@ public class Storage {
     private  int gatheredNutsP = 3;
     private  int getGatheredBananasP = 3;
 
-    private int gatheredUnicornBlood;
-    private int soldDust;
-    private int soldPouch;
-    private int soldMushrooms;
+    int gatheredUnicornBlood;
+    int soldDust;
+    int soldPouch;
+    int soldMushrooms;
     private int gatheredHorns;
     private int gatheredUnicornBloodP = 1;
     private int soldDustP = 3;
@@ -1146,5 +1147,5 @@ public class Storage {
     }
 
 
-
+   
 }
