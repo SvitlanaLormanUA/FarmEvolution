@@ -27,7 +27,7 @@ public class Unicorn extends AbstractAnimal implements AnimalMeat{
     public int amountOfMeals;
     private AnimalMeatMenu animalMeatMenu;
     private boolean openedMeatMenu;
-    private int puposedAmount = 7;
+    private int puposedAmount = 3;
 
     public Unicorn(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Well well, Feeder feeder, Storage storage) {
         super(worldStartX, worldStartY, worldEndX, worldEndY, root, well, feeder, storage,

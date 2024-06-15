@@ -314,7 +314,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
 
 
     public void showTasks(ActionEvent event) {
-        tasksWindow = new Tasks(anchorPane, 2);
+        tasksWindow = new Tasks(anchorPane, 2, storage);
         tasksWindow.createMenu(
                 "Завдання 1: «Недоспівала»\n" + "Засушити: " + storage.getDriedDragonfly() +"/" + storage.getDriedDragonflyP() + " бабок" ,
                 "Завдання 2: «Ні пуху, ні пера» \n"   + "Продати " + storage.getSoldFeather()+ "/" + storage.getSoldFeatherP() + " пірʼїнок" ,

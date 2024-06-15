@@ -211,7 +211,7 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
     }
 
     public void showTasks(ActionEvent event) {
-        tasksWindow = new Tasks(anchorPane, 3);
+        tasksWindow = new Tasks(anchorPane, 3, storage);
         tasksWindow.createMenu(
                 "Завдання 1: «Для темного лордаа»\n" + "Зібрати кров єдинорога: " + storage.getGatheredUnicornBlood() +"/" + storage.getGatheredUnicornBloodP(),
                 "Завдання 2: «Чарівні знахідки» \n"+ "Продати мішечки: " + storage.getSoldPouch() + "/" + storage.getSoldPouchP() + "\n" +

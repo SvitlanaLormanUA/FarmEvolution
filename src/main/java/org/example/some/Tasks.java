@@ -48,10 +48,10 @@ public class Tasks {
     FinishLevel finishLevel;
 
 
-    public Tasks(AnchorPane main, int level) {
+    public Tasks(AnchorPane main, int level, Storage storage) {
         this.main = main;
         this.wallet = FirstLevel.wallet;
-        this.storage = FirstLevel.storage;
+        this.storage = storage;
         this.nCoins = 0;
         task1 = false;
         task2 = false;
