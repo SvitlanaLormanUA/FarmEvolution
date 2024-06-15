@@ -61,7 +61,7 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
 
     @FXML
     private ProgressBar foodBar;
-    private Storage storage;
+    private static Storage storage;
     @FXML
     private ImageView storageView;
     private static ArrayList<Gnome> gnomeArrayList = new ArrayList<>();
@@ -100,7 +100,7 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
     public void enterShop(ActionEvent event) {
         try {
             //System.out.println("Shop button clicked");
-            deleteAllObjects();
+            //deleteAllObjects();
             saveState();
             ShopFirstLevel.setCurrentLevel("thirdLevel.fxml");
 
@@ -292,12 +292,6 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
             out.writeInt(countMinotaur);
             out.writeInt(countMushroom);
 
-
-
-
-
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -313,9 +307,6 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
             countFairy = in.readInt();
             countMinotaur = in.readInt();
             countMushroom = in.readInt();
-
-
-
         } catch (IOException e) {
             coins = 100; // Default value if there's an error or the file doesn't exist
         }

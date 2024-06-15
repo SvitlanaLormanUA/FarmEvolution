@@ -89,6 +89,7 @@
          </image>
       </ImageView>
       <Button fx:id="shopButton" layoutX="1064.0" layoutY="640.0" mnemonicParsing="false" onAction="#enterShop" prefHeight="43.0" prefWidth="162.0" stylesheets="@../../../styles/firstLevel.css" />
+      <!--<Button layoutX="1184.0" layoutY="443.0" mnemonicParsing="false" onAction="#nextLevel" text="3rd" />-->
 
    </children>
 </AnchorPane>

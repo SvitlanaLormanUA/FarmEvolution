@@ -771,6 +771,17 @@ public class Storage {
             oos.writeInt(soldRabbit);
             oos.writeInt(nWool);
             oos.writeInt(nEggs);
+            oos.writeInt(soldFeather);
+            oos.writeInt(soldMango);
+            oos.writeInt(gatheredNuts);
+            oos.writeInt(gatheredBananas);
+            oos.writeInt(driedDragonfly);
+            oos.writeInt(soldDust);
+            oos.writeInt(soldPouch);
+            oos.writeInt(soldMushrooms);
+            oos.writeInt(gatheredHorns);
+            oos.writeInt(gatheredUnicornBlood);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -790,6 +801,17 @@ public class Storage {
             nWool = ois.readInt();
             nEggs = ois.readInt();
 
+            soldFeather = ois.readInt();
+            soldMango = ois.readInt();
+            gatheredNuts = ois.readInt();
+            gatheredBananas = ois.readInt();
+            driedDragonfly = ois.readInt();
+            soldDust = ois.readInt();
+            soldPouch = ois.readInt();
+            soldMushrooms = ois.readInt();
+            gatheredHorns = ois.readInt();
+            gatheredUnicornBlood = ois.readInt();
+
             // Додавання продуктів до списків
             addProductsToList(1, product1, product1Views, product1Image, 25, 25); // Приклад для першого продукту
             addProductsToList(2, product2, product2Views, product2Image, 30, 30); // Приклад для другого продукту
@@ -808,6 +830,17 @@ public class Storage {
             soldRabbit = 0;
             nWool = 0;
             nEggs = 0;
+            soldFeather = 0;
+            soldMango = 0;
+            gatheredNuts = 0;
+            gatheredBananas = 0;
+            driedDragonfly = 0;
+            soldDust = 0;
+            soldPouch = 0;
+            soldMushrooms = 0;
+            gatheredHorns = 0;
+            gatheredUnicornBlood = 0;
+
 
         }
     }
@@ -1057,6 +1090,7 @@ public class Storage {
     }
 
 
+
     public int getSoldManagoP() {
         return soldMangoP;
     }
@@ -1070,22 +1104,37 @@ public class Storage {
     }
 
     public int getSoldPouch() {
+        if (soldPouch >=soldPouchP) {
+            soldPouch = soldPouchP;
+        }
         return soldPouch;
     }
 
     public int getSoldDust() {
+        if (soldDust >= soldDustP) {
+            soldDust = soldDustP;
+        }
         return soldDust;
     }
 
     public int getGatheredHorns() {
+        if (gatheredHorns >= gatheredHornsP) {
+            gatheredHorns = gatheredHornsP;
+        }
         return gatheredHorns;
     }
 
     public int getGatheredUnicornBlood() {
+        if (gatheredUnicornBlood >= gatheredUnicornBloodP) {
+            gatheredUnicornBlood = gatheredUnicornBloodP;
+        }
         return gatheredUnicornBlood;
     }
 
     public int getSoldMushrooms() {
+        if (soldMushrooms >= soldMushroomsP) {
+            soldMushrooms = soldMushroomsP;
+        }
         return soldMushrooms;
     }
 
@@ -1107,6 +1156,26 @@ public class Storage {
 
     public int getSoldMushroomsP() {
         return soldMushroomsP;
+    }
+
+    public void setGatheredUnicornBlood(int gatheredUnicornBlood) {
+        this.gatheredUnicornBlood = gatheredUnicornBlood;
+    }
+
+    public void setSoldDust(int soldDust) {
+        this.soldDust = soldDust;
+    }
+
+    public void setSoldPouch(int soldPouch) {
+        this.soldPouch = soldPouch;
+    }
+
+    public void setSoldMushrooms(int soldMushrooms) {
+        this.soldMushrooms = soldMushrooms;
+    }
+
+    public void setGatheredHorns(int gatheredHorns) {
+        this.gatheredHorns = gatheredHorns;
     }
 
     public  void reset() {
