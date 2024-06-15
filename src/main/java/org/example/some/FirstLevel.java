@@ -42,7 +42,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
     public static int countPig = 1;
     public static int countRabbit = 1;
 
-    public static double walletX = 263;
+    public static double walletX = 260;
     public static double walletY = 32;
 
     SettingsMenu settingsMenu;
