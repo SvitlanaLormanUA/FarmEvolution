@@ -607,7 +607,7 @@ public class Storage {
             double x = storageView.getLayoutX()-100;
             double y = storageView.getLayoutY() + 150;
             int width = 35;
-            int heidht = 35;
+            int height = 35;
             for (int i = 1; i <= 5; i++) {
                 if (i == product1) {
                     if (product1 < 4) {
@@ -627,7 +627,7 @@ public class Storage {
                         }
                         y-=25;
                     }
-                    ImageView productView = createProduct(product1Image, x, y, width, heidht);
+                    ImageView productView = createProduct(product1Image, x, y, width, height);
                     product1Views.add(productView);
                     int num = product1 - 1;
                     Platform.runLater(() -> root.getChildren().add(1, product1Views.get(num)));
@@ -1142,6 +1142,7 @@ public class Storage {
         soldRabbit = 0;
         nWool = 0;
         nEggs = 0;
+
 
         saveState();
     }

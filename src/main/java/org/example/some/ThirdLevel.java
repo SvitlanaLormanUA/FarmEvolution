@@ -98,7 +98,7 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
     public void enterShop(ActionEvent event) {
         try {
             //System.out.println("Shop button clicked");
-            //deleteAllObjects();
+            deleteAllObjects();
             saveState();
             ShopFirstLevel.setCurrentLevel("thirdLevel.fxml");
 
@@ -325,6 +325,7 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
         loadState();
 
         if (SettingsMenu.start) {
+            deleteAllObjects();
             countGnome = 1;
             countUnicorn = 1;
             countFairy = 1;
