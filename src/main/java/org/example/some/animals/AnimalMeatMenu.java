@@ -22,6 +22,15 @@ public class AnimalMeatMenu {
     private Button close;
     private Label question;
     private Label feed;
+
+    /**
+     * Конструктор для додаткового меню
+     * @param animal
+     * @param x
+     * @param y
+     * @param amountOfFood
+     * @param purposedAmount
+     */
     public AnimalMeatMenu(AnimalMeat animal, double x, double y, int amountOfFood, int purposedAmount){
 
         Image image = new Image("file:src/main/resources/images/animalMenu/animalMenu.JPG");
@@ -77,6 +86,9 @@ public class AnimalMeatMenu {
         no();
     }
 
+    /**
+     * Закрити меню
+     */
     private void close(){
         close.setStyle("-fx-background-color: #ff5757; -fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold; -fx-border-radius: 10px; -fx-background-radius: 10px; ");
         close.setOnAction(event -> {
@@ -84,6 +96,9 @@ public class AnimalMeatMenu {
         });
     }
 
+    /**
+     * Кнопка "так" для отримання продукту
+     */
     private void yes(){
         yes.setStyle("-fx-background-color: #b6c55c; -fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold; -fx-border-radius: 5px; -fx-background-radius: 5px; ");
         yes.setOnAction(event -> {
@@ -92,6 +107,9 @@ public class AnimalMeatMenu {
         });
     }
 
+    /**
+     * Кнопка "ні" для закриття меню
+     */
     private void no(){
         no.setStyle("-fx-background-color: #ff5757; -fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold; -fx-border-radius: 5px; -fx-background-radius: 5px; ");
         no.setOnAction(event -> {
@@ -99,11 +117,15 @@ public class AnimalMeatMenu {
         });
     }
 
+    /**
+     * Метод для оновлення додаткового меню
+     */
     public void update(){
         root.getChildren().clear();
         question.setText("Чи бажаєте ви отримати \n продукту на "+animal.getProductCost()+" монет?");
         root.getChildren().addAll(menuView, question, yes, no, close);
     }
+
 
     public Label getFeed() {
         return feed;

@@ -96,6 +96,16 @@ public class Storage {
     private boolean secondLvl;
     private boolean thirdLvl;
 
+    /**
+     * Конструктор для складу
+     * @param storageView
+     * @param wallet
+     * @param product1View
+     * @param product2View
+     * @param product3View
+     * @param product4View
+     * @param product5View
+     */
     public Storage(ImageView storageView, Wallet wallet, Image product1View, Image product2View, Image product3View,
                    Image product4View, Image product5View) {
         this.storageView = storageView;
@@ -123,6 +133,9 @@ public class Storage {
         Storage.soldFeather = soldFeather;
     }
 
+    /**
+     * Ініціалізація змінних для 1 рівня
+     */
     public void lvl1() {
         product1Cost = 5;
         product2Cost = 10;
@@ -135,6 +148,9 @@ public class Storage {
         loadState();
     }
 
+    /**
+     * Ініціалізація змінних для 2 рівня
+     */
     public void lvl2() {
         product1Cost = 100;
         product2Cost = 500;
@@ -147,6 +163,9 @@ public class Storage {
         loadState();
     }
 
+    /**
+     * Ініціалізація змінних для 3 рівня
+     */
     public void lvl3() {
         product1Cost = 580;
         product2Cost = 320;
@@ -158,6 +177,16 @@ public class Storage {
         thirdLvl = true;
         loadState();
     }
+
+    /**
+     * Додавання картинки продукту при відновленні прогресу
+     * @param product
+     * @param quantity
+     * @param viewsList
+     * @param productImage
+     * @param width
+     * @param height
+     */
     private void addProductsToList(int product, int quantity, List<ImageView> viewsList, Image productImage, int width,  int height) {
         double startX = storageView.getLayoutX();
         double startY = storageView.getLayoutY();
@@ -367,6 +396,9 @@ public class Storage {
         }
     }
 
+    /**
+     * Додавання яйця до складу
+     */
     public void addEgg() {
 
         product1++;
@@ -393,6 +425,9 @@ public class Storage {
         saveState();
     }
 
+    /**
+     * Додавання хутра до складу
+     */
     public void addWool() {
         product2++;
         nWool++;
@@ -423,6 +458,9 @@ public class Storage {
         saveState();
     }
 
+    /**
+     * Додавання молока до складу
+     */
     public void addMilk() {
 
         product3++;
@@ -448,6 +486,9 @@ public class Storage {
         saveState();
     }
 
+    /**
+     * Додавання м'яса свинки до складу
+     */
     public void addPigMeat() {
         product4++;
 
@@ -478,6 +519,9 @@ public class Storage {
         saveState();
     }
 
+    /**
+     * Додавання м'яса кролика до складу
+     */
     public void addRabbitMeat() {
 
         product5++;
@@ -503,12 +547,18 @@ public class Storage {
         saveState();
     }
 
+    /**
+     * Додавання банану до складу
+     */
     public void addBanana() {
         product1++;
         gatheredBananas++;
         saveState();
     }
 
+    /**
+     * Додавання засушеної бабки до складу
+     */
     public void addDragonflyPr() {
         product2++;
         if (product2 <= 5) {
@@ -530,6 +580,9 @@ public class Storage {
         saveState();
     }
 
+    /**
+     * Додавання пера павича до складу
+     */
     public void addFeather(){
         product3++;
 
@@ -552,6 +605,9 @@ public class Storage {
         saveState();
     }
 
+    /**
+     * Додавання манго до складу
+     */
     public void addMango() {
         product4++;
 
@@ -574,6 +630,9 @@ public class Storage {
         saveState();
     }
 
+    /**
+     * Додавання горіхів до складу
+     */
     public void addNut() {
         product5++;
         gatheredNuts++;
@@ -599,6 +658,9 @@ public class Storage {
         saveState();
     }
 
+    /**
+     * Додавання мішечку до складу
+     */
     public void addPouch() {
 
         product1++;
@@ -637,6 +699,9 @@ public class Storage {
         saveState();
     }
 
+    /**
+     * Додавання пилу феї до складу
+     */
     public void addFairyDust() {
         product2++;
         if (product2 <= 5) {
@@ -668,6 +733,9 @@ public class Storage {
         saveState();
     }
 
+    /**
+     * Додавання рогу до складу
+     */
     public void addHorn() {
         product3++;
         gatheredHorns++;
@@ -694,6 +762,9 @@ public class Storage {
         saveState();
     }
 
+    /**
+     * Додавання крові єдинорогу до складу
+     */
     public void addUnicornBlood() {
         product4++;
         gatheredUnicornBlood++;
@@ -720,6 +791,10 @@ public class Storage {
         }
         saveState();
     }
+
+    /**
+     * Додавання гриба до складу
+     */
     public void addMushroom() {
         product5++;
 
@@ -750,6 +825,15 @@ public class Storage {
         saveState();
     }
 
+    /**
+     * Створення зображення продукту
+     * @param productView
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     * @return
+     */
     private ImageView createProduct(Image productView, double x, double y, int width, int height) {
         ImageView product = new ImageView(productView);
         product.setFitWidth(width);
@@ -759,6 +843,9 @@ public class Storage {
         return product;
     }
 
+    /**
+     * Збереження стану для відновлення прогресу
+     */
     public void saveState() {
         try (FileOutputStream fos = new FileOutputStream("stateStorage.dat");
              ObjectOutputStream oos = new ObjectOutputStream(fos)) {
@@ -791,6 +878,9 @@ public class Storage {
         }
     }
 
+    /**
+     * Метод для завантаження збереженого прогресу
+     */
     public void loadState() {
         try (FileInputStream fis = new FileInputStream("stateStorage.dat");
              ObjectInputStream ois = new ObjectInputStream(fis)) {
@@ -840,8 +930,10 @@ public class Storage {
         }
     }
 
-
-
+    /**
+     * Метод для продажу 1 продукту
+     * @param toSell
+     */
     public void sellProduct1(int toSell) {
         int t = product1;
         product1 -= toSell;
@@ -851,6 +943,10 @@ public class Storage {
         saveState();
     }
 
+    /**
+     * Метод для продажу 2 продукту
+     * @param toSell
+     */
     public void sellProduct2(int toSell) {
         int t = product2;
         product2 -= toSell;
@@ -860,6 +956,10 @@ public class Storage {
         saveState();
     }
 
+    /**
+     * Метод для продажу 3 продукту
+     * @param toSell
+     */
     public void sellProduct3(int toSell) {
         int t = product3;
         product3 -= toSell;
@@ -869,6 +969,10 @@ public class Storage {
         saveState();
     }
 
+    /**
+     * Метод для продажу 4 продукту
+     * @param toSell
+     */
     public void sellProduct4(int toSell) {
         int t = product4;
         product4 -= toSell;
@@ -878,6 +982,10 @@ public class Storage {
         saveState();
     }
 
+    /**
+     * Метод для продажу 5 продукту
+     * @param toSell
+     */
     public void sellProduct5(int toSell) {
         int t = product5;
         product5 -= toSell;
@@ -888,6 +996,12 @@ public class Storage {
         saveState();
     }
 
+    /**
+     * Метод для видалення зображення продукту
+     * @param productViews
+     * @param product
+     * @param toRemove
+     */
     private void removeProductView(List<ImageView> productViews, int product, int toRemove) {
         int start = product - 1;
         int end = product - toRemove;
@@ -906,6 +1020,10 @@ public class Storage {
         saveState();
     }
 
+    /**
+     * Метод для продажу бананів
+     * @param toSell
+     */
     public void sellBananas(int toSell){
         int t = product1;
         product1 -= toSell;
@@ -922,10 +1040,18 @@ public class Storage {
         }
     }
 
+    /**
+     * Отримання ціни 4 продукту
+     * @return
+     */
     public int getProduct4Cost() {
         return product4Cost;
     }
 
+    /**
+     * Отримання ціни 5 продукту
+     * @return
+     */
     public int getProduct5Cost() {
         return product5Cost;
     }
@@ -949,37 +1075,76 @@ public class Storage {
     public int getNutCost() {
         return nutCost;
     }
+
+    /**
+     * Отримання кількості 1 продукту
+     * @return
+     */
     public int getProduct1() {
         return product1;
     }
+
+    /**
+     * Отримання кількості 2 продукту
+     * @return
+     */
     public int getProduct2() {
         return product2;
     }
+
+    /**
+     * Отримання кількості 3 продукту
+     * @return
+     */
     public int getProduct3() {
         return product3;
     }
+
+    /**
+     * Отримання кількості 4 продукту
+     * @return
+     */
     public int getProduct4() {
         return product4;
     }
 
+    /**
+     * Отримання кількості 5 продукту
+     * @return
+     */
     public int getProduct5() {
         return product5;
     }
 
-
+    /**
+     * Отримання ціни 2 продукту
+     * @return
+     */
     public int getProduct2Cost() {
         return product2Cost;
     }
 
+    /**
+     * Отримання ціни 1 продукту
+     * @return
+     */
     public int getProduct1Cost() {
         return product1Cost;
     }
 
 
+    /**
+     * Отримання node
+     * @return
+     */
     public Node getRoot() {
         return root;
     }
 
+    /**
+     * Отримання кількості зібраного хутра
+     * @return
+     */
     public int getnWool() {
         if(nWool>nWoolP){
             nWool = nWoolP;
@@ -987,6 +1152,10 @@ public class Storage {
         return nWool;
     }
 
+    /**
+     * Отримання кількості зібраних яєць
+     * @return
+     */
     public int getnEggs() {
         if(nEggs>nEggsP){
             nEggs = nEggsP;
@@ -994,6 +1163,10 @@ public class Storage {
         return nEggs;
     }
 
+    /**
+     * Отримання кількості проданого молока
+     * @return
+     */
     public int getSoldMilk() {
         if(soldMilk>soldMilkP){
             soldMilk = soldMilkP;
@@ -1001,6 +1174,10 @@ public class Storage {
         return soldMilk;
     }
 
+    /**
+     * Отримання кількості проданої свинини
+     * @return
+     */
     public int getSoldPig() {
         if(soldPig>soldPigP){
             soldPig = soldPigP;
@@ -1008,6 +1185,10 @@ public class Storage {
         return soldPig;
     }
 
+    /**
+     * Отримання кількості проданої кролятини
+     * @return
+     */
     public int getSoldRabbit() {
         if (soldRabbit>soldRabbitP){
             soldRabbit = soldRabbitP;
@@ -1015,30 +1196,58 @@ public class Storage {
         return soldRabbit;
     }
 
+    /**
+     * Отримання кількості яєць, що треба зібрати
+     * @return
+     */
     public int getnEggsP() {
         return nEggsP;
     }
 
+    /**
+     * Отримання кількості хутра, що треба зібрати
+     * @return
+     */
     public int getnWoolP() {
         return nWoolP;
     }
 
+    /**
+     * Отримання кількості молока, що треба продати
+     * @return
+     */
     public int getSoldMilkP() {
         return soldMilkP;
     }
 
+    /**
+     * Отримання кількості свинини, що треба продати
+     * @return
+     */
     public int getSoldPigP() {
         return soldPigP;
     }
 
+    /**
+     * Отримання кількості кролятини, що треба продати
+     * @return
+     */
     public int getSoldRabbitP() {
         return soldRabbitP;
     }
 
+    /**
+     * Отримання вартості 3 продукту
+     * @return
+     */
     public int getProduct3Cost() {
         return product3Cost;
     }
 
+    /**
+     * Отримання кількості засушеної бабки
+     * @return
+     */
     public  int getDriedDragonfly() {
         if (driedDragonfly >= driedDragonflyP){
             driedDragonfly = driedDragonflyP;
@@ -1046,14 +1255,26 @@ public class Storage {
         return driedDragonfly;
     }
 
+    /**
+     * Отримання кількості засушеної бабки, що треба зібрати
+     * @return
+     */
     public int getDriedDragonflyP() {
         return driedDragonflyP;
     }
 
-
+    /**
+     * Отримання кількості пір'я павича, що треба продати
+     * @return
+     */
     public int getSoldFeatherP() {
         return soldFeatherP;
     }
+
+    /**
+     * Отримання кількості проданих пір'їв
+     * @return
+     */
     public int getSoldFeather() {
         if (soldFeather >= soldFeatherP){
             soldFeather= soldFeatherP;
@@ -1062,6 +1283,10 @@ public class Storage {
 
     }
 
+    /**
+     * Отримання кількості проданого манго
+     * @return
+     */
     public  int getSoldMango() {
         if (soldMango >= soldMangoP){
             soldMango= soldMangoP;
@@ -1069,6 +1294,10 @@ public class Storage {
         return soldMango;
     }
 
+    /**
+     * Отримання кількості зібраних горіхів
+     * @return
+     */
     public  int getGatheredNuts() {
         if (gatheredNuts >= gatheredNutsP){
             gatheredNuts= gatheredNutsP;
@@ -1076,6 +1305,10 @@ public class Storage {
         return gatheredNuts;
     }
 
+    /**
+     * Отримання кількості зібраних горіхів
+     * @return
+     */
     public  int getGatheredBananas() {
         if (gatheredBananas >= getGatheredBananasP){
             gatheredBananas = getGatheredBananasP;
@@ -1084,19 +1317,34 @@ public class Storage {
         return gatheredBananas;
     }
 
-
+    /**
+     * Отримання кількості манго, що треба продати
+     * @return
+     */
     public int getSoldManagoP() {
         return soldMangoP;
     }
 
+    /**
+     * Отримання кількості горіхів, що треба зібрати
+     * @return
+     */
     public   int getGatheredNutsP() {
         return gatheredNutsP;
     }
 
+    /**
+     * Отримання кількості бананів, що треба зібрати
+     * @return
+     */
     public   int getGatheredBananasP() {
         return getGatheredBananasP;
     }
 
+    /**
+     * Отримання кількості проданих мішечків
+     * @return
+     */
     public int getSoldPouch() {
         if(soldPouch>=soldPouchP){
             soldPouch = soldPouchP;
@@ -1104,6 +1352,10 @@ public class Storage {
         return soldPouch;
     }
 
+    /**
+     * Отримання кількості проданого пилу феї
+     * @return
+     */
     public int getSoldDust() {
         if(soldDust>=soldDustP){
             soldDust=soldDustP;
@@ -1111,6 +1363,10 @@ public class Storage {
         return soldDust;
     }
 
+    /**
+     * Отримання кількості зібраних рогів
+     * @return
+     */
     public int getGatheredHorns() {
         if(gatheredHorns>=gatheredHornsP){
             gatheredHorns=gatheredHornsP;
@@ -1118,6 +1374,10 @@ public class Storage {
         return gatheredHorns;
     }
 
+    /**
+     * Отримання кількості зібраної крові єдинорога
+     * @return
+     */
     public int getGatheredUnicornBlood() {
         if(gatheredUnicornBlood>=gatheredUnicornBloodP){
             gatheredUnicornBlood = gatheredUnicornBloodP;
@@ -1125,6 +1385,10 @@ public class Storage {
         return gatheredUnicornBlood;
     }
 
+    /**
+     * Отримання кількості проданих грибів
+     * @return
+     */
     public int getSoldMushrooms() {
         if(soldMushrooms>=soldMushroomsP){
             soldMushrooms = soldMushroomsP;
@@ -1132,26 +1396,49 @@ public class Storage {
         return soldMushrooms;
     }
 
+    /**
+     * Отримання кількості мішечків, що треба продати
+     * @return
+     */
     public int getSoldPouchP() {
         return soldPouchP;
     }
 
+    /**
+     * Отримання кількості пилу феї, що треба продати
+     * @return
+     */
     public int getSoldDustP() {
         return soldDustP;
     }
 
+    /**
+     * Отримання кількості рогів, що треба зібрати
+     * @return
+     */
     public int getGatheredHornsP() {
         return gatheredHornsP;
     }
 
+    /**
+     * Отримання кількості крові єдинорога, що треба зібрати
+     * @return
+     */
     public int getGatheredUnicornBloodP() {
         return gatheredUnicornBloodP;
     }
 
+    /**
+     * Отримання кількості грбів, що треба продати
+     * @return
+     */
     public int getSoldMushroomsP() {
         return soldMushroomsP;
     }
 
+    /**
+     * Оновлення змінних
+     */
     public  void reset() {
         removeProductView(product1Views, product1, product1);
         removeProductView(product2Views, product2, product2);
