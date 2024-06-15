@@ -1,5 +1,6 @@
 #beginButton,
-#startButton {
+#startButton,
+#beginAgain {
     -fx-background-color: #C84938;
     -fx-text-fill: white;
     -fx-font-size: 20;
