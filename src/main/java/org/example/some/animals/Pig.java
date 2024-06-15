@@ -33,7 +33,7 @@ public class Pig extends AbstractAnimal implements AnimalMeat{
                 "file:src/main/resources/images/firstLevel/products/meat.png"
         ) ;
     //    loadAmountOfMeals();
-      FirstLevel.loadState();
+//      FirstLevel.loadState();
         this.productCost = 0;
         this.openedMeatMenu = false;
         this.enoughFood = false;

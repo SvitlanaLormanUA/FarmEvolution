@@ -59,11 +59,11 @@ public class Storage {
     private static int soldPig;
     private static int soldRabbit;
     //FIrstLevelTasks
-    private int nWoolP = 20;
-    private int nEggsP = 30;
-    private int soldMilkP = 15;
-    private int soldPigP = 10;
-    private int soldRabbitP = 15;
+    private int nWoolP = 5;
+    private int nEggsP = 7;
+    private int soldMilkP = 3;
+    private int soldPigP = 1;
+    private int soldRabbitP = 1;
 
     //SecondLeveLProducts
     public static int driedDragonfly;
@@ -73,22 +73,22 @@ public class Storage {
     private static int gatheredBananas;
 
     //SecondLeveLTasks
-    private  int driedDragonflyP = 5;
-    private  int soldFeatherP = 15;
-    private  int soldMangoP = 17;
-    private  int gatheredNutsP = 13;
-    private  int getGatheredBananasP =25;
+    private  int driedDragonflyP = 1;
+    private  int soldFeatherP = 3;
+    private  int soldMangoP = 3;
+    private  int gatheredNutsP = 5;
+    private  int getGatheredBananasP = 4;
 
     private int gatheredUnicornBlood;
     private int soldDust;
     private int soldPouch;
     private int soldMushrooms;
     private int gatheredHorns;
-    private int gatheredUnicornBloodP = 6;
-    private int soldDustP = 20;
-    private int soldPouchP = 25;
-    private int soldMushroomsP = 35;
-    private int gatheredHornsP = 25;
+    private int gatheredUnicornBloodP = 1;
+    private int soldDustP = 5;
+    private int soldPouchP = 5;
+    private int soldMushroomsP = 7;
+    private int gatheredHornsP = 4;
 
 
     private boolean firstLvl;
@@ -1070,22 +1070,37 @@ public class Storage {
     }
 
     public int getSoldPouch() {
+        if(soldPouch>=soldPouchP){
+            soldPouch = soldPouchP;
+        }
         return soldPouch;
     }
 
     public int getSoldDust() {
+        if(soldDust>=soldDustP){
+            soldDust=soldDustP;
+        }
         return soldDust;
     }
 
     public int getGatheredHorns() {
+        if(gatheredHorns>=gatheredHornsP){
+            gatheredHorns=gatheredHornsP;
+        }
         return gatheredHorns;
     }
 
     public int getGatheredUnicornBlood() {
+        if(gatheredUnicornBlood>=gatheredUnicornBloodP){
+            gatheredUnicornBlood = gatheredUnicornBloodP;
+        }
         return gatheredUnicornBlood;
     }
 
     public int getSoldMushrooms() {
+        if(soldMushrooms>=soldMushroomsP){
+            soldMushrooms = soldMushroomsP;
+        }
         return soldMushrooms;
     }
 

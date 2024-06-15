@@ -215,12 +215,12 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
     public void showTasks(ActionEvent event) {
         tasksWindow = new Tasks(anchorPane, 3);
         tasksWindow.createMenu(
-                "Завдання 1: «Для темного лордаа»\n" + "Зібрати кров єдинорога: " + storage.getGatheredUnicornBlood() +" /" + storage.getGatheredUnicornBloodP(),
-                "Завдання 2: «Чарівні знахідки» \n"+ "Продати мішечки: " + storage.getSoldPouch() + " /" + storage.getSoldPouchP() + "\n" +
-                        "Продати пил феї: " + storage.getSoldDust() + " /" + storage.getSoldDustP(),
-                "Завдання 3: «До таверни гномів» \n"+ "Продати гриби: " + storage.getSoldMushrooms() + " /" + storage.getSoldMushroomsP() + "\n" +
-                        "Зібрати рога: " + storage.getGatheredHorns() + " /" + storage.getGatheredHornsP(),
-                "Завдання 4: «Геній, мільярдер, плейбой, \nфілантроп» \n" + "Заробити:  " + tasksWindow.nCoins + "/10000 монет"
+                "Завдання 1: «Для темного лордаа»\n" + "Зібрати кров єдинорога: " + storage.getGatheredUnicornBlood() +"/" + storage.getGatheredUnicornBloodP(),
+                "Завдання 2: «Чарівні знахідки» \n"+ "Продати мішечки: " + storage.getSoldPouch() + "/" + storage.getSoldPouchP() + "\n" +
+                        "Продати пил феї: " + storage.getSoldDust() + "/" + storage.getSoldDustP(),
+                "Завдання 3: «До таверни гномів» \n"+ "Продати гриби: " + storage.getSoldMushrooms() + "/" + storage.getSoldMushroomsP() + "\n" +
+                        "Зібрати рога: " + storage.getGatheredHorns() + "/" + storage.getGatheredHornsP(),
+                "Завдання 4: «Геній, мільярдер, плейбой, \nфілантроп» \n" + "Заробити:  " + tasksWindow.nCoins + "/1000 монет"
         );
         anchorPane.getChildren().add(tasksWindow.getRoot());
 

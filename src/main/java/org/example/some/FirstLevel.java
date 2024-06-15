@@ -135,12 +135,12 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
         tasksWindow = new Tasks(anchorPane, 1);
         // tasksWindow = new Tasks(anchorPane, 1);
         tasksWindow.createMenu("Завдання 1: «Досвідчений м’ясник»\n" +
-                "Продати м’ясо свині: "+storage.getSoldPig()+"/10 шматків\n" +
-                "Продати м’ясо кролів: "+storage.getSoldRabbit()+"/15 шматків", "Завдання 2: «Молоко, любов і гуси»\n" +
-                "Зібрати яйця: "+storage.getnEggs()+"/30 штук\n" +
-                "Продати молоко: "+storage.getSoldMilk()+"/15 галонів", "Завдання 3: «До зими готовий!»\n" +
-                "Зібрати хутро: "+storage.getnWool()+"/20 штук", "Завдання 4: «Туди сюди і мільйонер»\n" +
-                "Заробити монети: "+tasksWindow.nCoins +"/2000");
+                "Продати м’ясо свині: "+storage.getSoldPig()+"/"+storage.getSoldPigP()+" шматків\n" +
+                "Продати м’ясо кролів: "+storage.getSoldRabbit()+"/"+storage.getSoldRabbitP()+" шматків", "Завдання 2: «Молоко, любов і гуси»\n" +
+                "Зібрати яйця: "+storage.getnEggs()+"/"+storage.getnEggsP()+" штук\n" +
+                "Продати молоко: "+storage.getSoldMilk()+"/"+storage.getSoldMilkP()+" галонів", "Завдання 3: «До зими готовий!»\n" +
+                "Зібрати хутро: "+storage.getnWool()+"/"+storage.getnWoolP()+" штук", "Завдання 4: «Туди сюди і мільйонер»\n" +
+                "Заробити монети: "+tasksWindow.nCoins +"/200");
         anchorPane.getChildren().add(tasksWindow.getRoot());
 
 
