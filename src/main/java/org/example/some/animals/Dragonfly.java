@@ -9,7 +9,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import org.example.some.FirstLevel;
+import org.example.some.SecondLevel;
 import org.example.some.Storage;
+import org.example.some.ThirdLevel;
 import org.example.some.otherGameObjects.Well;
 
 import java.io.*;
@@ -169,6 +171,7 @@ public class Dragonfly extends AbstractAnimal implements AnimalMeat{
         productView.setLayoutX(x);
         productView.setLayoutY(y);
         productView.setCursor(Cursor.HAND);
+        SecondLevel.countDragonflies--;
 
         productView.setOnMouseClicked(event -> {
             root.getChildren().remove(productView);
