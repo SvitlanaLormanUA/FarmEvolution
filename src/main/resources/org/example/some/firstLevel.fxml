@@ -71,7 +71,7 @@
             <Image url="@../../../images/homeUnactive.png" />
          </image>
       </ImageView>
-  <Button layoutX="1174.0" layoutY="406.0" mnemonicParsing="false" onAction="#nextLevel" text="2nd" />
+  <!--<Button layoutX="1174.0" layoutY="406.0" mnemonicParsing="false" onAction="#nextLevel" text="2nd" />-->
 
 
    </children>
