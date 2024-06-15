@@ -29,7 +29,9 @@ import java.util.ResourceBundle;
 
 import static org.example.some.SettingsMenu.restart;
 
-
+/**
+ * First level class
+ * */
 public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializable, Serializable {
 
 
@@ -111,7 +113,9 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
     public Tasks tasksWindow;
 
 
-
+   /**
+    * method to enter shop and change scenes to it
+    * */
     @FXML
     public void enterShop(ActionEvent event) {
         try {
@@ -129,6 +133,10 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
             throw new RuntimeException(e);
         }
     }
+
+    /***
+     * method to go to the tasks menu when user click on the button
+     * */
 
     @FXML
     public void showTasks(ActionEvent event) {
@@ -163,6 +171,9 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
         }).start();
     }
 
+    /**
+     * method to go open storage when user click on the button
+     * */
 
     @FXML
     void addStorageMenu(MouseEvent event) {
@@ -200,6 +211,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
 
 
     }
+    //додано кролика
     public void addRabbit() {
         for (int i = 0; i < countRabbit; i++) {
              rabbit = new Rabbit(250, 250, 1000, 630, anchorPane, well, feeder, storage);
@@ -268,6 +280,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
         }
     }
 
+
     private void deleteObj(){
        // storage = null;
         well = null;
@@ -295,6 +308,7 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
         anchorPane.getChildren().add(feeder.getFoodView());
     }
 
+
     private void addStorage(){
         Image egg = new Image("file:src/main/resources/images/firstLevel/products/egg.png");
         Image wool = new Image("file:src/main/resources/images/firstLevel/products/wool.png");
@@ -311,6 +325,9 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
         anchorPane.getChildren().add(storage.getRoot());
     }
 
+    /**
+     * method to handle the water level in the well
+     * */
     public void setWater() {
         if (progress < 0.1) {
             progress = 1.0;
@@ -319,7 +336,10 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
     }
 
 
-
+/**
+ *
+ * load coins from the file
+ * */
     public static void saveCoins() {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("coins.ser"))) {
             if (wallet!=null) {
@@ -330,6 +350,10 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
             e.printStackTrace();
         }
     }
+
+    /***
+     * load coins from the file
+     * */
     public static void loadCoins(){
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("coins.ser"))) {
             coins = in.readInt();
@@ -343,6 +367,11 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
     }
 
 
+    /**
+     *
+     *
+     * save game state to the file
+     * */
     public static void saveState() {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("levelOne.ser"))) {
 
@@ -352,16 +381,19 @@ public class FirstLevel extends LevelMusicBack implements javafx.fxml.Initializa
             out.writeInt(countGoose);
             out.writeInt(countPig);
             out.writeInt(countRabbit);
-            //out.writeInt(pig.amountOfMeals);
+
 
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-       /* pig.saveAmountOfMeals();
-        Rabbit.saveAmountOfMeals();*/
+
     }
 
+
+    /**
+     * load game state from the file
+     * */
     public static void loadState(){
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("levelOne.ser"))) {
 

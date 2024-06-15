@@ -61,16 +61,19 @@ public class Tasks {
 
         switch (level) {
             case 1 -> {
+                //1 рівень
                 firstLevel = true;
                 secondLevel = false;
                 thirdLevel = false;
             }
             case 2 -> {
+                // 2 рівень
                 firstLevel = false;
                 secondLevel = true;
                 thirdLevel = false;
             }
             case 3 -> {
+                // 3 рівень
                 firstLevel = false;
                 secondLevel = false;
                 thirdLevel = true;
@@ -84,6 +87,8 @@ public class Tasks {
         strikeThoughTasks();
     }
 
+
+    //кнопка закриття
     private void addCloseButton(){
         close = new Button("×");
         close.setLayoutX(240);

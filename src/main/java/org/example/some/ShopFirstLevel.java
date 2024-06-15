@@ -55,6 +55,9 @@ public class ShopFirstLevel extends Shop implements Initializable {
 
     public static int amountOfCoins;
 
+    /**
+     * Базуючи на рівні, з якого ми прийшли, додається зображення магазину
+     * */
     void addImageBasedOnPreviousLevel() {
         if (getCurrentLevel()!= null) {
             switch (getCurrentLevel()) {
@@ -115,6 +118,10 @@ public class ShopFirstLevel extends Shop implements Initializable {
 
     }
 
+    /**
+     * н
+     * перехід на наступну сторінку магазину
+     * */
 
     @FXML
     public void secondShop(ActionEvent event) {
@@ -148,6 +155,9 @@ public class ShopFirstLevel extends Shop implements Initializable {
                 .ifPresent(response -> alert.close());
     }
 
+    /**
+     * метод для покупки тварини
+     * */
     private void handleBuy(ActionEvent event, int price, String animalName, Runnable onSuccess) {
         if (wallet.getCoins() >= price) {
             FirstLevel.wallet.expense(price);
@@ -159,6 +169,7 @@ public class ShopFirstLevel extends Shop implements Initializable {
         }
     }
 
+    //коровку купуємо
     @FXML
     public void buyCow(ActionEvent event) {
         handleBuy(event, COW_PRICE, "корову", () -> {

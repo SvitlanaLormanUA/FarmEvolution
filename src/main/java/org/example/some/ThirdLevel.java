@@ -241,6 +241,9 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
         }).start();
     }
 
+    /**
+     * видаляємо обʼєкти (перед переходом на наступний рівень)
+     * */
     public static void deleteAllObjects(){
         for(int i=0; i<gnomeArrayList.size(); i++){
             if (gnomeArrayList.get(i) == null) continue;

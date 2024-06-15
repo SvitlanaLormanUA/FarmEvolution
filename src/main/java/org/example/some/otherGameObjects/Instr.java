@@ -6,7 +6,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
-
+/**
+ * a class for the insruction menu
+ * */
 public class Instr {
     private Pane root;
     private AnchorPane main;
@@ -19,6 +21,9 @@ public class Instr {
         createImagePane();
     }
 
+    /**
+     * a method to create the instruction image
+     * */
     public void createImagePane() {
         Image image = new Image("file:src/main/resources/images/instrPicture.png");
         this.imageView = new ImageView(image);

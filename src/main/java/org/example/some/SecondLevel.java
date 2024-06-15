@@ -102,6 +102,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
         addParrot();
     }
 
+    //додаємо павичів
     private void addPeacock() {
         for (int i = 0; i < countPeacocks; i++) {
             peacock = new Peacock(300, 400, 700, 600, anchorPane, well, feeder, storage);
@@ -253,6 +254,11 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
 
 
 
+    /**
+     *
+     * додаємо меню до стораджа
+     * */
+
     @FXML
     void addStorageMenu(MouseEvent event) {
         saveState();
@@ -289,6 +295,9 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
         }
     }
 
+    /**
+     * видалення обʼєктів (перед переходом на некст рівень)
+     * */
     private void deleteObj(){
         well = null;
         feeder = null;
@@ -350,6 +359,9 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
         anchorPane.getChildren().add(gameM.getRoot());
     }
 
+    /**
+     * вивести налашування на екран
+     * */
     public void showSettings(ActionEvent event) {
         settingsMenu = new SettingsMenu(anchorPane);
         anchorPane.getChildren().add(settingsMenu.getRoot());

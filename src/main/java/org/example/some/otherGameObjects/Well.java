@@ -12,7 +12,9 @@ import javafx.scene.layout.Pane;
 
 import java.util.Timer;
 import java.util.TimerTask;
-
+/**
+ * Well object class
+ * */
 public class Well {
 
     private ImageView wellView;
@@ -35,7 +37,10 @@ public class Well {
         wellView.setOnMouseExited(this::handleMouseExited);
         wellView.setOnMouseClicked(this::handleMouseClicked);
     }
-
+/**
+ * a  method to get water from the well
+ *
+ * */
     public void getWater(){
         if (progress > 0.0 && waterLvl > 0) {
             waterLvl--;
@@ -50,6 +55,9 @@ public class Well {
         waterBar.setProgress(progress);
     }
 
+    /**
+     * a method to handle the water level in the well
+     * */
     private void handleMouseEntered(MouseEvent event){
         waterLvlLabel = new Label("Рівень води: " + this.waterLvl);
         waterLvlLabel.setLayoutX(300);
@@ -61,7 +69,11 @@ public class Well {
         root.getChildren().remove(waterLvlLabel);
     }
 
+
     private int n;
+    /**
+     * a method to higher the amount of water in the well when user clicks on it
+     * */
     private void handleMouseClicked(MouseEvent event){
         n = 0;
         Timer timer = new Timer();
@@ -84,10 +96,16 @@ public class Well {
         timer.scheduleAtFixedRate(task, 0, 10000);
     }
 
+    /**
+     * a method to get the well view
+     * */
     public ImageView getWellView() {
         return wellView;
     }
 
+    /**
+     * a method to get the root of the well
+     * */
     public Pane getRoot() {
         return root;
     }
