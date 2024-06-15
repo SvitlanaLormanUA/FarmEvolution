@@ -43,7 +43,7 @@ public class AnimalMeatMenu {
         feed.setLayoutY(40);
         feed.setFont(new Font(16));
 
-        question = new Label("Чи бажаєте ви отримати \n м'ясо на "+animal.getProductCost()+" монет?");
+        question = new Label("Чи бажаєте ви отримати \n продукту на "+animal.getProductCost()+" монет?");
         question.setLayoutX(20);
         question.setLayoutY(20);
 

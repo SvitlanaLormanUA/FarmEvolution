@@ -331,12 +331,12 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     public void showTasks(ActionEvent event) {
         tasksWindow = new Tasks(anchorPane, 2);
         tasksWindow.createMenu(
-                "Завдання 1: «Недоспівала»\n" + "Засушити: " + storage.getDriedDragonfly() +" /" + storage.getDriedDragonflyP() + " бабок" ,
-                "Завдання 2: «Ні пуху, ні пера» \n"   + "Продати " + storage.getSoldFeather()+ " /" + storage.getSoldFeatherP() + " пірʼїнок" ,
-                "Завдання 3: «Тропічні делікатеси» \n"+ "Продати манго: " + storage.getSoldMango() + " /" + storage.getSoldManagoP() + "\n" +
-                        "Зібрати горіхи: " + storage.getGatheredNuts() + " /" + storage.getGatheredNutsP() + "\n" +
-                        "Зібрати звʼязки бананів: " + storage.getGatheredBananas() + " /" + storage.getGatheredBananasP(),
-                "Завдання 4: «Тоні Старк відпочиває» \n" + "Заробити:  " + tasksWindow.nCoins + "/5500 монет"
+                "Завдання 1: «Недоспівала»\n" + "Засушити: " + storage.getDriedDragonfly() +"/" + storage.getDriedDragonflyP() + " бабок" ,
+                "Завдання 2: «Ні пуху, ні пера» \n"   + "Продати " + storage.getSoldFeather()+ "/" + storage.getSoldFeatherP() + " пірʼїнок" ,
+                "Завдання 3: «Тропічні делікатеси» \n"+ "Продати манго: " + storage.getSoldMango() + "/" + storage.getSoldManagoP() + "\n" +
+                        "Зібрати горіхи: " + storage.getGatheredNuts() + "/" + storage.getGatheredNutsP() + "\n" +
+                        "Зібрати звʼязки бананів: " + storage.getGatheredBananas() + "/" + storage.getGatheredBananasP(),
+                "Завдання 4: «Тоні Старк відпочиває» \n" + "Заробити:  " + tasksWindow.nCoins + "/500 монет"
         );
         anchorPane.getChildren().add(tasksWindow.getRoot());
 

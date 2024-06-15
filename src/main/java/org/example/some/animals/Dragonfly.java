@@ -24,7 +24,7 @@ public class Dragonfly extends AbstractAnimal implements AnimalMeat{
     public  int amountOfMeals;
     private AnimalMeatMenu animalMeatMenu;
     private boolean openedMeatMenu;
-    private int puposedAmount = 12;
+    private int puposedAmount = 4;
 
     public Dragonfly(int worldStartX, int worldStartY, int worldEndX, int worldEndY, AnchorPane anchorPane, Well well, Feeder feeder, Storage storage) {
         super(worldStartX, worldStartY, worldEndX, worldEndY, anchorPane, well, feeder, storage,
