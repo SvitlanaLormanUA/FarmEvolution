@@ -440,6 +440,15 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
             countDragonflies = 1;
             countParrots = 1;
             dragonfly.amountOfMeals = 0;
+            Storage.soldFeather = 0;
+            Storage.soldMango = 0;
+            Storage.gatheredNuts = 0;
+            Storage.gatheredBananas = 0;
+            Storage.driedDragonfly = 0;
+            bananas.clear();
+
+
+
 
             SettingsMenu.start = false;
 

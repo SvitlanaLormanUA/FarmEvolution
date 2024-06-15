@@ -330,6 +330,12 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
             countFairy = 1;
             countMinotaur = 1;
             countMushroom = 1;
+            storage.setGatheredUnicornBlood(0);
+            storage.setSoldDust(0);
+            storage.setSoldPouch(0);
+            storage.setSoldMushrooms(0);
+            storage.setGatheredHorns(0);
+
             if (unicorn!=null) {
                 unicorn.amountOfMeals = 0;
             }

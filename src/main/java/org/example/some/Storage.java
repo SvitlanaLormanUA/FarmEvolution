@@ -69,8 +69,8 @@ public class Storage {
     public static int driedDragonfly;
     static int soldFeather;
     static int soldMango;
-    private static int gatheredNuts;
-    private static int gatheredBananas;
+    static int gatheredNuts;
+    static int gatheredBananas;
 
     //SecondLeveLTasks
     private  int driedDragonflyP = 1;
