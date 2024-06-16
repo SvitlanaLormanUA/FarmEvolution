@@ -391,7 +391,6 @@ public class StorageMenu {
             if(sell(amountOfProduct3, storage.getProduct3())){
                 int toSell = Integer.parseInt(amountOfProduct3.getText());
                 storage.sellProduct3(toSell);
-                Storage.soldFeather++;
                 product3ToSell.setText("Пір'я павича: "+storage.getProduct3()+"\nВартість: "+storage.getProduct3Cost()+" монет/шт\nВведіть кількість для продажу:");
                 amountOfProduct3.setText("");
             }
@@ -406,7 +405,6 @@ public class StorageMenu {
             if(sell(amountOfProduct4, storage.getProduct4())){
                 int toSell = Integer.parseInt(amountOfProduct4.getText());
                 storage.sellProduct4(toSell);
-                Storage.soldMango++;
                 product4ToSell.setText("Манго: "+storage.getProduct4()+"\nВартість: "+storage.getProduct4Cost()+" монет/шт\nВведіть кількість для продажу:");
                 amountOfProduct4.setText("");
             }
@@ -477,7 +475,6 @@ public class StorageMenu {
             if(sell(amountOfProduct3, storage.getProduct3())){
                 int toSell = Integer.parseInt(amountOfProduct3.getText());
                 storage.sellProduct3(toSell);
-                Storage.soldFeather++;
                 product3ToSell.setText("Рога: "+storage.getProduct3()+"\nВартість: "+storage.getProduct3Cost()+" монет/шт\nВведіть кількість для продажу:");
                 amountOfProduct3.setText("");
             }

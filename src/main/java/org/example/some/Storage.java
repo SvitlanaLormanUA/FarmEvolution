@@ -966,6 +966,7 @@ public class Storage {
         wallet.income(product3Cost * toSell);
         removeProductView(product3Views, t, toSell);
         soldMilk+=toSell;
+        soldFeather+=toSell;
         saveState();
     }
 
@@ -979,6 +980,7 @@ public class Storage {
         wallet.income(product4Cost * toSell);
         removeProductView(product4Views, t, toSell);
         soldPig+=toSell;
+        soldMango+=toSell;
         saveState();
     }
 
