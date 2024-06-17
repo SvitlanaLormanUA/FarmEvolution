@@ -147,6 +147,7 @@ public class Tasks {
             taskLabel3.setGraphic(text3);
         }
         if (task4) {
+            text4.setText(taskLabel4.getText());
             taskLabel4.setText("");
             text4.setStyle(" -fx-strikethrough: true;-fx-color: blue;");
             taskLabel4.setGraphic(text4);

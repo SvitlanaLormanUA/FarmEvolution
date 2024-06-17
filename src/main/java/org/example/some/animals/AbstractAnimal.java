@@ -61,6 +61,21 @@ public abstract class AbstractAnimal implements Animal {
     Image product;
 
     AnimalMenu animalMenu;
+
+    /**
+     * @param worldStartX
+     * @param worldStartY
+     * @param worldEndX
+     * @param worldEndY
+     * @param root
+     * @param well
+     * @param feeder
+     * @param storage
+     * @param imagePath
+     * @param soundFile
+     * @param recourseFile
+     * Конструктор, що ініціалізує тварину з певними параметрами
+     */
     public AbstractAnimal(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Well well, Feeder feeder, Storage storage, String imagePath, String soundFile, String recourseFile) {
         file = new File(soundFile);
         product = new Image(recourseFile);
@@ -102,7 +117,21 @@ public abstract class AbstractAnimal implements Animal {
         movement();
     }
 
-
+    /**
+     * @param worldStartX
+     * @param worldStartY
+     * @param worldEndX
+     * @param worldEndY
+     * @param root
+     * @param well
+     * @param feeder
+     * @param storage
+     * @param imagePath
+     * @param imagePathLeft
+     * @param soundFile
+     * @param recourseFile
+     * Перевантажені конструктори для різних наборів параметрів
+     */
     public AbstractAnimal(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Well well, Feeder feeder, Storage storage, String imagePath, String imagePathLeft, String soundFile, String recourseFile) {
         file = new File(soundFile);
         product = new Image(recourseFile);
@@ -143,6 +172,18 @@ public abstract class AbstractAnimal implements Animal {
         movement();
     }
 
+    /**
+     * @param worldStartX
+     * @param worldStartY
+     * @param worldEndX
+     * @param worldEndY
+     * @param root
+     * @param well
+     * @param feeder
+     * @param imagePath
+     * @param imagePathLeft
+     * @param soundFile
+     */
     public AbstractAnimal(int worldStartX, int worldStartY, int worldEndX, int worldEndY, Pane root, Well well, Feeder feeder, String imagePath, String imagePathLeft, String soundFile) {
         file = new File(soundFile);
 
@@ -183,8 +224,9 @@ public abstract class AbstractAnimal implements Animal {
 
     }
 
-
-
+    /**
+     * Метод для обробки руху тварини
+     */
     @Override
     public void movement() {
         translateTransition = new TranslateTransition();
@@ -210,6 +252,9 @@ public abstract class AbstractAnimal implements Animal {
         animalView.setOnMouseReleased(this::handleMouseReleased);
     }
 
+    /**
+     * Встановлення випадкового напрямку руху
+     */
     @Override
     public void setRandomDirection() {
         double x = animalView.getLayoutX();
@@ -246,12 +291,17 @@ public abstract class AbstractAnimal implements Animal {
     }
 
 
+    /**
+     * Обробка перетягування миші
+     * @param event
+     */
     @Override
     public void handleMouseDragged(MouseEvent event) {
         translateTransition.pause();
         double newX = event.getSceneX() - animalView.getFitWidth() / 2;
         double newY = event.getSceneY() - animalView.getFitHeight() / 2;
 
+//        Перевірка, щоб тварина не виходила за межі світу
         if (newX < worldStartX) newX = worldStartX;
         if (newX > worldEndX - animalView.getFitWidth()) newX = worldEndX - animalView.getFitWidth();
         if (newY < worldStartY) newY = worldStartY;
@@ -261,6 +311,10 @@ public abstract class AbstractAnimal implements Animal {
         animalView.setLayoutY(newY);
     }
 
+    /**
+     * Обробка відпускання миші
+     * @param event
+     */
     @Override
     public void handleMouseReleased(MouseEvent event) {
         double x = animalView.getLayoutX();
@@ -286,6 +340,10 @@ public abstract class AbstractAnimal implements Animal {
 
     }
 
+    /**
+     * Обробка кліку миші
+     * @param event
+     */
     @Override
     public void handleMouseClicked(MouseEvent event) {
         if (!openedMenu) {
@@ -310,6 +368,11 @@ public abstract class AbstractAnimal implements Animal {
 
     }
 
+    /**
+     * Додавання меню
+     * @param x
+     * @param y
+     */
     @Override
     public void addMenu(double x, double y) {
         animalMenu = new AnimalMenu(this, x, y);
@@ -318,6 +381,9 @@ public abstract class AbstractAnimal implements Animal {
         translateTransition.pause();
     }
 
+    /**
+     * Видалення меню
+     */
     @Override
     public void removeMenu() {
         root.getChildren().remove(animalMenu.getRoot());
@@ -325,11 +391,17 @@ public abstract class AbstractAnimal implements Animal {
         translateTransition.play();
     }
 
+    /**
+     * Запуск анімації
+     */
     @Override
     public void play() {
         translateTransition.play();
     }
 
+    /**
+     * Метод для поступової зміни голоду
+     */
     @Override
     public void hunger() {
         Timer timer = new Timer();
@@ -348,6 +420,9 @@ public abstract class AbstractAnimal implements Animal {
         timer.scheduleAtFixedRate(task, 0, 5000);
     }
 
+    /**
+     * Метод для поступової зміни спраги
+     */
     @Override
     public void thirst() {
         Timer timer = new Timer();
@@ -366,7 +441,9 @@ public abstract class AbstractAnimal implements Animal {
         timer.scheduleAtFixedRate(task, 0, 5000);
     }
 
-
+    /**
+     * Метод для оновлення спраги
+     */
     @Override
     public void drink() {
         System.out.println(FirstLevel.countCow);
@@ -384,7 +461,9 @@ public abstract class AbstractAnimal implements Animal {
 
     }
 
-
+    /**
+     * Метод для продажу тварини
+     */
     @Override
     public void sell() {
         FirstLevel.wallet.income(cost);
@@ -396,6 +475,9 @@ public abstract class AbstractAnimal implements Animal {
         mediaPlayer.stop();
     }
 
+    /**
+     * Метод для смерті тварини
+     */
     @Override
     public void death() {
         if (this.hungerLvl == 0 || this.thirstLvl == 0) {
@@ -409,12 +491,18 @@ public abstract class AbstractAnimal implements Animal {
         }
     }
 
+    /**
+     * Мето для видалення
+     */
     @Override
     public void delete(){
         releaseResources();
        Platform.runLater( () -> root.getChildren().remove(animalView));
     }
 
+    /**
+     * Метод для обнулення ресурсів
+     */
     @Override
     public void releaseResources(){
         translateTransition.stop();
@@ -422,24 +510,37 @@ public abstract class AbstractAnimal implements Animal {
         thirstLvl = 0;
     }
 
+    /**
+     * Отримання рівня голоду
+     * @return
+     */
     @Override
     public int getHungerLvl() {
         return hungerLvl;
     }
 
+    /**
+     * Отримання рівня спраги
+     * @return
+     */
     @Override
     public int getThirstLvl() {
         return thirstLvl;
     }
 
+    /**
+     * Отримання ціни тварини
+     * @return
+     */
     @Override
     public int getCost() {
         return cost;
     }
 
 
-
-
+    /**
+     * Метод для програвання звуку тварини
+     */
     public void playSound() {
 
         media = new Media(file.toURI().toString());
@@ -453,10 +554,10 @@ public abstract class AbstractAnimal implements Animal {
         root.getChildren().remove(mediaView);
     }
 
-
-
-
-
+    /**
+     * Отримання зображення тварини
+     * @return
+     */
     @Override
     public ImageView getAnimalView() {
         return animalView;
@@ -471,6 +572,10 @@ public abstract class AbstractAnimal implements Animal {
         mediaPlayer.setVolume(volume);
     }
 
+    /**
+     * Зменшення кількості певної тварини для сереалізації
+     * @param animalType
+     */
     public static void decreaseAnimalCount(String animalType) {
         switch (animalType) {
             case "Cow" ->

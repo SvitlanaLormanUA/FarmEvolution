@@ -39,6 +39,15 @@ public class StorageMenu {
     private TextField amountOfProduct4;
     private TextField amountOfProduct5;
 
+
+    /**
+     * Конструктор для меню складу
+     * @param storage
+     * @param wallet
+     * @param x
+     * @param y
+     * @param main
+     */
     public StorageMenu(Storage storage, Wallet wallet, double x, double y, AnchorPane main){
 
 
@@ -72,6 +81,9 @@ public class StorageMenu {
         close();
     }
 
+    /**
+     * Конструктор для меню 1 рівня
+     */
     public void firstLvl(){
         product1ToSell = new Label("Яйця: "+storage.getProduct1()+"\nВартість: "+storage.getProduct1Cost()+" монет/шт\nВведіть кількість для продажу:");
         product1ToSell.setLayoutX(20);
@@ -133,6 +145,9 @@ public class StorageMenu {
         sellRabbitMeat();
     }
 
+    /**
+     * Конструктор для меню 2 рівня
+     */
     public void secondLvl(){
         product1ToSell = new Label("Банани: "+storage.getProduct1()+"\nВартість: "+storage.getProduct1Cost()+" монет/шт\nВведіть кількість для продажу:");
         product1ToSell.setLayoutX(20);
@@ -194,6 +209,9 @@ public class StorageMenu {
         sellNut();
     }
 
+    /**
+     * Конструктор для меню 3 рівня
+     */
     public void thirdLvl(){
         product1ToSell = new Label("Мішечки: "+storage.getProduct1()+"\nВартість: "+storage.getProduct1Cost()+" монет/шт\nВведіть кількість для продажу:");
         product1ToSell.setLayoutX(20);
@@ -255,6 +273,9 @@ public class StorageMenu {
         sellMushroom();
     }
 
+    /**
+     * Метод для закриття меню
+     */
     private void close(){
         close.setStyle("-fx-background-color: #ff5757; -fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold; -fx-border-radius: 10px; -fx-background-radius: 10px; ");
         close.setOnAction(event -> {
@@ -262,6 +283,9 @@ public class StorageMenu {
         });
     }
 
+    /**
+     * Метод для продажу яєць
+     */
     private void sellEggs(){
         sellProduct1.setOnAction(event -> {
             if(sell(amountOfProduct1, storage.getProduct1())){
@@ -273,6 +297,9 @@ public class StorageMenu {
         });
     }
 
+    /**
+     * Метод для продажу молока
+     */
     private void sellMilk(){
         sellProduct2.setOnAction(event -> {
             if(sell(amountOfProduct2, storage.getProduct3())){
@@ -284,6 +311,9 @@ public class StorageMenu {
         });
     }
 
+    /**
+     * Метод для продажу хутра
+     */
     private void sellWool(){
         sellProduct3.setOnAction(event -> {
             if(sell(amountOfProduct3, storage.getProduct2())){
@@ -295,6 +325,9 @@ public class StorageMenu {
         });
     }
 
+    /**
+     * Метод для продажу свинини
+     */
     private void sellPigMeat(){
         sellProduct4.setOnAction(event -> {
             if(sell(amountOfProduct4, storage.getProduct4())){
@@ -307,6 +340,9 @@ public class StorageMenu {
         });
     }
 
+    /**
+     * Метод для продажу кролятини
+     */
     private void sellRabbitMeat(){
         sellProduct5.setOnAction(event -> {
             if(sell(amountOfProduct5, storage.getProduct5())){
@@ -319,6 +355,9 @@ public class StorageMenu {
         });
     }
 
+    /**
+     * Метод для продажу бананів
+     */
     private void sellBanana(){
         sellProduct1.setOnAction(event -> {
             if(sell(amountOfProduct1, storage.getProduct1())){
@@ -330,6 +369,9 @@ public class StorageMenu {
         });
     }
 
+    /**
+     * Метод для продажу сушеної бабки
+     */
     private void sellDragonflyPr(){
         sellProduct2.setOnAction(event -> {
             if(sell(amountOfProduct2, storage.getProduct2())){
@@ -341,30 +383,37 @@ public class StorageMenu {
         });
     }
 
+    /**
+     * Метод для продажу пір'їв павича
+     */
     private void sellFeather(){
         sellProduct3.setOnAction(event -> {
             if(sell(amountOfProduct3, storage.getProduct3())){
                 int toSell = Integer.parseInt(amountOfProduct3.getText());
                 storage.sellProduct3(toSell);
-                Storage.soldFeather++;
                 product3ToSell.setText("Пір'я павича: "+storage.getProduct3()+"\nВартість: "+storage.getProduct3Cost()+" монет/шт\nВведіть кількість для продажу:");
                 amountOfProduct3.setText("");
             }
         });
     }
 
+    /**
+     * Метод для продажу манго
+     */
     private void sellMango(){
         sellProduct4.setOnAction(event -> {
             if(sell(amountOfProduct4, storage.getProduct4())){
                 int toSell = Integer.parseInt(amountOfProduct4.getText());
                 storage.sellProduct4(toSell);
-                Storage.soldMango++;
                 product4ToSell.setText("Манго: "+storage.getProduct4()+"\nВартість: "+storage.getProduct4Cost()+" монет/шт\nВведіть кількість для продажу:");
                 amountOfProduct4.setText("");
             }
         });
     }
 
+    /**
+     * Метод для продажу горіхів
+     */
     private void sellNut(){
         sellProduct5.setOnAction(event -> {
             if(sell(amountOfProduct5, storage.getProduct5())){
@@ -376,6 +425,9 @@ public class StorageMenu {
         });
     }
 
+    /**
+     * Метод для продажу мішечків
+     */
     private void sellPouch(){
         sellProduct1.setOnAction(event -> {
             if(sell(amountOfProduct1, storage.getProduct1())){
@@ -387,6 +439,9 @@ public class StorageMenu {
         });
     }
 
+    /**
+     * Метод для продажу крові єдинорога
+     */
     private void sellUnicornBlood(){
         sellProduct4.setOnAction(event -> {
             if(sell(amountOfProduct4, storage.getProduct4())){
@@ -398,6 +453,9 @@ public class StorageMenu {
         });
     }
 
+    /**
+     * Метод для продажу пилу феї
+     */
     private void sellFairyDust(){
         sellProduct2.setOnAction(event -> {
             if(sell(amountOfProduct2, storage.getProduct2())){
@@ -409,18 +467,23 @@ public class StorageMenu {
         });
     }
 
+    /**
+     * Метод для продажу рогів
+     */
     private void sellHorn(){
         sellProduct3.setOnAction(event -> {
             if(sell(amountOfProduct3, storage.getProduct3())){
                 int toSell = Integer.parseInt(amountOfProduct3.getText());
                 storage.sellProduct3(toSell);
-                Storage.soldFeather++;
                 product3ToSell.setText("Рога: "+storage.getProduct3()+"\nВартість: "+storage.getProduct3Cost()+" монет/шт\nВведіть кількість для продажу:");
                 amountOfProduct3.setText("");
             }
         });
     }
 
+    /**
+     * Метод для продажу грибів
+     */
     private void sellMushroom(){
         sellProduct5.setOnAction(event -> {
             if(sell(amountOfProduct5, storage.getProduct5())){
@@ -432,7 +495,12 @@ public class StorageMenu {
         });
     }
 
-
+    /**
+     * Метод для перевірки правильності введених даних
+     * @param amount
+     * @param nProd
+     * @return
+     */
     private boolean sell(TextField amount, int nProd){
         String text = amount.getText();
         Alert alert = new Alert(Alert.AlertType.ERROR);

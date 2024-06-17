@@ -25,6 +25,12 @@ public class AnimalMenu {
     private Label thirstLabel;
     private Label costLabel;
 
+    /**
+     * Конструктор для меню із характеристиками тварини
+     * @param animal
+     * @param x
+     * @param y
+     */
     public AnimalMenu(Animal animal, double x, double y){
         Image image = new Image("file:src/main/resources/images/animalMenu/animalMenu.JPG");
         this.menuView = new ImageView(image);
@@ -80,6 +86,9 @@ public class AnimalMenu {
         close();
     }
 
+    /**
+     * Метод для кнопки "Нагодувати"
+     */
     private void feed(){
         //feed.getStylesheets().add(Objects.requireNonNull(getClass().getResource("src/main/resources/styles/AnimalMenu.css")).toExternalForm());
         //feed.getStyleClass().add("button-feed");
@@ -92,6 +101,9 @@ public class AnimalMenu {
         });
     }
 
+    /**
+     * Метод для кнопки "Напоїти"
+     */
     private void drink(){
         drink.setStyle("-fx-width-: 20px; -fx-background-color: #b6c55c; -fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold; -fx-border-radius: 10px; -fx-background-radius: 10px; ");
         drink.setOnAction(event -> {
@@ -100,6 +112,9 @@ public class AnimalMenu {
         });
     }
 
+    /**
+     * Метод для кнопки "Продати"
+     */
     private void sell(){
         sell.setStyle("-fx-background-color: #b6c55c; -fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold; -fx-border-radius: 5px; -fx-background-radius: 5px; ");
         sell.setOnAction(event -> {
@@ -107,6 +122,9 @@ public class AnimalMenu {
         });
     }
 
+    /**
+     * Метод для кнопки "Закрити"
+     */
     private void close(){
         close.setStyle("-fx-background-color: #ff5757; -fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold; -fx-border-radius: 10px; -fx-background-radius: 10px; ");
         close.setOnAction(event -> {
