@@ -85,7 +85,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
     public static ArrayList<Banana> bananas = new ArrayList<>();
 
     private Monkey monkey;
-    private Dragonfly dragonfly;
+    public  Dragonfly dragonfly;
     private Lemur lemur;
     private Peacock peacock;
     private Parrot parrot;
@@ -430,6 +430,7 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
 
         if (SettingsMenu.start) {
             deleteAllObjects();
+            deleteObj();
             wallet.setCoins(100);
             countLemurs = 1;
             countPeacocks = 1;
@@ -443,9 +444,6 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
             Storage.gatheredBananas = 0;
             Storage.driedDragonfly = 0;
             bananas.clear();
-
-
-
 
             SettingsMenu.start = false;
 

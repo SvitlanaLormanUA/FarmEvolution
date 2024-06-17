@@ -70,14 +70,28 @@ public class SettingsMenu {
                 FirstLevel.countGoose = 1;
                 FirstLevel.countRabbit = 1;
 
-
-
-
                 SecondLevel.countBanana = 0;
                 SecondLevel.countMonkeys = 1;
                 SecondLevel.countDragonflies = 1;
 
-               // Storage.reset();
+
+                ThirdLevel.deleteAllObjects();
+                ThirdLevel.countGnome = 1;
+                ThirdLevel.countUnicorn = 1;
+                ThirdLevel.countFairy = 1;
+                ThirdLevel.countMinotaur = 1;
+                ThirdLevel.countMushroom = 1;
+
+
+                storage.gatheredUnicornBlood = 0;
+                storage.soldDust = 0;
+                storage.soldPouch = 0;
+                storage.soldMushrooms = 0;
+                storage.soldHorns = 0;
+
+
+
+                // Storage.reset();
                 wallet.resetWallet();
                 wallet.setCoins(100);
 
@@ -106,7 +120,6 @@ public class SettingsMenu {
         startAgain.setStyle("-fx-background-color: #2D819D; -fx-text-fill: white; -fx-font-size: 20; -fx-border-radius: 100px;");
         startAgain.setOnAction(event -> {
             startAgain.setStyle("-fx-background-color: #3aacd3; -fx-text-fill: white; -fx-font-size: 20; -fx-border-radius: 100px;");
-
             askUser();
         });
         root.getChildren().add(startAgain);

@@ -329,6 +329,7 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
 
         if (SettingsMenu.start) {
             deleteAllObjects();
+            deleteObj();
             countGnome = 1;
             countUnicorn = 1;
             countFairy = 1;
