@@ -28,6 +28,7 @@ import java.util.*;
 
 import static org.example.some.FirstLevel.coins;
 import static org.example.some.FirstLevel.loadCoins;
+import static org.example.some.SettingsMenu.restart;
 
 
 public class SecondLevel  extends LevelMusicBack implements Initializable {
@@ -180,6 +181,10 @@ public class SecondLevel  extends LevelMusicBack implements Initializable {
         Image nut = new Image("file:src/main/resources/images/secondLevel/products/nut.png");
         storage = new Storage(storage2View, wallet, banana, dragonflyPr, feather, mango, nut);
         storage.lvl2();
+        if (restart) {
+            storage.reset();
+            restart = false;
+        }
         anchorPane.getChildren().add(storage.getRoot());
     }
 

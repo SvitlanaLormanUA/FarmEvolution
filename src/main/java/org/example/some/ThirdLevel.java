@@ -28,6 +28,7 @@ import org.example.some.otherGameObjects.Well;
 
 //import static org.example.some.SecondLevel.coins;
 import static org.example.some.FirstLevel.coins;
+import static org.example.some.SettingsMenu.restart;
 import static org.example.some.Shop.getCurrentLevel;
 
 public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initializable{
@@ -131,6 +132,10 @@ public class ThirdLevel   extends LevelMusicBack implements javafx.fxml.Initiali
         Image mushroom = new Image("file:src/main/resources/images/thirdLevel/products/miniMushroom.png");
         storage = new Storage(storageView, wallet, pouch, fairyDust, horn, unicornBlood, mushroom);
         storage.lvl3();
+        if (restart) {
+            storage.reset();
+            restart = false;
+        }
         anchorPane.getChildren().add(storage.getRoot());
     }
 

@@ -1458,6 +1458,16 @@ public class Storage {
         soldRabbit = 0;
         nWool = 0;
         nEggs = 0;
+        gatheredBananas = 0;
+        soldMango = 0;
+        gatheredNuts = 0;
+        soldFeather = 0;
+        driedDragonfly = 0;
+        gatheredUnicornBlood = 0;
+        soldPouch = 0;
+        soldMushrooms = 0;
+        soldDust = 0;
+        gatheredHorns = 0;
 
 
         saveState();
